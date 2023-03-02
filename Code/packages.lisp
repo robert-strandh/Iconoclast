@@ -15,4 +15,6 @@
    #:lambda-list
    #:declare-asts
    #:documentation-ast
-   #:body-asts))
+   #:body-asts
+   #:declaration-specifiers
+   #:declare-ast))
