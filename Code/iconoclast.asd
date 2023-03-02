@@ -5,4 +5,5 @@
   :serial t
   :components
   ((:file "packages")
-   (:file "ast")))
+   (:file "ast")
+   (:file "function-ast")))
