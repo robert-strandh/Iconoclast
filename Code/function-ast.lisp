@@ -48,6 +48,8 @@
 ;;; the lambda-list keyword &KEY, followed by a zer or more
 ;;; KEY-PARAMETER-ASTs.
 
+(defgeneric keyword-name-ast (parameter-ast))
+
 (defclass key-parameter-ast (ast)
   ((%variable-ast
     :initarg :variable-ast
