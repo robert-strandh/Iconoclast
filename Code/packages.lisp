@@ -10,4 +10,9 @@
    #:supplied-p-parameter-ast
    #:optional-parameter-ast
    #:keyword-name-ast
-   #:key-parameter-ast))
+   #:key-parameter-ast
+   #:name-ast
+   #:lambda-list
+   #:declare-asts
+   #:documentation-ast
+   #:body-asts))
