@@ -10,7 +10,7 @@
       :initarg :variable-asts
       :reader variable-asts)))
 
-(defclass dynamic-extent-ast 
+(defclass dynamic-extent-ast
     (declaration-specifier-with-variables-ast)
   ())
 
@@ -30,7 +30,7 @@
     (declaration-specifier-with-variables-ast)
   ())
 
-(defclass ignore-ast (ignore-or-ignorable-ast) 
+(defclass ignore-ast (ignore-or-ignorable-ast)
   ())
 
 (defclass ignorable-ast (ignore-or-ignorable-ast)
