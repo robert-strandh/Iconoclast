@@ -4,4 +4,10 @@
   (:use #:common-lisp)
   (:export
    #:ast
-   #:origin))
+   #:origin
+   #:variable-ast
+   #:init-form-ast
+   #:supplied-p-parameter-ast
+   #:optional-parameter-ast
+   #:keyword-name-ast
+   #:key-parameter-ast))
