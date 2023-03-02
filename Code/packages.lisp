@@ -2,4 +2,6 @@
 
 (defpackage #:iconoclast
   (:use #:common-lisp)
-  (:export))
+  (:export
+   #:ast
+   #:origin))
