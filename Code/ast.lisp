@@ -6,6 +6,8 @@
 ;;;; of course, operations such as MACROLET are not present because
 ;;;; they only alter the environment.
 
+(defgeneric origin (ast))
+
 ;;; The base class for all ASTs.
 (defclass ast ()
   ((%origin :initarg :origin :initform nil :reader origin)))
