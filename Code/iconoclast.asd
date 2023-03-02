@@ -6,4 +6,5 @@
   :components
   ((:file "packages")
    (:file "ast")
+   (:file "declare-ast")
    (:file "function-ast")))
