@@ -7,16 +7,16 @@
 
 ;;; We represent the lambda list as a list of parameter groups.  The
 ;;; first element of a lambda list is the required parameter group,
-;;; and it is always present.  Other parameter groups are present only
-;;; if corresponding lambda-list keyword is present in the original
-;;; lambda list.  This representation allows for
+;;; and it is always present.  Other parameter groups are present if
+;;; and only if the corresponding lambda-list keyword is present in
+;;; the original lambda list.  This representation allows for
 ;;; implementation-specific lambda-list keywords.  The parameter
 ;;; groups are present in the same order as the corresponding
 ;;; lambda-list keywords in the original lambda list.
 
 ;;; The &OPTIONAL parameter group is represented as a list starting
-;;; with the lambda-list keyword &OPTIONAL, followed by a (possibly
-;;; empty) list of OPTIONAL-PARAMETER-ASTs
+;;; with the lambda-list keyword &OPTIONAL, followed by zero or more
+;;; OPTIONAL-PARAMETER-ASTs.
 
 (defgeneric variable-ast (parameter-ast))
 
@@ -45,8 +45,8 @@
 ;;; elements, the lambda-list keyword &REST and a VARIABLE-AST.
 
 ;;; The &KEY parameter group is represented as a list starting with
-;;; the lambda-list keyword &KEY, followed by a (possibly empty) list
-;;; of KEY-PARAMETER-ASTs
+;;; the lambda-list keyword &KEY, followed by a zer or more
+;;; KEY-PARAMETER-ASTs.
 
 (defclass key-parameter-ast (ast)
   ((%variable-ast
@@ -71,3 +71,11 @@
    (%supplied-p-parameter-ast
     :initarg :supplied-p-parameter-ast
     :reader supplied-p-parameter-ast)))
+
+;;; The &ALLOW-OTHER-KEYS parameter group is represented as a
+;;; singleton list with the lambda-list keyword &ALLOW-OTHER-KEYS as
+;;; its only element.
+
+;;; The &AUX parameter group is represented as a list starting with
+;;; the &AUX lambda-list keyword, followed by zero or more
+;;; LET-BINDING-ASTs.
