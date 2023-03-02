@@ -29,14 +29,45 @@
     :initarg :variable-ast
     :reader variable-ast)
    ;; If there is no init-form in the source code, then this slot
-   ;; contains NIL.
+   ;; contains a LITERAL-AST with NIL in it, but the origin slot of
+   ;; that AST will contain NIL.
    (%init-form-ast
-    :initform nil
     :initarg :init-form-ast
     :reader init-form-ast)
    ;; If there is no supplied-p-parameter in the source code, then
-   ;; this slot contains NIL.  Otherwise, it contains a VARIABLE-AST.
+   ;; this slot contains a LEXICAL-VARIABLE-AST with some bogus name,
+   ;; but the origin slot of that VARIABLE-AST will contain NIL.
    (%supplied-p-parameter-ast
-    :initform nil
+    :initarg :supplied-p-parameter-ast
+    :reader supplied-p-parameter-ast)))
+
+;;; The &REST parameter group is represented as a list of two
+;;; elements, the lambda-list keyword &REST and a VARIABLE-AST.
+
+;;; The &KEY parameter group is represented as a list starting with
+;;; the lambda-list keyword &KEY, followed by a (possibly empty) list
+;;; of KEY-PARAMETER-ASTs
+
+(defclass key-parameter-ast (ast)
+  ((%variable-ast
+    :initarg :variable-ast
+    :reader variable-ast)
+   ;; If there is no explicit keyword-name in the source code, then
+   ;; this slot contains a LITERAL-AST with a name generated from the
+   ;; name of the variable, but the origin slot of that AST will
+   ;; contain NIL.
+   (%keyword-name-ast
+    :initarg :keyword-name-ast
+    :reader keyword-name-ast)
+   ;; If there is no init-form in the source code, then this slot
+   ;; contains a LITERAL-AST with NIL in it, but the origin slot of
+   ;; that AST will contain NIL.
+   (%init-form-ast
+    :initarg :init-form-ast
+    :reader init-form-ast)
+   ;; If there is no supplied-p-parameter in the source code, then
+   ;; this slot contains a LEXICAL-VARIABLE-AST with some bogus name,
+   ;; but the origin slot of that VARIABLE-AST will contain NIL.
+   (%supplied-p-parameter-ast
     :initarg :supplied-p-parameter-ast
     :reader supplied-p-parameter-ast)))
