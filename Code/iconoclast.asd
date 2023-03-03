@@ -10,4 +10,5 @@
    (:file "declare-ast")
    (:file "function-ast")
    (:file "block-ast")
-   (:file "catch-ast")))
+   (:file "catch-ast")
+   (:file "eval-when-ast")))
