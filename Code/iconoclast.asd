@@ -8,4 +8,5 @@
    (:file "ast")
    (:file "declaration-specifier-asts")
    (:file "declare-ast")
-   (:file "function-ast")))
+   (:file "function-ast")
+   (:file "block-ast")))
