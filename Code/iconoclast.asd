@@ -9,4 +9,5 @@
    (:file "declaration-specifier-asts")
    (:file "declare-ast")
    (:file "function-ast")
-   (:file "block-ast")))
+   (:file "block-ast")
+   (:file "catch-ast")))
