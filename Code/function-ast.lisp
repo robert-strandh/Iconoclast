@@ -26,20 +26,20 @@
 
 (defclass optional-parameter-ast (ast)
   ((%variable-ast
-    :initarg :variable-ast
-    :reader variable-ast)
+      :initarg :variable-ast
+      :reader variable-ast)
    ;; If there is no init-form in the source code, then this slot
    ;; contains a LITERAL-AST with NIL in it, but the origin slot of
    ;; that AST will contain NIL.
    (%init-form-ast
-    :initarg :init-form-ast
-    :reader init-form-ast)
+      :initarg :init-form-ast
+      :reader init-form-ast)
    ;; If there is no supplied-p-parameter in the source code, then
    ;; this slot contains a LEXICAL-VARIABLE-AST with some bogus name,
    ;; but the origin slot of that VARIABLE-AST will contain NIL.
    (%supplied-p-parameter-ast
-    :initarg :supplied-p-parameter-ast
-    :reader supplied-p-parameter-ast)))
+      :initarg :supplied-p-parameter-ast
+      :reader supplied-p-parameter-ast)))
 
 ;;; The &REST parameter group is represented as a list of two
 ;;; elements, the lambda-list keyword &REST and a VARIABLE-AST.
@@ -52,27 +52,27 @@
 
 (defclass key-parameter-ast (ast)
   ((%variable-ast
-    :initarg :variable-ast
-    :reader variable-ast)
+      :initarg :variable-ast
+      :reader variable-ast)
    ;; If there is no explicit keyword-name in the source code, then
    ;; this slot contains a LITERAL-AST with a name generated from the
    ;; name of the variable, but the origin slot of that AST will
    ;; contain NIL.
    (%keyword-name-ast
-    :initarg :keyword-name-ast
-    :reader keyword-name-ast)
+      :initarg :keyword-name-ast
+      :reader keyword-name-ast)
    ;; If there is no init-form in the source code, then this slot
    ;; contains a LITERAL-AST with NIL in it, but the origin slot of
    ;; that AST will contain NIL.
    (%init-form-ast
-    :initarg :init-form-ast
-    :reader init-form-ast)
+      :initarg :init-form-ast
+      :reader init-form-ast)
    ;; If there is no supplied-p-parameter in the source code, then
    ;; this slot contains a LEXICAL-VARIABLE-AST with some bogus name,
    ;; but the origin slot of that VARIABLE-AST will contain NIL.
    (%supplied-p-parameter-ast
-    :initarg :supplied-p-parameter-ast
-    :reader supplied-p-parameter-ast)))
+      :initarg :supplied-p-parameter-ast
+      :reader supplied-p-parameter-ast)))
 
 ;;; The &ALLOW-OTHER-KEYS parameter group is represented as a
 ;;; singleton list with the lambda-list keyword &ALLOW-OTHER-KEYS as
@@ -94,25 +94,25 @@
 
 (defclass function-ast (ast)
   ((%name-ast
-    :initarg :name-ast
-    :reader name-ast)
+      :initarg :name-ast
+      :reader name-ast)
    (%lambda-list
-    :initarg :lambda-list
-    :reader lambda-list)
+      :initarg :lambda-list
+      :reader lambda-list)
    ;; This slot contains a list of DECLARE-ASTs.
    (%declare-asts
-    :initform '()
-    :initarg :declare-asts
-    :reader declare-asts)
+      :initform '()
+      :initarg :declare-asts
+      :reader declare-asts)
    ;; This slot contains a a LITERAL-AST containing a string.  The
    ;; slot contains NIL if there is no documentation present.
    (%documentation-ast
-    :initform nil
-    :initarg :documentation-ast
-    :reader documentation-ast)
+      :initform nil
+      :initarg :documentation-ast
+      :reader documentation-ast)
    ;; This slot contains a possibly empty list of ASTs representing
    ;; the forms of the body of the function.
    (%body-asts
-    :initarg :body-asts
-    :reader body-asts)))
+      :initarg :body-asts
+      :reader body-asts)))
 
