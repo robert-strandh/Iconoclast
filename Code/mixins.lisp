@@ -1,5 +1,12 @@
 (cl:in-package #:iconoclast)
 
+(defgeneric form-ast (ast))
+
+(defclass form-ast-mixin ()
+  ((%form-ast
+      :initarg :form-ast
+      :reader-form-ast)))
+
 (defgeneric form-asts (ast))
 
 (defclass form-asts-mixin ()
