@@ -1,14 +1,7 @@
 (cl:in-package #:iconoclast)
 
-(defclass block-ast (ast)
-  (;; This slot contains a LITERAL-AST with the name of the block.
-   (%name-ast
-      :initarg :name-ast
-      :reader name-ast)
-   ;; This slot contains a list of ASTs that are make up the body of the block.
-   (%form-asts
-      :initarg :form-asts
-      :reader form-asts)))
+(defclass block-ast (name-ast-mixin form-asts-mixin)
+  ())
 
 (defclass return-from-ast (ast)
   (;; This slot contains the BLOCK-AST that is being returned from.
