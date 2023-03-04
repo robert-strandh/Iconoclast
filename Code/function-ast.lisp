@@ -84,30 +84,12 @@
 
 (defgeneric lambda-list (ast))
 
-(defgeneric declare-asts (ast))
-
-(defgeneric documentation-ast (ast))
-
-(defgeneric body-asts (ast))
-
-(defclass function-ast (ast)
+(defclass function-ast
+    (declaration-asts-mixin
+     documentation-ast-mixin
+     form-asts-mixin
+     ast)
   ((%lambda-list
       :initarg :lambda-list
-      :reader lambda-list)
-   ;; This slot contains a list of DECLARE-ASTs.
-   (%declare-asts
-      :initform '()
-      :initarg :declare-asts
-      :reader declare-asts)
-   ;; This slot contains a a LITERAL-AST containing a string.  The
-   ;; slot contains NIL if there is no documentation present.
-   (%documentation-ast
-      :initform nil
-      :initarg :documentation-ast
-      :reader documentation-ast)
-   ;; This slot contains a possibly empty list of ASTs representing
-   ;; the forms of the body of the function.
-   (%body-asts
-      :initarg :body-asts
-      :reader body-asts)))
+      :reader lambda-list)))
 
