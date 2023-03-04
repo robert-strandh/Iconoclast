@@ -20,4 +20,5 @@
    (:file "locally-ast")
    (:file "multiple-value-call-ast")
    (:file "multiple-value-prog1-ast")
-   (:file "progn-ast")))
+   (:file "progn-ast")
+   (:file "progv-ast")))
