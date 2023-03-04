@@ -6,6 +6,7 @@
   :components
   ((:file "packages")
    (:file "ast")
+   (:file "mixins")
    (:file "declaration-specifier-asts")
    (:file "declare-ast")
    (:file "function-ast")
