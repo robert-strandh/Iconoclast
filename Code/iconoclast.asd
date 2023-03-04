@@ -22,4 +22,5 @@
    (:file "multiple-value-prog1-ast")
    (:file "progn-ast")
    (:file "progv-ast")
-   (:file "quote-ast")))
+   (:file "quote-ast")
+   (:file "setq-ast")))
