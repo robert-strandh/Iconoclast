@@ -82,8 +82,6 @@
 ;;; the &AUX lambda-list keyword, followed by zero or more
 ;;; LET-BINDING-ASTs.
 
-(defgeneric name-ast (ast))
-
 (defgeneric lambda-list (ast))
 
 (defgeneric declare-asts (ast))
@@ -93,10 +91,7 @@
 (defgeneric body-asts (ast))
 
 (defclass function-ast (ast)
-  ((%name-ast
-      :initarg :name-ast
-      :reader name-ast)
-   (%lambda-list
+  ((%lambda-list
       :initarg :lambda-list
       :reader lambda-list)
    ;; This slot contains a list of DECLARE-ASTs.
