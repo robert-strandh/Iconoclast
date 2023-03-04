@@ -1,22 +1,13 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric name-ast (ast))
+(defclass lexical-function-ast (name-ast-mixin function-ast)
+  ())
 
-(defclass lexical-function-ast (function-ast)
-  ((%name-ast
-      :initarg :name-ast
-      :reader name-ast)))
-
-(defclass flet-or-labels-ast (ast)
+(defclass flet-or-labels-ast
+    (declaration-asts-mixin form-asts-mixin ast)
   ((%lexical-function-asts
       :initarg :lexical-function-asts
-      :reader lexical-function-asts)
-   (%declaration-asts
-      :initarg :declaration-asts
-      :reader declaration-asts)
-   (%form-asts
-      :initarg :form-asts
-      :reader form-asts)))
+      :reader lexical-function-asts)))
 
 (defclass flet-ast (flet-or-labels-ast)
   ())
