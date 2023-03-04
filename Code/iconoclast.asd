@@ -14,4 +14,5 @@
    (:file "catch-ast")
    (:file "eval-when-ast")
    (:file "flet-ast")
-   (:file "tagbody-ast")))
+   (:file "tagbody-ast")
+   (:file "if-ast")))
