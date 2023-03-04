@@ -27,3 +27,10 @@
   ((%name-ast
       :initarg :name-ast
       :reader name-ast)))
+
+(defgeneric tag-ast (ast))
+
+(defclass tag-ast-mixin ()
+  ((%tag-ast
+      :initarg :tag-ast
+      :reader tag-ast)))
