@@ -20,3 +20,10 @@
   ((%documentation-ast
       :initarg :documentation-ast
       :reader documentation-ast)))
+
+(defgeneric name-ast (ast))
+
+(defclass name-ast-mixin ()
+  ((%name-ast
+      :initarg :name-ast
+      :reader name-ast)))
