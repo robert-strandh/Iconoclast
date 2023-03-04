@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast)
 
-(defclass block-ast (name-ast-mixin form-asts-mixin)
+(defclass block-ast (name-ast-mixin form-asts-mixin ast)
   ())
 
 (defclass return-from-ast (ast)
