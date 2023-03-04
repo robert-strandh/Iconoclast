@@ -24,4 +24,5 @@
    (:file "progv-ast")
    (:file "quote-ast")
    (:file "setq-ast")
-   (:file "symbol-macrolet-ast")))
+   (:file "symbol-macrolet-ast")
+   (:file "the-ast")))
