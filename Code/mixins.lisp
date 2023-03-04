@@ -5,7 +5,7 @@
 (defclass form-ast-mixin ()
   ((%form-ast
       :initarg :form-ast
-      :reader-form-ast)))
+      :reader form-ast)))
 
 (defgeneric form-asts (ast))
 
