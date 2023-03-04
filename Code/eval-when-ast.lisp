@@ -2,10 +2,7 @@
 
 (defgeneric situation-asts (ast))
 
-(defclass eval-when-ast (ast)
+(defclass eval-when-ast (form-asts-mixin ast)
   ((%situations-asts
       :initarg :situation-asts
-      :reader situation-asts)
-   (%form-asts
-      :initarg :form-asts
-      :reader form-asts)))
+      :reader situation-asts)))
