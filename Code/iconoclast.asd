@@ -10,6 +10,7 @@
    (:file "variable-ast")
    (:file "declaration-specifier-asts")
    (:file "declare-ast")
+   (:file "let-ast")
    (:file "function-definition-ast")
    (:file "block-ast")
    (:file "catch-ast")
