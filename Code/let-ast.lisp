@@ -9,7 +9,7 @@
 
 (defgeneric variable-binding-asts (ast))
 
-(defclass let-or-let*-ast 
+(defclass let-or-let*-ast
     (declaration-asts-mixin form-asts-mixin ast)
   ((%variable-binding-asts
       :initform '()
