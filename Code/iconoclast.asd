@@ -14,6 +14,7 @@
    (:file "catch-ast")
    (:file "eval-when-ast")
    (:file "flet-ast")
+   (:file "function-ast")
    (:file "tagbody-ast")
    (:file "if-ast")
    (:file "load-time-value-ast")
