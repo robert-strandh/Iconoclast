@@ -84,7 +84,7 @@
 
 (defgeneric lambda-list (ast))
 
-(defclass function-ast
+(defclass function-definition-ast
     (declaration-asts-mixin
      documentation-ast-mixin
      form-asts-mixin
