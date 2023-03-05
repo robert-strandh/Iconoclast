@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast)
 
-(defclass lexical-function-ast (name-ast-mixin function-ast)
+(defclass lexical-function-ast (name-ast-mixin function-definition-ast)
   ())
 
 (defclass flet-or-labels-or-macrolet-ast
