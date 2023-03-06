@@ -1,11 +1,6 @@
 (cl:in-package #:iconoclast-builder)
 
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :block))
-     &key source)
-  (make-instance 'ico:block-ast
-    :origin source))
+(define-make-node-method :block ico:block-ast)
 
 (defmethod abp:relate
     ((builder builder)

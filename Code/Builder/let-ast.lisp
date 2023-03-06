@@ -1,25 +1,10 @@
 (cl:in-package #:iconoclast-builder)
 
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :value-binding))
-     &key source)
-  (make-instance 'ico:variable-binding-ast
-    :origin source))
+(define-make-node-method :value-binding ico:variable-binding-ast)
 
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :let))
-     &key source)
-  (make-instance 'ico:let-ast
-    :origin source))
+(define-make-node-method :let ico:let-ast)
 
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :let*))
-     &key source)
-  (make-instance 'ico:let*-ast
-    :origin source))
+(define-make-node-method :let* ico:let*-ast)
 
 (defmethod abp:relate
     ((builder builder)
