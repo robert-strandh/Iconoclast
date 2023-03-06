@@ -26,3 +26,14 @@
      &key)
   (reinitialize-instance left
     :variable-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :value))
+     (left ico:variable-binding-ast)
+     (right t)
+     &key)
+  ;; This is wrong since RIGHT is a form
+  ;; and should be parsed.
+  (reinitialize-instance left
+    :form-ast right))
