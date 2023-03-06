@@ -9,4 +9,5 @@
    ((:file "packages")
     (:file "builder")
     (:file "variable-ast")
-    (:file "let-ast")))
+    (:file "let-ast")
+    (:file "block-ast")))
