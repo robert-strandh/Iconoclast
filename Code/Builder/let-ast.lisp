@@ -42,7 +42,7 @@
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :binding))
-     (left ico:let-ast)
+     (left ico:let-or-let*-ast)
      (right ico:variable-binding-ast)
      &key)
   (reinitialize-instance left
