@@ -14,6 +14,13 @@
   (make-instance 'ico:let-ast
     :origin source))
 
+(defmethod abp:make-node
+    ((builder builder)
+     (kind (eql :let*))
+     &key source)
+  (make-instance 'ico:let*-ast
+    :origin source))
+
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :name))
