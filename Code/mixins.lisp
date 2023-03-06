@@ -11,6 +11,7 @@
 
 (defclass form-asts-mixin ()
   ((%form-asts
+      :initform '()
       :initarg :form-asts
       :reader form-asts)))
 
@@ -18,6 +19,7 @@
 
 (defclass declaration-asts-mixin ()
   ((%declaration-asts
+      :initform nil
       :initarg :declaration-asts
       :reader declaration-asts)))
 
