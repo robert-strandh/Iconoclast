@@ -34,6 +34,7 @@
      #:lambda-list
      #:variable-binding-ast
      #:variable-binding-asts
+     #:let-or-let*-ast
      #:let-ast
      #:let*-ast
      #:name-ast
