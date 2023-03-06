@@ -17,3 +17,12 @@
      &key source)
   (make-instance 'ico:variable-binding-ast
     :origin source))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :name))
+     (left ico:variable-binding-ast)
+     (right ico:variable-definition-ast)
+     &key)
+  (reinitialize-instance left
+    :variable-ast right))
