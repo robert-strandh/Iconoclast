@@ -53,7 +53,7 @@
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :form))
-     (left ico:let-ast)
+     (left ico:let-or-let*-ast)
      (right t)
      &key)
   (reinitialize-instance left
