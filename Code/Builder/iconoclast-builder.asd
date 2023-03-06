@@ -7,4 +7,6 @@
    :serial t
    :components
    ((:file "packages")
-    (:file "builder")))
+    (:file "builder")
+    (:file "variable-ast")
+    (:file "let-ast")))
