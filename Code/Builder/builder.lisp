@@ -40,8 +40,6 @@
      (left ico:variable-binding-ast)
      (right t)
      &key)
-  ;; This is wrong since RIGHT is a form
-  ;; and should be parsed.
   (reinitialize-instance left
     :form-ast right))
 
@@ -62,8 +60,6 @@
      (left ico:let-ast)
      (right t)
      &key)
-  ;; This is wrong since right is a form
-  ;; and should be parsed.
   (reinitialize-instance left
     :form-asts
       (append (ico:form-asts left)
