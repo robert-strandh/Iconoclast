@@ -1,10 +1,10 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric declaration-specifiers (declare-ast))
+(defgeneric declaration-specifier-asts (declare-ast))
 
 (defclass declare-ast (ast)
   (;; This slot contains a (possibly empty) list of DECLARATION-
    ;; SPECIFIER-ASTs.
-   (%declaration-specifiers
-      :initarg :declaration-specifiers
-      :reader declaration-specifiers)))
+   (%declaration-specifier-asts
+      :initarg :declaration-specifier-asts
+      :reader declaration-specifier-asts)))
