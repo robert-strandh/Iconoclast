@@ -2,7 +2,7 @@
 
 (define-make-node-method :eval-when ico:eval-when-ast)
 
-(defmethod abp:relate 
+(defmethod abp:relate
     ((builder builder)
      (relation (eql :situation))
      (left ico:eval-when-ast)
