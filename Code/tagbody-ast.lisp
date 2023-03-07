@@ -2,6 +2,7 @@
 
 (defclass tagbody-ast (ast)
   ((%contents-asts
+      :initform '()
       :initarg :contents-asts
       :reader contents-asts)))
 
