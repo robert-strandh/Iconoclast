@@ -10,4 +10,5 @@
     (:file "builder")
     (:file "variable-ast")
     (:file "let-ast")
-    (:file "block-ast")))
+    (:file "block-ast")
+    (:file "catch-ast")))
