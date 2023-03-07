@@ -8,6 +8,7 @@
    :components
    ((:file "packages")
     (:file "builder")
+    (:file "form-asts-mixin")
     (:file "variable-ast")
     (:file "let-ast")
     (:file "block-ast")
