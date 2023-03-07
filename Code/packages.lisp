@@ -5,6 +5,7 @@
   (:export
      #:ast
      #:origin
+     #:form-asts-mixin
      #:variable-ast
      #:variable-definition-ast
      #:variable-reference-ast
