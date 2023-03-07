@@ -3,6 +3,7 @@
 (defgeneric situation-asts (ast))
 
 (defclass eval-when-ast (form-asts-mixin ast)
-  ((%situations-asts
+  ((%situation-asts
+      :initform '()
       :initarg :situation-asts
       :reader situation-asts)))
