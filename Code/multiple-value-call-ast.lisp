@@ -1,8 +1,8 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric function-call-form-ast (ast))
+(defgeneric function-form-ast (ast))
 
 (defclass multiple-value-call-ast (form-asts-mixin ast)
-  ((%function-call-form-ast
-      :initarg :function-call-form-ast
-      :reader function-call-form-ast)))
+  ((%function-form-ast
+      :initarg :function-form-ast
+      :reader function-form-ast)))
