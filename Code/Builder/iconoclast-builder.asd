@@ -17,4 +17,5 @@
     (:file "function-ast")
     (:file "tagbody-ast")
     (:file "if-ast")
-    (:file "load-time-value-ast")))
+    (:file "load-time-value-ast")
+    (:file "locally-ast")))
