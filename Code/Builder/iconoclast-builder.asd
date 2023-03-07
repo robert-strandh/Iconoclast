@@ -12,4 +12,5 @@
     (:file "let-ast")
     (:file "block-ast")
     (:file "catch-ast")
-    (:file "eval-when-ast")))
+    (:file "eval-when-ast")
+    (:file "function-definition-ast")))
