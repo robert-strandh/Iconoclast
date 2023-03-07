@@ -31,7 +31,9 @@
      #:optional-parameter-ast
      #:keyword-name-ast
      #:key-parameter-ast
+     #:lambda-list-ast
      #:lambda-list
+     #:function-definition-ast
      #:variable-binding-ast
      #:variable-binding-asts
      #:let-or-let*-ast
