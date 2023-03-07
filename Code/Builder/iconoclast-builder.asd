@@ -19,4 +19,5 @@
     (:file "tagbody-ast")
     (:file "if-ast")
     (:file "load-time-value-ast")
-    (:file "locally-ast")))
+    (:file "locally-ast")
+    (:file "multiple-value-call-ast")))
