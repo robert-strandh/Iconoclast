@@ -11,4 +11,5 @@
     (:file "variable-ast")
     (:file "let-ast")
     (:file "block-ast")
-    (:file "catch-ast")))
+    (:file "catch-ast")
+    (:file "eval-when-ast")))
