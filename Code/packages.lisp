@@ -56,6 +56,8 @@
      #:labels-ast
      #:function-ast
      #:tagbody-ast
+     #:tagbody-segment-ast
+     #:tag-asts
      #:contents-asts
      #:tagbody-tag-ast
      #:go-ast
