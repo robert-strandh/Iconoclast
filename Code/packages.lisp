@@ -84,4 +84,6 @@
      #:value-type-ast
      #:the-ast
      #:protected-form-ast
-     #:unwind-protect-ast))
+     #:unwind-protect-ast
+     #:when-ast
+     #:unless-ast))
