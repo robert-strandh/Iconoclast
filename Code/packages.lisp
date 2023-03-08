@@ -6,6 +6,7 @@
      #:ast
      #:origin
      #:form-asts-mixin
+     #:test-ast-mixin
      #:variable-ast
      #:variable-definition-ast
      #:variable-reference-ast
