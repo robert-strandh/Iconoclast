@@ -43,3 +43,10 @@
   ((%tag-ast
       :initarg :tag-ast
       :reader tag-ast)))
+
+(defgeneric test-ast (ast))
+
+(defclass test-ast-mixin ()
+  ((%test-ast
+      :initarg :test-ast
+      :reader test-ast)))

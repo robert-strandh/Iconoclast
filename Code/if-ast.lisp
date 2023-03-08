@@ -1,16 +1,11 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric test-ast (ast))
-
 (defgeneric then-ast (ast))
 
 (defgeneric else-ast (ast))
 
-(defclass if-ast (ast)
-  ((%test-ast
-      :initarg :test-ast
-      :reader test-ast)
-   (%then-ast
+(defclass if-ast (test-ast-mixin ast)
+  ((%then-ast
       :initarg :then-ast
       :reader then-ast)
    ;; When there is no else branch in teh source code, this slot
