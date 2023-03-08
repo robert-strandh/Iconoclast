@@ -81,6 +81,11 @@
      #:object-ast
      #:quote-ast
      #:setq-ast
+     #:symbol-ast
+     #:expansion-ast
+     #:symbol-expansion-ast
+     #:symbol-expansion-asts
+     #:symbol-macrolet-ast
      #:value-type-ast
      #:the-ast
      #:protected-form-ast
