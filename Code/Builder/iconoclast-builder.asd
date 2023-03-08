@@ -23,4 +23,5 @@
     (:file "multiple-value-call-ast")
     (:file "multiple-value-prog1-ast")
     (:file "progn-ast")
-    (:file "progv-ast")))
+    (:file "progv-ast")
+    (:file "quote-ast")))
