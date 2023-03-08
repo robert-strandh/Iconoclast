@@ -15,7 +15,8 @@
 (defgeneric symbol-expansion-asts (ast))
 
 (defclass symbol-macrolet-ast
-    (declaration-asts-mixiin form-asts-mixin ast)
+    (declaration-asts-mixin form-asts-mixin ast)
   ((%symbol-expansion-asts
+      :initform '()
       :initarg :symbol-expansion-asts
       :reader symbol-expansion-asts)))
