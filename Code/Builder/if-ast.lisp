@@ -4,15 +4,6 @@
 
 (defmethod abp:relate
     ((builder builder)
-     (relation (eql :test))
-     (left ico:if-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :test-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
      (relation (eql :then))
      (left ico:if-ast)
      (right t)
