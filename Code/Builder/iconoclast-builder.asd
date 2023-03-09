@@ -10,6 +10,7 @@
     (:file "builder")
     (:file "form-asts-mixin")
     (:file "test-ast-mixin")
+    (:file "type-specifier-asts")
     (:file "variable-ast")
     (:file "let-ast")
     (:file "block-ast")
