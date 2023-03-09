@@ -95,5 +95,8 @@
      #:case-normal-clause-ast
      #:key-asts
      #:case-ast
+     #:cond-clause-ast
+     #:cond-ast
+     #:clause-asts
      #:when-ast
      #:unless-ast))
