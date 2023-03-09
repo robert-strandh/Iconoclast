@@ -92,5 +92,8 @@
      #:the-ast
      #:protected-form-ast
      #:unwind-protect-ast
+     #:case-normal-clause-ast
+     #:key-asts
+     #:case-ast
      #:when-ast
      #:unless-ast))
