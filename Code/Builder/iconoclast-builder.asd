@@ -31,4 +31,5 @@
     (:file "the-ast")
     (:file "unwind-protect-ast")
     (:file "case-ast")
+    (:file "cond-ast")
     (:file "when-ast")))
