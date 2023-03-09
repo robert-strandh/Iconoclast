@@ -30,4 +30,5 @@
     (:file "symbol-macrolet-ast")
     (:file "the-ast")
     (:file "unwind-protect-ast")
+    (:file "case-ast")
     (:file "when-ast")))
