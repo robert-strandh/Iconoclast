@@ -16,6 +16,7 @@
      #:declration-specifier-with-variables-ast
      #:dynamic-extent-ast
      #:type-name-ast
+     #:atomic-type-specifier-ast
      #:type-or-ftype-ast
      #:type-ast
      #:ftype-ast
