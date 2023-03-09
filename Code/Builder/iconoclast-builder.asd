@@ -28,4 +28,5 @@
     (:file "progv-ast")
     (:file "quote-ast")
     (:file "symbol-macrolet-ast")
+    (:file "the-ast")
     (:file "when-ast")))
