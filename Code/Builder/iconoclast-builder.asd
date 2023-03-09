@@ -32,4 +32,5 @@
     (:file "unwind-protect-ast")
     (:file "case-ast")
     (:file "cond-ast")
+    (:file "defclass-ast")
     (:file "when-ast")))
