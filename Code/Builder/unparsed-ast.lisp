@@ -16,6 +16,6 @@
      &key source expression context)
   (cond ((eql context :form)
          (make-instance 'unparsed-form-ast
-            :origin source 
+            :origin source
             :form expression))
         (t nil)))
