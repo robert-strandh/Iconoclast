@@ -7,6 +7,7 @@
   ((:file "packages")
    (:file "ast")
    (:file "mixins")
+   (:file "name-ast")
    (:file "variable-ast")
    (:file "type-specifier-asts")
    (:file "declaration-specifier-asts")
