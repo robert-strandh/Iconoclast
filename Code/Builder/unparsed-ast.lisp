@@ -18,4 +18,4 @@
          (make-instance 'unparsed-form-ast
             :origin source
             :form expression))
-        (t nil)))
+        (t (error "Unknown context: ~s" context))))
