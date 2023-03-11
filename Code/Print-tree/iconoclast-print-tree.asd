@@ -5,4 +5,6 @@
                #:utilities.print-tree)
   :serial t
   :components
-  ((:file "packages")))
+  ((:file "packages")
+   (:file "generic-functions")
+   (:file "variable-ast")))
