@@ -47,6 +47,7 @@
      #:declare-asts
      #:documentation-ast
      #:body-asts
+     #:block-name-ast
      #:block-ast
      #:return-from-ast
      #:catch-ast
