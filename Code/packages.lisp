@@ -7,6 +7,7 @@
      #:origin
      #:form-asts-mixin
      #:test-ast-mixin
+     #:form-ast
      #:variable-ast
      #:variable-definition-ast
      #:variable-reference-ast
@@ -27,6 +28,7 @@
      #:inline-ast
      #:notinline-ast
      #:optimize-ast
+     #:declaration-asts
      #:declaration-specifier-asts
      #:declare-ast
      #:init-form-ast
@@ -44,6 +46,7 @@
      #:let-ast
      #:let*-ast
      #:name-ast
+     #:name
      #:declare-asts
      #:documentation-ast
      #:body-asts
