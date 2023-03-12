@@ -8,10 +8,16 @@
 (defgeneric print-details (stream depth node)
       (:method-combination progn :most-specific-last))
 
+(defmethod print-details progn (strem depth node)
+  nil)
+
 (defgeneric children (node))
 
 (defmethod print-node (stream depth (node cons))
   (format stream "list"))
+
+(defmethod print-node (stream depth (node null))
+  (format stream "empty list"))
 
 (defmethod children ((node cons))
   (loop for element in node
