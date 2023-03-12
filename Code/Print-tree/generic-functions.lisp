@@ -9,3 +9,13 @@
       (:method-combination progn :most-specific-last))
 
 (defgeneric children (node))
+
+(defmethod print-node (stream depth (node cons))
+  (format stream "list"))
+
+(defmethod children ((node cons))
+  (loop for element in node
+        collect (cons "" element)))
+
+(defmethod children ((node null))
+  '())
