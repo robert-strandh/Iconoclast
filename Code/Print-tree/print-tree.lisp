@@ -5,6 +5,9 @@
     (format stream "~a: " (car pair)))
   (print-node stream depth (cdr pair)))
 
+(defun print-pair-details (stream depth pair)
+  (print-details stream depth (cdr pair)))
+
 (defun children-of-pair (pair)
   (children (cdr pair)))
 
@@ -14,4 +17,6 @@
   (utilities.print-tree:print-tree
    *standard-output* (cons "" ast)
    (utilities.print-tree:make-node-printer
-    #'print-pair nil #'children-of-pair)))
+    #'print-pair
+    #'print-pair-details
+    #'children-of-pair)))
