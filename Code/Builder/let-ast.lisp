@@ -34,3 +34,14 @@
     :variable-binding-asts
       (append (ico:variable-binding-asts left)
               (list right))))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :declaration))
+     (left ico:let-or-let*-ast)
+     (right ico:inline-or-notinline-ast)
+     &key)
+  (reinitialize-instance left
+    :declaration-asts
+      (append (ico:declaration-asts left)
+              (list right))))
