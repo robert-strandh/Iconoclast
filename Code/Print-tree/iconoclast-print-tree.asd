@@ -7,4 +7,7 @@
   :components
   ((:file "packages")
    (:file "generic-functions")
-   (:file "variable-ast")))
+   (:file "variable-ast")
+   (:file "unparsed")
+   (:file "block-ast")
+   (:file "print-tree")))
