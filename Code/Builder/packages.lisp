@@ -5,4 +5,6 @@
   (:local-nicknames
      (#:abp #:architecture.builder-protocol)
      (#:ico #:iconoclast))
-  (:export))
+  (:export
+   #:unparsed-ast
+   #:unparsed-form-ast))
