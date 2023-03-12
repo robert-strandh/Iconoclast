@@ -7,3 +7,8 @@
 ;;; FIXME: move this one?
 (defmethod children ((ast ico:name-ast))
   '())
+
+;;; FIXME: move this one?
+(defmethod print-details progn (stream depth (node ico:name-ast))
+  (format stream "~a~@:_" (ico:name node)))
+
