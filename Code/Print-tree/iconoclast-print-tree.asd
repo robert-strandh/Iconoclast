@@ -9,5 +9,6 @@
    (:file "generic-functions")
    (:file "variable-ast")
    (:file "unparsed")
+   (:file "let-ast")
    (:file "block-ast")
    (:file "print-tree")))
