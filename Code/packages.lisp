@@ -25,6 +25,7 @@
      #:ignore-ast
      #:ignorable-ast
      #:inline-or-notinline-ast
+     #:variable-asts
      #:inline-ast
      #:notinline-ast
      #:optimize-ast
@@ -47,6 +48,7 @@
      #:let*-ast
      #:name-ast
      #:name
+     #:function-name-ast
      #:declare-asts
      #:documentation-ast
      #:body-asts
