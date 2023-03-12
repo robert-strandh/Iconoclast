@@ -2,6 +2,7 @@
 
 (defsystem #:iconoclast-print-tree
   :depends-on (#:iconoclast
+               #:iconoclast-builder
                #:utilities.print-tree)
   :serial t
   :components
@@ -9,6 +10,8 @@
    (:file "generic-functions")
    (:file "variable-ast")
    (:file "unparsed")
+   (:file "declare-ast")
+   (:file "inline-ast")
    (:file "let-ast")
    (:file "block-ast")
    (:file "print-tree")))
