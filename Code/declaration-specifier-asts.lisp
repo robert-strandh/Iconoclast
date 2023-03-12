@@ -7,6 +7,7 @@
     (declaration-specifier-ast)
   (;; This slot contains a( possibly empty) list of VARIABLE- ASTs.
    (%variable-asts
+      :initform '()
       :initarg :variable-asts
       :reader variable-asts)))
 
@@ -36,7 +37,7 @@
 (defclass ignorable-ast (ignore-or-ignorable-ast)
   ())
 
-(defclass inline-or-notlinline-ast
+(defclass inline-or-notinline-ast
     (declaration-specifier-with-variables-ast)
   ())
 
