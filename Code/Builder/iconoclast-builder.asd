@@ -13,6 +13,8 @@
     (:file "test-ast-mixin")
     (:file "type-specifier-asts")
     (:file "variable-ast")
+    (:file "declare-ast")
+    (:file "name-ast")
     (:file "let-ast")
     (:file "block-ast")
     (:file "catch-ast")
