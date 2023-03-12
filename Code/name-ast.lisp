@@ -4,3 +4,6 @@
 
 (defclass name-ast (ast)
   ((%name :initarg :name :reader name)))
+
+(defclass function-name-ast (name-ast)
+  ())
