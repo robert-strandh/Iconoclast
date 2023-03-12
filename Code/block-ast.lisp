@@ -1,5 +1,8 @@
 (cl:in-package #:iconoclast)
 
+(defclass block-name-ast (name-ast)
+  ())
+
 (defclass block-ast (name-ast-mixin form-asts-mixin ast)
   ())
 
