@@ -21,7 +21,7 @@
   (:method-combination append :most-specific-last))
 
 ;;; The default method returns the empty list.
-(defmethod children (ast)
+(defmethod children append (ast)
   '())
 
 (defmethod children append ((node cons))

@@ -9,7 +9,7 @@
       :initarg :contents-asts
       :reader contents-asts)))
 
-(defmethod children ((ast tagbody-ast))
+(defmethod children append ((ast tagbody-ast))
   (list (cons "contents-asts" (contents-asts ast))))
 
 (defgeneric tag-asts (ast))
