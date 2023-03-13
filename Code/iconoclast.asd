@@ -8,6 +8,7 @@
    (:file "ast")
    (:file "mixins")
    (:file "name-ast")
+   (:file "tag-ast")
    (:file "variable-ast")
    (:file "type-specifier-asts")
    (:file "declaration-specifier-asts")
