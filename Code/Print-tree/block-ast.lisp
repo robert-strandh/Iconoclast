@@ -10,5 +10,5 @@
 
 ;;; FIXME: move this one?
 (defmethod print-details progn (stream depth (node ico:name-ast))
-  (format stream "~a~@:_" (ico:name node)))
+  (format stream "Block name: ~a~@:_" (ico:name node)))
 
