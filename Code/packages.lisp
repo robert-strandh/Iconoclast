@@ -11,6 +11,7 @@
      #:tag-ast-mixin
      #:name-ast-mixin
      #:tag-ast
+     #:tag
      #:form-ast
      #:variable-ast
      #:variable-definition-ast
