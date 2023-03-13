@@ -7,8 +7,5 @@
 (defmethod print-details progn (stream depth (node ico:tag-ast))
   (format stream "Tag: ~a~@:_" (ico:tag node)))
 
-(defmethod print-details progn (stream depth (node ico:name-ast))
-  (format stream "Name: ~a~@:_" (ico:name node)))
-
 (defmethod print-details progn (stream depth (node ico:name-mixin))
-  (format stream "~a~@:_" (ico:name-ast node)))
+  (format stream "~a~@:_" (ico:name node)))
