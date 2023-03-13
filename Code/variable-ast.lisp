@@ -7,7 +7,7 @@
 
 (defgeneric referencing-variable-asts (ast))
 
-(defclass variable-definition-ast (name-ast-mixin variable-ast)
+(defclass variable-definition-ast (name variable-ast)
   (;; This slot contains a list of VARIABLE-REFERENCE-ASTs.
    (%referencing-variable-asts
       :initarg :referencing-variable-asts
