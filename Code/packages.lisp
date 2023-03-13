@@ -53,6 +53,7 @@
      #:let*-ast
      #:name-ast
      #:name
+     #:name-mixin
      #:function-name-ast
      #:declare-asts
      #:documentation-ast
