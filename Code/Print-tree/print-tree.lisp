@@ -3,7 +3,8 @@
 (defun print-pair (stream depth pair)
   (unless (equal (car pair) "")
     (format stream "~a: " (car pair)))
-  (print-node stream depth (cdr pair)))
+  (print-node stream depth (cdr pair))
+  t)
 
 (defun print-pair-details (stream depth pair)
   (print-details stream depth (cdr pair)))
