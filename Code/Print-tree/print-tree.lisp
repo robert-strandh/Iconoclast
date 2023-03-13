@@ -10,7 +10,7 @@
   (print-details stream depth (cdr pair)))
 
 (defun children-of-pair (pair)
-  (children (cdr pair)))
+  (ico:children (cdr pair)))
 
 (defun print-tree (ast)
   (fresh-line)
