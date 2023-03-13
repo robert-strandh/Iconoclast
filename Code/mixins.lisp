@@ -81,3 +81,6 @@
 
 (defmethod children append ((ast variable-ast-mixin))
   (list (cons "variable-ast" (variable-ast ast))))
+
+(defclass name-mixin ()
+  ((%name :initarg :name :reader name)))
