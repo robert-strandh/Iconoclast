@@ -9,6 +9,9 @@
       :initarg :lexical-function-asts
       :reader lexical-function-asts)))
 
+(defmethod children append ((ast flet-or-labels-ast))
+  (list (cons "lexical-function-asts" (lexical-function-asts ast))))
+
 (defclass flet-ast (flet-or-labels-ast)
   ())
 

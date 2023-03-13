@@ -10,3 +10,6 @@
       :initform '()
       :initarg :clause-asts
       :reader clause-asts)))
+
+(defmethod children append ((ast cond-ast))
+  (list (cons "clause-asts" (clause-asts ast))))

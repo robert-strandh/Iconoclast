@@ -6,3 +6,6 @@
   ((%object-ast
       :initarg :object-ast
       :reader object-ast)))
+
+(defmethod children append ((ast quote-ast))
+  (list (cons "object-ast" (object-ast ast))))

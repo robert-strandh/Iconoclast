@@ -7,3 +7,6 @@
       :initform '()
       :initarg :situation-asts
       :reader situation-asts)))
+
+(defmethod children append ((ast eval-when-ast))
+  (list (cons "situation-asts" (situation-asts ast))))

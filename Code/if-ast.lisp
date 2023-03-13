@@ -14,3 +14,7 @@
    (%else-ast
       :initarg :else-ast
       :reader else-ast)))
+
+(defmethod children append ((ast if-ast))
+  (list (cons "then-ast" (then-ast ast))
+        (cons "else-ast" (else-ast ast))))

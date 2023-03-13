@@ -7,6 +7,9 @@
       :initarg :variable-ast
       :reader variable-ast)))
 
+(defmethod children append ((ast variable-binding-ast))
+  (list (cons "variable-ast" (variable-ast ast))))
+
 (defgeneric variable-binding-asts (ast))
 
 (defclass let-or-let*-ast
@@ -15,6 +18,10 @@
       :initform '()
       :initarg :variable-binding-asts
       :accessor variable-binding-asts)))
+
+(defmethod children append ((ast let-or-let*-ast))
+  (list (cons "variable-binding-asts"
+              (variable-binding-asts ast))))
 
 (defclass let-ast (let-or-let*-ast)
   ())

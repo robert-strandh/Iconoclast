@@ -12,6 +12,10 @@
       :initarg :expansion-ast
       :reader expansion-ast)))
 
+(defmethod children append ((ast symbol-expansion-ast))
+  (list (cons "symbol-ast" (symbol-ast ast))
+        (cons "expansion-ast" (expansion-ast ast))))
+
 (defgeneric symbol-expansion-asts (ast))
 
 (defclass symbol-macrolet-ast
@@ -20,3 +24,6 @@
       :initform '()
       :initarg :symbol-expansion-asts
       :reader symbol-expansion-asts)))
+
+(defmethod children append ((ast symbol-macrolet-ast))
+  (list "symbol-expansion-asts" (symbol-expansion-asts ast)))

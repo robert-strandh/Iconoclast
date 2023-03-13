@@ -8,3 +8,7 @@
    (%declaration-specifier-asts
       :initarg :declaration-specifier-asts
       :reader declaration-specifier-asts)))
+
+(defmethod children append ((ast declare-ast))
+  (list (cons "declaration-specifier-asts"
+              (declaration-specifier-asts ast))))

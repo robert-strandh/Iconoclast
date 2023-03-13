@@ -6,3 +6,6 @@
   ((%protected-form-ast
       :initarg :protected-form-ast
       :reader protected-form-ast)))
+
+(defmethod children append ((ast unwind-protect-ast))
+  (list (cons "protected-form-ast" (protected-form-ast ast))))

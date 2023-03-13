@@ -6,3 +6,6 @@
   ((%read-only-p-ast
       :initarg :read-only-p-ast
       :reader read-only-p-ast)))
+
+(defmethod children ((ast load-time-value-ast))
+  (list (cons "read-only-p-ast" (read-only-p-ast ast))))

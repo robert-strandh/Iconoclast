@@ -9,3 +9,6 @@
   ((%result-form-ast
       :initarg :result-form-ast
       :reader result-form-ast)))
+
+(defmethod children append ((ast throw-ast))
+  (list (cons "result-form-ast" (result-form-ast ast))))

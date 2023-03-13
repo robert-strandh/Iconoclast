@@ -11,5 +11,8 @@
       :initarg :key-asts
       :reader key-asts)))
 
+(defmethod children append ((ast case-normal-clause-ast))
+  (list (cons "key-asts" (key-asts ast))))
+
 (defclass case-ast (ast)
   ())
