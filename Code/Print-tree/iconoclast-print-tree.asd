@@ -8,4 +8,5 @@
   :components
   ((:file "packages")
    (:file "generic-functions")
+   (:file "print-details")
    (:file "print-tree")))
