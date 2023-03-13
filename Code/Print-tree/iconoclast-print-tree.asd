@@ -8,8 +8,4 @@
   :components
   ((:file "packages")
    (:file "generic-functions")
-   (:file "unparsed")
-   (:file "tag-ast")
-   (:file "form-asts-mixin")
-   (:file "name-ast-mixin")
    (:file "print-tree")))
