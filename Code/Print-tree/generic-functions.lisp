@@ -11,17 +11,8 @@
 (defmethod print-details progn (strem depth node)
   nil)
 
-(defgeneric children (node))
-
 (defmethod print-node (stream depth (node cons))
   (format stream "~a" '#:list))
 
 (defmethod print-node (stream depth (node null))
   (format stream "empty list"))
-
-(defmethod children ((node cons))
-  (loop for element in node
-        collect (cons "" element)))
-
-(defmethod children ((node null))
-  '())
