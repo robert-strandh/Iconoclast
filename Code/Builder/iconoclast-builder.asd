@@ -8,6 +8,7 @@
    :components
    ((:file "packages")
     (:file "builder")
+    (:file "test")
     (:file "unparsed-ast")
     (:file "form-asts-mixin")
     (:file "test-ast-mixin")
