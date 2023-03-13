@@ -5,8 +5,12 @@
   (:export
      #:ast
      #:origin
+     #:children
      #:form-asts-mixin
      #:test-ast-mixin
+     #:tag-ast-mixin
+     #:name-ast-mixin
+     #:tag-ast
      #:form-ast
      #:variable-ast
      #:variable-definition-ast
