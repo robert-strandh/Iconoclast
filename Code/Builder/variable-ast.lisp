@@ -1,3 +1,9 @@
 (cl:in-package #:iconoclast-builder)
 
-(define-make-node-method :variable-name ico:variable-definition-ast)
+(defmethod abp:make-node
+    ((builder builder)
+     (kind (eql :variable-name))
+     &key name source)
+  (make-instance 'ico:variable-ast
+    :name name
+    :origin source))

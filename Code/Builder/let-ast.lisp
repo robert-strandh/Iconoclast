@@ -10,7 +10,7 @@
     ((builder builder)
      (relation (eql :name))
      (left ico:variable-binding-ast)
-     (right ico:variable-definition-ast)
+     (right ico:variable-ast)
      &key)
   (reinitialize-instance left
     :variable-ast right))
