@@ -7,4 +7,5 @@
      (#:ico #:iconoclast))
   (:export
    #:unparsed-ast
-   #:unparsed-form-ast))
+   #:unparsed-form-ast
+   #:form))
