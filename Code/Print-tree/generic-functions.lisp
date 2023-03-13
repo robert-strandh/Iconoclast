@@ -14,7 +14,7 @@
 (defgeneric children (node))
 
 (defmethod print-node (stream depth (node cons))
-  (format stream "list"))
+  (format stream "~a" '#:list))
 
 (defmethod print-node (stream depth (node null))
   (format stream "empty list"))
