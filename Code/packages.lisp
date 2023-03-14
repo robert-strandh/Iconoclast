@@ -10,6 +10,8 @@
      #:test-ast-mixin
      #:tag-ast-mixin
      #:name-ast-mixin
+     #:name-asts-mixin
+     #:name-asts
      #:tag-ast
      #:tag
      #:form-ast
