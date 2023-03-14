@@ -25,10 +25,10 @@
     ((builder builder)
      (relation (eql :label))
      (left ico:tagbody-segment-ast)
-     (right t)
+     (right ico:tag-ast)
      &key)
   (reinitialize-instance left
-    :tag-asts (append (ico:tag-asts left) (list right))))
+    :tag-ast right))
 
 (defmethod abp:relate
     ((builder builder)
