@@ -1,16 +1,15 @@
 (cl:in-package #:iconoclast)
 
-;;; FIXME: Maybe rename this one to SEGMENT-ASTS?
-(defgeneric contents-asts (ast))
+(defgeneric segment-asts (ast))
 
 (defclass tagbody-ast (ast)
-  ((%contents-asts
+  ((%segment-asts
       :initform '()
-      :initarg :contents-asts
-      :reader contents-asts)))
+      :initarg :segment-asts
+      :reader segment-asts)))
 
 (defmethod children append ((ast tagbody-ast))
-  (list (cons "contents-asts" (contents-asts ast))))
+  (list (cons "segment-asts" (segment-asts ast))))
 
 (defgeneric tag-asts (ast))
 
