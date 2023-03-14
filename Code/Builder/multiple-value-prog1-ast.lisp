@@ -9,4 +9,4 @@
      (right t)
      &key)
   (reinitialize-instance left
-    :first-form right))
+    :first-form-ast right))
