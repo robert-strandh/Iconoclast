@@ -19,15 +19,6 @@
 
 (defmethod abp:relate
     ((builder builder)
-     (kind (eql :argument))
-     (left ico:inline-or-notinline-ast)
-     (right ico:function-name-ast)
-     &key)
-  (reinitialize-instance left
-    :variable-asts (append (ico:variable-asts left) (list right))))
-
-(defmethod abp:relate
-    ((builder builder)
      (relation (eql :declaration))
      (left ico:declaration-asts-mixin)
      (right ico:inline-or-notinline-ast)
