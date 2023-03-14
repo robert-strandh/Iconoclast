@@ -25,3 +25,14 @@
      &key)
   (reinitialize-instance left
     :variable-asts (append (ico:variable-asts left) (list right))))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :declaration))
+     (left ico:declaration-asts-mixin)
+     (right ico:inline-or-notinline-ast)
+     &key)
+  (reinitialize-instance left
+    :declaration-asts
+      (append (ico:declaration-asts left)
+              (list right))))
