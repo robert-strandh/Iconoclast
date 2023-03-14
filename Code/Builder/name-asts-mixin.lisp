@@ -7,4 +7,4 @@
      (right ico:function-name-ast)
      &key)
   (reinitialize-instance left
-    :variable-asts (append (ico:name-asts left) (list right))))
+    :name-asts (append (ico:name-asts left) (list right))))
