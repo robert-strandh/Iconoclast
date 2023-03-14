@@ -37,6 +37,7 @@
      #:declaration-asts
      #:declaration-specifier-asts
      #:declare-ast
+     #:declaration-asts-mixin
      #:init-form-ast
      #:form-asts
      #:supplied-p-parameter-ast
