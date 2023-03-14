@@ -78,7 +78,7 @@
      #:tagbody-ast
      #:tagbody-segment-ast
      #:tag-asts
-     #:contents-asts
+     #:segment-asts
      #:tagbody-tag-ast
      #:go-ast
      #:test-ast
