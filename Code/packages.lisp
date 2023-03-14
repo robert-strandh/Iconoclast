@@ -68,6 +68,7 @@
      #:catch-ast
      #:result-form-ast
      #:throw-ast
+     #:situation-ast
      #:situation-asts
      #:eval-when-ast
      #:lexical-function-ast
