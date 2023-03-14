@@ -1,5 +1,8 @@
 (cl:in-package #:iconoclast)
 
+(defclass situation-ast (name-ast)
+  ())
+
 (defgeneric situation-asts (ast))
 
 (defclass eval-when-ast (form-asts-mixin ast)
