@@ -14,12 +14,12 @@
 
 (defmethod abp:relate
     ((builder builder)
-     (relation (eql :tag))
+     (relation (eql :segment))
      (left ico:tagbody-ast)
-     (right t)
+     (right ico:tagbody-segment-ast)
      &key)
   (reinitialize-instance left
-    :contents-asts (append (ico:contents-asts left) (list right))))
+    :segment-asts (append (ico:segment-asts left) (list right))))
 
 (defmethod abp:relate
     ((builder builder)
