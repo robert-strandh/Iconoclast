@@ -11,6 +11,7 @@
     (:file "test")
     (:file "unparsed-ast")
     (:file "documentation-ast-mixin")
+    (:file "name-asts-mixin")
     (:file "form-asts-mixin")
     (:file "test-ast-mixin")
     (:file "type-specifier-asts")
