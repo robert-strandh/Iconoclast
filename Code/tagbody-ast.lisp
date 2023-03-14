@@ -11,16 +11,8 @@
 (defmethod children append ((ast tagbody-ast))
   (list (cons "segment-asts" (segment-asts ast))))
 
-(defgeneric tag-asts (ast))
-
-(defclass tagbody-segment-ast (form-asts-mixin ast)
-  ((%tag-asts
-      :initform '()
-      :initarg :tag-asts
-      :reader tag-asts)))
-
-(defmethod children append ((ast tagbody-segment-ast))
-  (list (cons "tag-asts" (tag-asts ast))))
+(defclass tagbody-segment-ast (form-asts-mixin tag-ast-mixin ast)
+  ())
 
 (defclass tagbody-tag-ast (tag-ast-mixin ast)
   ((%tagbody-ast
