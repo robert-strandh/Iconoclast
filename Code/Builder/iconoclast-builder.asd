@@ -10,6 +10,7 @@
     (:file "builder")
     (:file "test")
     (:file "unparsed-ast")
+    (:file "documentation-ast-mixin")
     (:file "form-asts-mixin")
     (:file "test-ast-mixin")
     (:file "type-specifier-asts")
