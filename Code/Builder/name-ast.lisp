@@ -7,3 +7,8 @@
   (make-instance 'ico:function-name-ast
     :origin source
     :name name))
+
+(defmethod abp:node-initargs
+    ((builder builder)
+     (ast ico:name-ast))
+  (list :name (ico:name ast)))
