@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast)
 
-(defclass catch-ast (tag-ast-mixin form-asts-mixin ast)
+(defclass catch-ast (form-asts-mixin tag-ast-mixin ast)
   ())
 
 (defgeneric result-form-ast (ast))
