@@ -84,3 +84,17 @@
 
 (defclass name-mixin ()
   ((%name :initarg :name :reader name)))
+
+;;; This class can be mixed into classes that need to store several
+;;; names.
+
+(defgeneric name-asts (ast))
+
+(defclass name-asts-mixin ()
+  ((%name-asts
+    :initform '()
+    :initarg :name-asts
+    :reader name-asts)))
+
+(defmethod children append ((ast name-asts-mixin))
+  (list (cons "name-asts" (name-asts ast))))
