@@ -4,33 +4,28 @@
 ;;; list of declarations and an empty list of forms.
 (defun test-locally-1 ()
   (let ((result (bld::test '(locally))))
-    (assert (typep result 'ico:locally-ast))
-    (assert (null (ico:declaration-asts result)))
-    (assert (null (ico:form-asts result)))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts" nil)
+                     ("form-asts" nil))))))
 
 (defun test-locally-2 ()
   (let ((result (bld::test '(locally 234))))
-    (assert (typep result 'ico:locally-ast))
-    (assert (null (ico:declaration-asts result)))
-    (let ((form-asts (ico:form-asts result)))
-      (assert (= (length form-asts) 1))
-      (let ((form-ast (first form-asts)))
-        (assert (typep form-ast 'bld:unparsed-form-ast))
-        (assert (eql (bld:form form-ast) 234))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts" nil)
+                     ("form-asts"
+                      ((bld:unparsed-form-ast :form 234))))))))
 
 ;;; Test that the FORM-ASTs appear in the right order.
 (defun test-locally-3 ()
   (let ((result (bld::test '(locally 234 345))))
-    (assert (typep result 'ico:locally-ast))
-    (assert (null (ico:declaration-asts result)))
-    (let ((form-asts (ico:form-asts result)))
-      (assert (= (length form-asts) 2))
-      (let ((form-ast (first form-asts)))
-        (assert (typep form-ast 'bld:unparsed-form-ast))
-        (assert (eql (bld:form form-ast) 234)))
-      (let ((form-ast (second form-asts)))
-        (assert (typep form-ast 'bld:unparsed-form-ast))
-        (assert (eql (bld:form form-ast) 345))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts" nil)
+                     ("form-asts"
+                      ((bld:unparsed-form-ast :form 234)
+                       (bld:unparsed-form-ast :form 345))))))))
 
 ;;; None of these tests has any declarations in it.  We test for
 ;;; declarations using LOCALLY in a later test when we test the
