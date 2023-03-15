@@ -21,9 +21,18 @@
     ((builder builder)
      (relation (eql :declaration))
      (left ico:declaration-asts-mixin)
-     (right ico:inline-or-notinline-ast)
+     (right ico:declaration-specifier-ast)
      &key)
   (reinitialize-instance left
     :declaration-asts
       (append (ico:declaration-asts left)
               (list right))))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :argument))
+     (left ico:declaration-specifier-ast)
+     (right ico:name-mixin)
+     &key)
+  (reinitialize-instance left
+    :name-asts (append (ico:name-asts left) (list right))))
