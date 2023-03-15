@@ -9,6 +9,7 @@
    (:file "locally")
    (:file "the")
    (:file "block")
+   (:file "return-from")
    (:file "if")
    (:file "quote")
    (:file "unwind-protect")
