@@ -8,5 +8,6 @@
    (:file "convert-ast")
    (:file "locally")
    (:file "the")
+   (:file "block")
    (:file "unwind-protect")
    (:file "test")))
