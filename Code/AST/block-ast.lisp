@@ -10,7 +10,8 @@
   (;; This slot contains the BLOCK-AST that is being returned from.
    (%block-ast
       :initarg :block-ast
-      :reader block-ast)))
+      :reader block-ast))
+  (:default-initargs :form-ast nil))
 
 (defmethod children append ((ast return-from-ast))
   (list (cons "block-ast" (block-ast ast))))
