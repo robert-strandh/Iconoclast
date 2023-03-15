@@ -20,6 +20,7 @@
     (:file "name-ast")
     (:file "let-ast")
     (:file "block-ast")
+    (:file "return-from-ast")
     (:file "catch-ast")
     (:file "eval-when-ast")
     (:file "function-definition-ast")
