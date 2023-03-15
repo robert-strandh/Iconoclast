@@ -5,6 +5,7 @@
   :serial t
   :components
   ((:file "packages")
+   (:file "convert-ast")
    (:file "locally")
    (:file "the")
    (:file "test")))
