@@ -10,6 +10,7 @@
    (:file "the")
    (:file "block")
    (:file "return-from")
+   (:file "eval-when")
    (:file "if")
    (:file "quote")
    (:file "unwind-protect")

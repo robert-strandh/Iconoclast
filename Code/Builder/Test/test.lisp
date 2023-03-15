@@ -6,6 +6,7 @@
   ;; declarations without too much noise around.
   (test-locally)
   (test-block)
+  (test-eval-when)
   (test-if)
   (test-the)
   (test-quote)
