@@ -5,4 +5,5 @@
   ;; special form, and we want to use it later to test various
   ;; declarations without too much noise around.
   (test-locally)
-  (test-the))
+  (test-the)
+  (test-unwind-protect))
