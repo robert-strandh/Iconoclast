@@ -8,6 +8,14 @@
 (defmethod convert-ast ((ast cons))
   (mapcar #'convert-ast ast))
 
+(defmethod convert-ast ((ast ico:name-mixin))
+  (cons (class-name (class-of ast))
+        `(:name ,(ico:name ast))))
+
+(defmethod convert-ast ((ast bld:unparsed-form-ast))
+  (cons (class-name (class-of ast))
+        `(:form ,(bld:form ast))))
+
 (defun convert-child (child)
   (if (equal (car child) "")
       (convert-ast (cdr child))
