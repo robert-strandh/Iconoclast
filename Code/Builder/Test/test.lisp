@@ -6,5 +6,6 @@
   ;; declarations without too much noise around.
   (test-locally)
   (test-block)
+  (test-if)
   (test-the)
   (test-unwind-protect))

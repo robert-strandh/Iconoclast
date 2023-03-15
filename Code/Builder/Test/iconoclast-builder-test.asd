@@ -9,5 +9,6 @@
    (:file "locally")
    (:file "the")
    (:file "block")
+   (:file "if")
    (:file "unwind-protect")
    (:file "test")))
