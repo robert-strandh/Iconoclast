@@ -6,4 +6,5 @@
   :components
   ((:file "packages")
    (:file "locally")
+   (:file "the")
    (:file "test")))
