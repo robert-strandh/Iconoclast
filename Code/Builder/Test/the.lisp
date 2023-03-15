@@ -2,15 +2,12 @@
 
 (defun test-the-1 ()
   (let ((result (bld::test '(the t 234))))
-    (assert (typep result 'ico:the-ast))
-    (let ((form-ast (ico:form-ast result)))
-      (assert (typep form-ast 'bld:unparsed-form-ast))
-      (assert (eql (bld:form form-ast) 234)))
-    (let ((value-type-ast (ico:value-type-ast result)))
-      (assert (typep value-type-ast 'ico:atomic-type-specifier-ast))
-      (let ((name-ast (ico:name-ast value-type-ast)))
-        (assert (typep name-ast 'ico:type-name-ast))
-        (assert (eq (ico:name name-ast) 't))))))
+    (assert (equal (convert-ast result)
+                   '(ico:the-ast
+                     ("form-ast" (bld:unparsed-form-ast :form 234))
+                     ("value-type-ast"
+                      (ico:atomic-type-specifier-ast
+                       ("name-ast" (ico:type-name-ast :name t)))))))))
 
 (defun test-the ()
   (test-the-1))
