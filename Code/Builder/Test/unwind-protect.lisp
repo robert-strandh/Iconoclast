@@ -8,6 +8,5 @@
                      ("protected-form-ast"
                       (bld:unparsed-form-ast :form 234)))))))
 
-
 (defun test-unwind-protect ()
   (test-unwind-protect-1))
