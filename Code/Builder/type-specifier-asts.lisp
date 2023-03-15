@@ -1,6 +1,12 @@
 (cl:in-package #:iconoclast-builder)
 
-(define-make-node-method :type-name ico:type-name-ast)
+(defmethod abp:make-node
+    ((builder builder)
+     (kind (eql :type-name))
+     &key source name)
+  (make-instance 'ico:type-name-ast
+    :origin source
+    :name name))
 
 (define-make-node-method :atomic-type-specifier ico:atomic-type-specifier-ast)
 
