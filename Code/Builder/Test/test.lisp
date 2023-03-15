@@ -8,4 +8,5 @@
   (test-block)
   (test-if)
   (test-the)
+  (test-quote)
   (test-unwind-protect))

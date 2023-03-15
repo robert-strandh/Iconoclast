@@ -10,5 +10,6 @@
    (:file "the")
    (:file "block")
    (:file "if")
+   (:file "quote")
    (:file "unwind-protect")
    (:file "test")))
