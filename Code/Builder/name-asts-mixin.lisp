@@ -2,7 +2,7 @@
 
 (defmethod abp:relate
     ((builder builder)
-     (kind (eql :argument))
+     (relation (eql :argument))
      (left ico:name-asts-mixin)
      (right ico:function-name-ast)
      &key)
