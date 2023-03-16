@@ -1,8 +1,12 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric variable-ast (ast))
+(defgeneric variable-asts (ast))
 
-(defclass setq-ast (form-ast-mixin ast)
-  ((%variable-ast
-      :initarg :variable-ast
-      :reader variable-ast)))
+(defclass setq-ast (form-asts-mixin ast)
+  ((%variable-asts
+      :initform '()
+      :initarg :variable-asts
+      :reader variable-asts)))
+
+(defmethod children append ((ast setq-ast))
+  (list (cons "variable-asts" (variable-asts ast))))
