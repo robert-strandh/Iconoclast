@@ -17,4 +17,5 @@
   (test-function)
   (test-tagbody)
   (test-load-time-value)
-  (test-multiple-value-call))
+  (test-multiple-value-call)
+  (test-multiple-value-prog1))
