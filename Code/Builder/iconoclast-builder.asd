@@ -24,6 +24,7 @@
     (:file "catch-ast")
     (:file "eval-when-ast")
     (:file "function-definition-ast")
+    (:file "macro-definition-ast")
     (:file "function-ast")
     (:file "tagbody-ast")
     (:file "go-ast")
