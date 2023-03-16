@@ -21,4 +21,5 @@
   (test-multiple-value-prog1)
   (test-progn)
   (test-progv)
-  (test-flet))
+  (test-flet)
+  (test-labels))
