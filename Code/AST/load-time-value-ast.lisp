@@ -4,6 +4,7 @@
 
 (defclass load-time-value-ast (form-ast-mixin ast)
   ((%read-only-p-ast
+      :initform nil
       :initarg :read-only-p-ast
       :reader read-only-p-ast)))
 
