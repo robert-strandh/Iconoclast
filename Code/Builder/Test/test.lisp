@@ -24,4 +24,5 @@
   (test-progv)
   (test-flet)
   (test-labels)
+  (test-macrolet)
   (test-setq))

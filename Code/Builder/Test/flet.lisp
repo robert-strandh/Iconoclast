@@ -53,3 +53,30 @@
   (format *trace-output* "Testing LABELS~%")
   (test-labels-1)
   (test-labels-2))
+
+(defun test-macrolet-1 ()
+  (let ((result (bld::test '(macrolet ()))))
+    (assert (equal (convert-ast result)
+                   '(ico:macrolet-ast
+                     ("declaration-asts" nil)
+                     ("form-asts" nil)
+                     ("lexical-function-asts" nil))))))
+
+(defun test-macrolet-2 ()
+  (let ((result (bld::test '(macrolet ((f ()))))))
+    (assert (equal (convert-ast result)
+                   '(ico:macrolet-ast
+                     ("declaration-asts" nil)
+                     ("form-asts" nil)
+                     ("lexical-function-asts"
+                      ((ico:lexical-function-ast
+                        ("declaration-asts" nil)
+                        ("documentation-ast" nil)
+                        ("form-asts" nil)
+                        ("name-ast"
+                         (ico:function-name-ast :name f))))))))))
+
+(defun test-macrolet ()
+  (format *trace-output* "Testing MACROLET~%")
+  (test-macrolet-1)
+  (test-macrolet-2))
