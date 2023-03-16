@@ -72,10 +72,11 @@
      #:situation-asts
      #:eval-when-ast
      #:lexical-function-ast
-     #:flet-or-labels-ast
+     #:flet-or-labels-or-macrolet-ast
      #:flet-ast
      #:lexical-function-asts
      #:labels-ast
+     #:macrolet-ast
      #:function-ast
      #:tagbody-ast
      #:tagbody-segment-ast
