@@ -14,5 +14,6 @@
    (:file "eval-when")
    (:file "if")
    (:file "quote")
+   (:file "catch")
    (:file "unwind-protect")
    (:file "test")))

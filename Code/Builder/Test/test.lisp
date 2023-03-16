@@ -11,4 +11,5 @@
   (test-if)
   (test-the)
   (test-quote)
-  (test-unwind-protect))
+  (test-unwind-protect)
+  (test-catch))
