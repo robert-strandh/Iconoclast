@@ -74,6 +74,7 @@
      #:lexical-function-ast
      #:flet-or-labels-ast
      #:flet-ast
+     #:lexical-function-asts
      #:labels-ast
      #:function-ast
      #:tagbody-ast
