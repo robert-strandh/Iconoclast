@@ -20,4 +20,5 @@
   (test-multiple-value-call)
   (test-multiple-value-prog1)
   (test-progn)
-  (test-progv))
+  (test-progv)
+  (test-flet))

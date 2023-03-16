@@ -24,4 +24,5 @@
    (:file "multiple-value-prog1")
    (:file "progn")
    (:file "progv")
+   (:file "flet")
    (:file "test")))
