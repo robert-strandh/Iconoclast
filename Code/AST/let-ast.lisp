@@ -5,7 +5,8 @@
 (defclass variable-binding-ast (form-ast-mixin ast)
   ((%variable-ast
       :initarg :variable-ast
-      :reader variable-ast)))
+      :reader variable-ast))
+  (:default-initargs :form-ast nil))
 
 (defmethod children append ((ast variable-binding-ast))
   (list (cons "variable-ast" (variable-ast ast))))
