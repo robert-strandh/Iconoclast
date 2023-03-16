@@ -4,6 +4,8 @@
 
 (define-make-node-method :labels ico:labels-ast)
 
+(define-make-node-method :macrolet ico:macrolet-ast)
+
 (define-make-node-method :local-function-binding ico:lexical-function-ast)
 
 (defmethod abp:relate
@@ -18,7 +20,7 @@
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :binding))
-     (left ico:flet-or-labels-ast)
+     (left ico:flet-or-labels-or-macrolet-ast)
      (right ico:lexical-function-ast)
      &key)
   (reinitialize-instance left
