@@ -14,4 +14,5 @@
   (test-unwind-protect)
   (test-catch)
   (test-throw)
-  (test-function))
+  (test-function)
+  (test-tagbody))

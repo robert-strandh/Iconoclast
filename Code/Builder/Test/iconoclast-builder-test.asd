@@ -18,4 +18,5 @@
    (:file "throw")
    (:file "unwind-protect")
    (:file "function")
+   (:file "tagbody")
    (:file "test")))
