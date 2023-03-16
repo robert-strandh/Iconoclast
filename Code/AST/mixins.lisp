@@ -36,6 +36,7 @@
 
 (defclass documentation-ast-mixin ()
   ((%documentation-ast
+      :initform nil
       :initarg :documentation-ast
       :reader documentation-ast)))
 
