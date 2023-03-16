@@ -19,4 +19,5 @@
    (:file "unwind-protect")
    (:file "function")
    (:file "tagbody")
+   (:file "load-time-value")
    (:file "test")))

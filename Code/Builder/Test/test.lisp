@@ -15,4 +15,5 @@
   (test-catch)
   (test-throw)
   (test-function)
-  (test-tagbody))
+  (test-tagbody)
+  (test-load-time-value))
