@@ -18,4 +18,5 @@
   (test-tagbody)
   (test-load-time-value)
   (test-multiple-value-call)
-  (test-multiple-value-prog1))
+  (test-multiple-value-prog1)
+  (test-progn))
