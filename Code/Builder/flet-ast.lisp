@@ -23,4 +23,4 @@
      &key)
   (reinitialize-instance left
     :lexical-function-asts
-    (append (ico:lexical-function-asts left) right)))
+    (append (ico:lexical-function-asts left) (list right))))
