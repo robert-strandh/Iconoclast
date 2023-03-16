@@ -23,4 +23,5 @@
    (:file "multiple-value-call")
    (:file "multiple-value-prog1")
    (:file "progn")
+   (:file "progv")
    (:file "test")))

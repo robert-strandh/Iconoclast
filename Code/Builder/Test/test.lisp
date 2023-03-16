@@ -19,4 +19,5 @@
   (test-load-time-value)
   (test-multiple-value-call)
   (test-multiple-value-prog1)
-  (test-progn))
+  (test-progn)
+  (test-progv))
