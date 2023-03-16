@@ -6,6 +6,7 @@
 (defclass flet-or-labels-ast
     (declaration-asts-mixin form-asts-mixin ast)
   ((%lexical-function-asts
+      :initform '()
       :initarg :lexical-function-asts
       :reader lexical-function-asts)))
 
