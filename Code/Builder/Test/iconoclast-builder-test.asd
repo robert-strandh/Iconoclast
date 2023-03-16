@@ -7,6 +7,7 @@
   ((:file "packages")
    (:file "convert-ast")
    (:file "locally")
+   (:file "let")
    (:file "the")
    (:file "block")
    (:file "return-from")
