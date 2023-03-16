@@ -15,12 +15,12 @@
                      ("declaration-asts" nil)
                      ("form-asts" nil)
                      ("lexical-function-asts"
-                      (ico:lexical-function-ast
-                       ("declaration-asts" nil)
-                       ("documentation-ast" nil)
-                       ("form-asts" nil)
-                       ("name-ast"
-                        (ico:function-name-ast :name f)))))))))
+                      ((ico:lexical-function-ast
+                        ("declaration-asts" nil)
+                        ("documentation-ast" nil)
+                        ("form-asts" nil)
+                        ("name-ast"
+                         (ico:function-name-ast :name f))))))))))
 
 (defun test-flet ()
   (format *trace-output* "Testing FLET~%")
@@ -42,12 +42,12 @@
                      ("declaration-asts" nil)
                      ("form-asts" nil)
                      ("lexical-function-asts"
-                      (ico:lexical-function-ast
-                       ("declaration-asts" nil)
-                       ("documentation-ast" nil)
-                       ("form-asts" nil)
-                       ("name-ast"
-                        (ico:function-name-ast :name f)))))))))
+                      ((ico:lexical-function-ast
+                        ("declaration-asts" nil)
+                        ("documentation-ast" nil)
+                        ("form-asts" nil)
+                        ("name-ast"
+                         (ico:function-name-ast :name f))))))))))
 
 (defun test-labels ()
   (format *trace-output* "Testing LABELS~%")
