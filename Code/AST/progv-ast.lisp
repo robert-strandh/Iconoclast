@@ -13,5 +13,5 @@
       :reader values-ast)))
 
 (defmethod children append ((ast progv-ast))
-  (list (cons "symbols-ast" (symbol-ast ast))
+  (list (cons "symbols-ast" (symbols-ast ast))
         (cons "values-ast" (values-ast ast))))
