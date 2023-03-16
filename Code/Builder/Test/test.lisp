@@ -12,4 +12,6 @@
   (test-the)
   (test-quote)
   (test-unwind-protect)
-  (test-catch))
+  (test-catch)
+  (test-throw)
+  (test-function))

@@ -15,5 +15,7 @@
    (:file "if")
    (:file "quote")
    (:file "catch")
+   (:file "throw")
    (:file "unwind-protect")
+   (:file "function")
    (:file "test")))
