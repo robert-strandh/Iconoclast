@@ -16,4 +16,5 @@
   (test-throw)
   (test-function)
   (test-tagbody)
-  (test-load-time-value))
+  (test-load-time-value)
+  (test-multiple-value-call))

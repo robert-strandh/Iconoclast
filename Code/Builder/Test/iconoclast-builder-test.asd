@@ -20,4 +20,5 @@
    (:file "function")
    (:file "tagbody")
    (:file "load-time-value")
+   (:file "multiple-value-call")
    (:file "test")))
