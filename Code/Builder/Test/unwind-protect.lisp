@@ -9,4 +9,5 @@
                       (bld:unparsed-form-ast :form 234)))))))
 
 (defun test-unwind-protect ()
+  (format *trace-output* "Testing UNWIND-PROTECT~%")
   (test-unwind-protect-1))

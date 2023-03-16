@@ -31,6 +31,7 @@
 ;;; declarations using LOCALLY in a later test when we test the
 ;;; parsing of declarations.
 (defun test-locally ()
+  (format *trace-output* "Testing LOCALLY~%")
   (test-locally-1)
   (test-locally-2)
   (test-locally-3))

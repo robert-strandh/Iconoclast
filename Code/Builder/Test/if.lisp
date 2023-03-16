@@ -9,4 +9,5 @@
                      ("then-ast" (bld:unparsed-form-ast :form 345)))))))
 
 (defun test-if ()
+  (format *trace-output* "Testing IF~%")
   (test-if-1))

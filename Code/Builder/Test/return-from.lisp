@@ -8,4 +8,5 @@
                      ("form-ast" nil))))))
 
 (defun test-return-from ()
+  (format *trace-output* "Testing RETURN-FROM~%")
   (test-return-from-1))

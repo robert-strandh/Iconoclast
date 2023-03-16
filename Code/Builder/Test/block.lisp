@@ -17,5 +17,6 @@
                      ("name-ast" (ico:block-name-ast :name hello)))))))
 
 (defun test-block ()
+  (format *trace-output* "Testing BLOCK~%")
   (test-block-1)
   (test-block-2))

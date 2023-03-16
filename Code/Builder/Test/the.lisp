@@ -10,4 +10,5 @@
                        ("name-ast" (ico:type-name-ast :name t)))))))))
 
 (defun test-the ()
+  (format *trace-output* "Testing THE~%")
   (test-the-1))

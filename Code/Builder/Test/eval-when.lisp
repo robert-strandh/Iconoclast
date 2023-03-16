@@ -16,5 +16,6 @@
                       ((ico:situation-ast :name :compile-toplevel))))))))
 
 (defun test-eval-when ()
+  (format *trace-output* "Testing EVAL-WHEN~%")
   (test-eval-when-1)
   (test-eval-when-2))
