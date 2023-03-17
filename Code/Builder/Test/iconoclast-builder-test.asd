@@ -27,4 +27,5 @@
    (:file "progv")
    (:file "flet")
    (:file "setq")
+   (:file "symbol-macrolet")
    (:file "test")))

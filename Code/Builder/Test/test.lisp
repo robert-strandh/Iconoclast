@@ -25,4 +25,5 @@
   (test-flet)
   (test-labels)
   (test-macrolet)
-  (test-setq))
+  (test-setq)
+  (test-symbol-macrolet))
