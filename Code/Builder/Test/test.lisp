@@ -30,4 +30,5 @@
   (test-dynamic-extent)
   (test-inline)
   (test-notinline)
-  (test-ignore))
+  (test-ignore)
+  (test-ignorable))

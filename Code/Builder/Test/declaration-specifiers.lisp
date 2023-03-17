@@ -165,3 +165,51 @@
   (test-ignore-2)
   (test-ignore-3)
   (test-ignore-4))
+
+(defun test-ignorable-1 ()
+  (let ((result (bld::test '(locally (declare (ignorable))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:ignorable-ast ("name-asts" nil))))
+                     ("form-asts" nil))))))
+
+(defun test-ignorable-2 ()
+  (let ((result (bld::test '(locally (declare (ignorable a))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:ignorable-ast
+                        ("name-asts"
+                         ((ico:variable-ast :name a))))))
+                     ("form-asts" nil))))))
+
+(defun test-ignorable-3 ()
+  (let ((result (bld::test '(locally (declare (ignorable a b))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:ignorable-ast
+                        ("name-asts"
+                         ((ico:variable-ast :name a)
+                          (ico:variable-ast :name b))))))
+                     ("form-asts" nil))))))
+
+(defun test-ignorable-4 ()
+  (let ((result
+          (bld::test '(locally (declare (ignorable a (function b)))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:ignorable-ast
+                        ("name-asts"
+                         ((ico:variable-ast :name a)
+                          (ico:function-name-ast :name b))))))
+                     ("form-asts" nil))))))
+
+(defun test-ignorable ()
+  (format *trace-output* "Testing IGNORABLE~%")
+  (test-ignorable-1)
+  (test-ignorable-2)
+  (test-ignorable-3)
+  (test-ignorable-4))
