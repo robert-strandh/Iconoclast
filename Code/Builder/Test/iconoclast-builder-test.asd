@@ -28,4 +28,5 @@
    (:file "flet")
    (:file "setq")
    (:file "symbol-macrolet")
+   (:file "declaration-specifiers")
    (:file "test")))
