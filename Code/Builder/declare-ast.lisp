@@ -50,3 +50,12 @@
         (debug 'ico:debug-ast)
         (safety 'ico:safety-ast))
     :origin source :value value))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :argument))
+     (left ico:optimize-ast)
+     (right ico:optimize-quality-ast)
+     &key)
+  (reinitialize-instance left
+    :quality-ast right))
