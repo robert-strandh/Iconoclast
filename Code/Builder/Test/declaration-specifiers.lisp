@@ -69,3 +69,38 @@
   (test-inline-1)
   (test-inline-2)
   (test-inline-3))
+
+(defun test-notinline-1 ()
+  (let ((result (bld::test '(locally (declare (notinline))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:notinline-ast ("name-asts" nil))))
+                     ("form-asts" nil))))))
+
+(defun test-notinline-2 ()
+  (let ((result (bld::test '(locally (declare (notinline a))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:notinline-ast
+                        ("name-asts"
+                         ((ico:function-name-ast :name a))))))
+                     ("form-asts" nil))))))
+
+(defun test-notinline-3 ()
+  (let ((result (bld::test '(locally (declare (notinline a b))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:notinline-ast
+                        ("name-asts"
+                         ((ico:function-name-ast :name a)
+                          (ico:function-name-ast :name b))))))
+                     ("form-asts" nil))))))
+
+(defun test-notinline ()
+  (format *trace-output* "Testing NOTINLINE~%")
+  (test-notinline-1)
+  (test-notinline-2)
+  (test-notinline-3))

@@ -28,4 +28,5 @@
   (test-setq)
   (test-symbol-macrolet)
   (test-dynamic-extent)
-  (test-inline))
+  (test-inline)
+  (test-notinline))
