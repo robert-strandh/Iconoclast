@@ -29,11 +29,24 @@
                           (ico:variable-ast :name b))))))
                      ("form-asts" nil))))))
 
+(defun test-dynamic-extent-4 ()
+  (let ((result
+          (bld::test '(locally (declare (dynamic-extent a (function b)))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:dynamic-extent-ast
+                        ("name-asts"
+                         ((ico:variable-ast :name a)
+                          (ico:function-name-ast :name b))))))
+                     ("form-asts" nil))))))
+
 (defun test-dynamic-extent ()
   (format *trace-output* "Testing DYNAMIC-EXTENT~%")
   (test-dynamic-extent-1)
   (test-dynamic-extent-2)
-  (test-dynamic-extent-3))
+  (test-dynamic-extent-3)
+  (test-dynamic-extent-4))
 
 (defun test-inline-1 ()
   (let ((result (bld::test '(locally (declare (inline))))))
