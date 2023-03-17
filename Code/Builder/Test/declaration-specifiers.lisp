@@ -117,3 +117,51 @@
   (test-notinline-1)
   (test-notinline-2)
   (test-notinline-3))
+
+(defun test-ignore-1 ()
+  (let ((result (bld::test '(locally (declare (ignore))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:ignore-ast ("name-asts" nil))))
+                     ("form-asts" nil))))))
+
+(defun test-ignore-2 ()
+  (let ((result (bld::test '(locally (declare (ignore a))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:ignore-ast
+                        ("name-asts"
+                         ((ico:variable-ast :name a))))))
+                     ("form-asts" nil))))))
+
+(defun test-ignore-3 ()
+  (let ((result (bld::test '(locally (declare (ignore a b))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:ignore-ast
+                        ("name-asts"
+                         ((ico:variable-ast :name a)
+                          (ico:variable-ast :name b))))))
+                     ("form-asts" nil))))))
+
+(defun test-ignore-4 ()
+  (let ((result
+          (bld::test '(locally (declare (ignore a (function b)))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:ignore-ast
+                        ("name-asts"
+                         ((ico:variable-ast :name a)
+                          (ico:function-name-ast :name b))))))
+                     ("form-asts" nil))))))
+
+(defun test-ignore ()
+  (format *trace-output* "Testing IGNORE~%")
+  (test-ignore-1)
+  (test-ignore-2)
+  (test-ignore-3)
+  (test-ignore-4))
