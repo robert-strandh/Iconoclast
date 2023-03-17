@@ -37,3 +37,16 @@
      &key)
   (reinitialize-instance left
     :name-asts (append (ico:name-asts left) (list right))))
+
+(defmethod abp:make-node
+    ((builder builder)
+     (kind (eql :optimization-specification))
+     &key source quality value)
+  (make-instance
+      (case quality
+        (speed 'ico:speed-ast)
+        (compilation-speed 'ico:compilation-speed-ast)
+        (space 'ico:space-ast)
+        (debug 'ico:debug-ast)
+        (safety 'ico:safety-ast))
+    :origin source :value value))
