@@ -37,6 +37,11 @@
      #:notinline-ast
      #:special-ast
      #:optimize-ast
+     #:speed-ast
+     #:compilation-speed-ast
+     #:space-ast
+     #:debug-ast
+     #:safety-ast
      #:declaration-asts
      #:declaration-specifier-asts
      #:declare-ast
