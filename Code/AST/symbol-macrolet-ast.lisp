@@ -26,4 +26,4 @@
       :reader symbol-expansion-asts)))
 
 (defmethod children append ((ast symbol-macrolet-ast))
-  (list "symbol-expansion-asts" (symbol-expansion-asts ast)))
+  (list (cons "symbol-expansion-asts" (symbol-expansion-asts ast))))
