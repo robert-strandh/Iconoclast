@@ -34,3 +34,38 @@
   (test-dynamic-extent-1)
   (test-dynamic-extent-2)
   (test-dynamic-extent-3))
+
+(defun test-inline-1 ()
+  (let ((result (bld::test '(locally (declare (inline))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:inline-ast ("name-asts" nil))))
+                     ("form-asts" nil))))))
+
+(defun test-inline-2 ()
+  (let ((result (bld::test '(locally (declare (inline a))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:inline-ast
+                        ("name-asts"
+                         ((ico:function-name-ast :name a))))))
+                     ("form-asts" nil))))))
+
+(defun test-inline-3 ()
+  (let ((result (bld::test '(locally (declare (inline a b))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:inline-ast
+                        ("name-asts"
+                         ((ico:function-name-ast :name a)
+                          (ico:function-name-ast :name b))))))
+                     ("form-asts" nil))))))
+
+(defun test-inline ()
+  (format *trace-output* "Testing INLINE~%")
+  (test-inline-1)
+  (test-inline-2)
+  (test-inline-3))

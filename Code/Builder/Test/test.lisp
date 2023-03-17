@@ -27,4 +27,5 @@
   (test-macrolet)
   (test-setq)
   (test-symbol-macrolet)
-  (test-dynamic-extent))
+  (test-dynamic-extent)
+  (test-inline))
