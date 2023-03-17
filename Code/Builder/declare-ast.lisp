@@ -14,6 +14,7 @@
         (inline 'ico:inline-ast)
         (notinline 'ico:notinline-ast)
         (optimize 'ico:optimize-ast)
+        (special 'ico:special-ast)
         #+(or)(declaration 'ico:declaration-ast))
     :origin source))
 
