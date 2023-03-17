@@ -213,3 +213,38 @@
   (test-ignorable-2)
   (test-ignorable-3)
   (test-ignorable-4))
+
+(defun test-special-1 ()
+  (let ((result (bld::test '(locally (declare (special))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:special-ast ("name-asts" nil))))
+                     ("form-asts" nil))))))
+
+(defun test-special-2 ()
+  (let ((result (bld::test '(locally (declare (special a))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:special-ast
+                        ("name-asts"
+                         ((ico:variable-ast :name a))))))
+                     ("form-asts" nil))))))
+
+(defun test-special-3 ()
+  (let ((result (bld::test '(locally (declare (special a b))))))
+    (assert (equal (convert-ast result)
+                   '(ico:locally-ast
+                     ("declaration-asts"
+                      ((ico:special-ast
+                        ("name-asts"
+                         ((ico:variable-ast :name a)
+                          (ico:variable-ast :name b))))))
+                     ("form-asts" nil))))))
+
+(defun test-special ()
+  (format *trace-output* "Testing SPECIAL~%")
+  (test-special-1)
+  (test-special-2)
+  (test-special-3))

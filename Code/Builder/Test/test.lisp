@@ -31,4 +31,5 @@
   (test-inline)
   (test-notinline)
   (test-ignore)
-  (test-ignorable))
+  (test-ignorable)
+  (test-special))
