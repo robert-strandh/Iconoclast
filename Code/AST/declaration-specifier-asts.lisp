@@ -35,6 +35,9 @@
 (defclass notinline-ast (inline-or-notinline-ast)
   ())
 
+(defclass special-ast (name-asts-mixin declaration-specifier-ast)
+  ())
+
 ;;; FIXME: add slot for the qualities.
 (defclass optimize-ast (declaration-specifier-ast)
   ())
