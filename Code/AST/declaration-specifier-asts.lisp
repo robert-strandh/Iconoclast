@@ -58,6 +58,15 @@
 (defclass safety-ast (optimize-quality-ast)
   ())
 
-;;; FIXME: add slot for the qualities.
+(defgeneric quality-ast (ast))
+
+(defgeneric value-ast (ast))
+
 (defclass optimize-ast (declaration-specifier-ast)
-  ())
+  ((%quality-ast
+    :initarg :quality-ast
+    :reader quality-ast)
+   (%value-ast
+    :initform nil
+    :initarg :value-ast
+    :reader value-ast)))
