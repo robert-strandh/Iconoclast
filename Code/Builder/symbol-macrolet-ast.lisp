@@ -6,7 +6,7 @@
     ((builder builder)
      (relation (eql :name))
      (left ico:symbol-expansion-ast)
-     (right ico:variable-definition-ast)
+     (right ico:variable-ast)
      &key)
   (reinitialize-instance left
     :symbol-ast right))
