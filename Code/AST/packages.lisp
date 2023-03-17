@@ -35,6 +35,7 @@
      #:variable-asts
      #:inline-ast
      #:notinline-ast
+     #:special-ast
      #:optimize-ast
      #:declaration-asts
      #:declaration-specifier-asts
