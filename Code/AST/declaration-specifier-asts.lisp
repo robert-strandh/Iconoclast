@@ -38,6 +38,26 @@
 (defclass special-ast (name-asts-mixin declaration-specifier-ast)
   ())
 
+(defclass optimize-quality-ast (ast)
+  ((%value-ast
+    :initarg :value
+    :reader value)))
+
+(defclass speed-ast (optimize-quality-ast)
+  ())
+
+(defclass compilation-speed-ast (optimize-quality-ast)
+  ())
+
+(defclass space-ast (optimize-quality-ast)
+  ())
+
+(defclass debug-ast (optimize-quality-ast)
+  ())
+
+(defclass safety-ast (optimize-quality-ast)
+  ())
+
 ;;; FIXME: add slot for the qualities.
 (defclass optimize-ast (declaration-specifier-ast)
   ())
