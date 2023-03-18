@@ -22,7 +22,33 @@
                         ((ico:subsidiary-item-ast :value 2)
                          (ico:subsidiary-item-ast :value 3))))))))))
 
+(defun test-type-3 ()
+  (let ((result (bld::test '(the (array) a))))
+    (assert (equal (convert-ast result)
+                   '(ico:the-ast
+                     ("form-ast" (bld:unparsed-form-ast :form a))
+                     ("value-type-ast"
+                      (ico:compound-type-specifier-ast
+                       ("atomic-type-specifier-ast" nil)
+                       ("name-ast" (ico:type-name-ast :name array))
+                       ("subsidiary-item-asts" nil))))))))
+
+(defun test-type-4 ()
+  (let ((result (bld::test '(the (array fixnum) a))))
+    (assert (equal (convert-ast result)
+                   '(ico:the-ast
+                     ("form-ast" (bld:unparsed-form-ast :form a))
+                     ("value-type-ast"
+                      (ico:compound-type-specifier-ast
+                       ("atomic-type-specifier-ast"
+                        (ico:atomic-type-specifier-ast
+                         ("name-ast" (ico:type-name-ast :name fixnum))))
+                       ("name-ast" (ico:type-name-ast :name array))
+                       ("subsidiary-item-asts" nil))))))))
+
 (defun test-type ()
   (format *trace-output* "Testing TYPE~%")
   (test-type-1)
-  (test-type-2))
+  (test-type-2)
+  (test-type-3)
+  (test-type-4))
