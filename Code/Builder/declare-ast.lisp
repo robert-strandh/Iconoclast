@@ -58,4 +58,4 @@
      (right ico:optimize-quality-ast)
      &key)
   (reinitialize-instance left
-    :quality-ast right))
+    :quality-asts (append (ico:quality-asts left) (list right))))
