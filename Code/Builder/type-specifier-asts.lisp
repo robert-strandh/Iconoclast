@@ -47,3 +47,12 @@
   (reinitialize-instance left
     :subsidiary-item-asts
     (append (ico:subsidiary-item-asts left) (list right))))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :argument))
+     (left ico:compound-type-specifier-ast)
+     (right ico:atomic-type-specifier-ast)
+     &key)
+  (reinitialize-instance left
+    :atomic-type-specifier-ast right))
