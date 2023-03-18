@@ -33,4 +33,5 @@
   (test-ignore)
   (test-ignorable)
   (test-special)
-  (test-optimize))
+  (test-optimize)
+  (test-type))
