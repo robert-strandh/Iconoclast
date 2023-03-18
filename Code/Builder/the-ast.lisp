@@ -6,7 +6,7 @@
     ((builder builder)
      (relation (eql :type))
      (left ico:the-ast)
-     (right ico:atomic-type-specifier-ast)
+     (right ico:type-specifier-ast)
      &key)
   (reinitialize-instance left
     :value-type-ast right))
