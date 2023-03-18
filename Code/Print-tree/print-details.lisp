@@ -9,3 +9,6 @@
 
 (defmethod print-details progn (stream depth (node ico:name-ast))
   (format stream "Name: ~a~@:_" (ico:name node)))
+
+(defmethod print-details progn (stream depth (node ico:optimize-quality-ast))
+  (format stream "Name: ~a~@:_" (ico:value node)))
