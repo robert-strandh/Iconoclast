@@ -24,10 +24,14 @@
      #:declration-specifier-with-variables-ast
      #:dynamic-extent-ast
      #:type-name-ast
+     #:type-specifier-ast
      #:atomic-type-specifier-ast
+     #:compound-type-specifier-ast
      #:type-or-ftype-ast
      #:type-ast
      #:ftype-ast
+     #:subsidiary-item-ast
+     #:subsidiary-item-asts
      #:ignore-or-ignorable-ast
      #:ignore-ast
      #:ignorable-ast
