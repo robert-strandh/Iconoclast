@@ -39,7 +39,7 @@
   ())
 
 (defclass optimize-quality-ast (ast)
-  ((%value-ast
+  ((%value
     :initarg :value
     :reader value)))
 
@@ -58,15 +58,13 @@
 (defclass safety-ast (optimize-quality-ast)
   ())
 
-(defgeneric quality-ast (ast))
-
-(defgeneric value-ast (ast))
+(defgeneric quality-asts (ast))
 
 (defclass optimize-ast (declaration-specifier-ast)
-  ((%quality-ast
-    :initarg :quality-ast
-    :reader quality-ast)
-   (%value-ast
-    :initform nil
-    :initarg :value-ast
-    :reader value-ast)))
+  ((%quality-asts
+    :initform '()
+    :initarg :quality-asts
+    :reader quality-asts)))
+
+(defmethod children append ((ast optimize-ast))
+  (list (cons "quality-asts" (quality-asts ast))))
