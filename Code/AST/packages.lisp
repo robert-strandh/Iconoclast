@@ -37,8 +37,8 @@
      #:notinline-ast
      #:special-ast
      #:optimize-ast
-     #:quality-ast
-     #:value-ast
+     #:quality-asts
+     #:value
      #:optimize-quality-ast
      #:speed-ast
      #:compilation-speed-ast
