@@ -29,4 +29,5 @@
    (:file "setq")
    (:file "symbol-macrolet")
    (:file "declaration-specifiers")
+   (:file "optimize")
    (:file "test")))

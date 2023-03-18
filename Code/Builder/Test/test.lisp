@@ -32,4 +32,5 @@
   (test-notinline)
   (test-ignore)
   (test-ignorable)
-  (test-special))
+  (test-special)
+  (test-optimize))
