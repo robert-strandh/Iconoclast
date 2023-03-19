@@ -4,6 +4,8 @@
   (:use #:common-lisp)
   (:export
      #:ast
+     #:literal-ast
+     #:literal
      #:origin
      #:children
      #:form-asts-mixin
