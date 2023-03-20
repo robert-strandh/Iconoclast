@@ -136,6 +136,7 @@
      #:slot-specifier-asts
      #:slot-specifier-ast
      #:initarg-name-ast
+     #:declaim-ast
      #:defun-ast
      #:when-ast
      #:unless-ast))
