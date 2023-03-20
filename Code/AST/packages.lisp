@@ -132,8 +132,9 @@
      #:cond-clause-ast
      #:cond-ast
      #:clause-asts
+     #:defclass-ast
+     #:slot-specifier-asts
      #:slot-specifier-ast
      #:defun-ast
-     #:defclass-ast
      #:when-ast
      #:unless-ast))
