@@ -3,5 +3,5 @@
 (defclass slot-specifier-ast (name-ast-mixin ast)
   ())
 
-(defclass defclass-ast (ast)
+(defclass defclass-ast (name-ast-mixin ast)
   ())
