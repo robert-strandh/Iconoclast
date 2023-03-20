@@ -30,3 +30,19 @@
   (reinitialize-instance left
     :slot-specifier-asts (append (ico:slot-specifier-asts left) (list right))))
 
+(defmethod abp:make-node
+    ((builder builder)
+     (kind (eql :initarg-name))
+     &key name source)
+  (make-instance 'ico:initarg-name-ast
+    :origin source
+    :name name))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :initarg))
+     (left ico:slot-specifier-ast)
+     (right ico:initarg-name-ast)
+     &key)
+  (reinitialize-instance left :name-ast right))
+
