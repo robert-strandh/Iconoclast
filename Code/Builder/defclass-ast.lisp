@@ -6,7 +6,7 @@
     ((builder builder)
      (relation (eql :name))
      (left ico:slot-specifier-ast)
-     (right ico:variable-definition-ast)
+     (right ico:variable-ast)
      &key)
   (reinitialize-instance left
     :name-ast right))
@@ -20,3 +20,13 @@
      (right ico:type-name-ast)
      &key)
   (reinitialize-instance left :name-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :slot))
+     (left ico:defclass-ast)
+     (right ico:slot-specifier-ast)
+     &key)
+  (reinitialize-instance left
+    :slot-specifier-asts (append (ico:slot-specifier-asts left) (list right))))
+
