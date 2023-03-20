@@ -135,6 +135,7 @@
      #:defclass-ast
      #:slot-specifier-asts
      #:slot-specifier-ast
+     #:initarg-name-ast
      #:defun-ast
      #:when-ast
      #:unless-ast))
