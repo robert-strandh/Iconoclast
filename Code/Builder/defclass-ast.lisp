@@ -10,3 +10,13 @@
      &key)
   (reinitialize-instance left
     :name-ast right))
+
+(define-make-node-method :defclass ico:defclass-ast)
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :name))
+     (left ico:defclass-ast)
+     (right ico:type-name-ast)
+     &key)
+  (reinitialize-instance left :name-ast right))
