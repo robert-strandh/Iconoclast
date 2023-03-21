@@ -2,6 +2,7 @@
 
 (defpackage #:iconoclast
   (:use #:common-lisp)
+  (:shadow #:documentation)
   (:export
      #:ast
      #:literal-ast
@@ -76,6 +77,7 @@
      #:function-name-ast
      #:declare-asts
      #:documentation-ast
+     #:documentation
      #:body-asts
      #:block-name-ast
      #:block-ast
