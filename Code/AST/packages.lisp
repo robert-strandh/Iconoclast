@@ -59,8 +59,10 @@
      #:optional-parameter-ast
      #:keyword-name-ast
      #:key-parameter-ast
+     #:parameter-ast
      #:required-parameter-asts
      #:required-parameter-asts-mixin
+     #:required-parameter-ast
      #:optional-parameter-asts
      #:optional-parameter-asts-mixin
      #:rest-parameter-ast
