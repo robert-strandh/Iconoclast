@@ -8,6 +8,10 @@
     :name name
     :origin source))
 
+(defmethod abp:node-kind
+    ((builder builder) (node ico:variable-name-ast))
+  :variable-name)
+
 (defmethod abp:make-node
     ((builder builder)
      (kind (eql :type-name))
@@ -16,6 +20,10 @@
     :origin source
     :name name))
 
+(defmethod abp:node-kind
+    ((builder builder) (node ico:type-name-ast))
+  :type-name)
+
 (defmethod abp:make-node
     ((builder builder)
      (kind (eql :function-name))
@@ -23,6 +31,10 @@
   (make-instance 'ico:function-name-ast
     :origin source
     :name name))
+
+(defmethod abp:node-kind
+    ((builder builder) (node ico:function-name-ast))
+  :function-name)
 
 (defmethod abp:node-initargs
     ((builder builder)
