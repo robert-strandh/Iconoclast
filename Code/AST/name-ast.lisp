@@ -8,3 +8,6 @@
 
 (defclass function-name-ast (name-ast)
   ())
+
+(defclass type-name-ast (name-ast)
+  ())
