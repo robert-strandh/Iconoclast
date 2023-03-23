@@ -46,6 +46,7 @@
     (:file "cond-ast")
     (:file "declaim-ast")
     (:file "defvar-ast")
+    (:file "defmethod-ast")
     (:file "defun-ast")
     (:file "defclass-ast")
     (:file "when-ast")))
