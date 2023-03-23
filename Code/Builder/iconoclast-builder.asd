@@ -16,7 +16,6 @@
     (:file "form-asts-mixin")
     (:file "test-ast-mixin")
     (:file "type-specifier-asts")
-    (:file "variable-ast")
     (:file "declare-ast")
     (:file "name-ast")
     (:file "let-ast")
