@@ -1,5 +1,19 @@
 (cl:in-package #:iconoclast-builder)
 
+(define-make-node-method :required-parameter ico:required-parameter-ast)
+
+(defmethod abp:node-kind
+    ((builder builder) (node ico:required-parameter-ast))
+  :required-parameter)
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :name))
+     (left ico:parameter-ast)
+     (right ico:name-ast)
+     &key)
+  (reinitialize-instance left :name-ast right))
+
 (define-make-node-method
     :ordinary-lambda-list ico:ordinary-lambda-list-ast)
 
