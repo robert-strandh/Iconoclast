@@ -2,6 +2,14 @@
 
 (defmethod abp:make-node
     ((builder builder)
+     (kind (eql :type-name))
+     &key source name)
+  (make-instance 'ico:type-name-ast
+    :origin source
+    :name name))
+
+(defmethod abp:make-node
+    ((builder builder)
      (kind (eql :function-name))
      &key source name)
   (make-instance 'ico:function-name-ast
