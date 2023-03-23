@@ -38,13 +38,6 @@
 
 (defgeneric supplied-p-parameter-ast (parameter-ast))
 
-(defclass optional-parameter-ast
-    (supplied-p-parameter-ast-mixin
-     init-form-ast-mixin
-     variable-name-ast-mixin
-     ast)
-  ())
-
 ;;; The &REST parameter group is represented as a list of two
 ;;; elements, the lambda-list keyword &REST and a VARIABLE-AST.
 

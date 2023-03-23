@@ -164,3 +164,13 @@
 
 (defclass required-parameter-ast (parameter-ast)
   ())
+
+(defclass optional-parameter-ast (parameter-ast)
+  ())
+
+;; (defclass optional-parameter-ast
+;;     (supplied-p-parameter-ast-mixin
+;;      init-form-ast-mixin
+;;      variable-name-ast-mixin
+;;      ast)
+;;   ())
