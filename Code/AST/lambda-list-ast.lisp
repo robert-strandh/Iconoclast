@@ -158,3 +158,9 @@
   ((%lambda-list-ast
     :initarg :lambda-list-ast
     :reader lambda-list-ast)))
+
+(defclass parameter-ast (name-ast-mixin ast)
+  ())
+
+(defclass required-parameter-ast (parameter-ast)
+  ())
