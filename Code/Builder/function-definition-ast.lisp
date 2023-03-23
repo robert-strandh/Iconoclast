@@ -1,7 +1,5 @@
 (cl:in-package #:iconoclast-builder)
 
-(define-make-node-method :ordinary-lambda-list ico:lambda-list-ast)
-
 (define-make-node-method :lambda-expression ico:function-definition-ast)
 
 (defmethod abp:relate
