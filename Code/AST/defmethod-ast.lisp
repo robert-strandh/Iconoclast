@@ -6,15 +6,14 @@
     :initarg :specializer-ast
     :reader specializer-ast)))
 
-(defgeneric required-asts (lambda-list-ast))
-
-(defclass specialized-lambda-list-ast (lambda-list-ast)
-  (;; This slot should probably be moved to a superclass or to a mixin
-   ;; class.
-   (%required-asts
+(defclass defmethod-ast
+    (name-ast-mixin
+     lambda-list-ast-mixin
+     declaration-asts-mixin
+     documentation-ast-mixin
+     form-asts-mixin
+     ast)
+  ((%method-qualifier-asts
     :initform '()
-    :initarg :required-asts
-    :reader required-asts)))
-
-(defclass defmethod-ast (name-ast-mixin function-definition-ast)
-  ())
+    :initarg :method-qualifier-asts
+    :reader method-qualifier-asts)))
