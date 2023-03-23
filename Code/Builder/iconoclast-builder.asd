@@ -24,6 +24,7 @@
     (:file "return-from-ast")
     (:file "catch-ast")
     (:file "eval-when-ast")
+    (:file "lambda-list-ast")
     (:file "function-definition-ast")
     (:file "macro-definition-ast")
     (:file "function-ast")
