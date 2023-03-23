@@ -77,10 +77,9 @@
      #:whole-parameter-ast-mixin
      #:environment-parameter-ast
      #:environment-parameter-ast-mixin
-     #:lambda-list-ast
      #:specializer-ast
      #:specialized-parameter-ast
-     #:lambda-list-ast
+     #:method-qualifier-asts
      #:ordinary-lambda-list-ast
      #:generic-function-lambda-list-ast
      #:specialized-lambda-list-ast
@@ -90,6 +89,8 @@
      #:defsetf-lambda-list-ast
      #:deftype-lambda-list-ast
      #:define-modify-macro-lambda-list-ast
+     #:lambda-list-ast
+     #:lambda-list-ast-mixin
      #:function-definition-ast
      #:variable-binding-ast
      #:variable-binding-asts
