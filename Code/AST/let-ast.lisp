@@ -9,7 +9,7 @@
   (:default-initargs :form-ast nil))
 
 (defmethod children append ((ast variable-binding-ast))
-  (list (cons "variable-name-ast" (variable-ast ast))))
+  (list (cons "variable-name-ast" (variable-name-ast ast))))
 
 (defgeneric variable-binding-asts (ast))
 

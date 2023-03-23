@@ -81,7 +81,7 @@
     :reader variable-name-ast)))
 
 (defmethod children append ((ast variable-name-ast-mixin))
-  (list (cons "variable-name-ast" (variable-ast ast))))
+  (list (cons "variable-name-ast" (variable-name-ast ast))))
 
 (defgeneric name (ast))
 

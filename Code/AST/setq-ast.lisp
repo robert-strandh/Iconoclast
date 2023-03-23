@@ -9,4 +9,4 @@
       :reader variable-name-asts)))
 
 (defmethod children append ((ast setq-ast))
-  (list (cons "variable-name-asts" (variable-asts ast))))
+  (list (cons "variable-name-asts" (variable-name-asts ast))))
