@@ -63,7 +63,10 @@
      #:optional-parameter-ast
      #:keyword-name-ast
      #:key-parameter-ast
+     #:required-asts
      #:lambda-list-ast
+     #:specializer-ast
+     #:specialized-parameter-ast
      #:specialized-lambda-list-ast
      #:lambda-list
      #:function-definition-ast
