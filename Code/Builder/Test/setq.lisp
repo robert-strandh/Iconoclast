@@ -5,7 +5,7 @@
     (assert (equal (convert-ast result)
                    '(ico:setq-ast
                      ("form-asts" nil)
-                     ("variable-asts" nil))))))
+                     ("variable-name-asts" nil))))))
 
 (defun test-setq-2 ()
   (let ((result (bld::test '(setq a 234))))
@@ -13,8 +13,8 @@
                    '(ico:setq-ast
                      ("form-asts"
                       ((bld:unparsed-form-ast :form 234)))
-                     ("variable-asts"
-                      ((ico:variable-ast :name a))))))))
+                     ("variable-name-asts"
+                      ((ico:variable-name-ast :name a))))))))
 
 (defun test-setq-3 ()
   (let ((result (bld::test '(setq a 234 b 345))))
@@ -23,9 +23,9 @@
                      ("form-asts"
                       ((bld:unparsed-form-ast :form 234)
                        (bld:unparsed-form-ast :form 345)))
-                     ("variable-asts"
-                      ((ico:variable-ast :name a)
-                       (ico:variable-ast :name b))))))))
+                     ("variable-name-asts"
+                      ((ico:variable-name-ast :name a)
+                       (ico:variable-name-ast :name b))))))))
 
 (defun test-setq ()
   (format *trace-output* "Testing SETQ~%")

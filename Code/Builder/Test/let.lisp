@@ -16,7 +16,7 @@
                      ("form-asts" nil)
                      ("variable-binding-asts"
                       ((ico:variable-binding-ast ("form-ast" nil)
-                        ("variable-ast" (ico:variable-ast :name x))))))))))
+                        ("variable-name-ast" (ico:variable-name-ast :name x))))))))))
 
 (defun test-let ()
   (format *trace-output* "Testing LET~%")

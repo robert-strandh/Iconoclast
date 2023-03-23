@@ -17,7 +17,7 @@
                      ("symbol-expansion-asts"
                       ((ico:symbol-expansion-ast
                         ("expansion-ast" (bld:unparsed-form-ast :form 234))
-                        ("symbol-ast" (ico:variable-ast :name f))))))))))
+                        ("symbol-ast" (ico:variable-name-ast :name f))))))))))
 
 (defun test-symbol-macrolet ()
   (format *trace-output* "Testing SYMBOL-MACROLET~%")

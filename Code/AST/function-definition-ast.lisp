@@ -41,7 +41,7 @@
 (defclass optional-parameter-ast
     (supplied-p-parameter-ast-mixin
      init-form-ast-mixin
-     variable-ast-mixin
+     variable-name-ast-mixin
      ast)
   ())
 
@@ -57,7 +57,7 @@
 (defclass key-parameter-ast
     (supplied-p-parameter-ast-mixin
      init-form-ast-mixin
-     variable-ast-mixin
+     variable-name-ast-mixin
      ast)
   (;; If there is no explicit keyword-name in the source code, then
    ;; this slot contains a LITERAL-AST with a name generated from the

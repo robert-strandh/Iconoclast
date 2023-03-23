@@ -18,7 +18,7 @@
      #:tag-ast
      #:tag
      #:form-ast
-     #:variable-ast
+     #:variable-name-ast
      #:variable-definition-ast
      #:variable-reference-ast
      #:referencing-variable-asts
@@ -39,7 +39,7 @@
      #:ignore-ast
      #:ignorable-ast
      #:inline-or-notinline-ast
-     #:variable-asts
+     #:variable-name-asts
      #:inline-ast
      #:notinline-ast
      #:special-ast

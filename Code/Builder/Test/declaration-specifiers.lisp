@@ -15,7 +15,7 @@
                      ("declaration-asts"
                       ((ico:dynamic-extent-ast
                         ("name-asts"
-                         ((ico:variable-ast :name a))))))
+                         ((ico:variable-name-ast :name a))))))
                      ("form-asts" nil))))))
 
 (defun test-dynamic-extent-3 ()
@@ -25,8 +25,8 @@
                      ("declaration-asts"
                       ((ico:dynamic-extent-ast
                         ("name-asts"
-                         ((ico:variable-ast :name a)
-                          (ico:variable-ast :name b))))))
+                         ((ico:variable-name-ast :name a)
+                          (ico:variable-name-ast :name b))))))
                      ("form-asts" nil))))))
 
 (defun test-dynamic-extent-4 ()
@@ -37,7 +37,7 @@
                      ("declaration-asts"
                       ((ico:dynamic-extent-ast
                         ("name-asts"
-                         ((ico:variable-ast :name a)
+                         ((ico:variable-name-ast :name a)
                           (ico:function-name-ast :name b))))))
                      ("form-asts" nil))))))
 
@@ -133,7 +133,7 @@
                      ("declaration-asts"
                       ((ico:ignore-ast
                         ("name-asts"
-                         ((ico:variable-ast :name a))))))
+                         ((ico:variable-name-ast :name a))))))
                      ("form-asts" nil))))))
 
 (defun test-ignore-3 ()
@@ -143,8 +143,8 @@
                      ("declaration-asts"
                       ((ico:ignore-ast
                         ("name-asts"
-                         ((ico:variable-ast :name a)
-                          (ico:variable-ast :name b))))))
+                         ((ico:variable-name-ast :name a)
+                          (ico:variable-name-ast :name b))))))
                      ("form-asts" nil))))))
 
 (defun test-ignore-4 ()
@@ -155,7 +155,7 @@
                      ("declaration-asts"
                       ((ico:ignore-ast
                         ("name-asts"
-                         ((ico:variable-ast :name a)
+                         ((ico:variable-name-ast :name a)
                           (ico:function-name-ast :name b))))))
                      ("form-asts" nil))))))
 
@@ -181,7 +181,7 @@
                      ("declaration-asts"
                       ((ico:ignorable-ast
                         ("name-asts"
-                         ((ico:variable-ast :name a))))))
+                         ((ico:variable-name-ast :name a))))))
                      ("form-asts" nil))))))
 
 (defun test-ignorable-3 ()
@@ -191,8 +191,8 @@
                      ("declaration-asts"
                       ((ico:ignorable-ast
                         ("name-asts"
-                         ((ico:variable-ast :name a)
-                          (ico:variable-ast :name b))))))
+                         ((ico:variable-name-ast :name a)
+                          (ico:variable-name-ast :name b))))))
                      ("form-asts" nil))))))
 
 (defun test-ignorable-4 ()
@@ -203,7 +203,7 @@
                      ("declaration-asts"
                       ((ico:ignorable-ast
                         ("name-asts"
-                         ((ico:variable-ast :name a)
+                         ((ico:variable-name-ast :name a)
                           (ico:function-name-ast :name b))))))
                      ("form-asts" nil))))))
 
@@ -229,7 +229,7 @@
                      ("declaration-asts"
                       ((ico:special-ast
                         ("name-asts"
-                         ((ico:variable-ast :name a))))))
+                         ((ico:variable-name-ast :name a))))))
                      ("form-asts" nil))))))
 
 (defun test-special-3 ()
@@ -239,8 +239,8 @@
                      ("declaration-asts"
                       ((ico:special-ast
                         ("name-asts"
-                         ((ico:variable-ast :name a)
-                          (ico:variable-ast :name b))))))
+                         ((ico:variable-name-ast :name a)
+                          (ico:variable-name-ast :name b))))))
                      ("form-asts" nil))))))
 
 (defun test-special ()

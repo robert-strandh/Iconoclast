@@ -1,15 +1,15 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric variable-ast (ast))
+(defgeneric variable-name-ast (ast))
 
 (defclass variable-binding-ast (form-ast-mixin ast)
-  ((%variable-ast
-      :initarg :variable-ast
-      :reader variable-ast))
+  ((%variable-name-ast
+      :initarg :variable-name-ast
+      :reader variable-name-ast))
   (:default-initargs :form-ast nil))
 
 (defmethod children append ((ast variable-binding-ast))
-  (list (cons "variable-ast" (variable-ast ast))))
+  (list (cons "variable-name-ast" (variable-ast ast))))
 
 (defgeneric variable-binding-asts (ast))
 

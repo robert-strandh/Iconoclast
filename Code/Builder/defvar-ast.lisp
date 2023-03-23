@@ -8,10 +8,10 @@
     ((builder builder)
      (relation (eql :name))
      (left ico:defvar-or-defparameter-ast)
-     (right ico:variable-ast)
+     (right ico:variable-name-ast)
      &key)
   (reinitialize-instance left
-    :variable-ast right))
+    :variable-name-ast right))
 
 (defmethod abp:relate
     ((builder builder)

@@ -6,7 +6,7 @@
     ((builder builder)
      (relation (eql :name))
      (left ico:slot-specifier-ast)
-     (right ico:variable-ast)
+     (right ico:variable-name-ast)
      &key)
   (reinitialize-instance left
     :name-ast right))

@@ -2,12 +2,12 @@
 
 ;;; This is the root class of all ASTs that mention a variable. Here we
 ;;; consider a function name as being a variable.
-(defclass variable-ast (name-mixin ast)
+(defclass variable-name-ast (name-mixin ast)
   ())
 
-(defgeneric referencing-variable-asts (ast))
+(defgeneric referencing-variable-name-asts (ast))
 
-(defclass variable-definition-ast (variable-ast)
+(defclass variable-definition-ast (variable-name-ast)
   (;; This slot contains a list of VARIABLE-REFERENCE-ASTs.
    (%referencing-variable-asts
       :initform '()

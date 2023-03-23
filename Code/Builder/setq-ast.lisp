@@ -6,10 +6,10 @@
     ((builder builder)
      (relation (eql :name))
      (left ico:setq-ast)
-     (right ico:variable-ast)
+     (right ico:variable-name-ast)
      &key)
   (reinitialize-instance left
-    :variable-asts (append (ico:variable-asts left) (list right))))
+    :variable-name-asts (append (ico:variable-name-asts left) (list right))))
 
 (defmethod abp:relate
     ((builder builder)
