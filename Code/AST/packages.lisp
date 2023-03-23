@@ -64,6 +64,7 @@
      #:keyword-name-ast
      #:key-parameter-ast
      #:lambda-list-ast
+     #:specialized-lambda-list-ast
      #:lambda-list
      #:function-definition-ast
      #:variable-binding-ast
@@ -143,5 +144,6 @@
      #:defvar-ast
      #:defparameter-ast
      #:defun-ast
+     #:defmethod-ast
      #:when-ast
      #:unless-ast))
