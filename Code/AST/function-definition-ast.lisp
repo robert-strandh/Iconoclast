@@ -80,9 +80,6 @@
 
 (defgeneric lambda-list (ast))
 
-(defclass lambda-list-ast (ast)
-  ())
-
 (defclass function-definition-ast
     (declaration-asts-mixin
      documentation-ast-mixin
