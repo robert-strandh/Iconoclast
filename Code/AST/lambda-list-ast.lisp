@@ -151,3 +151,10 @@
      whole-parameter-ast-mixin
      lambda-list-ast)
   ())
+
+(defgeneric lambda-list-ast (ast))
+
+(defclass lambda-list-ast-mixin ()
+  ((%lambda-list-ast
+    :initarg :lambda-list-ast
+    :reader lambda-list-ast)))
