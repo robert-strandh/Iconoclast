@@ -16,11 +16,15 @@
     :initarg :optional-parameter-asts
     :reader optional-parameter-asts)))
 
+(defgeneric rest-parameter-ast (lambda-list-ast))
+
 (defclass rest-parameter-ast-mixin ()
   ((%rest-parameter-ast
     :initform nil
     :initarg :rest-parameter-ast
     :reader rest-parameter-ast)))
+
+(defgeneric key-parameter-asts (lambda-list-ast))
 
 (defclass key-parameter-asts-mixin ()
   ((%key-parameter-asts
@@ -28,17 +32,23 @@
     :initarg :key-parameter-asts
     :reader key-parameter-asts)))
 
+(defgeneric aux-parameter-asts (lambda-list-ast))
+
 (defclass aux-parameter-asts-mixin ()
   ((%aux-parameter-asts
     :initform '()
     :initarg :aux-parameter-asts
     :reader aux-parameter-asts)))
 
+(defgeneric whole-parameter-ast (lambda-list-ast))
+
 (defclass whole-parameter-ast-mixin ()
   ((%whole-parameter-ast
     :initform nil
     :initarg :whole-parameter-ast
     :reader whole-parameter-ast)))
+
+(defgeneric environment-parameter-ast (lambda-list-ast))
 
 (defclass environment-parameter-ast-mixin ()
   ((%environment-parameter-ast
