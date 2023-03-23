@@ -65,10 +65,21 @@
      #:key-parameter-ast
      #:required-parameter-asts
      #:required-parameter-asts-mixin
+     #:optional-parameter-asts
+     #:optional-parameter-asts-mixin
+     #:rest-parameter-ast
+     #:rest-parameter-ast-mixin
+     #:key-parameter-asts
+     #:key-parameter-asts-mixin
+     #:aux-parameter-asts
+     #:aux-parameter-asts-mixin
+     #:whole-parameter-ast
+     #:whole-parameter-ast-mixin
+     #:environment-parameter-ast
+     #:environment-parameter-ast-mixin
      #:lambda-list-ast
      #:specializer-ast
      #:specialized-parameter-ast
-     #:specialized-lambda-list-ast
      #:lambda-list-ast
      #:ordinary-lambda-list-ast
      #:generic-function-lambda-list-ast
