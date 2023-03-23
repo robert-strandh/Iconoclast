@@ -63,12 +63,22 @@
      #:optional-parameter-ast
      #:keyword-name-ast
      #:key-parameter-ast
-     #:required-asts
+     #:required-parameter-asts
+     #:required-parameter-asts-mixin
      #:lambda-list-ast
      #:specializer-ast
      #:specialized-parameter-ast
      #:specialized-lambda-list-ast
-     #:lambda-list
+     #:lambda-list-ast
+     #:ordinary-lambda-list-ast
+     #:generic-function-lambda-list-ast
+     #:specialized-lambda-list-ast
+     #:macro-lambda-list-ast
+     #:destructuring-lambda-list-ast
+     #:boa-lambda-list-ast
+     #:defsetf-lambda-list-ast
+     #:deftype-lambda-list-ast
+     #:define-modify-macro-lambda-list-ast
      #:function-definition-ast
      #:variable-binding-ast
      #:variable-binding-asts
