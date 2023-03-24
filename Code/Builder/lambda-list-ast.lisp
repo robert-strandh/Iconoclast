@@ -4,6 +4,8 @@
 
 (define-make-node-method :optional-parameter ico:optional-parameter-ast)
 
+(define-make-node-method :keyword-parameter ico:key-parameter-ast)
+
 (defmethod abp:node-kind
     ((builder builder) (node ico:required-parameter-ast))
   :required-parameter)
@@ -44,6 +46,16 @@
   (reinitialize-instance left
     :optional-parameter-asts
     (append (ico:optional-parameter-asts left) (list right))))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :keyword))
+     (left ico:key-parameter-asts-mixin)
+     (right t)
+     &key)
+  (reinitialize-instance left
+    :key-parameter-asts
+    (append (ico:key-parameter-asts left) (list right))))
 
 (defmethod abp:relate
     ((builder builder)
