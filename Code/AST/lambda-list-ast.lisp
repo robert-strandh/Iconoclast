@@ -176,14 +176,16 @@
 (defmethod children append ((ast init-form-ast-mixin))
   (list (cons "init-form-ast" (init-form-ast ast))))
 
+(defclass supplied-p-parameter-ast-mixin ()
+  ((%supplied-p-parameter-ast
+      :initarg :supplied-p-parameter-ast
+      :reader supplied-p-parameter-ast)))
+
+(defmethod children append ((ast supplied-p-parameter-ast-mixin))
+  (list (cons "supplied-p-parameter-ast" (supplied-p-parameter-ast ast))))
+
 (defclass optional-parameter-ast
     (init-form-ast-mixin
+     supplied-p-parameter-ast-mixin
      parameter-ast)
   ())
-
-;; (defclass optional-parameter-ast
-;;     (supplied-p-parameter-ast-mixin
-;;
-;;      variable-name-ast-mixin
-;;      ast)
-;;   ())

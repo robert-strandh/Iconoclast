@@ -1,23 +1,5 @@
 (cl:in-package #:iconoclast)
 
-;;; A parameter group is represented as a list.  The required
-;;; parameter group is just a list of VARIABLE-ASTs.  The first
-;;; element of any other parameter group is the lambda-list keyword
-;;; that uniquely identifies that parameter group.
-
-;;; We represent the lambda list as a list of parameter groups.  The
-;;; first element of a lambda list is the required parameter group,
-;;; and it is always present.  Other parameter groups are present if
-;;; and only if the corresponding lambda-list keyword is present in
-;;; the original lambda list.  This representation allows for
-;;; implementation-specific lambda-list keywords.  The parameter
-;;; groups are present in the same order as the corresponding
-;;; lambda-list keywords in the original lambda list.
-
-;;; The &OPTIONAL parameter group is represented as a list starting
-;;; with the lambda-list keyword &OPTIONAL, followed by zero or more
-;;; OPTIONAL-PARAMETER-ASTs.
-
 (defclass supplied-p-parameter-ast-mixin ()
   ((%supplied-p-parameter-ast
       :initarg :supplied-p-parameter-ast
