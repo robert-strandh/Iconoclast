@@ -19,3 +19,11 @@
      &key)
   (reinitialize-instance left
     :form-asts (append (ico:form-asts left) (list right))))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :default))
+     (left ico:init-form-ast-mixin)
+     (right t)
+     &key)
+  (reinitialize-instance left :init-form-ast right))
