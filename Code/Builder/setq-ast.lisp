@@ -2,10 +2,12 @@
 
 (define-make-node-method :setq ico:setq-ast)
 
+(define-make-node-method :psetq ico:psetq-ast)
+
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :name))
-     (left ico:setq-ast)
+     (left ico:setq-or-psetq-ast)
      (right ico:variable-name-ast)
      &key)
   (reinitialize-instance left
@@ -14,7 +16,7 @@
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :value-form))
-     (left ico:setq-ast)
+     (left ico:setq-or-psetq-ast)
      (right t)
      &key)
   (reinitialize-instance left
