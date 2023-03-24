@@ -189,3 +189,14 @@
      supplied-p-parameter-ast-mixin
      parameter-ast)
   ())
+
+(defgeneric keyword-name-ast (parameter-ast))
+
+(defclass key-parameter-ast
+    (supplied-p-parameter-ast-mixin
+     init-form-ast-mixin
+     parameter-ast)
+  ((%keyword-name-ast
+      :initform nil
+      :initarg :keyword-name-ast
+      :reader keyword-name-ast)))

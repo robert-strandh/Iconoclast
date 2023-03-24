@@ -16,21 +16,6 @@
 ;;; The &KEY parameter group is represented as a list starting with
 ;;; the lambda-list keyword &KEY, followed by a zer or more
 ;;; KEY-PARAMETER-ASTs.
-
-(defgeneric keyword-name-ast (parameter-ast))
-
-(defclass key-parameter-ast
-    (supplied-p-parameter-ast-mixin
-     init-form-ast-mixin
-     variable-name-ast-mixin
-     ast)
-  (;; If there is no explicit keyword-name in the source code, then
-   ;; this slot contains a LITERAL-AST with a name generated from the
-   ;; name of the variable, but the origin slot of that AST will
-   ;; contain NIL.
-   (%keyword-name-ast
-      :initarg :keyword-name-ast
-      :reader keyword-name-ast)))
    
 (defmethod children append ((ast key-parameter-ast))
   (list (cons "keyword-name-ast" (keyword-name-ast ast))))
