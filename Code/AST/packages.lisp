@@ -55,6 +55,7 @@
      #:documentation-ast-mixin
      #:init-form-ast
      #:form-asts
+     #:supplied-p-parameter-ast-mixin
      #:supplied-p-parameter-ast
      #:optional-parameter-ast
      #:keyword-name-ast
