@@ -145,7 +145,9 @@
      #:progv-ast
      #:object-ast
      #:quote-ast
+     #:setq-or-psetq-ast
      #:setq-ast
+     #:psetq-ast
      #:symbol-ast
      #:expansion-ast
      #:symbol-expansion-ast
