@@ -165,12 +165,25 @@
 (defclass required-parameter-ast (parameter-ast)
   ())
 
-(defclass optional-parameter-ast (parameter-ast)
+(defgeneric init-form-ast (parameter-ast))
+
+(defclass init-form-ast-mixin ()
+  ((%init-form-ast
+      :initform nil
+      :initarg :init-form-ast
+      :reader init-form-ast)))
+
+(defmethod children append ((ast init-form-ast-mixin))
+  (list (cons "init-form-ast" (init-form-ast ast))))
+
+(defclass optional-parameter-ast
+    (init-form-ast-mixin
+     parameter-ast)
   ())
 
 ;; (defclass optional-parameter-ast
 ;;     (supplied-p-parameter-ast-mixin
-;;      init-form-ast-mixin
+;;
 ;;      variable-name-ast-mixin
 ;;      ast)
 ;;   ())

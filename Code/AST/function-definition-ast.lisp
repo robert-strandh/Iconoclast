@@ -18,16 +18,6 @@
 ;;; with the lambda-list keyword &OPTIONAL, followed by zero or more
 ;;; OPTIONAL-PARAMETER-ASTs.
 
-(defgeneric init-form-ast (parameter-ast))
-
-(defclass init-form-ast-mixin ()
-  ((%init-form-ast
-      :initarg :init-form-ast
-      :reader init-form-ast)))
-
-(defmethod children append ((ast init-form-ast-mixin))
-  (list (cons "init-form-ast" (init-form-ast ast))))
-
 (defclass supplied-p-parameter-ast-mixin ()
   ((%supplied-p-parameter-ast
       :initarg :supplied-p-parameter-ast
