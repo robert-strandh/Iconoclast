@@ -60,6 +60,8 @@
      #:keyword-name-ast
      #:key-parameter-ast
      #:parameter-ast
+     #:init-form-ast
+     #:init-form-ast-mixin
      #:required-parameter-asts
      #:required-parameter-asts-mixin
      #:required-parameter-ast
