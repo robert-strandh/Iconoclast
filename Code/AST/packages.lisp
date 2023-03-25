@@ -176,6 +176,7 @@
      #:defun-ast
      #:defmethod-ast
      #:in-package-ast
+     #:report-ast
      #:restart-clause-ast
      #:clause-asts
      #:restart-case-ast
