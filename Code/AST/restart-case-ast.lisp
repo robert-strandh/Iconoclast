@@ -1,8 +1,17 @@
 (cl:in-package #:iconoclast)
 
+(defgeneric report-ast (report-clause-ast))
+
 (defclass restart-clause-ast
-    (lambda-list-ast-mixin name-ast-mixin ast)
-  ())
+    (form-asts-mixin
+     declaration-asts-mixin
+     lambda-list-ast-mixin
+     name-ast-mixin
+     ast)
+  ((%report-ast
+    :initform nil
+    :initarg :report-ast
+    :reader report-ast)))
 
 (defclass restart-case-ast (form-ast-mixin ast)
   ((%clause-asts
