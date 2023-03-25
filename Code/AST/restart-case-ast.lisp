@@ -15,7 +15,11 @@
    (%interactive-ast
     :initform nil
     :initarg :interactive-ast
-    :reader interactive-ast)))
+    :reader interactive-ast)
+   (%test-ast
+    :initform nil
+    :initarg :test-ast
+    :reader test-ast)))
 
 (defclass restart-case-ast (form-ast-mixin ast)
   ((%clause-asts
