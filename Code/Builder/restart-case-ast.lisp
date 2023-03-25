@@ -46,6 +46,22 @@
 
 (defmethod abp:relate
     ((builder builder)
+     (relation (eql :test-name))
+     (left ico:restart-clause-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :test-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :test-lambda))
+     (left ico:restart-clause-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :test-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
      (relation (eql :form))
      (left ico:restart-case-ast)
      (right t)
