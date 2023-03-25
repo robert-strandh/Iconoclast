@@ -14,6 +14,22 @@
 
 (defmethod abp:relate
     ((builder builder)
+     (relation (eql :report-lambda))
+     (left ico:restart-clause-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :report-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :report-name))
+     (left ico:restart-clause-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :report-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
      (relation (eql :form))
      (left ico:restart-case-ast)
      (right t)
