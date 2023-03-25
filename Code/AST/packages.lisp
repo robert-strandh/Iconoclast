@@ -175,5 +175,6 @@
      #:defparameter-ast
      #:defun-ast
      #:defmethod-ast
+     #:in-package-ast
      #:when-ast
      #:unless-ast))
