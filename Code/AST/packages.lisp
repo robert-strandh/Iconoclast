@@ -176,5 +176,6 @@
      #:defun-ast
      #:defmethod-ast
      #:in-package-ast
+     #:return-ast
      #:when-ast
      #:unless-ast))
