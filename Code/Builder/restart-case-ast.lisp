@@ -30,6 +30,14 @@
 
 (defmethod abp:relate
     ((builder builder)
+     (relation (eql :report-string))
+     (left ico:restart-clause-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :report-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
      (relation (eql :interactive-name))
      (left ico:restart-clause-ast)
      (right t)
