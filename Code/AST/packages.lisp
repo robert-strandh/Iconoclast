@@ -9,6 +9,8 @@
      #:literal
      #:origin
      #:children
+     #:string-designator-ast
+     #:designated-string
      #:form-asts-mixin
      #:test-ast-mixin
      #:tag-ast-mixin
