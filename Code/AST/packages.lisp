@@ -176,6 +176,7 @@
      #:defun-ast
      #:defmethod-ast
      #:in-package-ast
+     #:restart-bind-ast
      #:report-ast
      #:interactive-ast
      #:test-ast
