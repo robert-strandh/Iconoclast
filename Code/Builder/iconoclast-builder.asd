@@ -50,4 +50,5 @@
     (:file "defmethod-ast")
     (:file "defun-ast")
     (:file "defclass-ast")
+    (:file "in-package-ast")
     (:file "when-ast")))
