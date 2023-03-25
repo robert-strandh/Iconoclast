@@ -13,6 +13,7 @@
     (:file "documentation-ast-mixin")
     (:file "documentation-ast")
     (:file "name-asts-mixin")
+    (:file "string-designator-ast")
     (:file "form-asts-mixin")
     (:file "test-ast-mixin")
     (:file "type-specifier-asts")
