@@ -44,4 +44,5 @@
    (:file "defmethod-ast")
    (:file "defclass-ast")
    (:file "in-package-ast")
+   (:file "return-ast")
    (:file "when-ast")))
