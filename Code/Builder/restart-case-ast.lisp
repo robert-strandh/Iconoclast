@@ -30,6 +30,22 @@
 
 (defmethod abp:relate
     ((builder builder)
+     (relation (eql :interactive-name))
+     (left ico:restart-clause-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :interactive-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :interactive-lambda))
+     (left ico:restart-clause-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :interactive-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
      (relation (eql :form))
      (left ico:restart-case-ast)
      (right t)
