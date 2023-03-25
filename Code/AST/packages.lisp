@@ -178,6 +178,7 @@
      #:in-package-ast
      #:report-ast
      #:interactive-ast
+     #:test-ast
      #:restart-clause-ast
      #:clause-asts
      #:restart-case-ast
