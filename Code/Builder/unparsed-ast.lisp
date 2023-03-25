@@ -14,8 +14,9 @@
     ((builder builder)
      (kind (eql :unparsed))
      &key source expression context)
-  (cond ((eql context :form)
-         (make-instance 'unparsed-form-ast
-            :origin source
-            :form expression))
-        (t (error "Unknown context: ~s" context))))
+  (case context
+    ((:form :restart-report-string)
+     (make-instance 'unparsed-form-ast
+       :origin source
+       :form expression))
+    (t (error "Unknown context: ~s" context))))
