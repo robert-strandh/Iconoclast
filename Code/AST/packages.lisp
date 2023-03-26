@@ -176,6 +176,7 @@
      #:defun-ast
      #:defmethod-ast
      #:in-package-ast
+     #:multiple-value-bind-ast
      #:restart-binding-asts
      #:restart-binding-ast
      #:restart-bind-ast
