@@ -32,5 +32,6 @@
    (:file "declaration-specifiers")
    (:file "optimize")
    (:file "type-specifiers")
+   (:file "multiple-value-bind")
    (:file "return")
    (:file "test")))
