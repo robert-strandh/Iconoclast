@@ -44,6 +44,7 @@
    (:file "defmethod-ast")
    (:file "defclass-ast")
    (:file "in-package-ast")
+   (:file "multiple-value-bind-ast")
    (:file "restart-bind-ast")
    (:file "restart-case-ast")
    (:file "return-ast")
