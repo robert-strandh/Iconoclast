@@ -32,4 +32,5 @@
    (:file "declaration-specifiers")
    (:file "optimize")
    (:file "type-specifiers")
+   (:file "return")
    (:file "test")))
