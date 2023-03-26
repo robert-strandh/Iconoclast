@@ -36,5 +36,6 @@
   (test-special)
   (test-optimize)
   (test-type)
+  (test-multiple-value-bind)
   (test-return)
   (values))
