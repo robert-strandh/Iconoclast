@@ -6,6 +6,7 @@
   :components
   ((:file "packages")
    (:file "convert-ast")
+   (:file "test-macro")
    (:file "locally")
    (:file "let")
    (:file "the")
