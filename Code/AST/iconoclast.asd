@@ -48,4 +48,5 @@
    (:file "restart-bind-ast")
    (:file "restart-case-ast")
    (:file "return-ast")
+   (:file "typecase-ast")
    (:file "when-ast")))
