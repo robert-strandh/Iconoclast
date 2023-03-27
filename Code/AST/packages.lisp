@@ -17,6 +17,8 @@
      #:name-ast-mixin
      #:name-asts-mixin
      #:name-asts
+     #:clause-asts
+     #:clause-asts-mixin
      #:tag-ast
      #:tag
      #:form-ast
