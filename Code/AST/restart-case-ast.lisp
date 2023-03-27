@@ -21,8 +21,5 @@
     :initarg :test-ast
     :reader test-ast)))
 
-(defclass restart-case-ast (form-ast-mixin ast)
-  ((%clause-asts
-    :initform '()
-    :initarg :clause-asts
-    :reader clause-asts)))
+(defclass restart-case-ast (clause-asts-mixin form-ast-mixin ast)
+  ())
