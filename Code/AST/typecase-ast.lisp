@@ -6,8 +6,8 @@
 (defclass typecase-ast (typecase-base-ast)
   ())
 
-(defclass typecase-ast (etypecase-base-ast)
+(defclass etypecase-ast (typecase-base-ast)
   ())
 
-(defclass typecase-ast (ctypecase-base-ast)
+(defclass ctypecase-ast (typecase-base-ast)
   ())
