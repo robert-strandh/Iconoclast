@@ -1,26 +1,26 @@
 (cl:in-package #:iconoclast-builder-test)
 
 (defun test-flet-1 ()
-  (let ((result (bld::test '(flet ()))))
-    (assert (equal (convert-ast result)
-                   '(ico:flet-ast
-                     ("declaration-asts" nil)
-                     ("form-asts" nil)
-                     ("lexical-function-asts" nil))))))
+  (run-test
+   '(flet ())
+   '(ico:flet-ast
+     ("declaration-asts" nil)
+     ("form-asts" nil)
+     ("lexical-function-asts" nil))))
 
 (defun test-flet-2 ()
-  (let ((result (bld::test '(flet ((f ()))))))
-    (assert (equal (convert-ast result)
-                   '(ico:flet-ast
-                     ("declaration-asts" nil)
-                     ("form-asts" nil)
-                     ("lexical-function-asts"
-                      ((ico:lexical-function-ast
-                        ("declaration-asts" nil)
-                        ("documentation-ast" nil)
-                        ("form-asts" nil)
-                        ("name-ast"
-                         (ico:function-name-ast :name f))))))))))
+  (run-test
+   '(flet ((f ())))
+   '(ico:flet-ast
+     ("declaration-asts" nil)
+     ("form-asts" nil)
+     ("lexical-function-asts"
+      ((ico:lexical-function-ast
+        ("declaration-asts" nil)
+        ("documentation-ast" nil)
+        ("form-asts" nil)
+        ("name-ast"
+         (ico:function-name-ast :name f))))))))
 
 (defun test-flet ()
   (format *trace-output* "Testing FLET~%")
@@ -28,26 +28,26 @@
   (test-flet-2))
 
 (defun test-labels-1 ()
-  (let ((result (bld::test '(labels ()))))
-    (assert (equal (convert-ast result)
-                   '(ico:labels-ast
-                     ("declaration-asts" nil)
-                     ("form-asts" nil)
-                     ("lexical-function-asts" nil))))))
+  (run-test
+   '(labels ())
+   '(ico:labels-ast
+     ("declaration-asts" nil)
+     ("form-asts" nil)
+     ("lexical-function-asts" nil))))
 
 (defun test-labels-2 ()
-  (let ((result (bld::test '(labels ((f ()))))))
-    (assert (equal (convert-ast result)
-                   '(ico:labels-ast
-                     ("declaration-asts" nil)
-                     ("form-asts" nil)
-                     ("lexical-function-asts"
-                      ((ico:lexical-function-ast
-                        ("declaration-asts" nil)
-                        ("documentation-ast" nil)
-                        ("form-asts" nil)
-                        ("name-ast"
-                         (ico:function-name-ast :name f))))))))))
+  (run-test
+   '(labels ((f ())))
+   '(ico:labels-ast
+     ("declaration-asts" nil)
+     ("form-asts" nil)
+     ("lexical-function-asts"
+      ((ico:lexical-function-ast
+        ("declaration-asts" nil)
+        ("documentation-ast" nil)
+        ("form-asts" nil)
+        ("name-ast"
+         (ico:function-name-ast :name f))))))))
 
 (defun test-labels ()
   (format *trace-output* "Testing LABELS~%")
@@ -55,26 +55,26 @@
   (test-labels-2))
 
 (defun test-macrolet-1 ()
-  (let ((result (bld::test '(macrolet ()))))
-    (assert (equal (convert-ast result)
-                   '(ico:macrolet-ast
-                     ("declaration-asts" nil)
-                     ("form-asts" nil)
-                     ("lexical-function-asts" nil))))))
+  (run-test
+   '(macrolet ())
+   '(ico:macrolet-ast
+     ("declaration-asts" nil)
+     ("form-asts" nil)
+     ("lexical-function-asts" nil))))
 
 (defun test-macrolet-2 ()
-  (let ((result (bld::test '(macrolet ((f ()))))))
-    (assert (equal (convert-ast result)
-                   '(ico:macrolet-ast
-                     ("declaration-asts" nil)
-                     ("form-asts" nil)
-                     ("lexical-function-asts"
-                      ((ico:lexical-function-ast
-                        ("declaration-asts" nil)
-                        ("documentation-ast" nil)
-                        ("form-asts" nil)
-                        ("name-ast"
-                         (ico:function-name-ast :name f))))))))))
+  (run-test
+   '(macrolet ((f ())))
+   '(ico:macrolet-ast
+     ("declaration-asts" nil)
+     ("form-asts" nil)
+     ("lexical-function-asts"
+      ((ico:lexical-function-ast
+        ("declaration-asts" nil)
+        ("documentation-ast" nil)
+        ("form-asts" nil)
+        ("name-ast"
+         (ico:function-name-ast :name f))))))))
 
 (defun test-macrolet ()
   (format *trace-output* "Testing MACROLET~%")
