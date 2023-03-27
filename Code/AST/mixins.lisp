@@ -102,3 +102,14 @@
 
 (defmethod children append ((ast name-asts-mixin))
   (list (cons "name-asts" (name-asts ast))))
+
+(defgeneric clause-asts (ast))
+
+(defclass clause-asts-mixin ()
+  ((%clause-asts
+    :initform '()
+    :initarg :clause-asts
+    :reader clause-asts)))
+
+(defmethod children append ((ast clause-asts-mixin))
+  (list (cons "clause-asts" (clause-asts ast))))
