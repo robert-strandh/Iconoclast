@@ -187,5 +187,9 @@
      #:clause-asts
      #:restart-case-ast
      #:return-ast
+     #:typecase-base-ast
+     #:typecase-ast
+     #:etypecase-ast
+     #:ctypecase-ast
      #:when-ast
      #:unless-ast))
