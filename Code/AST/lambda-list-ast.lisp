@@ -8,6 +8,10 @@
     :initarg :required-parameter-asts
     :reader required-parameter-asts)))
 
+(defmethod children append ((ast required-parameter-asts-mixin))
+  (list (cons "required-parameter-asts"
+              (required-parameter-asts ast))))
+
 (defgeneric optional-parameter-asts (lambda-list-ast))
 
 (defclass optional-parameter-asts-mixin ()
@@ -15,6 +19,10 @@
     :initform '()
     :initarg :optional-parameter-asts
     :reader optional-parameter-asts)))
+
+(defmethod children append ((ast optional-parameter-asts-mixin))
+  (list (cons "optional-parameter-asts"
+              (optional-parameter-asts ast))))
 
 (defgeneric rest-parameter-ast (lambda-list-ast))
 
@@ -24,6 +32,10 @@
     :initarg :rest-parameter-ast
     :reader rest-parameter-ast)))
 
+(defmethod children append ((ast rest-parameter-ast-mixin))
+  (list (cons "rest-parameter-ast"
+              (rest-parameter-ast ast))))
+
 (defgeneric key-parameter-asts (lambda-list-ast))
 
 (defclass key-parameter-asts-mixin ()
@@ -31,6 +43,10 @@
     :initform '()
     :initarg :key-parameter-asts
     :reader key-parameter-asts)))
+
+(defmethod children append ((ast key-parameter-asts-mixin))
+  (list (cons "key-parameter-asts"
+              (key-parameter-asts ast))))
 
 (defgeneric aux-parameter-asts (lambda-list-ast))
 
@@ -40,6 +56,10 @@
     :initarg :aux-parameter-asts
     :reader aux-parameter-asts)))
 
+(defmethod children append ((ast aux-parameter-asts-mixin))
+  (list (cons "aux-parameter-asts"
+              (aux-parameter-asts ast))))
+
 (defgeneric whole-parameter-ast (lambda-list-ast))
 
 (defclass whole-parameter-ast-mixin ()
@@ -48,6 +68,10 @@
     :initarg :whole-parameter-ast
     :reader whole-parameter-ast)))
 
+(defmethod children append ((ast whole-parameter-ast-mixin))
+  (list (cons "whole-parameter-ast"
+              (whole-parameter-ast ast))))
+
 (defgeneric environment-parameter-ast (lambda-list-ast))
 
 (defclass environment-parameter-ast-mixin ()
@@ -55,6 +79,10 @@
     :initform nil
     :initarg :environment-parameter-ast
     :reader environment-parameter-ast)))
+
+(defmethod children append ((ast environment-parameter-ast-mixin))
+  (list (cons "environment-parameter-ast"
+              (environment-parameter-ast ast))))
 
 (defclass lambda-list-ast (ast)
   ())
@@ -159,6 +187,9 @@
     :initarg :lambda-list-ast
     :reader lambda-list-ast)))
 
+(defmethod children append ((ast lambda-list-ast-mixin))
+  (list (cons "lambda-list-ast" (lambda-list-ast ast))))
+
 (defclass parameter-ast (name-ast-mixin ast)
   ())
 
@@ -200,3 +231,6 @@
       :initform nil
       :initarg :keyword-name-ast
       :reader keyword-name-ast)))
+
+(defmethod children append ((ast key-parameter-ast))
+  (list (cons "keyword-name-ast" (keyword-name-ast ast))))
