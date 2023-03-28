@@ -6,10 +6,9 @@
 (defclass dynamic-extent-ast (name-asts-mixin declaration-specifier-ast)
   ())
 
-(defclass type-or-ftype-ast (name-asts-mixin declaration-specifier-ast)
-  ((%type-specifier-ast
-      :initarg :type-specifier-ast
-      :reader type-specifier-ast)))
+(defclass type-or-ftype-ast
+    (type-specifier-ast-mixin name-asts-mixin declaration-specifier-ast)
+  ())
 
 (defclass type-ast (type-or-ftype-ast)
   ())
