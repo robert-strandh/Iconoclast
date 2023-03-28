@@ -15,3 +15,6 @@
     :initform '()
     :initarg :restart-binding-asts
     :reader restart-binding-asts)))
+
+(defmethod children append ((ast restart-bind-ast))
+  (list (cons "restart-binding-asts" (restart-binding-asts ast))))
