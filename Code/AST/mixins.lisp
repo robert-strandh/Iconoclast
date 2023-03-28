@@ -124,3 +124,11 @@
 (defmethod children append ((ast type-specifier-ast-mixin))
   (list (cons "type-specifier-ast"
               (type-specifier-ast ast))))
+
+(defclass value-mixin ()
+  ((%value
+    :initarg :value
+    :reader value)))
+
+(defmethod children append ((ast value-mixin))
+  (list (cons "value" (value ast))))
