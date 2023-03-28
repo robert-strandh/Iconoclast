@@ -89,6 +89,9 @@
 (defclass name-mixin ()
   ((%name :initarg :name :reader name)))
 
+(defmethod children append ((ast name-mixin))
+  (list (cons "name" (name ast))))
+
 ;;; This class can be mixed into classes that need to store several
 ;;; names.
 
