@@ -13,7 +13,7 @@
    '(function (lambda ()))
    '(ico:function-ast
      ("name-ast"
-      (ico:function-definition-ast
+      (ico:lambda-expression-ast
        ("declaration-asts" nil)
        ("documentation-ast" nil)
        ("form-asts" nil))))))
