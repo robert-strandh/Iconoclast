@@ -21,5 +21,10 @@
     :initarg :test-ast
     :reader test-ast)))
 
+(defmethod children append ((ast restart-clause-ast))
+  (list (cons "report-ast" (report-ast ast))
+        (cons "interactive-ast" (interactive-ast ast))
+        (cons "test-ast" (test-ast ast))))
+
 (defclass restart-case-ast (clause-asts-mixin form-ast-mixin ast)
   ())
