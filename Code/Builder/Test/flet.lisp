@@ -12,15 +12,19 @@
   (run-test
    '(flet ((f ())))
    '(ico:flet-ast
-     ("declaration-asts" nil)
-     ("form-asts" nil)
+     ("declaration-asts" nil) ("form-asts" nil)
      ("lexical-function-asts"
-      ((ico:lexical-function-ast
-        ("declaration-asts" nil)
+      ((ico:lexical-function-ast ("declaration-asts" nil)
         ("documentation-ast" nil)
         ("form-asts" nil)
-        ("name-ast"
-         (ico:function-name-ast :name f))))))))
+        ("lambda-list-ast"
+         (ico:ordinary-lambda-list-ast
+          ("aux-parameter-asts" nil)
+          ("key-parameter-asts" nil)
+          ("optional-parameter-asts" nil)
+          ("required-parameter-asts" nil)
+          ("rest-parameter-ast" nil)))
+        ("name-ast" (ico:function-name-ast :name f))))))))
 
 (defun test-flet ()
   (format *trace-output* "Testing FLET~%")
@@ -44,10 +48,15 @@
      ("lexical-function-asts"
       ((ico:lexical-function-ast
         ("declaration-asts" nil)
-        ("documentation-ast" nil)
-        ("form-asts" nil)
-        ("name-ast"
-         (ico:function-name-ast :name f))))))))
+        ("documentation-ast" nil) ("form-asts" nil)
+        ("lambda-list-ast"
+         (ico:ordinary-lambda-list-ast
+          ("aux-parameter-asts" nil)
+          ("key-parameter-asts" nil)
+          ("optional-parameter-asts" nil)
+          ("required-parameter-asts" nil)
+          ("rest-parameter-ast" nil)))
+        ("name-ast" (ico:function-name-ast :name f))))))))
 
 (defun test-labels ()
   (format *trace-output* "Testing LABELS~%")
@@ -71,10 +80,9 @@
      ("lexical-function-asts"
       ((ico:lexical-function-ast
         ("declaration-asts" nil)
-        ("documentation-ast" nil)
-        ("form-asts" nil)
-        ("name-ast"
-         (ico:function-name-ast :name f))))))))
+        ("documentation-ast" nil) ("form-asts" nil)
+        ("lambda-list-ast" (ico:lambda-list-ast))
+        ("name-ast" (ico:function-name-ast :name f))))))))
 
 (defun test-macrolet ()
   (format *trace-output* "Testing MACROLET~%")
