@@ -6,6 +6,9 @@
     :initarg :specializer-ast
     :reader specializer-ast)))
 
+(defmethod children append ((ast specialized-parameter-ast))
+  (list (cons "specializer-ast" (specializer-ast ast))))
+
 (defclass defmethod-ast
     (name-ast-mixin
      lambda-list-ast-mixin
