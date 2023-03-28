@@ -11,6 +11,9 @@
     :initarg :value
     :reader value)))
 
+(defmethod children append ((ast subsidiary-item-ast))
+  (list (cons "value" (value ast))))
+
 (defclass compound-type-specifier-ast (type-specifier-ast)
   ((%subsidiary-item-asts
     :initform '()
