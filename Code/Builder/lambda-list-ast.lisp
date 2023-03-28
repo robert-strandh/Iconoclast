@@ -64,3 +64,19 @@
      (right ico:lambda-list-ast)
      &key)
   (reinitialize-instance left :lambda-list-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :default))
+     (left ico:init-form-ast-mixin)
+     (right t)
+     &key)
+  (reinitialize-instance left :init-form-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :supplied))
+     (left ico:supplied-p-parameter-ast-mixin)
+     (right t)
+     &key)
+  (reinitialize-instance left :supplied-p-parameter-ast right))
