@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast-builder)
 
-(define-make-node-method :lambda-expression ico:function-definition-ast)
+(define-make-node-method :lambda-expression ico:lambda-expression-ast)
 
 (defmethod abp:relate
     ((builder builder)
@@ -9,29 +9,4 @@
      (right ico:lambda-list-ast)
      &key)
   (reinitialize-instance left
-    :lambda-list right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :form))
-     (left ico:function-definition-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :form-asts (append (ico:form-asts left) (list right))))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :default))
-     (left ico:init-form-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :init-form-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :supplied))
-     (left ico:supplied-p-parameter-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :supplied-p-parameter-ast right))
+    :lambda-list-ast right))
