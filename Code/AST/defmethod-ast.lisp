@@ -20,3 +20,6 @@
     :initform '()
     :initarg :method-qualifier-asts
     :reader method-qualifier-asts)))
+
+(defmethod children append ((ast defmethod-ast))
+  (list (cons "method-qualifier-asts" (method-qualifier-asts ast))))
