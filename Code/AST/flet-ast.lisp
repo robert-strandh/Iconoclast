@@ -1,6 +1,12 @@
 (cl:in-package #:iconoclast)
 
-(defclass lexical-function-ast (name-ast-mixin function-definition-ast)
+(defclass lexical-function-ast
+    (name-ast-mixin
+     lambda-list-ast-mixin
+     declaration-asts-mixin
+     documentation-ast-mixin
+     form-asts-mixin
+     ast)
   ())
 
 (defclass flet-or-labels-or-macrolet-ast
