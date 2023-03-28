@@ -37,10 +37,8 @@
 (defclass special-ast (name-asts-mixin declaration-specifier-ast)
   ())
 
-(defclass optimize-quality-ast (ast)
-  ((%value
-    :initarg :value
-    :reader value)))
+(defclass optimize-quality-ast (value-mixin ast)
+  ())
 
 (defclass speed-ast (optimize-quality-ast)
   ())
