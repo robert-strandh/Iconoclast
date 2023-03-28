@@ -6,13 +6,8 @@
 (defclass atomic-type-specifier-ast (type-specifier-ast)
   ())
 
-(defclass subsidiary-item-ast (ast)
-  ((%value
-    :initarg :value
-    :reader value)))
-
-(defmethod children append ((ast subsidiary-item-ast))
-  (list (cons "value" (value ast))))
+(defclass subsidiary-item-ast (value-mixin ast)
+  ())
 
 (defclass compound-type-specifier-ast (type-specifier-ast)
   ((%subsidiary-item-asts
