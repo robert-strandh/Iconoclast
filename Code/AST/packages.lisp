@@ -96,7 +96,6 @@
      #:define-modify-macro-lambda-list-ast
      #:lambda-list-ast
      #:lambda-list-ast-mixin
-     #:function-definition-ast
      #:variable-binding-ast
      #:variable-binding-asts
      #:let-or-let*-ast
@@ -125,6 +124,7 @@
      #:lexical-function-asts
      #:labels-ast
      #:macrolet-ast
+     #:lambda-expression-ast
      #:function-ast
      #:tagbody-ast
      #:tagbody-segment-ast
