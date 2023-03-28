@@ -15,7 +15,7 @@
     ((builder builder)
      (relation (eql :lambda))
      (left ico:function-ast)
-     (right ico:function-definition-ast)
+     (right t)
      &key)
   (reinitialize-instance left
     :name-ast right))
