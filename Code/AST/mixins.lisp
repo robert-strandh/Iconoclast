@@ -113,3 +113,14 @@
 
 (defmethod children append ((ast clause-asts-mixin))
   (list (cons "clause-asts" (clause-asts ast))))
+
+(defgeneric type-specifier-ast (ast))
+
+(defclass type-specifier-ast-mixin ()
+  ((%type-specifier-ast
+    :initarg :type-specifier-ast
+    :reader type-specifier-ast)))
+
+(defmethod children append ((ast type-specifier-ast-mixin))
+  (list (cons "type-specifier-ast"
+              (type-specifier-ast ast))))
