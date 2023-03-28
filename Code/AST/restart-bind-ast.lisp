@@ -7,7 +7,7 @@
     :initarg :function-form-ast
     :reader function-form-ast)))
 
-(defmethod children ((ast restart-binding-ast))
+(defmethod children append ((ast restart-binding-ast))
   (list (cons "function-form-ast" (function-form-ast ast))))
 
 (defclass restart-bind-ast (form-asts-mixin ast)
