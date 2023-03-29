@@ -36,6 +36,7 @@
    (:file "symbol-macrolet-ast")
    (:file "the-ast")
    (:file "unwind-protect-ast")
+   (:file "place-ast")
    (:file "case-ast")
    (:file "cond-ast")
    (:file "declaim-ast")
