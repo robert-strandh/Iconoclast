@@ -19,4 +19,8 @@
      (make-instance 'unparsed-form-ast
        :origin source
        :form expression))
+    ((:place)
+     (make-instance 'ico:place-ast
+       :origin source
+       :place expression))
     (t (error "Unknown context: ~s" context))))
