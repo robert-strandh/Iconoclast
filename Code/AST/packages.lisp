@@ -11,6 +11,9 @@
      #:children
      #:string-designator-ast
      #:designated-string
+     #:form-ast-mixin
+     #:place-ast
+     #:place-ast-mixin
      #:form-asts-mixin
      #:test-ast-mixin
      #:tag-ast-mixin
@@ -163,7 +166,8 @@
      #:unwind-protect-ast
      #:case-normal-clause-ast
      #:key-asts
-     #:case-or-ccase-or-ecase-ast
+     #:case-or-ecase-ast
+     #:place-ast
      #:case-ast
      #:ccase-ast
      #:ecase-ast
