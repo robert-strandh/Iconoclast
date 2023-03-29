@@ -14,5 +14,15 @@
 (defmethod children append ((ast case-normal-clause-ast))
   (list (cons "key-asts" (key-asts ast))))
 
-(defclass case-ast (ast)
+(defclass case-or-ccase-or-ecase-ast
+    (form-ast-mixin clause-asts-mixin ast)
+  ())
+
+(defclass case-ast (case-or-ccase-or-ecase-ast)
+  ())
+
+(defclass ccase-ast (case-or-ccase-or-ecase-ast)
+  ())
+
+(defclass ecase-ast (case-or-ccase-or-ecase-ast)
   ())
