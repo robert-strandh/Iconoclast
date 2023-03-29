@@ -11,6 +11,17 @@
 (defmethod children append ((ast form-ast-mixin))
   (list (cons "form-ast" (form-ast ast))))
 
+(defgeneric place-ast (ast))
+
+(defclass place-ast-mixin ()
+  ((%place-ast
+      :initform nil
+      :initarg :place-ast
+      :reader place-ast)))
+
+(defmethod children append ((ast place-ast-mixin))
+  (list (cons "place-ast" (place-ast ast))))
+
 (defgeneric form-asts (ast))
 
 (defclass form-asts-mixin ()
