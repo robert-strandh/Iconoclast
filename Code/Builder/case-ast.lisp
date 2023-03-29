@@ -14,13 +14,21 @@
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :keyform))
-     (left ico:case-or-ccase-or-ecase-ast)
+     (left ico:case-or-ecase-ast)
      (right t)
      &key)
   (reinitialize-instance left :form-ast right))
 
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :keyplace))
+     (left ico:ccase-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :place-ast right))
+
 (define-make-node-method :case ico:case-ast)
 
-(define-make-node-method :ccase ico:ccase-ast)
-
 (define-make-node-method :ecase ico:ecase-ast)
+
+(define-make-node-method :ccase ico:ccase-ast)
