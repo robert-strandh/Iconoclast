@@ -163,7 +163,10 @@
      #:unwind-protect-ast
      #:case-normal-clause-ast
      #:key-asts
+     #:case-or-ccase-or-ecase-ast
      #:case-ast
+     #:ccase-ast
+     #:ecase-ast
      #:cond-clause-ast
      #:cond-ast
      #:clause-asts
