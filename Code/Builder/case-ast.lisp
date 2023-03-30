@@ -2,6 +2,8 @@
 
 (define-make-node-method :case-normal-clause ico:case-normal-clause-ast)
 
+(define-make-node-method :case-otherwise-clause ico:case-otherwise-clause-ast)
+
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :key))
