@@ -7,6 +7,7 @@
   ((:file "packages")
    (:file "ast")
    (:file "mixins")
+   (:file "application-ast")
    (:file "documentation-ast")
    (:file "literal-ast")
    (:file "string-designator-ast")
