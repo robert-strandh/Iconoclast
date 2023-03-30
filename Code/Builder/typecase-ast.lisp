@@ -3,6 +3,9 @@
 (define-make-node-method
     :typecase-normal-clause ico:typecase-normal-clause-ast)
 
+(define-make-node-method
+    :typecase-otherwise-clause ico:typecase-otherwise-clause-ast)
+
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :type))
@@ -18,6 +21,14 @@
      (right t)
      &key)
   (reinitialize-instance left :form-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :keyplace))
+     (left ico:ctypecase-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :place-ast right))
 
 (define-make-node-method :typecase ico:typecase-ast)
 
