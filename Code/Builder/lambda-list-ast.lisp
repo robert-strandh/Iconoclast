@@ -14,7 +14,7 @@
     ((builder builder)
      (relation (eql :name))
      (left ico:parameter-ast)
-     (right ico:name-ast)
+     (right t)
      &key)
   (reinitialize-instance left :name-ast right))
 
@@ -83,3 +83,8 @@
      (right t)
      &key)
   (reinitialize-instance left :supplied-p-parameter-ast right))
+
+(define-make-node-method :pattern ico:pattern-ast)
+
+(defmethod abp:node-kind ((buildern builder) (node ico:pattern-ast))
+  :pattern)
