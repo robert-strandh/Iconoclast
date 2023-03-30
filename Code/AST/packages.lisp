@@ -184,6 +184,7 @@
      #:slot-specifier-ast
      #:initarg-name-ast
      #:declaim-ast
+     #:defmacro-ast
      #:defvar-or-defparameter-ast
      #:defvar-ast
      #:defparameter-ast
