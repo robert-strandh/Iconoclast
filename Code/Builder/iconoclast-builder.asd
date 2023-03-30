@@ -47,6 +47,7 @@
     (:file "case-ast")
     (:file "cond-ast")
     (:file "declaim-ast")
+    (:file "defmacro-ast")
     (:file "defvar-ast")
     (:file "defmethod-ast")
     (:file "defun-ast")
