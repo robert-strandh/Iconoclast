@@ -23,4 +23,7 @@
      (make-instance 'ico:place-ast
        :origin source
        :place expression))
+    ((:key)
+     (make-instance 'ico:key-ast
+       :key expression))
     (t (error "Unknown context: ~s" context))))
