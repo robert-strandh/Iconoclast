@@ -7,14 +7,17 @@
     (type-specifier-ast-mixin typecase-clause-ast)
   ())
 
-(defclass typecase-base-ast (clause-asts-mixin form-ast-mixin ast)
+(defclass typecase-base-ast (clause-asts-mixin ast)
   ())
 
-(defclass typecase-ast (typecase-base-ast)
+(defclass typecase-or-etypecase-ast (form-ast-mixin typecase-base-ast)
   ())
 
-(defclass etypecase-ast (typecase-base-ast)
+(defclass typecase-ast (typecase-or-etypecase-ast)
   ())
 
-(defclass ctypecase-ast (typecase-base-ast)
+(defclass etypecase-ast (typecase-or-etypecase-ast)
+  ())
+
+(defclass ctypecase-ast (place-ast-mixin typecase-base-ast)
   ())
