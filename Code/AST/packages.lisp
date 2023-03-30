@@ -166,6 +166,8 @@
      #:unwind-protect-ast
      #:case-normal-clause-ast
      #:key-asts
+     #:key
+     #:key-ast
      #:case-or-ecase-ast
      #:place-ast
      #:case-ast
