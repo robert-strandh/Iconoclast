@@ -27,6 +27,9 @@
 (define-make-node-method
     :specialized-lambda-list ico:specialized-lambda-list-ast)
 
+(define-make-node-method
+    :destructuring-lambda-list ico:destructuring-lambda-list-ast)
+
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :required))
