@@ -99,6 +99,7 @@
      #:define-modify-macro-lambda-list-ast
      #:lambda-list-ast
      #:lambda-list-ast-mixin
+     #:pattern-ast
      #:variable-binding-ast
      #:variable-binding-asts
      #:let-or-let*-ast
