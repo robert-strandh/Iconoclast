@@ -188,6 +188,7 @@
      #:defparameter-ast
      #:defun-ast
      #:defmethod-ast
+     #:destructuring-bind-ast
      #:in-package-ast
      #:multiple-value-bind-ast
      #:restart-binding-asts
