@@ -164,7 +164,9 @@
      #:the-ast
      #:protected-form-ast
      #:unwind-protect-ast
+     #:case-clause-ast
      #:case-normal-clause-ast
+     #:case-otherwise-clause-ast
      #:key-asts
      #:key
      #:key-ast
