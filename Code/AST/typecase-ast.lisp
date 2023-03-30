@@ -7,6 +7,9 @@
     (type-specifier-ast-mixin typecase-clause-ast)
   ())
 
+(defclass typecase-otherwise-clause-ast (typecase-clause-ast)
+  ())
+
 (defclass typecase-base-ast (clause-asts-mixin ast)
   ())
 
