@@ -203,6 +203,7 @@
      #:typecase-base-ast
      #:typecase-clause-ast
      #:typecase-normal-clause-ast
+     #:typecase-otherwise-clause-ast
      #:typecase-ast
      #:etypecase-ast
      #:ctypecase-ast
