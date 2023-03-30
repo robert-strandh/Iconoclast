@@ -9,6 +9,7 @@
    ((:file "packages")
     (:file "builder")
     (:file "test")
+    (:file "application-ast")
     (:file "unparsed-ast")
     (:file "documentation-ast-mixin")
     (:file "documentation-ast")
