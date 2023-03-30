@@ -19,6 +19,9 @@
      #:tag-ast-mixin
      #:name-ast-mixin
      #:name-asts-mixin
+     #:function-ast
+     #:argument-asts
+     #:application-ast
      #:name-asts
      #:clause-asts
      #:clause-asts-mixin
