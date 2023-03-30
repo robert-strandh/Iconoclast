@@ -44,6 +44,7 @@
    (:file "defun-ast")
    (:file "defmethod-ast")
    (:file "defclass-ast")
+   (:file "destructuring-bind-ast")
    (:file "in-package-ast")
    (:file "multiple-value-bind-ast")
    (:file "restart-bind-ast")
