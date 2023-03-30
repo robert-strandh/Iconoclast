@@ -14,6 +14,14 @@
 (defmethod children append ((ast case-normal-clause-ast))
   (list (cons "key-asts" (key-asts ast))))
 
+(defgeneric key (ast))
+
+(defclass key-ast (ast)
+  ((%key :initarg :key :reader key)))
+
+(defmethod children append ((ast key-ast))
+  (list (cons "key" (key ast))))
+
 (defclass case-or-ecase-ast
     (form-ast-mixin clause-asts-mixin ast)
   ())
