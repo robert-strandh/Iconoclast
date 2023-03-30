@@ -234,3 +234,6 @@
 
 (defmethod children append ((ast key-parameter-ast))
   (list (cons "keyword-name-ast" (keyword-name-ast ast))))
+
+(defclass pattern-ast (destructuring-lambda-list-ast)
+  ())
