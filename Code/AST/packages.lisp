@@ -120,6 +120,9 @@
      #:documentation
      #:body-asts
      #:block-name-ast
+     #:block-name-reference-asts
+     #:block-name-reference-ast
+     #:block-name-definition-ast
      #:block-ast
      #:return-from-ast
      #:catch-ast
