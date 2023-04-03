@@ -29,6 +29,9 @@
      #:tag
      #:form-ast
      #:variable-name-ast
+     #:variable-definition-ast
+     #:variable-reference-asts
+     #:variable-reference-ast
      #:declaration-specifier-ast
      #:declration-specifier-with-variables-ast
      #:dynamic-extent-ast
