@@ -2,7 +2,7 @@
 
 (defmethod abp:make-node
     ((builder builder)
-     (kind (eql :declaration))
+     (kind (eql :declaration-specifier))
      &key source ((:kind declaration-kind)))
   (make-instance
       (case declaration-kind
