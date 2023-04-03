@@ -8,6 +8,14 @@
      (left ico:return-from-ast)
      (right ico:block-name-ast)
      &key)
-  ;; FIXME: this is not quite right.
   (reinitialize-instance left
-    :block-ast right))
+    :name-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :result))
+     (left ico:return-from-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left
+    :form-ast right))
