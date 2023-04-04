@@ -146,7 +146,6 @@
      #:tagbody-segment-ast
      #:tag-asts
      #:segment-asts
-     #:tagbody-tag-ast
      #:go-ast
      #:test-ast
      #:then-ast

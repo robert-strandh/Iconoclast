@@ -14,13 +14,5 @@
 (defclass tagbody-segment-ast (form-asts-mixin tag-ast-mixin ast)
   ())
 
-(defclass tagbody-tag-ast (tag-ast-mixin ast)
-  ((%tagbody-ast
-      :initarg :tagbody-ast
-      :reader tagbody-ast)))
-
-(defmethod children append ((ast tagbody-tag-ast))
-  (list (cons "tagbody-ast" (tagbody-ast ast))))
-
 (defclass go-ast (tag-ast-mixin ast)
   ())
