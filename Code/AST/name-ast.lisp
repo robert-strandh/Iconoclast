@@ -29,6 +29,12 @@
     :initarg :variable-definition-ast
     :reader variable-definition-ast)))
 
+(defclass special-variable-bound-ast (variable-name-ast)
+  ())
+
+(defclass special-variable-reference-ast (variable-name-ast)
+  ())
+
 (defclass function-name-ast (name-ast)
   ())
 
