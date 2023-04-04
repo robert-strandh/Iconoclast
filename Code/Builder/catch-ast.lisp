@@ -39,4 +39,4 @@
      (right t)
      &key)
   (reinitialize-instance left
-    :result-form-ast right))
+    :form-ast right))
