@@ -26,6 +26,9 @@
      #:clause-asts
      #:clause-asts-mixin
      #:tag-ast
+     #:tag-reference-asts
+     #:tag-reference-ast
+     #:tag-definition-ast
      #:tag
      #:form-ast
      #:variable-name-ast
