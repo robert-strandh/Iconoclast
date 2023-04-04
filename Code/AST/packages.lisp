@@ -154,7 +154,7 @@
      #:read-only-p-ast
      #:load-time-value-ast
      #:locally-ast
-     #:function-call-form-ast
+     #:function-form-ast
      #:multiple-value-call-ast
      #:first-form-ast
      #:multiple-value-prog1-ast
