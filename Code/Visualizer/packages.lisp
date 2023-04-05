@@ -2,4 +2,5 @@
 
 (defpackage #:iconoclast-visualizer
   (:use #:common-lisp)
+  (:local-nicknames (#:ico #:iconoclast))
   (:export #:visualize))
