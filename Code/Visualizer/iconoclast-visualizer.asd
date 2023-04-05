@@ -2,7 +2,9 @@
 
 (defsystem #:iconoclast-visualizer
   :depends-on (#:iconoclast
-               #:mcclim)
+               #:mcclim
+               #:clouseau)
   :serial t
   :components
-  ((:file "packages")))
+  ((:file "packages")
+   (:file "gui")))
