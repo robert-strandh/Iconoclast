@@ -15,6 +15,7 @@
    (:file "block-ast")
    (:file "catch-ast")
    (:file "eval-when")
+   (:file "flet-ast")
    (:file "return-from-ast")
    (:file "let-ast")
    (:file "gui")))
