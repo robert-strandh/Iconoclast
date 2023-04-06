@@ -12,4 +12,5 @@
    (:file "name-ast")
    (:file "literal-ast")
    (:file "variable-binding-ast")
+   (:file "let-ast")
    (:file "gui")))
