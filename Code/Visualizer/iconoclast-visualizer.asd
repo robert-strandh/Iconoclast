@@ -11,4 +11,5 @@
    (:file "progn")
    (:file "name-ast")
    (:file "literal-ast")
+   (:file "variable-binding-ast")
    (:file "gui")))
