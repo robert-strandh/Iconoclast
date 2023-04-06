@@ -21,4 +21,5 @@
    (:file "if-ast")
    (:file "return-from-ast")
    (:file "let-ast")
+   (:file "load-time-value-ast")
    (:file "gui")))
