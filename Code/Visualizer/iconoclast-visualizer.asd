@@ -8,7 +8,7 @@
   :components
   ((:file "packages")
    (:file "display-ast")
-   (:file "progn")
+   (:file "progn-ast")
    (:file "name-ast")
    (:file "literal-ast")
    (:file "variable-binding-ast")
