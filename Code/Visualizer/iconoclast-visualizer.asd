@@ -10,4 +10,5 @@
    (:file "display-ast")
    (:file "progn")
    (:file "name-ast")
+   (:file "literal-ast")
    (:file "gui")))

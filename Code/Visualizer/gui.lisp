@@ -12,13 +12,6 @@
                        (4/5 (clim:scrolling () application))
                        (1/5 (clim:scrolling () interactor))))))
 
-(defmethod display-ast* ((ast ico:literal-ast) pane hpos vpos)
-  (let* ((name (format nil "~s" (ico:literal ast)))
-         (width (+ (clim:stream-string-width pane name) 10))
-         (height 20))
-    (draw-ast pane hpos vpos width height name)
-    (+ vpos height)))
-
 (defun display-ast (frame pane)
   (display-ast* (ast frame) pane 10 10))
 
