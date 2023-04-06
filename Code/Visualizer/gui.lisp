@@ -27,7 +27,7 @@
   (let* ((name "progn")
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
-    (draw-ast pane hpos vpos width height "progn")
+    (draw-ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
       (loop for child in (ico:form-asts ast)
             do (setf child-vpos
@@ -35,6 +35,13 @@
                                    (+ hpos width 10)
                                    child-vpos)))
       (+ child-vpos height))))
+
+(defmethod display-ast* ((ast ico:name-ast) pane hpos vpos)
+  (let* ((name (symbol-name (ico:name ast)))
+         (width (+ (clim:stream-string-width pane name) 10))
+         (height 20))
+    (draw-ast pane hpos vpos width height name)
+    (+ vpos height)))
 
 (defun display-ast (frame pane)
   (display-ast* (ast frame) pane 10 10))
