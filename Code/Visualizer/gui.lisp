@@ -24,13 +24,17 @@
                    :align-x :center :align-y :center))
 
 (defmethod display-ast* ((ast ico:progn-ast) pane hpos vpos)
-  (let ((width 50)
-        (height 20))
+  (let* ((name "progn")
+         (width (+ (clim:stream-string-width pane name) 10))
+         (height 20))
     (draw-ast pane hpos vpos width height "progn")
-    (loop for child in (ico:form-asts ast)
-          for vpos-delta from 0 by (+ height 10)
-          do (display-ast* child pane
-                           (+ hpos width 10) (+ vpos vpos-delta)))))
+    (let ((child-vpos vpos))
+      (loop for child in (ico:form-asts ast)
+            do (setf child-vpos
+                     (display-ast* child pane
+                                   (+ hpos width 10)
+                                   child-vpos)))
+      (+ child-vpos height))))
 
 (defun display-ast (frame pane)
   (display-ast* (ast frame) pane 10 10))
