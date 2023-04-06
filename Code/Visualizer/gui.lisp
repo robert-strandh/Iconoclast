@@ -14,15 +14,23 @@
 
 (defgeneric display-ast* (ast pane hpos vpos))
 
-(defmethod display-ast* ((ast ico:progn-ast) pane hpos vpos)
+(defun draw-ast (pane hpos vpos width height text)
   (clim:draw-rectangle* pane
                         hpos vpos
-                        (+ hpos 20) (+ vpos 20)
+                        (+ hpos width) (+ vpos height)
                         :filled nil)
-  (loop for child in (ico:form-asts ast)
-        for vpos-delta from 0 by 30
-        do (display-ast* child pane
-                         (+ hpos 30) (+ vpos vpos-delta))))
+  (clim:draw-text* pane text
+                   (+ hpos (/ width 2)) (+ vpos (/ height 2))
+                   :align-x :center :align-y :center))
+
+(defmethod display-ast* ((ast ico:progn-ast) pane hpos vpos)
+  (let ((width 50)
+        (height 20))
+    (draw-ast pane hpos vpos width height "progn")
+    (loop for child in (ico:form-asts ast)
+          for vpos-delta from 0 by (+ height 10)
+          do (display-ast* child pane
+                           (+ hpos width 10) (+ vpos vpos-delta)))))
 
 (defun display-ast (frame pane)
   (display-ast* (ast frame) pane 10 10))
