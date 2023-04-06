@@ -23,4 +23,5 @@
    (:file "let-ast")
    (:file "load-time-value-ast")
    (:file "locally-ast")
+   (:file "multiple-value-call-ast")
    (:file "gui")))
