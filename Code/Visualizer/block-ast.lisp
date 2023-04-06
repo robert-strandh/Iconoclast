@@ -1,7 +1,7 @@
 (cl:in-package #:iconoclast-visualizer)
 
 (defmethod display-ast* ((ast ico:block-ast) pane hpos vpos)
-  (let* ((name "progn")
+  (let* ((name "block")
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
     (draw-ast pane hpos vpos width height name)
