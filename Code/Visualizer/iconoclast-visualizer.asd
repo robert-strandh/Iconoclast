@@ -13,5 +13,6 @@
    (:file "literal-ast")
    (:file "variable-binding-ast")
    (:file "block-ast")
+   (:file "return-from-ast")
    (:file "let-ast")
    (:file "gui")))
