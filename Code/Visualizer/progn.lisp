@@ -8,7 +8,8 @@
     (let ((child-vpos vpos))
       (loop for child in (ico:form-asts ast)
             do (setf child-vpos
-                     (display-ast* child pane
-                                   (+ hpos width 10)
-                                   child-vpos)))
+                     (+ (display-ast* child pane
+                                      (+ hpos width 10)
+                                      child-vpos)
+                        10)))
       (+ child-vpos height))))
