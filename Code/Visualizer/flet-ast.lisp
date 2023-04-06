@@ -30,3 +30,6 @@
 
 (defmethod display-ast* ((ast ico:labels-ast) pane hpos vpos)
   (display-flet-or-labels "labels*" ast pane hpos vpos))
+
+(defmethod display-ast* ((ast ico:macrolet-ast) pane hpos vpos)
+  (display-flet-or-labels "macrolet*" ast pane hpos vpos))
