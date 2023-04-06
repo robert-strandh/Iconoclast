@@ -12,17 +12,6 @@
                        (4/5 (clim:scrolling () application))
                        (1/5 (clim:scrolling () interactor))))))
 
-(defgeneric display-ast* (ast pane hpos vpos))
-
-(defun draw-ast (pane hpos vpos width height text)
-  (clim:draw-rectangle* pane
-                        hpos vpos
-                        (+ hpos width) (+ vpos height)
-                        :filled nil)
-  (clim:draw-text* pane text
-                   (+ hpos (/ width 2)) (+ vpos (/ height 2))
-                   :align-x :center :align-y :center))
-
 (defmethod display-ast* ((ast ico:progn-ast) pane hpos vpos)
   (let* ((name "progn")
          (width (+ (clim:stream-string-width pane name) 10))

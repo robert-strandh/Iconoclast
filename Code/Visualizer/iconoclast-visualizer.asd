@@ -7,4 +7,5 @@
   :serial t
   :components
   ((:file "packages")
+   (:file "display-ast")
    (:file "gui")))
