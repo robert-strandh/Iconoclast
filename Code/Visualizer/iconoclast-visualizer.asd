@@ -8,4 +8,5 @@
   :components
   ((:file "packages")
    (:file "display-ast")
+   (:file "progn")
    (:file "gui")))
