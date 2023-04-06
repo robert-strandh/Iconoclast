@@ -17,6 +17,7 @@
    (:file "eval-when")
    (:file "flet-ast")
    (:file "function-ast")
+   (:file "go-ast")
    (:file "return-from-ast")
    (:file "let-ast")
    (:file "gui")))
