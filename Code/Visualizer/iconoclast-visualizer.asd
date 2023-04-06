@@ -14,7 +14,7 @@
    (:file "variable-binding-ast")
    (:file "block-ast")
    (:file "catch-ast")
-   (:file "eval-when")
+   (:file "eval-when-ast")
    (:file "flet-ast")
    (:file "function-ast")
    (:file "go-ast")
