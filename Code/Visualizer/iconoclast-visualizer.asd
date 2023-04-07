@@ -28,4 +28,5 @@
    (:file "progv-ast")
    (:file "special-ast")
    (:file "ignore-ast")
+   (:file "inline-ast")
    (:file "gui")))
