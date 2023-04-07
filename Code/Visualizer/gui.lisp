@@ -18,7 +18,7 @@
 ;;; Default method for ASTs that have not yet been dealt with in
 ;;; specific methods.
 (defmethod display-ast* (ast pane hpos vpos)
-  (let* ((name (format nil "~s" (class-name ast)))
+  (let* ((name (format nil "~s" (class-name (class-of ast))))
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
     (draw-ast pane hpos vpos width height name)
