@@ -26,4 +26,5 @@
    (:file "multiple-value-call-ast")
    (:file "multiple-value-prog1-ast")
    (:file "progv-ast")
+   (:file "special-ast")
    (:file "gui")))
