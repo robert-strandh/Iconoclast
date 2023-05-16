@@ -5,7 +5,7 @@
    '(multiple-value-prog1 a)
    '(ico:multiple-value-prog1-ast
      ("first-form-ast"
-      (bld:unparsed-form-ast :form a))
+      (ico:unparsed-form-ast :form a))
      ("form-asts" nil))))
 
 (defun test-multiple-value-prog1 ()

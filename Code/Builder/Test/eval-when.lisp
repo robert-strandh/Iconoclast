@@ -4,14 +4,14 @@
   (run-test
    '(eval-when () 234)
    '(ico:eval-when-ast
-     ("form-asts" ((bld:unparsed-form-ast :form 234)))
+     ("form-asts" ((ico:unparsed-form-ast :form 234)))
      ("situation-asts" nil))))
 
 (defun test-eval-when-2 ()
   (run-test
    '(eval-when (:compile-toplevel) 234)
    '(ico:eval-when-ast
-     ("form-asts" ((bld:unparsed-form-ast :form 234)))
+     ("form-asts" ((ico:unparsed-form-ast :form 234)))
      ("situation-asts"
       ((ico:situation-ast :name :compile-toplevel))))))
 

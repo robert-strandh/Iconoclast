@@ -6,7 +6,7 @@
    '(ico:multiple-value-call-ast
      ("form-asts" nil)
      ("function-form-ast"
-      (bld:unparsed-form-ast :form a)))))
+      (ico:unparsed-form-ast :form a)))))
 
 (defun test-multiple-value-call ()
   (format *trace-output* "Testing MULTIPLE-VALUE-CALL~%")

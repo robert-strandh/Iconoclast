@@ -7,7 +7,7 @@
 
 (defun test-return-2 ()
   '(return 234)
-  '(ico:return-ast ("form-ast" (bld:unparsed-form-ast :form 234))))
+  '(ico:return-ast ("form-ast" (ico:unparsed-form-ast :form 234))))
 
 (defun test-return ()
   (format *trace-output* "Testing RETURN~%")

@@ -12,7 +12,7 @@
       '(setq a 234)
       '(ico:setq-ast
         ("form-asts"
-         ((bld:unparsed-form-ast :form 234)))
+         ((ico:unparsed-form-ast :form 234)))
         ("variable-name-asts"
          ((ico:variable-name-ast :name a))))))
 
@@ -21,8 +21,8 @@
       '(setq a 234 b 345)
       '(ico:setq-ast
         ("form-asts"
-         ((bld:unparsed-form-ast :form 234)
-          (bld:unparsed-form-ast :form 345)))
+         ((ico:unparsed-form-ast :form 234)
+          (ico:unparsed-form-ast :form 345)))
         ("variable-name-asts"
          ((ico:variable-name-ast :name a)
           (ico:variable-name-ast :name b))))))

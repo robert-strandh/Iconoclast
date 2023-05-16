@@ -6,7 +6,7 @@
    '(ico:unwind-protect-ast
      ("form-asts" nil)
      ("protected-form-ast"
-      (bld:unparsed-form-ast :form 234)))))
+      (ico:unparsed-form-ast :form 234)))))
 
 (defun test-unwind-protect ()
   (format *trace-output* "Testing UNWIND-PROTECT~%")

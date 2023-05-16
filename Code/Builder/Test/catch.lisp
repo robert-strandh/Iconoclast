@@ -5,7 +5,7 @@
    '(catch 234)
    '(ico:catch-ast
      ("form-asts" nil)
-     ("tag-ast" (bld:unparsed-form-ast :form 234)))))
+     ("tag-ast" (ico:unparsed-form-ast :form 234)))))
 
 (defun test-catch ()
   (format *trace-output* "Testing CATCH~%")

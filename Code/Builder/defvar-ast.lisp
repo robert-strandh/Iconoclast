@@ -17,7 +17,7 @@
     ((builder builder)
      (relation (eql :initial-value))
      (left ico:defvar-or-defparameter-ast)
-     (right unparsed-form-ast)
+     (right ico:unparsed-form-ast)
      &key)
   (reinitialize-instance left
     :form-ast right))

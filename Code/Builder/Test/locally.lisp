@@ -15,7 +15,7 @@
    '(ico:locally-ast
      ("declaration-asts" nil)
      ("form-asts"
-      ((bld:unparsed-form-ast :form 234))))))
+      ((ico:unparsed-form-ast :form 234))))))
 
 ;;; Test that the FORM-ASTs appear in the right order.
 (defun test-locally-3 ()
@@ -24,8 +24,8 @@
    '(ico:locally-ast
      ("declaration-asts" nil)
      ("form-asts"
-      ((bld:unparsed-form-ast :form 234)
-       (bld:unparsed-form-ast :form 345))))))
+      ((ico:unparsed-form-ast :form 234)
+       (ico:unparsed-form-ast :form 345))))))
 
 ;;; None of these tests has any declarations in it.  We test for
 ;;; declarations using LOCALLY in a later test when we test the

@@ -4,7 +4,7 @@
   (let ((result (bld::test '(the fixnum a))))
     (assert (equal (convert-ast result)
                    '(ico:the-ast
-                     ("form-ast" (bld:unparsed-form-ast :form a))
+                     ("form-ast" (ico:unparsed-form-ast :form a))
                      ("value-type-ast"
                       (ico:atomic-type-specifier-ast
                        ("name-ast" (ico:type-name-ast :name fixnum)))))))))
@@ -13,7 +13,7 @@
   (let ((result (bld::test '(the (integer 2 3) a))))
     (assert (equal (convert-ast result)
                    '(ico:the-ast
-                     ("form-ast" (bld:unparsed-form-ast :form a))
+                     ("form-ast" (ico:unparsed-form-ast :form a))
                      ("value-type-ast"
                       (ico:compound-type-specifier-ast
                        ("atomic-type-specifier-ast" nil)
@@ -26,7 +26,7 @@
   (let ((result (bld::test '(the (array) a))))
     (assert (equal (convert-ast result)
                    '(ico:the-ast
-                     ("form-ast" (bld:unparsed-form-ast :form a))
+                     ("form-ast" (ico:unparsed-form-ast :form a))
                      ("value-type-ast"
                       (ico:compound-type-specifier-ast
                        ("atomic-type-specifier-ast" nil)
@@ -37,7 +37,7 @@
   (let ((result (bld::test '(the (array fixnum) a))))
     (assert (equal (convert-ast result)
                    '(ico:the-ast
-                     ("form-ast" (bld:unparsed-form-ast :form a))
+                     ("form-ast" (ico:unparsed-form-ast :form a))
                      ("value-type-ast"
                       (ico:compound-type-specifier-ast
                        ("atomic-type-specifier-ast"

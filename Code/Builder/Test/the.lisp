@@ -4,7 +4,7 @@
   (run-test
    '(the t 234)
    '(ico:the-ast
-     ("form-ast" (bld:unparsed-form-ast :form 234))
+     ("form-ast" (ico:unparsed-form-ast :form 234))
      ("value-type-ast"
       (ico:atomic-type-specifier-ast
        ("name-ast" (ico:type-name-ast :name t)))))))

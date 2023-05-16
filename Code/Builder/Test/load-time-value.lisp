@@ -4,7 +4,7 @@
   (run-test
    '(load-time-value 234)
    '(ico:load-time-value-ast
-     ("form-ast" (bld:unparsed-form-ast :form 234))
+     ("form-ast" (ico:unparsed-form-ast :form 234))
      ("read-only-p-ast" nil))))
 
 (defun test-load-time-value ()

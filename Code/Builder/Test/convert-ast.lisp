@@ -20,7 +20,7 @@
   (cons (class-name (class-of ast))
         `(:value ,(ico:value ast))))
 
-(defmethod convert-ast ((ast bld:unparsed-form-ast))
+(defmethod convert-ast ((ast ico:unparsed-form-ast))
   (cons (class-name (class-of ast))
         `(:form ,(bld:form ast))))
 

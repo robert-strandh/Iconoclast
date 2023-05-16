@@ -13,7 +13,7 @@
    '(block hello 234)
    '(ico:block-ast
      ("form-asts"
-      ((bld:unparsed-form-ast :form 234)))
+      ((ico:unparsed-form-ast :form 234)))
      ("name-ast" (ico:block-name-ast :name hello)))))
 
 (defun test-block ()

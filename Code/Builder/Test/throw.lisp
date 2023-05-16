@@ -4,8 +4,8 @@
   (run-test
    '(throw 234 345)
    '(ico:throw-ast
-     ("result-form-ast" (bld:unparsed-form-ast :form 345))
-     ("tag-ast" (bld:unparsed-form-ast :form 234)))))
+     ("result-form-ast" (ico:unparsed-form-ast :form 345))
+     ("tag-ast" (ico:unparsed-form-ast :form 234)))))
 
 (defun test-throw ()
   (format *trace-output* "Testing THROW~%")

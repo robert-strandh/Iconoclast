@@ -5,7 +5,7 @@
    '(multiple-value-bind () (f x))
    '(ico:multiple-value-bind-ast
      ("declaration-asts" nil)
-     ("form-ast" (bld:unparsed-form-ast :form (f x)))
+     ("form-ast" (ico:unparsed-form-ast :form (f x)))
      ("form-asts" nil)
      ("variable-name-asts" nil))))
 
@@ -14,7 +14,7 @@
    '(multiple-value-bind (x y) (f x))
    '(ico:multiple-value-bind-ast
      ("declaration-asts" nil)
-     ("form-ast" (bld:unparsed-form-ast :form (f x)))
+     ("form-ast" (ico:unparsed-form-ast :form (f x)))
      ("form-asts" nil)
      ("variable-name-asts"
       ((ico:variable-name-ast :name x)

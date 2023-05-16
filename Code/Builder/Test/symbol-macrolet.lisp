@@ -16,7 +16,7 @@
                      ("form-asts" nil)
                      ("symbol-expansion-asts"
                       ((ico:symbol-expansion-ast
-                        ("expansion-ast" (bld:unparsed-form-ast :form 234))
+                        ("expansion-ast" (ico:unparsed-form-ast :form 234))
                         ("symbol-ast" (ico:variable-name-ast :name f))))))))))
 
 (defun test-symbol-macrolet ()

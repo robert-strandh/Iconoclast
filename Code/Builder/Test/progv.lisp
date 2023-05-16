@@ -6,9 +6,9 @@
    '(ico:progv-ast
      ("form-asts" nil)
      ("symbols-ast"
-      (bld:unparsed-form-ast :form a))
+      (ico:unparsed-form-ast :form a))
      ("values-ast"
-      (bld:unparsed-form-ast :form b)))))
+      (ico:unparsed-form-ast :form b)))))
 
 (defun test-progv ()
   (format *trace-output* "Testing PROGV~%")
