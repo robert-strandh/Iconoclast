@@ -11,6 +11,9 @@
      #:children
      #:string-designator-ast
      #:designated-string
+     #:unparsed-ast
+     #:unparsed-form-ast
+     #:form
      #:form-ast-mixin
      #:place-ast
      #:place-ast-mixin
