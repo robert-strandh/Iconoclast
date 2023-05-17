@@ -54,3 +54,16 @@
              (ico:method-combination-name-and-arguments-ast left))
      (list right)))
   left)
+
+(define-make-node-method :method-description ico:method-description-ast)
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :method))
+     (left ico:defgeneric-ast)
+     (right ico:method-description-ast)
+     &key)
+  (reinitialize-instance
+      left
+    :method-description-asts
+    (append (ico:method-description-asts left) (list right))))
