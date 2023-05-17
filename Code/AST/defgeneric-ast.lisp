@@ -3,6 +3,7 @@
 (defclass defgeneric-ast
     (name-ast-mixin
      lambda-list-ast-mixin
+     documentation-ast-mixin
      ast)
   ((%generic-function-class-ast
     :initarg :generic-function-class-ast
