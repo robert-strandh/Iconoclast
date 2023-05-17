@@ -207,6 +207,7 @@
      #:defun-ast
      #:defgeneric-ast
      #:generic-function-class-ast
+     #:method-class-ast
      #:defmethod-ast
      #:destructuring-bind-ast
      #:in-package-ast
