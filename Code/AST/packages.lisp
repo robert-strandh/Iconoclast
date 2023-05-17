@@ -208,6 +208,8 @@
      #:defgeneric-ast
      #:generic-function-class-ast
      #:method-class-ast
+     #:method-combination-name-and-arguments-ast
+     #:method-combination-arguments
      #:defmethod-ast
      #:destructuring-bind-ast
      #:in-package-ast
