@@ -210,6 +210,8 @@
      #:method-class-ast
      #:method-combination-name-and-arguments-ast
      #:method-combination-arguments
+     #:method-description-asts
+     #:method-description-ast
      #:defmethod-ast
      #:destructuring-bind-ast
      #:in-package-ast
