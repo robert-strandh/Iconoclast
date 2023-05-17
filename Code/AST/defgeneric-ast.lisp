@@ -12,10 +12,24 @@
    (%method-class-ast
     :initform nil
     :initarg :method-class-ast
-    :reader method-class-ast)))
+    :reader method-class-ast)
+   (%method-combination-name-and-arguments-ast
+    :initform nil
+    :initarg :method-combination-name-and-arguments-ast
+    :reader method-combination-name-and-arguments-ast)))
 
 (defmethod children append ((ast defgeneric-ast))
   (list (cons "generic-function-class-ast"
               (generic-function-class-ast ast))
         (cons "method-class-ast"
-              (method-class-ast ast))))
+              (method-class-ast ast))
+        (cons "method-combination-name-and-arguments-ast"
+              (method-combination-name-and-arguments-ast ast))))
+
+(defclass method-combination-name-and-arguments-ast
+    (name-ast-mixin
+     ast)
+  ((%method-combination-arguments
+    :initform '()
+    :initarg :method-combination-arguments
+    :reader method-combination-arguments)))
