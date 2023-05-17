@@ -45,6 +45,7 @@
    (:file "defmacro-ast")
    (:file "defvar-ast")
    (:file "defun-ast")
+   (:file "defgeneric-ast")
    (:file "defmethod-ast")
    (:file "defclass-ast")
    (:file "destructuring-bind-ast")

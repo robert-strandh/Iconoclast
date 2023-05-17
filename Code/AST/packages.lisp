@@ -205,6 +205,7 @@
      #:defvar-ast
      #:defparameter-ast
      #:defun-ast
+     #:defgeneric-ast
      #:defmethod-ast
      #:destructuring-bind-ast
      #:in-package-ast
