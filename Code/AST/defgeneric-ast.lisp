@@ -4,7 +4,10 @@
     (name-ast-mixin
      lambda-list-ast-mixin
      ast)
-  ())
+  ((%generic-function-class-ast
+    :initarg :generic-function-class-ast
+    :reader generic-function-class-ast)))
 
-;; (defmethod children append ((ast defgeneric-ast))
-;;   ...)
+(defmethod children append ((ast defgeneric-ast))
+  (list (cons "generic-function-class-ast"
+              (generic-function-class-ast ast))))
