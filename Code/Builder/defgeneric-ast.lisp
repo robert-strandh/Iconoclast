@@ -26,3 +26,31 @@
      (right t)
      &key)
   (reinitialize-instance left :method-class-ast right))
+
+(define-make-node-method :method-combination-name ico:name-ast)
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :method-combination))
+     (left ico:defgeneric-ast)
+     (right ico:name-ast)
+     &key)
+  (reinitialize-instance
+      left
+    :method-combination-name-and-arguments-ast
+    (make-instance 'ico:method-combination-name-and-arguments-ast
+      :name-ast right)))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :method-combination-argument))
+     (left ico:defgeneric-ast)
+     (right t)
+     &key)
+  (reinitialize-instance
+      (ico:method-combination-name-and-arguments-ast left)
+    :method-combination-arguments
+    (append (ico:method-combination-arguments
+             (ico:method-combination-name-and-arguments-ast left))
+     (list right)))
+  left)
