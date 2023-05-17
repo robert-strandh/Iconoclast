@@ -33,3 +33,8 @@
     :initform '()
     :initarg :method-combination-arguments
     :reader method-combination-arguments)))
+
+(defmethod children append
+    ((ast method-combination-name-and-arguments-ast))
+  (list (cons "method-combination-arguments"
+              (method-combination-arguments ast))))
