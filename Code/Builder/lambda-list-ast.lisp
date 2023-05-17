@@ -88,3 +88,16 @@
 
 (defmethod abp:node-kind ((buildern builder) (node ico:pattern-ast))
   :pattern)
+
+(defmethod abp:node-relation
+    ((builder builder)
+     (relation (eql :required))
+     (lambda-list ico:required-parameter-asts-mixin))
+  (ico:required-parameter-asts lambda-list))
+
+(defmethod abp:node-relation
+    ((builder builder)
+     (relation (eql :name))
+     (parameter-ast ico:required-parameter-ast))
+  (ico:name (ico:name-ast parameter-ast)))
+
