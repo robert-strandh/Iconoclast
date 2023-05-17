@@ -18,3 +18,11 @@
      (right t)
      &key)
   (reinitialize-instance left :generic-function-class-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :method-class))
+     (left ico:defgeneric-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :method-class-ast right))
