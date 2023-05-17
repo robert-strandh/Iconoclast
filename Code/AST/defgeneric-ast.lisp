@@ -6,9 +6,11 @@
      documentation-ast-mixin
      ast)
   ((%generic-function-class-ast
+    :initform nil
     :initarg :generic-function-class-ast
     :reader generic-function-class-ast)
    (%method-class-ast
+    :initform nil
     :initarg :method-class-ast
     :reader method-class-ast)))
 
