@@ -146,3 +146,14 @@
 
 (defmethod children append ((ast value-mixin))
   (list (cons "value" (value ast))))
+
+(defgeneric slot-specifier-asts (ast))
+
+(defclass slot-specifier-asts-mixin ()
+  ((%slot-specifier-asts
+    :initform '()
+    :initarg :slot-specifier-asts
+    :reader slot-specifier-asts)))
+
+(defmethod children append ((ast slot-specifier-asts-mixin))
+  (list (cons "slot-specifier-asts" (slot-specifier-asts ast))))
