@@ -209,6 +209,7 @@
 
 (defclass supplied-p-parameter-ast-mixin ()
   ((%supplied-p-parameter-ast
+      :initform nil
       :initarg :supplied-p-parameter-ast
       :reader supplied-p-parameter-ast)))
 
