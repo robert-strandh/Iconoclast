@@ -48,6 +48,7 @@
    (:file "defmethod-ast")
    (:file "defgeneric-ast")
    (:file "slot-specifier-ast")
+   (:file "default-initarg-ast")
    (:file "defclass-ast")
    (:file "define-condition-ast")
    (:file "destructuring-bind-ast")
