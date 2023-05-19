@@ -6,7 +6,7 @@
     (documentation-ast-mixin
      slot-specifier-asts-mixin
      name-ast-mixin
-     default-initargs-ast-mixin
+     default-initarg-asts-mixin
      ast)
   ((%metaclass-ast
     :initform nil
