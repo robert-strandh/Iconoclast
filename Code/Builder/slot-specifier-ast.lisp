@@ -25,4 +25,5 @@
      (left ico:slot-specifier-ast)
      (right ico:initarg-name-ast)
      &key)
-  (reinitialize-instance left :name-ast right))
+  (reinitialize-instance
+      left :initarg-asts (append (ico:initarg-asts left) (list right))))
