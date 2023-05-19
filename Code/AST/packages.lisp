@@ -200,6 +200,7 @@
      #:initform-ast
      #:reader-asts
      #:writer-asts
+     #:accessor-asts
      #:slot-specifier-asts
      #:slot-specifier-ast
      #:initarg-name-ast
