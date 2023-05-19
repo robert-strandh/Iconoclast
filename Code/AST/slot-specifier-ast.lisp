@@ -6,6 +6,8 @@
 
 (defgeneric documentation-ast (slot-specifier-ast))
 
+(defgeneric type-specifier-ast (slot-specifier-ast))
+
 (defgeneric reader-asts (slot-specifier-ast))
 
 (defgeneric writer-asts (slot-specifier-ast))
@@ -26,6 +28,10 @@
     :initform nil
     :initarg :documentation-ast
     :reader documentation-ast)
+   (%type-specifier-ast
+    :initform nil
+    :initarg :type-specifier-ast
+    :reader type-specifier-ast)
    (%reader-asts
     :initform '()
     :initarg :reader-asts
@@ -46,7 +52,8 @@
 (defmethod children append ((ast slot-specifier-ast))
   (list (cons "initarg-asts" (initarg-asts ast))
         (cons "initform-ast" (initform-ast ast))
-        (cons "initform-ast" (initform-ast ast))
+        (cons "documentation-ast" (documentation-ast ast))
+        (cons "type-specifier-ast" (type-specifier-ast ast))
         (cons "reader-asts" (reader-asts ast))
         (cons "writer-asts" (writer-asts ast))
         (cons "accessor-asts" (accessor-asts ast))))
