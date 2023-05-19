@@ -27,3 +27,11 @@
      &key)
   (reinitialize-instance
       left :initarg-asts (append (ico:initarg-asts left) (list right))))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :initform))
+     (left ico:slot-specifier-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :initform-ast right))
