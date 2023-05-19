@@ -122,6 +122,7 @@
      #:name-ast
      #:name
      #:name-mixin
+     #:default-initargs-ast
      #:default-initargs-ast-mixin
      #:function-name-ast
      #:declare-asts
