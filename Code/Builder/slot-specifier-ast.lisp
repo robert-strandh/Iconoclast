@@ -35,3 +35,12 @@
      (right t)
      &key)
   (reinitialize-instance left :initform-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :reader))
+     (left ico:slot-specifier-ast)
+     (right t)
+     &key)
+  (reinitialize-instance
+      left :reader-asts (append (ico:reader-asts left) (list right))))
