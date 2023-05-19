@@ -4,8 +4,6 @@
 
 (defgeneric initform-ast (slot-specifier-ast))
 
-(defgeneric documentation-ast (slot-specifier-ast))
-
 (defgeneric type-specifier-ast (slot-specifier-ast))
 
 (defgeneric reader-asts (slot-specifier-ast))
@@ -16,7 +14,7 @@
 
 (defgeneric allocation (slot-specifier-ast))
 
-(defclass slot-specifier-ast (name-ast-mixin ast)
+(defclass slot-specifier-ast (documentation-ast-mixin name-ast-mixin ast)
   ((%initarg-asts
     :initform '()
     :initarg :initarg-asts
@@ -24,10 +22,6 @@
    (%initform-ast
     :initarg :initform-ast
     :reader initform-ast)
-   (%documentation-ast
-    :initform nil
-    :initarg :documentation-ast
-    :reader documentation-ast)
    (%type-specifier-ast
     :initform nil
     :initarg :type-specifier-ast
@@ -52,7 +46,6 @@
 (defmethod children append ((ast slot-specifier-ast))
   (list (cons "initarg-asts" (initarg-asts ast))
         (cons "initform-ast" (initform-ast ast))
-        (cons "documentation-ast" (documentation-ast ast))
         (cons "type-specifier-ast" (type-specifier-ast ast))
         (cons "reader-asts" (reader-asts ast))
         (cons "writer-asts" (writer-asts ast))
