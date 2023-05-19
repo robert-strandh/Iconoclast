@@ -199,6 +199,7 @@
      #:initarg-asts
      #:initform-ast
      #:documentation-ast
+     #:type-specifier-ast
      #:reader-asts
      #:writer-asts
      #:accessor-asts
