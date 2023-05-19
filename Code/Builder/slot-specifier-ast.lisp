@@ -38,6 +38,14 @@
 
 (defmethod abp:relate
     ((builder builder)
+     (relation (eql :documentation))
+     (left ico:slot-specifier-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :documentation-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
      (relation (eql :reader))
      (left ico:slot-specifier-ast)
      (right t)
@@ -62,3 +70,11 @@
      &key)
   (reinitialize-instance
       left :accessor-asts (append (ico:accessor-asts left) (list right))))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :allocation))
+     (left ico:slot-specifier-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :allocation right))
