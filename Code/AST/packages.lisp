@@ -196,6 +196,7 @@
      #:cond-ast
      #:clause-asts
      #:defclass-ast
+     #:metaclass-ast
      #:initarg-asts
      #:initform-ast
      #:documentation-ast
