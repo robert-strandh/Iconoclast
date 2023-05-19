@@ -8,6 +8,8 @@
 
 (defgeneric writer-asts (slot-specifier-ast))
 
+(defgeneric accessor-asts (slot-specifier-ast))
+
 (defclass slot-specifier-ast (name-ast-mixin ast)
   ((%initarg-asts
     :initform '()
@@ -23,13 +25,18 @@
    (%writer-asts
     :initform '()
     :initarg :writer-asts
-    :reader writer-asts)))
+    :reader writer-asts)
+   (%accessor-asts
+    :initform '()
+    :initarg :accessor-asts
+    :reader accessor-asts)))
 
 (defmethod children append ((ast slot-specifier-ast))
   (list (cons "initarg-asts" (initarg-asts ast))
         (cons "initform-ast" (initform-ast ast))
         (cons "reader-asts" (reader-asts ast))
-        (cons "writer-asts" (writer-asts ast))))
+        (cons "writer-asts" (writer-asts ast))
+        (cons "accessor-asts" (accessor-asts ast))))
 
 (defclass initarg-name-ast (name-mixin ast)
   ())
