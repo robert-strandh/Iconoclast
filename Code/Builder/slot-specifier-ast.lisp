@@ -46,6 +46,14 @@
 
 (defmethod abp:relate
     ((builder builder)
+     (relation (eql :type))
+     (left ico:slot-specifier-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :type-specifier-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
      (relation (eql :reader))
      (left ico:slot-specifier-ast)
      (right t)
