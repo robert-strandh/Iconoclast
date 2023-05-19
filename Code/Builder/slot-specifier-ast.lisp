@@ -53,3 +53,12 @@
      &key)
   (reinitialize-instance
       left :writer-asts (append (ico:writer-asts left) (list right))))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :accessor))
+     (left ico:slot-specifier-ast)
+     (right t)
+     &key)
+  (reinitialize-instance
+      left :accessor-asts (append (ico:accessor-asts left) (list right))))
