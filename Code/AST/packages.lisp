@@ -197,6 +197,7 @@
      #:clause-asts
      #:defclass-ast
      #:initarg-asts
+     #:initform-ast
      #:slot-specifier-asts
      #:slot-specifier-ast
      #:initarg-name-ast
