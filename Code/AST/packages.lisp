@@ -198,6 +198,7 @@
      #:defclass-ast
      #:initarg-asts
      #:initform-ast
+     #:reader-asts
      #:slot-specifier-asts
      #:slot-specifier-ast
      #:initarg-name-ast
