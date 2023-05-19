@@ -38,14 +38,6 @@
 
 (defmethod abp:relate
     ((builder builder)
-     (relation (eql :documentation))
-     (left ico:slot-specifier-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :documentation-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
      (relation (eql :type))
      (left ico:slot-specifier-ast)
      (right t)
