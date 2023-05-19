@@ -53,6 +53,7 @@
     (:file "defgeneric-ast")
     (:file "defmethod-ast")
     (:file "defun-ast")
+    (:file "slot-specifier-ast")
     (:file "defclass-ast")
     (:file "destructuring-bind-ast")
     (:file "in-package-ast")
