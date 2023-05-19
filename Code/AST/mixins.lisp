@@ -157,3 +157,14 @@
 
 (defmethod children append ((ast slot-specifier-asts-mixin))
   (list (cons "slot-specifier-asts" (slot-specifier-asts ast))))
+
+(defgeneric default-initargs-ast (ast))
+
+(defclass default-initargs-ast-mixin ()
+  ((%default-initargs-ast
+    :initform nil
+    :initarg :default-initargs-ast
+    :reader default-initargs-ast)))
+
+(defmethod children append ((ast default-initargs-ast-mixin))
+  (list (cons "default-initargs-ast" (default-initargs-ast ast))))
