@@ -196,6 +196,7 @@
      #:cond-ast
      #:clause-asts
      #:defclass-ast
+     #:initarg-asts
      #:slot-specifier-asts
      #:slot-specifier-ast
      #:initarg-name-ast
