@@ -18,3 +18,11 @@
      &key)
   (reinitialize-instance left
     :slot-specifier-asts (append (ico:slot-specifier-asts left) (list right))))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :metaclass))
+     (left ico:defclass-ast)
+     (right ico:type-name-ast)
+     &key)
+  (reinitialize-instance left :metaclass-ast right))
