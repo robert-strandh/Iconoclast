@@ -9,11 +9,3 @@
      (right t)
      &key)
   (reinitialize-instance left :name right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :initform))
-     (left ico:default-initarg-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :initform-ast right))
