@@ -5,7 +5,7 @@
      (kind (eql :unparsed))
      &key source expression context)
   (case context
-    ((:form :restart-report-string)
+    ((:form :condition-report :restart-report-string)
      (make-instance 'ico:unparsed-form-ast
        :origin source
        :form expression))
