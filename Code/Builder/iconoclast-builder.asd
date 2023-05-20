@@ -18,6 +18,7 @@
     (:file "string-designator-ast")
     (:file "form-asts-mixin")
     (:file "test-ast-mixin")
+    (:file "initform-ast-mixin")
     (:file "type-specifier-asts")
     (:file "declare-ast")
     (:file "name-ast")
