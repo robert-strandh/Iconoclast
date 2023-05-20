@@ -99,6 +99,7 @@
      #:whole-parameter-ast-mixin
      #:environment-parameter-ast
      #:environment-parameter-ast-mixin
+     #:initform-ast-mixin
      #:specializer-ast
      #:specialized-parameter-ast
      #:method-qualifier-asts
