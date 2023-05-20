@@ -200,6 +200,9 @@
      #:cond-ast
      #:clause-asts
      #:defclass-ast
+     #:define-condition-ast
+     #:condition-report-ast
+     #:report-ast
      #:metaclass-ast
      #:initarg-asts
      #:initform-ast
