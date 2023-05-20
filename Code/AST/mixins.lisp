@@ -168,3 +168,11 @@
 
 (defmethod children append ((ast default-initarg-asts-mixin))
   (list (cons "default-initarg-asst" (default-initarg-asts ast))))
+
+(defclass initform-ast-mixin ()
+  ((%initform-ast
+    :initarg :initform-ast
+    :reader initform-ast)))
+
+(defmethod children append ((ast initform-ast-mixin))
+  (list (cons "initform-ast" (initform-ast ast))))
