@@ -18,6 +18,14 @@
      &key)
   (reinitialize-instance left :argument-ast right))
 
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :string))
+     (left ico:condition-report-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :argument-ast right))
+
 (define-make-node-method :define-condition ico:define-condition-ast)
 
 (defmethod abp:relate
