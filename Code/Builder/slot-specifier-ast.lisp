@@ -30,14 +30,6 @@
 
 (defmethod abp:relate
     ((builder builder)
-     (relation (eql :initform))
-     (left ico:slot-specifier-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :initform-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
      (relation (eql :type))
      (left ico:slot-specifier-ast)
      (right t)
