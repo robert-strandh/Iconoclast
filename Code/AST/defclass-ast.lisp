@@ -4,6 +4,7 @@
 
 (defclass defclass-ast
     (documentation-ast-mixin
+     superclass-asts-mixin
      slot-specifier-asts-mixin
      name-ast-mixin
      default-initarg-asts-mixin
