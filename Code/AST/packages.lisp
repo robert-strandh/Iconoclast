@@ -204,6 +204,7 @@
      #:condition-report-ast
      #:report-ast
      #:metaclass-ast
+     #:slot-specifier-asts-mixin
      #:superclass-asts-mixin
      #:superclass-asts
      #:initarg-asts
