@@ -204,6 +204,8 @@
      #:condition-report-ast
      #:report-ast
      #:metaclass-ast
+     #:superclass-asts-mixin
+     #:superclass-asts
      #:initarg-asts
      #:initform-ast
      #:documentation-ast
