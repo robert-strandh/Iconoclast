@@ -56,6 +56,7 @@
     (:file "defmethod-ast")
     (:file "defun-ast")
     (:file "slot-specifier-ast")
+    (:file "superclass-asts-mixin")
     (:file "default-initarg-ast")
     (:file "defclass-ast")
     (:file "define-condition-ast")
