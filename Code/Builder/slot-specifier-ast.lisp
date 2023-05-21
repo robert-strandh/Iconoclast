@@ -2,6 +2,8 @@
 
 (define-make-node-method :slot-specifier ico:slot-specifier-ast)
 
+(define-make-node-method :condition-slot-specifier ico:slot-specifier-ast)
+
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :name))
