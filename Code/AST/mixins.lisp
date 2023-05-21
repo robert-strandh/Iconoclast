@@ -176,3 +176,14 @@
 
 (defmethod children append ((ast initform-ast-mixin))
   (list (cons "initform-ast" (initform-ast ast))))
+
+(defgeneric superclass-asts (ast))
+
+(defclass superclass-asts-mixin ()
+  ((%superclass-asts
+    :initform '()
+    :initarg :superclass-asts
+    :reader superclass-asts)))
+
+(defmethod children append ((ast superclass-asts-mixin))
+  (list (cons "superclass-asts" (superclass-asts ast))))
