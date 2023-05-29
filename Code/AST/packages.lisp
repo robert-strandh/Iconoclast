@@ -253,4 +253,7 @@
      #:etypecase-ast
      #:ctypecase-ast
      #:when-ast
-     #:unless-ast))
+     #:unless-ast
+     #:handler-binding-ast
+     #:handler-binding-asts
+     #:handler-bind-ast))
