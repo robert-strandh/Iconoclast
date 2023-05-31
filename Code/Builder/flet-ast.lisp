@@ -16,13 +16,3 @@
      &key)
   (reinitialize-instance left
     :name-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :binding))
-     (left ico:flet-or-labels-or-macrolet-ast)
-     (right ico:lexical-function-ast)
-     &key)
-  (reinitialize-instance left
-    :lexical-function-asts
-    (append (ico:lexical-function-asts left) (list right))))
