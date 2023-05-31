@@ -19,13 +19,3 @@
      (right t)
      &key)
   (reinitialize-instance left :function-form-ast right))
-
-(defmethod abp:relate
-    ((builer builder)
-     (relation (eql :binding))
-     (left ico:restart-bind-ast)
-     (right ico:restart-binding-ast)
-     &key)
-  (reinitialize-instance left
-    :restart-binding-asts
-    (append (ico:restart-binding-asts left) (list right))))
