@@ -5,7 +5,7 @@
          (height 20))
     (draw-ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
-      (loop for lexical-function-ast in (ico:lexical-function-asts ast)
+      (loop for lexical-function-ast in (ico:binding-asts ast)
             do (setf child-vpos
                      (+ (display-ast* lexical-function-ast pane
                                       (+ hpos width 20)

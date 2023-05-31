@@ -6,14 +6,14 @@
    '(ico:flet-ast
      ("declaration-asts" nil)
      ("form-asts" nil)
-     ("lexical-function-asts" nil))))
+     ("binding-asts" nil))))
 
 (defun test-flet-2 ()
   (run-test
    '(flet ((f ())))
    '(ico:flet-ast
      ("declaration-asts" nil) ("form-asts" nil)
-     ("lexical-function-asts"
+     ("binding-asts"
       ((ico:lexical-function-ast ("declaration-asts" nil)
         ("documentation-ast" nil)
         ("form-asts" nil)
@@ -37,7 +37,7 @@
    '(ico:labels-ast
      ("declaration-asts" nil)
      ("form-asts" nil)
-     ("lexical-function-asts" nil))))
+     ("binding-asts" nil))))
 
 (defun test-labels-2 ()
   (run-test
@@ -45,7 +45,7 @@
    '(ico:labels-ast
      ("declaration-asts" nil)
      ("form-asts" nil)
-     ("lexical-function-asts"
+     ("binding-asts"
       ((ico:lexical-function-ast
         ("declaration-asts" nil)
         ("documentation-ast" nil) ("form-asts" nil)
@@ -69,7 +69,7 @@
    '(ico:macrolet-ast
      ("declaration-asts" nil)
      ("form-asts" nil)
-     ("lexical-function-asts" nil))))
+     ("binding-asts" nil))))
 
 (defun test-macrolet-2 ()
   (run-test
@@ -77,7 +77,7 @@
    '(ico:macrolet-ast
      ("declaration-asts" nil)
      ("form-asts" nil)
-     ("lexical-function-asts"
+     ("binding-asts"
       ((ico:lexical-function-ast
         ("declaration-asts" nil)
         ("documentation-ast" nil) ("form-asts" nil)
