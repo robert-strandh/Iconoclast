@@ -19,14 +19,3 @@
   (reinitialize-instance left :form-ast right))
 
 (define-make-node-method :handler-bind ico:handler-bind-ast)
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :binding))
-     (left ico:handler-bind-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :handler-binding-asts
-    (append (ico:handler-binding-asts left) (list right))))
-
