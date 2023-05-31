@@ -10,11 +10,5 @@
 (defmethod children append ((ast restart-binding-ast))
   (list (cons "function-form-ast" (function-form-ast ast))))
 
-(defclass restart-bind-ast (form-asts-mixin ast)
-  ((%restart-binding-asts
-    :initform '()
-    :initarg :restart-binding-asts
-    :reader restart-binding-asts)))
-
-(defmethod children append ((ast restart-bind-ast))
-  (list (cons "restart-binding-asts" (restart-binding-asts ast))))
+(defclass restart-bind-ast (binding-asts-mixin form-asts-mixin ast)
+  ())
