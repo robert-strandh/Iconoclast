@@ -237,7 +237,6 @@
      #:destructuring-bind-ast
      #:in-package-ast
      #:multiple-value-bind-ast
-     #:restart-binding-asts
      #:restart-binding-ast
      #:restart-bind-ast
      #:report-ast
