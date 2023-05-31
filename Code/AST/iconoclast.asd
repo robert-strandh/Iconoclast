@@ -7,6 +7,7 @@
   ((:file "packages")
    (:file "ast")
    (:file "mixins")
+   (:file "binding-asts-mixin")
    (:file "unparsed-ast")
    (:file "application-ast")
    (:file "documentation-ast")
