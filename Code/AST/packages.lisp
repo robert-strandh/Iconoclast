@@ -15,6 +15,8 @@
      #:unparsed-form-ast
      #:form
      #:form-ast-mixin
+     #:binding-asts-mixin
+     #:binding-asts
      #:place-ast
      #:place-ast-mixin
      #:form-asts-mixin
@@ -255,5 +257,4 @@
      #:when-ast
      #:unless-ast
      #:handler-binding-ast
-     #:handler-binding-asts
      #:handler-bind-ast))
