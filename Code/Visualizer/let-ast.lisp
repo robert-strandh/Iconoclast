@@ -5,7 +5,7 @@
          (height 20))
     (draw-ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
-      (loop for variable-binding-ast in (ico:variable-binding-asts ast)
+      (loop for variable-binding-ast in (ico:binding-asts ast)
             do (setf child-vpos
                      (+ (display-ast* variable-binding-ast pane
                                       (+ hpos width 20)
