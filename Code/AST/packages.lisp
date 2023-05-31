@@ -147,7 +147,6 @@
      #:lexical-function-ast
      #:flet-or-labels-or-macrolet-ast
      #:flet-ast
-     #:lexical-function-asts
      #:labels-ast
      #:macrolet-ast
      #:lambda-expression-ast
