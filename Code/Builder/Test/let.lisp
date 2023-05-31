@@ -6,7 +6,7 @@
    '(ico:let-ast
      ("declaration-asts" nil)
      ("form-asts" nil)
-     ("variable-binding-asts" nil))))
+     ("binding-asts" nil))))
 
 (defun test-let-2 ()
   (run-test
@@ -14,7 +14,7 @@
    '(ico:let-ast
      ("declaration-asts" nil)
      ("form-asts" nil)
-     ("variable-binding-asts"
+     ("binding-asts"
       ((ico:variable-binding-ast ("form-ast" nil)
         ("variable-name-ast" (ico:variable-name-ast :name x))))))))
 
