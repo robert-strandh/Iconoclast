@@ -23,14 +23,3 @@
      &key)
   (reinitialize-instance left
     :form-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :binding))
-     (left ico:let-or-let*-ast)
-     (right ico:variable-binding-ast)
-     &key)
-  (reinitialize-instance left
-    :variable-binding-asts
-      (append (ico:variable-binding-asts left)
-              (list right))))
