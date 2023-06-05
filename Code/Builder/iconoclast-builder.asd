@@ -20,6 +20,7 @@
     (:file "test-ast-mixin")
     (:file "initform-ast-mixin")
     (:file "name-ast-mixin")
+    (:file "binding-asts-mixin")
     (:file "type-specifier-asts")
     (:file "declare-ast")
     (:file "name-ast")
