@@ -225,6 +225,15 @@
      #:defparameter-ast
      #:defun-ast
      #:defgeneric-ast
+     #:defpackage-ast
+     #:use-asts
+     #:export-asts
+     #:intern-asts
+     #:shadow-asts
+     #:import-from-asts
+     #:shadowing-import-from-asts
+     #:import-from-ast
+     #:package-name-ast
      #:generic-function-class-ast
      #:method-class-ast
      #:method-combination-name-and-arguments-ast

@@ -48,6 +48,7 @@
    (:file "defun-ast")
    (:file "defmethod-ast")
    (:file "defgeneric-ast")
+   (:file "defpackage-ast")
    (:file "slot-specifier-ast")
    (:file "default-initarg-ast")
    (:file "defclass-ast")
