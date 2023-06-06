@@ -55,7 +55,7 @@ n define-setf-expander
 n define-symbol-macro
 c defmacro
 c defmethod
-_ defpackage
+c defpackage
 c defparameter
 n defsetf
 _ defstruct
