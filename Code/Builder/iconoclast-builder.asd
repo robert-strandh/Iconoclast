@@ -56,6 +56,7 @@
     (:file "defgeneric-ast")
     (:file "defmethod-ast")
     (:file "defun-ast")
+    (:file "defpackage-ast")
     (:file "slot-specifier-ast")
     (:file "superclass-asts-mixin")
     (:file "slot-specifier-asts-mixin")
