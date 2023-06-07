@@ -19,3 +19,27 @@
      (right t)
      &key)
   (reinitialize-instance left :function-form-ast right))
+
+(defmethod abp:relate
+    ((builer builder)
+     (relation (eql :interactive-function))
+     (left ico:restart-binding-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :interactive-function-ast right))
+
+(defmethod abp:relate
+    ((builer builder)
+     (relation (eql :report-function))
+     (left ico:restart-binding-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :report-function-ast right))
+
+(defmethod abp:relate
+    ((builer builder)
+     (relation (eql :test-function))
+     (left ico:restart-binding-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :test-function-ast right))
