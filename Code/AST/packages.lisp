@@ -246,6 +246,9 @@
      #:multiple-value-bind-ast
      #:restart-binding-ast
      #:restart-bind-ast
+     #:interactive-function-ast
+     #:report-function-ast
+     #:test-function-ast
      #:report-ast
      #:interactive-ast
      #:test-ast
