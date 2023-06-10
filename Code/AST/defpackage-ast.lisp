@@ -7,12 +7,26 @@
     :initarg :package-name-ast
     :reader package-name-ast)))
 
+(defgeneric nickname-asts (defpackage-ast))
+
 (defgeneric use-asts (defpackage-ast))
 
 (defgeneric export-asts (defpackage-ast))
 
+(defgeneric intern-asts (defpackage-ast))
+
+(defgeneric shadow-asts (defpackage-ast))
+
+(defgeneric import-from-asts (defpackage-ast))
+
+(defgeneric shadowing-import-from-asts (defpackage-ast))
+
 (defclass defpackage-ast (name-ast-mixin documentation-ast-mixin ast)
-  ((%use-asts
+  ((%nickname-asts
+    :initform '()
+    :initarg :nickname-asts
+    :reader nickname-asts)
+   (%use-asts
     :initform '()
     :initarg :use-asts
     :reader use-asts)
@@ -38,7 +52,8 @@
     :reader shadowing-import-from-asts)))
   
 (defmethod children append ((ast defpackage-ast))
-  (list (cons "use-asts" (use-asts ast))
+  (list (cons "nickname-asts" (nickname-asts ast))
+        (cons "use-asts" (use-asts ast))
         (cons "export-asts" (export-asts ast))
         (cons "intern-asts" (intern-asts ast))
         (cons "shadow-asts" (shadow-asts ast))
