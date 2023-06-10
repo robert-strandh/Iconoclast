@@ -14,6 +14,16 @@
 
 (defmethod abp:relate
     ((builder builder)
+     (relation (eql :nickname))
+     (left ico:defpackage-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left
+    :nickname-asts
+    (append (ico:nickname-asts left) (list right))))
+
+(defmethod abp:relate
+    ((builder builder)
      (relation (eql :export))
      (left ico:defpackage-ast)
      (right t)
