@@ -30,6 +30,9 @@
 (define-make-node-method
     :destructuring-lambda-list ico:destructuring-lambda-list-ast)
 
+(define-make-node-method
+    :deftype-lambda-list ico:deftype-lambda-list-ast)
+
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :required))
