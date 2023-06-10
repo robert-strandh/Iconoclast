@@ -47,6 +47,7 @@
    (:file "defvar-ast")
    (:file "defun-ast")
    (:file "defmethod-ast")
+   (:file "defconstant-ast")
    (:file "defgeneric-ast")
    (:file "defpackage-ast")
    (:file "slot-specifier-ast")
