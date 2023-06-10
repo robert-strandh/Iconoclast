@@ -82,8 +82,8 @@ n incf
 n loop
 n loop-finish
 c multiple-value-bind
-_ multiple-value-list
-_ multiple-value-setq
+n multiple-value-list
+n multiple-value-setq
 n nth-value
 n or
 n pop
