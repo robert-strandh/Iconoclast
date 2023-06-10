@@ -224,6 +224,7 @@
      #:defvar-or-defparameter-ast
      #:defvar-ast
      #:defparameter-ast
+     #:deftype-ast
      #:defun-ast
      #:defconstant-ast
      #:defgeneric-ast

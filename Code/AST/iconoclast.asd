@@ -45,6 +45,7 @@
    (:file "declaim-ast")
    (:file "defmacro-ast")
    (:file "defvar-ast")
+   (:file "deftype-ast")
    (:file "defun-ast")
    (:file "defmethod-ast")
    (:file "defconstant-ast")
