@@ -201,6 +201,7 @@
      #:clause-asts
      #:defclass-ast
      #:define-condition-ast
+     #:argument-ast
      #:condition-report-ast
      #:report-ast
      #:metaclass-ast
@@ -224,8 +225,10 @@
      #:defvar-ast
      #:defparameter-ast
      #:defun-ast
+     #:defconstant-ast
      #:defgeneric-ast
      #:defpackage-ast
+     #:nickname-asts
      #:use-asts
      #:export-asts
      #:intern-asts
