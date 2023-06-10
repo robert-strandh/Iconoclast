@@ -59,7 +59,7 @@ c defpackage
 c defparameter
 n defsetf
 _ defstruct
-_ deftype
+c deftype
 c defun
 c defvar
 c destructuring-bind
