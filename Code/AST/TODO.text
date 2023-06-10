@@ -45,7 +45,7 @@ c ctypecase
 c declaim
 n decf
 c defclass
-_ defconstant
+c defconstant
 c defgeneric
 n define-compiler-macro
 c define-condition
