@@ -81,7 +81,7 @@
      #:supplied-p-parameter-ast-mixin
      #:supplied-p-parameter-ast
      #:optional-parameter-ast
-     #:keyword-name-ast
+     #:keyword-ast
      #:key-parameter-ast
      #:parameter-ast
      #:parameter-asts
@@ -99,6 +99,7 @@
      #:rest-section-ast
      #:key-section-ast-mixin
      #:key-section-ast
+     #:keyword-ast
      #:aux-section-ast-mixin
      #:aux-section-ast
      #:rest-parameter-ast
