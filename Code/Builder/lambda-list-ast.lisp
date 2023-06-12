@@ -1,5 +1,16 @@
 (cl:in-package #:iconoclast-builder)
 
+(defmethod abp:make-node
+    ((builder builder)
+     (kind (eql :lambda-list-keyword))
+     &key keyword)
+  (make-instance 'ico:lambda-list-keyword-ast
+    :name keyword))
+
+(define-make-node-method :required-section ico:required-section-ast)
+
+(define-make-node-method :optional-section ico:optional-section-ast)
+
 (define-make-node-method :required-parameter ico:required-parameter-ast)
 
 (define-make-node-method :optional-parameter ico:optional-parameter-ast)
@@ -14,6 +25,14 @@
     ((builder builder)
      (relation (eql :name))
      (left ico:parameter-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :name-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :keyword))
+     (left ico:lambda-list-keyword-ast-mixin)
      (right t)
      &key)
   (reinitialize-instance left :name-ast right))
@@ -35,23 +54,13 @@
 
 (defmethod abp:relate
     ((builder builder)
-     (relation (eql :required))
-     (left ico:required-parameter-asts-mixin)
+     (relation (eql :parameter))
+     (left ico:section-ast)
      (right t)
      &key)
   (reinitialize-instance left
-    :required-parameter-asts
-    (append (ico:required-parameter-asts left) (list right))))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :optional))
-     (left ico:optional-parameter-asts-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :optional-parameter-asts
-    (append (ico:optional-parameter-asts left) (list right))))
+    :parameter-asts
+    (append (ico:parameter-asts left) (list right))))
 
 (defmethod abp:relate
     ((builder builder)
@@ -91,12 +100,6 @@
 
 (defmethod abp:node-kind ((buildern builder) (node ico:pattern-ast))
   :pattern)
-
-(defmethod abp:node-relation
-    ((builder builder)
-     (relation (eql :required))
-     (lambda-list ico:required-parameter-asts-mixin))
-  (ico:required-parameter-asts lambda-list))
 
 (defmethod abp:node-relation
     ((builder builder)
