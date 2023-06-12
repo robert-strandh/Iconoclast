@@ -84,13 +84,23 @@
      #:keyword-name-ast
      #:key-parameter-ast
      #:parameter-ast
+     #:parameter-asts
      #:init-form-ast
      #:init-form-ast-mixin
-     #:required-parameter-asts
-     #:required-parameter-asts-mixin
      #:required-parameter-ast
-     #:optional-parameter-asts
-     #:optional-parameter-asts-mixin
+     #:section-ast
+     #:required-section-ast-mixin
+     #:required-section-ast
+     #:lambda-list-keyword-ast-mixin
+     #:lambda-list-keyword-ast
+     #:optional-section-ast-mixin
+     #:optional-section-ast
+     #:rest-section-ast-mixin
+     #:rest-section-ast
+     #:key-section-ast-mixin
+     #:key-section-ast
+     #:aux-section-ast-mixin
+     #:aux-section-ast
      #:rest-parameter-ast
      #:rest-parameter-ast-mixin
      #:key-parameter-asts
