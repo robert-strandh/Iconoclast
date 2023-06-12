@@ -30,6 +30,8 @@
 
 (define-make-node-method :keyword-parameter ico:key-parameter-ast)
 
+(define-make-node-method :aux-parameter ico:aux-parameter-ast)
+
 (defmethod abp:node-kind
     ((builder builder) (node ico:required-parameter-ast))
   :required-parameter)
@@ -98,6 +100,14 @@
      &key)
   (reinitialize-instance left :keyword-ast right))
 
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :value))
+     (left ico:aux-parameter-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :init-form-ast right))
+
 (define-make-node-method
     :ordinary-lambda-list ico:ordinary-lambda-list-ast)
 
@@ -122,16 +132,6 @@
   (reinitialize-instance left
     :parameter-asts
     (append (ico:parameter-asts left) (list right))))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :keyword))
-     (left ico:key-parameter-asts-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :key-parameter-asts
-    (append (ico:key-parameter-asts left) (list right))))
 
 (defmethod abp:relate
     ((builder builder)
