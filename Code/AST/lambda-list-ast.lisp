@@ -1,16 +1,42 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric required-parameter-asts (lambda-list-ast))
+(defgeneric required-section-ast (lambda-list-ast))
 
-(defclass required-parameter-asts-mixin ()
-  ((%required-parameter-asts
+(defclass required-section-ast-mixin ()
+  ((%required-section-ast
     :initform '()
-    :initarg :required-parameter-asts
-    :reader required-parameter-asts)))
+    :initarg :required-section-ast
+    :reader required-section-ast)))
 
-(defmethod children append ((ast required-parameter-asts-mixin))
-  (list (cons "required-parameter-asts"
-              (required-parameter-asts ast))))
+(defclass section-ast (ast)
+  ((%parameter-asts
+    :initform '()
+    :initarg :parameter-asts
+    :reader parameter-asts)))
+
+(defmethod children append ((ast section-ast))
+  (list (cons "parameter-asts" (parameter-asts ast))))
+
+(defclass required-section-ast (section-ast)
+  ())
+
+(defclass lambda-list-keyword-ast-mixin (name-ast-mixin)
+  ())
+
+(defclass optional-section-ast (lambda-list-keyword-ast-mixin section-ast)
+  ())
+
+(defclass rest-section-ast (lambda-list-keyword-ast-mixin section-ast)
+  ())
+
+(defclass key-section-ast (lambda-list-keyword-ast-mixin section-ast)
+  ())
+
+(defclass aux-section-ast (lambda-list-keyword-ast-mixin section-ast)
+  ())
+
+(defclass lambda-list-keyword-ast (name-mixin ast)
+  ())
 
 (defgeneric optional-parameter-asts (lambda-list-ast))
 
