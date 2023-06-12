@@ -89,10 +89,6 @@
 (defclass lambda-list-keyword-ast (name-mixin ast)
   ())
 
-(defmethod children append ((ast aux-parameter-asts-mixin))
-  (list (cons "aux-parameter-asts"
-              (aux-parameter-asts ast))))
-
 (defgeneric whole-parameter-ast (lambda-list-ast))
 
 (defclass whole-parameter-ast-mixin ()
@@ -125,7 +121,7 @@
      optional-section-ast-mixin
      rest-section-ast-mixin
      key-section-ast-mixin
-     aux-parameter-asts-mixin
+     aux-section-ast-mixin
      lambda-list-ast)
   ())
 
@@ -142,7 +138,7 @@
      optional-section-ast-mixin
      rest-section-ast-mixin
      key-section-ast-mixin
-     aux-parameter-asts-mixin
+     aux-section-ast-mixin
      lambda-list-ast)
   ())
 
@@ -151,7 +147,7 @@
      optional-section-ast-mixin
      rest-section-ast-mixin
      key-section-ast-mixin
-     aux-parameter-asts-mixin
+     aux-section-ast-mixin
      whole-parameter-ast-mixin
      environment-parameter-ast-mixin
      lambda-list-ast)
@@ -162,7 +158,7 @@
      optional-section-ast-mixin
      rest-section-ast-mixin
      key-section-ast-mixin
-     aux-parameter-asts-mixin
+     aux-section-ast-mixin
      whole-parameter-ast-mixin
      lambda-list-ast)
   ())
@@ -172,7 +168,7 @@
      optional-section-ast-mixin
      rest-section-ast-mixin
      key-section-ast-mixin
-     aux-parameter-asts-mixin
+     aux-section-ast-mixin
      lambda-list-ast)
   ())
 
@@ -190,7 +186,7 @@
      optional-section-ast-mixin
      rest-section-ast-mixin
      key-section-ast-mixin
-     aux-parameter-asts-mixin
+     aux-section-ast-mixin
      whole-parameter-ast-mixin
      environment-parameter-ast-mixin
      lambda-list-ast)
@@ -208,7 +204,7 @@
      optional-section-ast-mixin
      rest-section-ast-mixin
      key-section-ast-mixin
-     aux-parameter-asts-mixin
+     aux-section-ast-mixin
      whole-parameter-ast-mixin
      lambda-list-ast)
   ())
@@ -268,6 +264,11 @@
 
 (defmethod children append ((ast key-parameter-ast))
   (list (cons "keyword-ast" (keyword-ast ast))))
+
+(defclass aux-parameter-ast
+    (init-form-ast-mixin
+     parameter-ast)
+  ())
 
 (defclass pattern-ast (destructuring-lambda-list-ast)
   ())
