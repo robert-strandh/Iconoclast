@@ -7,9 +7,22 @@
   (make-instance 'ico:lambda-list-keyword-ast
     :name keyword))
 
+(defmethod abp:make-node
+    ((builder builder)
+     (kind (eql :keyword))
+     &key name)
+  (make-instance 'ico:keyword-ast
+    :name name))
+
 (define-make-node-method :required-section ico:required-section-ast)
 
 (define-make-node-method :optional-section ico:optional-section-ast)
+
+(define-make-node-method :rest-section ico:rest-section-ast)
+
+(define-make-node-method :keyword-section ico:key-section-ast)
+
+(define-make-node-method :aux-section ico:aux-section-ast)
 
 (define-make-node-method :required-parameter ico:required-parameter-ast)
 
@@ -20,6 +33,46 @@
 (defmethod abp:node-kind
     ((builder builder) (node ico:required-parameter-ast))
   :required-parameter)
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :required-section))
+     (left ico:required-section-ast-mixin)
+     (right t)
+     &key)
+  (reinitialize-instance left :required-section-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :optional-section))
+     (left ico:optional-section-ast-mixin)
+     (right t)
+     &key)
+  (reinitialize-instance left :optional-section-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :rest-section))
+     (left ico:rest-section-ast-mixin)
+     (right t)
+     &key)
+  (reinitialize-instance left :rest-section-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :key-section))
+     (left ico:key-section-ast-mixin)
+     (right t)
+     &key)
+  (reinitialize-instance left :key-section-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :aux-section))
+     (left ico:aux-section-ast-mixin)
+     (right t)
+     &key)
+  (reinitialize-instance left :aux-section-ast right))
 
 (defmethod abp:relate
     ((builder builder)
@@ -36,6 +89,14 @@
      (right t)
      &key)
   (reinitialize-instance left :name-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :keyword))
+     (left ico:key-parameter-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :keyword-ast right))
 
 (define-make-node-method
     :ordinary-lambda-list ico:ordinary-lambda-list-ast)
