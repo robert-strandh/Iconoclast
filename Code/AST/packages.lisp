@@ -103,15 +103,9 @@
      #:aux-section-ast-mixin
      #:aux-section-ast
      #:rest-parameter-ast
-     #:rest-parameter-ast-mixin
-     #:key-parameter-asts
-     #:key-parameter-asts-mixin
-     #:aux-parameter-asts
-     #:aux-parameter-asts-mixin
+     #:aux-parameter-ast
      #:whole-parameter-ast
-     #:whole-parameter-ast-mixin
      #:environment-parameter-ast
-     #:environment-parameter-ast-mixin
      #:initform-ast-mixin
      #:specializer-ast
      #:specialized-parameter-ast
