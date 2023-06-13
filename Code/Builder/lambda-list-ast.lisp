@@ -82,6 +82,22 @@
 
 (defmethod abp:relate
     ((builder builder)
+     (relation (eql :env-section))
+     (left ico:environment-section-ast-mixin)
+     (right t)
+     &key)
+  (reinitialize-instance left :environment-section-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :whole-section))
+     (left ico:whole-section-ast-mixin)
+     (right t)
+     &key)
+  (reinitialize-instance left :whole-section-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
      (relation (eql :name))
      (left ico:parameter-ast)
      (right t)
