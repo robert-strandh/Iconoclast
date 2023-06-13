@@ -24,6 +24,10 @@
 
 (define-make-node-method :aux-section ico:aux-section-ast)
 
+(define-make-node-method :environment-section ico:environment-section-ast)
+
+(define-make-node-method :whole-section ico:whole-section-ast)
+
 (define-make-node-method :required-parameter ico:required-parameter-ast)
 
 (define-make-node-method :optional-parameter ico:optional-parameter-ast)

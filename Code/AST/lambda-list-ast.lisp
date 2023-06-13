@@ -101,6 +101,14 @@
     (lambda-list-keyword-ast-mixin multi-parameter-section-ast)
   ())
 
+(defclass environment-section-ast
+    (lambda-list-keyword-ast-mixin single-parameter-section-ast)
+  ())
+
+(defclass whole-section-ast
+    (lambda-list-keyword-ast-mixin single-parameter-section-ast)
+  ())
+
 (defclass lambda-list-keyword-ast (name-mixin ast)
   ())
 
