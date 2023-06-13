@@ -18,13 +18,10 @@
 
 (defmethod unparse-parameter-ast ((ast optional-parameter-ast))
   (with-accessors ((name-ast name-ast)
-                   (keyword-ast keyword-ast)
                    (init-form-ast init-form-ast)
                    (supplied-p-parameter-ast supplied-p-parameter-ast))
       ast
-    (let ((name (if (null keyword-ast)
-                    (name name-ast)
-                    `(,(name keyword-ast) ,(name name-ast)))))
+    (let ((name (name name-ast)))
       (if (null supplied-p-parameter-ast)
           (if (null init-form-ast)
               name
@@ -38,10 +35,13 @@
 
 (defmethod unparse-parameter-ast ((ast key-parameter-ast))
   (with-accessors ((name-ast name-ast)
+                   (keyword-ast keyword-ast)
                    (init-form-ast init-form-ast)
                    (supplied-p-parameter-ast supplied-p-parameter-ast))
       ast
-    (let ((name (name name-ast)))
+    (let ((name (if (null keyword-ast)
+                    (name name-ast)
+                    `(,(name keyword-ast) ,(name name-ast)))))
       (if (null supplied-p-parameter-ast)
           (if (null init-form-ast)
               name
