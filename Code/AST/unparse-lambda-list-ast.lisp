@@ -2,6 +2,10 @@
 
 (defgeneric unparse-section-ast (ast))
 
+(defmethod unparse-section-ast :around ((ast lambda-list-keyword-ast-mixin))
+  (cons (name (name-ast ast))
+        (call-next-method)))
+
 (defmethod unparse-section-ast ((ast null))
   '())
 
