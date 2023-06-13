@@ -62,7 +62,7 @@
 
 (defmethod abp:relate
     ((builder builder)
-     (relation (eql :key-section))
+     (relation (eql :keyword-section))
      (left ico:key-section-ast-mixin)
      (right t)
      &key)
