@@ -101,7 +101,9 @@
      #:rest-section-ast
      #:key-section-ast-mixin
      #:key-section-ast
+     #:environment-section-ast-mixin
      #:environment-section-ast
+     #:whole-section-ast-mixin
      #:whole-section-ast
      #:keyword-ast
      #:aux-section-ast-mixin
