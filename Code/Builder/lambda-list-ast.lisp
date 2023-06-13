@@ -126,7 +126,15 @@
 (defmethod abp:relate
     ((builder builder)
      (relation (eql :parameter))
-     (left ico:section-ast)
+     (left ico:single-parameter-section-ast)
+     (right t)
+     &key)
+  (reinitialize-instance left :parameter-ast right))
+
+(defmethod abp:relate
+    ((builder builder)
+     (relation (eql :parameter))
+     (left ico:multi-parameter-section-ast)
      (right t)
      &key)
   (reinitialize-instance left

@@ -89,6 +89,8 @@
      #:init-form-ast-mixin
      #:required-parameter-ast
      #:section-ast
+     #:single-parameter-section-ast
+     #:multi-parameter-section-ast
      #:required-section-ast-mixin
      #:required-section-ast
      #:lambda-list-keyword-ast-mixin

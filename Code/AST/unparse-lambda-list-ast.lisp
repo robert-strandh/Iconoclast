@@ -3,13 +3,15 @@
 (defgeneric unparse-section-ast (ast))
 
 (defmethod unparse-section-ast :around ((ast lambda-list-keyword-ast-mixin))
-  (cons (name (name-ast ast))
-        (call-next-method)))
+  (cons (name (name-ast ast)) (call-next-method)))
 
 (defmethod unparse-section-ast ((ast null))
   '())
 
 (defgeneric unparse-parameter-ast (ast))
+
+(defmethod unparse-parameter-ast ((ast variable-name-ast))
+  (name ast))
 
 (defmethod unparse-parameter-ast ((ast required-parameter-ast))
   (name (name-ast ast)))
@@ -48,12 +50,12 @@
             ,(form (init-form-ast ast))
             ,(name (supplied-p-parameter-ast ast)))))))
 
-(defmethod unparse-section-ast ((ast section-ast))
+(defmethod unparse-section-ast ((ast single-parameter-section-ast))
+  (list (unparse-parameter-ast (parameter-ast ast))))
+
+(defmethod unparse-section-ast ((ast multi-parameter-section-ast))
   (loop for parameter-ast in (parameter-asts ast)
         collect (unparse-parameter-ast parameter-ast)))
-
-(defun unparse-rest-section-ast (ast)
-  `(&rest ,(name (first (parameter-asts ast)))))
 
 (defgeneric unparse-lambda-list-ast (lambda-list))
 
@@ -62,7 +64,7 @@
   (append
    (unparse-section-ast (required-section-ast ast))
    (unparse-section-ast (optional-section-ast ast))
-   (unparse-rest-section-ast (rest-section-ast ast))
+   (unparse-section-ast (rest-section-ast ast))
    (unparse-section-ast (key-section-ast ast))
    (unparse-section-ast (aux-section-ast ast))))
 

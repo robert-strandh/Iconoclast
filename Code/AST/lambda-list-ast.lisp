@@ -57,61 +57,64 @@
               (aux-section-ast ast))))
 
 (defclass section-ast (ast)
+  ())
+
+(defclass single-parameter-section-ast (section-ast)
+  ((%parameter-ast
+    :initarg :parameter-ast
+    :reader parameter-ast)))
+
+(defclass multi-parameter-section-ast (section-ast)
   ((%parameter-asts
     :initform '()
     :initarg :parameter-asts
     :reader parameter-asts)))
 
-(defmethod children append ((ast section-ast))
+(defmethod children append ((ast multi-parameter-section-ast))
+  (list (cons "parameter-ast" (parameter-ast ast))))
+
+(defmethod children append ((ast multi-parameter-section-ast))
   (list (cons "parameter-asts" (parameter-asts ast))))
 
-(defclass required-section-ast (section-ast)
+(defclass required-section-ast (multi-parameter-section-ast)
   ())
 
 (defclass lambda-list-keyword-ast-mixin (name-ast-mixin)
   ())
 
-(defclass optional-section-ast (lambda-list-keyword-ast-mixin section-ast)
+(defclass optional-section-ast
+       (lambda-list-keyword-ast-mixin multi-parameter-section-ast)
   ())
 
-(defclass rest-section-ast (lambda-list-keyword-ast-mixin section-ast)
+(defclass rest-section-ast
+    (lambda-list-keyword-ast-mixin single-parameter-section-ast)
   ())
 
-(defclass key-section-ast (lambda-list-keyword-ast-mixin section-ast)
+(defclass key-section-ast
+    (lambda-list-keyword-ast-mixin multi-parameter-section-ast)
   ())
 
 (defclass keyword-ast (name-mixin ast)
   ())
 
-(defclass aux-section-ast (lambda-list-keyword-ast-mixin section-ast)
+(defclass aux-section-ast
+    (lambda-list-keyword-ast-mixin multi-parameter-section-ast)
   ())
 
 (defclass lambda-list-keyword-ast (name-mixin ast)
   ())
 
-(defgeneric whole-parameter-ast (lambda-list-ast))
+(defclass whole-section-ast-mixin ()
+  ((%whole-section-ast
+    :initform '()
+    :initarg :whole-section-ast
+    :reader whole-section-ast)))
 
-(defclass whole-parameter-ast-mixin ()
-  ((%whole-parameter-ast
-    :initform nil
-    :initarg :whole-parameter-ast
-    :reader whole-parameter-ast)))
-
-(defmethod children append ((ast whole-parameter-ast-mixin))
-  (list (cons "whole-parameter-ast"
-              (whole-parameter-ast ast))))
-
-(defgeneric environment-parameter-ast (lambda-list-ast))
-
-(defclass environment-parameter-ast-mixin ()
-  ((%environment-parameter-ast
-    :initform nil
-    :initarg :environment-parameter-ast
-    :reader environment-parameter-ast)))
-
-(defmethod children append ((ast environment-parameter-ast-mixin))
-  (list (cons "environment-parameter-ast"
-              (environment-parameter-ast ast))))
+(defclass environment-section-ast-mixin ()
+  ((%environment-section-ast
+    :initform '()
+    :initarg :environment-section-ast
+    :reader environment-section-ast)))
 
 (defclass lambda-list-ast (ast)
   ())
@@ -148,8 +151,8 @@
      rest-section-ast-mixin
      key-section-ast-mixin
      aux-section-ast-mixin
-     whole-parameter-ast-mixin
-     environment-parameter-ast-mixin
+     whole-section-ast-mixin
+     environment-section-ast-mixin
      lambda-list-ast)
   ())
 
@@ -159,7 +162,7 @@
      rest-section-ast-mixin
      key-section-ast-mixin
      aux-section-ast-mixin
-     whole-parameter-ast-mixin
+     whole-section-ast-mixin
      lambda-list-ast)
   ())
 
@@ -177,7 +180,7 @@
      optional-section-ast-mixin
      rest-section-ast-mixin
      key-section-ast-mixin
-     environment-parameter-ast-mixin
+     environment-section-ast-mixin
      lambda-list-ast)
   ())
 
@@ -187,8 +190,8 @@
      rest-section-ast-mixin
      key-section-ast-mixin
      aux-section-ast-mixin
-     whole-parameter-ast-mixin
-     environment-parameter-ast-mixin
+     whole-section-ast-mixin
+     environment-section-ast-mixin
      lambda-list-ast)
   ())
 
@@ -205,7 +208,7 @@
      rest-section-ast-mixin
      key-section-ast-mixin
      aux-section-ast-mixin
-     whole-parameter-ast-mixin
+     whole-section-ast-mixin
      lambda-list-ast)
   ())
 
