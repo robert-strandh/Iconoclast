@@ -121,7 +121,7 @@
      #:define-modify-macro-lambda-list-ast
      #:lambda-list-ast
      #:lambda-list-ast-mixin
-     #:unparse-lambda-list
+     #:unparse-lambda-list-ast
      #:pattern-ast
      #:variable-binding-ast
      #:let-or-let*-ast
