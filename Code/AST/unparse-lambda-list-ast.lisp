@@ -48,15 +48,19 @@
   (loop for parameter-ast in (parameter-asts ast)
         collect (unparse-parameter-ast parameter-ast)))
 
+(defun unparse-rest-section-ast (ast)
+  `(&rest ,(name (first (parameter-asts ast)))))
+
 (defgeneric unparse-lambda-list-ast (lambda-list))
 
 (defmethod unparse-lambda-list-ast
     ((ast ordinary-lambda-list-ast))
-  (unparse-section-ast (required-section-ast ast))
-  (unparse-section-ast (optional-section-ast ast))
-  (unparse-section-ast (rest-section-ast ast))
-  (unparse-section-ast (key-section-ast ast))
-  (unparse-section-ast (aux-section-ast ast)))
+  (append
+   (unparse-section-ast (required-section-ast ast))
+   (unparse-section-ast (optional-section-ast ast))
+   (unparse-rest-section-ast (rest-section-ast ast))
+   (unparse-section-ast (key-section-ast ast))
+   (unparse-section-ast (aux-section-ast ast))))
 
 (defmethod unparse-lambda-list-ast
     ((lambda-list-ast generic-function-lambda-list-ast))
