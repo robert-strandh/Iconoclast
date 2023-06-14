@@ -7,6 +7,9 @@
   `(defmethod abp:make-node
        ((builder builder)
         (kind (eql ,kind))
+        &rest initargs
         &key source)
-      (make-instance ',class-name
-        :origin source)))
+      (apply #'make-instance ',class-name
+             :origin source
+             :allow-other-keys t
+             initargs)))

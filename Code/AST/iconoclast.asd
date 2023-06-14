@@ -9,6 +9,7 @@
    (:file "mixins")
    (:file "binding-asts-mixin")
    (:file "unparsed-ast")
+   (:file "function-call-ast")
    (:file "application-ast")
    (:file "documentation-ast")
    (:file "literal-ast")
