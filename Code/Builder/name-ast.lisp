@@ -1,36 +1,18 @@
 (cl:in-package #:iconoclast-builder)
 
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :variable-name))
-     &key name source)
-  (make-instance 'ico:variable-name-ast
-    :name name
-    :origin source))
+(define-make-node-method :variable-name ico:variable-name-ast)
 
 (defmethod abp:node-kind
     ((builder builder) (node ico:variable-name-ast))
   :variable-name)
 
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :type-name))
-     &key source name)
-  (make-instance 'ico:type-name-ast
-    :origin source
-    :name name))
+(define-make-node-method :type-name ico:type-name-ast)
 
 (defmethod abp:node-kind
     ((builder builder) (node ico:type-name-ast))
   :type-name)
 
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :function-name))
-     &key source name)
-  (make-instance 'ico:function-name-ast
-    :origin source
-    :name name))
+(define-make-node-method :function-name ico:function-name-ast)
 
 (defmethod abp:node-kind
     ((builder builder) (node ico:function-name-ast))
