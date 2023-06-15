@@ -32,6 +32,7 @@
     (:file "lambda-list-ast")
     (:file "macro-definition-ast")
     (:file "lambda-expression-ast")
+    (:file "and-ast")
     (:file "function-ast")
     (:file "tagbody-ast")
     (:file "go-ast")
