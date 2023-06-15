@@ -85,7 +85,7 @@ c multiple-value-bind
 n multiple-value-list
 n multiple-value-setq
 n nth-value
-n or
+c or
 n pop
 n pprint-exit-if-list-exhausted
 n pprint-logical-block

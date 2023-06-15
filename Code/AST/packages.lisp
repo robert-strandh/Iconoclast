@@ -140,6 +140,7 @@
      #:default-initarg-asts
      #:default-initarg-asts-mixin
      #:and-ast
+     #:or-ast
      #:function-name-ast
      #:declare-asts
      #:documentation-ast

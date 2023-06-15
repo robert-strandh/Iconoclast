@@ -10,6 +10,7 @@
    (:file "binding-asts-mixin")
    (:file "unparsed-ast")
    (:file "and-ast")
+   (:file "or-ast")
    (:file "function-call-ast")
    (:file "application-ast")
    (:file "documentation-ast")
