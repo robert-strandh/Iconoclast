@@ -34,7 +34,7 @@ c unwind-protect
 Macro operators
 ---------------
 
-n and
+c and
 n assert
 n call-method
 c case
