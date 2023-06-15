@@ -11,20 +11,9 @@
                  (remaining-cond-ast
                    (abp:node* (:cond :clause-asts (rest clause-asts)))))
             (if (null form-asts)
-                (let ((variable-name (gensym)))
-                  (flet ((make-variable-ast ()
-                           (abp:node* (:variable-name :name variable-name))))
-                    (abp:node* (:let)
-                      (1 :binding
-                         (abp:node* (:value-binding)
-                           (1 :name (make-variable-ast))
-                           (1 :value test-ast)))
-                      (1 :form
-                         (abp:node* (:if)
-                           (1 :test (make-variable-ast))
-                           (1 :then (make-variable-ast))
-                           (1 :else remaining-cond-ast))))))
+                (abp:node* (:or)
+                  (* :form (list test-ast remaining-cond-ast)))
                 (abp:node* (:if)
                   (1 :test test-ast)
-                  (1 :then (abp:node* (:progn :form-asts form-asts)))
+                  (1 :then (abp:node* (:progn) (* :form form-asts)))
                   (1 :else remaining-cond-ast))))))))
