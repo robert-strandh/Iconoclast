@@ -43,7 +43,7 @@ n check-type
 c cond
 c ctypecase
 c declaim
-n decf
+c decf
 c defclass
 c defconstant
 c defgeneric

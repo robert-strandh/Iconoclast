@@ -11,6 +11,8 @@
    (:file "unparsed-ast")
    (:file "and-ast")
    (:file "or-ast")
+   (:file "delta-ast-mixin")
+   (:file "decf-ast")
    (:file "function-call-ast")
    (:file "application-ast")
    (:file "documentation-ast")

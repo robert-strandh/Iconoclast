@@ -141,6 +141,9 @@
      #:default-initarg-asts-mixin
      #:and-ast
      #:or-ast
+     #:delta-ast
+     #:delta-ast-mixin
+     #:decf-ast
      #:function-name-ast
      #:declare-asts
      #:documentation-ast
