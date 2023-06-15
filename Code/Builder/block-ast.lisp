@@ -2,13 +2,7 @@
 
 (define-make-node-method :block ico:block-ast)
 
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :block-name))
-     &key source name)
-  (make-instance 'ico:block-name-ast
-    :origin source
-    :name name))
+(define-make-node-method :block-name ico:block-name-ast)
 
 (defmethod abp:relate
     ((builder builder)
