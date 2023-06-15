@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast-builder)
 
-(defmethod expand ((ast defun-ast))
+(defmethod expand ((ast ico:defun-ast))
   (let* ((name (ico:name (ico:name-ast ast)))
          (block-name (if (symbolp name) name (second name))))
     (abp:with-builder (make-instance 'builder)
