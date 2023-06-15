@@ -13,6 +13,7 @@
    (:file "or-ast")
    (:file "delta-ast-mixin")
    (:file "decf-ast")
+   (:file "incf-ast")
    (:file "function-call-ast")
    (:file "application-ast")
    (:file "documentation-ast")

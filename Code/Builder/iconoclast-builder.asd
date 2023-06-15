@@ -37,6 +37,7 @@
     (:file "or-ast")
     (:file "delta-ast-mixin")
     (:file "decf-ast")
+    (:file "incf-ast")
     (:file "function-ast")
     (:file "tagbody-ast")
     (:file "go-ast")

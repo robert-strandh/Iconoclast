@@ -144,6 +144,7 @@
      #:delta-ast
      #:delta-ast-mixin
      #:decf-ast
+     #:incf-ast
      #:function-name-ast
      #:declare-asts
      #:documentation-ast
