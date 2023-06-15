@@ -9,7 +9,7 @@
                  (test-ast (ico:test-ast first-clause-ast))
                  (form-asts (ico:form-asts first-clause-ast))
                  (remaining-cond-ast
-                   (abp:node* (:cond :clause-asts (rest clause-asts)))))
+                   (abp:node* (:cond) (* :clause (rest clause-asts)))))
             (if (null form-asts)
                 (abp:node* (:or)
                   (* :form (list test-ast remaining-cond-ast)))
