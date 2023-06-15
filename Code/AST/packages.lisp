@@ -285,6 +285,11 @@
      #:typecase-ast
      #:etypecase-ast
      #:ctypecase-ast
+     #:do-iteration-variable-ast
+     #:do-iteration-variable-asts
+     #:end-test-ast
+     #:result-ast
+     #:do-do*-ast
      #:when-ast
      #:unless-ast
      #:handler-binding-ast
