@@ -35,4 +35,8 @@
         (cons "end-test-ast" (end-test-ast ast))
         (cons "result-ast" (result-ast ast))))
 
-     
+(defclass do-ast (do-do*-ast)
+  ())
+
+(defclass do*-ast (do-do*-ast)
+  ())
