@@ -183,6 +183,7 @@
      #:locally-ast
      #:function-form-ast
      #:multiple-value-call-ast
+     #:first-form-ast-mixin
      #:first-form-ast
      #:multiple-value-prog1-ast
      #:progn-ast
