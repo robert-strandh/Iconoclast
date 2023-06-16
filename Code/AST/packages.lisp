@@ -187,6 +187,7 @@
      #:first-form-ast
      #:multiple-value-prog1-ast
      #:progn-ast
+     #:prog1-ast
      #:symbols-ast
      #:values-ast
      #:progv-ast
