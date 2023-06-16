@@ -46,6 +46,7 @@
     (:file "load-time-value-ast")
     (:file "locally-ast")
     (:file "multiple-value-call-ast")
+    (:file "first-form-ast-mixin")
     (:file "multiple-value-prog1-ast")
     (:file "progn-ast")
     (:file "progv-ast")
