@@ -14,15 +14,6 @@
 
 (defmethod abp:relate
     ((builder builder)
-     (relation (eql :segment))
-     (left ico:tagbody-ast)
-     (right ico:tagbody-segment-ast)
-     &key)
-  (reinitialize-instance left
-    :segment-asts (append (ico:segment-asts left) (list right))))
-
-(defmethod abp:relate
-    ((builder builder)
      (relation (eql :label))
      (left ico:tagbody-segment-ast)
      (right ico:tag-ast)
