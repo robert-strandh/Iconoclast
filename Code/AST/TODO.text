@@ -110,9 +110,9 @@ _ step
 _ time
 _ trace
 c typecase
-_ unless
+c unless
 _ untrace
-_ when
+c when
 n with-accessors
 n with-compilation-unit
 n with-condition-restarts
