@@ -43,6 +43,7 @@
    (:file "multiple-value-prog1-ast")
    (:file "progn-ast")
    (:file "prog1-ast")
+   (:file "prog2-ast")
    (:file "progv-ast")
    (:file "quote-ast")
    (:file "setq-ast")
