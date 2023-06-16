@@ -169,6 +169,7 @@
      #:macrolet-ast
      #:lambda-expression-ast
      #:function-ast
+     #:segment-asts-mixin
      #:tagbody-ast
      #:tagbody-segment-ast
      #:tag-asts
