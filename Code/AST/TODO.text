@@ -63,8 +63,8 @@ c deftype
 c defun
 c defvar
 c destructuring-bind
-_ do
-_ do*
+c do
+c do*
 _ do-all-symbols
 _ do-external-symbols
 _ do-symbols
