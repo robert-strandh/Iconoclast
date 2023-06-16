@@ -294,6 +294,13 @@
      #:end-test-ast
      #:result-ast
      #:do-do*-ast
+     #:do-ast
+     #:do*-ast
+     #:do-iteration-variable-asts
+     #:do-iteration-variable-ast
+     #:step-form-ast
+     #:end-test-ast
+     #:result-ast
      #:when-ast
      #:unless-ast
      #:handler-binding-ast
