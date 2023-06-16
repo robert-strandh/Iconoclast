@@ -39,6 +39,7 @@
     (:file "decf-ast")
     (:file "incf-ast")
     (:file "function-ast")
+    (:file "segment-asts-mixin")
     (:file "tagbody-ast")
     (:file "go-ast")
     (:file "if-ast")
