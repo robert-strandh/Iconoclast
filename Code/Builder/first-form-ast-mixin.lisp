@@ -2,7 +2,7 @@
 
 (defmethod abp:relate
     ((builder builder)
-     (relation (eql :first-form))
+     (relation (eql :first))
      (left ico:first-form-ast-mixin)
      (right t)
      &key)
