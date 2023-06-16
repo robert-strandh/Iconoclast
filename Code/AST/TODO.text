@@ -93,8 +93,8 @@ _ pprint-pop
 _ print-unreadable-object
 _ prog
 _ prog*
-_ prog1
-_ prog2
+c prog1
+c prog2
 _ psetf
 c psetq
 _ push
