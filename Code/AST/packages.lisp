@@ -296,6 +296,8 @@
      #:list-form-ast
      #:dotimes-ast
      #:count-form-ast
+     #:formatter-ast
+     #:control-string-ast
      #:package-ast
      #:step-form-ast
      #:when-ast
