@@ -65,9 +65,9 @@ c defvar
 c destructuring-bind
 c do
 c do*
-_ do-all-symbols
-_ do-external-symbols
-_ do-symbols
+c do-all-symbols
+c do-external-symbols
+c do-symbols
 _ dolist
 _ dotimes
 c ecase
