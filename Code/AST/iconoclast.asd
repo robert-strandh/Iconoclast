@@ -67,6 +67,7 @@
    (:file "defclass-ast")
    (:file "define-condition-ast")
    (:file "destructuring-bind-ast")
+   (:file "result-ast-mixin")
    (:file "do-ast")
    (:file "in-package-ast")
    (:file "multiple-value-bind-ast")

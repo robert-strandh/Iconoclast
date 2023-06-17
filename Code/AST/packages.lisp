@@ -283,6 +283,7 @@
      #:do-iteration-variable-ast
      #:do-iteration-variable-asts
      #:end-test-ast
+     #:result-ast-mixin
      #:result-ast
      #:do-do*-ast
      #:do-ast
