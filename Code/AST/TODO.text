@@ -87,7 +87,7 @@ n multiple-value-setq
 n nth-value
 c or
 c pop
-_ pprint-exit-if-list-exhausted
+c pprint-exit-if-list-exhausted
 _ pprint-logical-block
 _ pprint-pop
 _ print-unreadable-object

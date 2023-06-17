@@ -302,6 +302,7 @@
      #:item-ast
      #:push-ast
      #:pop-ast
+     #:pprint-exit-if-list-exhausted-ast
      #:step-form-ast
      #:when-ast
      #:unless-ast
