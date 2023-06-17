@@ -45,3 +45,12 @@ using the relation :VALUES-FORM, but in PROG1 and PROG2, the node is
 related to the first distinguished form using the relation
 :FIRST-FORM.  The dictionary entry for MULTIPLE-VALUE-PROG1 uses the
 name first-form, so I think this is a better choice.
+
+=================================================================
+
+In PPRINT-LOGICAL-BLOCK and PRINT-UNREADABLE-OBJECT the node is
+related to the object argument using the relation :OBJECT.
+
+However, in QUOTE, the node is related to the object argument using
+the relation :MATERIAL.
+

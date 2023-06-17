@@ -12,14 +12,6 @@
 
 (defmethod abp:relate
     ((builder builder)
-     (relation (eql :object))
-     (left ico:pprint-logical-block-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :object-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
      (relation (eql :prefix))
      (left ico:pprint-logical-block-ast)
      (right t)

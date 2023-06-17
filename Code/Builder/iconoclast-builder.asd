@@ -48,6 +48,7 @@
     (:file "locally-ast")
     (:file "multiple-value-call-ast")
     (:file "first-form-ast-mixin")
+    (:file "object-ast-mixin")
     (:file "multiple-value-prog1-ast")
     (:file "progn-ast")
     (:file "prog1-ast")

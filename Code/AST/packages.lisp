@@ -183,6 +183,7 @@
      #:multiple-value-call-ast
      #:first-form-ast-mixin
      #:first-form-ast
+     #:object-ast-mixin
      #:multiple-value-prog1-ast
      #:progn-ast
      #:prog1-ast
