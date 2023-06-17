@@ -4,6 +4,7 @@
 
 (defclass result-ast-mixin ()
   ((%result-ast
+    :initform nil
     :initarg :result-ast
     :reader result-ast)))
 
