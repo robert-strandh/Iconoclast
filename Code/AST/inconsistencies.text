@@ -1,0 +1,47 @@
+Example: (let (x))
+
+MAKE-NODE is called with kind :VARIABLE-NAME and :NAME X
+
+RELATE is called with relation :NAME to relate :VALUE-BINDING to
+:VARIABLE-NAME.
+
+But in (do-all-symbols (x))
+
+make-node is also called with kind :VARIABLE-NAME and :NAME X
+
+but RELATE is called with :VARIABLE to relate :DO-ALL-SYMBOLS to
+:VARIABLE-NAME.
+
+In (block x)
+
+MAKE-NODE is called with :KIND :BLOCK-NAME and RELATE is called with
+relation :NAME to relate :BLOCK to :BLOCK-NAME which is consistent
+with LET.  And I think that's the right way.
+
+DO and DO* use :VARIABLE to relate :DO/:DO* to :DO-ITERATION-VARIABLE
+which is fine, because a :DO-ITERATION-VARIABLE is not a simple
+variable name, but they also use :VARIABLE to relate
+:DO-ITERATION-VARIABLE to :VARIABLE-NAME which is like
+DO-ALL-SYMBOLS.
+
+DOLIST and DOTIMES behave like DO-ALL-SYMBOLS which I think is wrong.
+
+=================================================================
+
+In DEFVAR and DEFPARAMETER, the relation :INITIAL-VALUE is used to
+relate the parent node to the initial-value form.
+
+In DEFCLASS, the relation :INITFORM is used as a relation both to
+relate the slot to the :INITARG slot option and to relate
+:DEFAULT-INITARGS to default initial value forms.
+
+In DO and DO*, :INIT is used to relate :DO-ITERATION-VARIABLE what is
+named "init-form" in the standard.
+
+=================================================================
+
+In MULTIPLE-VALUE-PROG1, the node is related to the distinguished form
+using the relation :VALUES-FORM, but in PROG1 and PROG2, the node is
+related to the first distinguished form using the relation
+:FIRST-FORM.  The dictionary entry for MULTIPLE-VALUE-PROG1 uses the
+name first-form, so I think this is a better choice.
