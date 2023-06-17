@@ -88,6 +88,7 @@
     (:file "push-ast")
     (:file "pop-ast")
     (:file "pprint-exit-if-list-exhausted-ast")
+    (:file "pprint-pop-ast")
     (:file "restart-bind-ast")
     (:file "restart-case-ast")
     (:file "return-ast")
