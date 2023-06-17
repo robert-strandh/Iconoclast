@@ -68,8 +68,8 @@ c do*
 c do-all-symbols
 c do-external-symbols
 c do-symbols
-_ dolist
-_ dotimes
+c dolist
+c dotimes
 c ecase
 c etypecase
 _ formatter
