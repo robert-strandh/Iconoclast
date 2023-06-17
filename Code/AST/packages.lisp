@@ -304,6 +304,12 @@
      #:pop-ast
      #:pprint-exit-if-list-exhausted-ast
      #:pprint-pop-ast
+     #:pprint-logical-block-ast
+     #:stream-symbol-ast
+     #:object-ast
+     #:prefix-ast
+     #:per-line-prefix-ast
+     #:suffix-ast
      #:step-form-ast
      #:when-ast
      #:unless-ast
