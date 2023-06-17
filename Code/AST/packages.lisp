@@ -289,6 +289,10 @@
      #:do-ast
      #:do*-ast
      #:do-all-symbols-ast
+     #:do-symbols-do-external-symbols-ast
+     #:do-symbols-ast
+     #:do-external-symbols-ast
+     #:package-ast
      #:step-form-ast
      #:when-ast
      #:unless-ast
