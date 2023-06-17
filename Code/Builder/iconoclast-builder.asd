@@ -80,6 +80,7 @@
     (:file "do-ast")
     (:file "do-all-symbols-ast")
     (:file "do-symbols-ast")
+    (:file "dolist-ast")
     (:file "in-package-ast")
     (:file "multiple-value-bind-ast")
     (:file "restart-bind-ast")
