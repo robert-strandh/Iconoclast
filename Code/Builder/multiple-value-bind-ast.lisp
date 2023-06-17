@@ -18,4 +18,3 @@
      &key)
   (reinitialize-instance left
     :variable-name-asts (append (ico:variable-name-asts left) (list right))))
-  
