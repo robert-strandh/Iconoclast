@@ -88,7 +88,7 @@ n nth-value
 c or
 c pop
 c pprint-exit-if-list-exhausted
-_ pprint-logical-block
+c pprint-logical-block
 c pprint-pop
 _ print-unreadable-object
 _ prog
