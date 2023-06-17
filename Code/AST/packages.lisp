@@ -301,6 +301,7 @@
      #:package-ast
      #:item-ast
      #:push-ast
+     #:pop-ast
      #:step-form-ast
      #:when-ast
      #:unless-ast

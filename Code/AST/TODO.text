@@ -86,7 +86,7 @@ n multiple-value-list
 n multiple-value-setq
 n nth-value
 c or
-_ pop
+c pop
 _ pprint-exit-if-list-exhausted
 _ pprint-logical-block
 _ pprint-pop
@@ -97,7 +97,7 @@ c prog1
 c prog2
 _ psetf
 c psetq
-_ push
+c push
 _ pushnew
 _ remf
 c restart-bind
