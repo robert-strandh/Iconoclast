@@ -288,6 +288,7 @@
      #:do-do*-ast
      #:do-ast
      #:do*-ast
+     #:do-all-symbols-ast
      #:step-form-ast
      #:when-ast
      #:unless-ast
