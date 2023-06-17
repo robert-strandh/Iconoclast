@@ -1,5 +1,7 @@
 (cl:in-package #:iconoclast)
 
+(defgeneric result-ast (ast))
+
 (defclass result-ast-mixin ()
   ((%result-ast
     :initarg :result-ast

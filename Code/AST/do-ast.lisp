@@ -16,24 +16,19 @@
 
 (defgeneric end-test-ast (ast))
 
-(defgeneric result-ast (ast))
-
-(defclass do-do*-ast (segment-asts-mixin declaration-asts-mixin ast)
+(defclass do-do*-ast
+    (segment-asts-mixin result-ast-mixin declaration-asts-mixin ast)
   ((%do-iteration-variable-asts
     :initform '()
     :initarg :do-iteration-variable-asts
     :reader do-iteration-variable-asts)
    (%end-test-ast
     :initarg :end-test-ast
-    :reader end-test-ast)
-   (%result-ast
-    :initarg :result-ast
-    :reader result-ast)))
+    :reader end-test-ast)))
 
 (defmethod children append ((ast do-do*-ast))
   (list (cons "do-iteration-variable-asts" (do-iteration-variable-asts ast))
-        (cons "end-test-ast" (end-test-ast ast))
-        (cons "result-ast" (result-ast ast))))
+        (cons "end-test-ast" (end-test-ast ast))))
 
 (defclass do-ast (do-do*-ast)
   ())
