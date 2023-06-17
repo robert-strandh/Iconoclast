@@ -294,6 +294,8 @@
      #:do-external-symbols-ast
      #:dolist-ast
      #:list-form-ast
+     #:dotimes-ast
+     #:count-form-ast
      #:package-ast
      #:step-form-ast
      #:when-ast
