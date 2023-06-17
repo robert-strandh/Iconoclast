@@ -89,7 +89,7 @@ c or
 c pop
 c pprint-exit-if-list-exhausted
 _ pprint-logical-block
-_ pprint-pop
+c pprint-pop
 _ print-unreadable-object
 _ prog
 _ prog*
