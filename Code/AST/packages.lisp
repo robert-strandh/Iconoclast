@@ -299,6 +299,8 @@
      #:formatter-ast
      #:control-string-ast
      #:package-ast
+     #:item-ast
+     #:push-ast
      #:step-form-ast
      #:when-ast
      #:unless-ast
