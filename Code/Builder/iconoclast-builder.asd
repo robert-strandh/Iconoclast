@@ -86,6 +86,7 @@
     (:file "in-package-ast")
     (:file "multiple-value-bind-ast")
     (:file "push-ast")
+    (:file "pop-ast")
     (:file "restart-bind-ast")
     (:file "restart-case-ast")
     (:file "return-ast")
