@@ -76,7 +76,6 @@
      #:declare-ast
      #:declaration-asts-mixin
      #:documentation-ast-mixin
-     #:init-form-ast
      #:form-asts
      #:supplied-p-parameter-ast-mixin
      #:supplied-p-parameter-ast
@@ -105,7 +104,6 @@
      #:environment-section-ast
      #:whole-section-ast-mixin
      #:whole-section-ast
-     #:keyword-ast
      #:aux-section-ast-mixin
      #:aux-section-ast
      #:rest-parameter-ast
@@ -168,7 +166,6 @@
      #:labels-ast
      #:macrolet-ast
      #:lambda-expression-ast
-     #:function-ast
      #:segment-asts-mixin
      #:tagbody-ast
      #:tagbody-segment-ast
@@ -215,13 +212,11 @@
      #:key
      #:key-ast
      #:case-or-ecase-ast
-     #:place-ast
      #:case-ast
      #:ccase-ast
      #:ecase-ast
      #:cond-clause-ast
      #:cond-ast
-     #:clause-asts
      #:defclass-ast
      #:define-condition-ast
      #:argument-ast
@@ -233,8 +228,6 @@
      #:superclass-asts
      #:initarg-asts
      #:initform-ast
-     #:documentation-ast
-     #:type-specifier-ast
      #:reader-asts
      #:writer-asts
      #:accessor-asts
@@ -276,11 +269,8 @@
      #:interactive-function-ast
      #:report-function-ast
      #:test-function-ast
-     #:report-ast
      #:interactive-ast
-     #:test-ast
      #:restart-clause-ast
-     #:clause-asts
      #:restart-case-ast
      #:return-ast
      #:typecase-base-ast
@@ -297,11 +287,7 @@
      #:do-do*-ast
      #:do-ast
      #:do*-ast
-     #:do-iteration-variable-asts
-     #:do-iteration-variable-ast
      #:step-form-ast
-     #:end-test-ast
-     #:result-ast
      #:when-ast
      #:unless-ast
      #:handler-binding-ast
