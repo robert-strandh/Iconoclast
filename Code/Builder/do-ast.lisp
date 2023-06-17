@@ -52,11 +52,3 @@
      (right t)
      &key)
   (reinitialize-instance left :end-test-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :result))
-     (left ico:do-do*-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :result-ast right))
