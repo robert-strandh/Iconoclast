@@ -90,7 +90,7 @@ c pop
 c pprint-exit-if-list-exhausted
 c pprint-logical-block
 c pprint-pop
-_ print-unreadable-object
+c print-unreadable-object
 _ prog
 _ prog*
 c prog1
