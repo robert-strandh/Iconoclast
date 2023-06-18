@@ -97,6 +97,7 @@
     (:file "place-asts-mixin")
     (:file "rotatef-ast")
     (:file "shiftf-ast")
+    (:file "step-ast")
     (:file "setf-ast")
     (:file "remf-ast")
     (:file "restart-bind-ast")

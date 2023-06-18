@@ -320,6 +320,7 @@
      #:setf-or-psetf-ast
      #:setf-ast
      #:psetf-ast
+     #:step-ast
      #:stream-symbol-ast
      #:object-ast
      #:prefix-ast

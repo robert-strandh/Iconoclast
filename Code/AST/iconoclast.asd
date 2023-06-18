@@ -89,6 +89,7 @@
    (:file "rotatef-ast")
    (:file "shiftf-ast")
    (:file "setf-ast")
+   (:file "step-ast")
    (:file "remf-ast")
    (:file "restart-bind-ast")
    (:file "restart-case-ast")
