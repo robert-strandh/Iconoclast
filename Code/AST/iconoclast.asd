@@ -85,6 +85,7 @@
    (:file "pprint-logical-block-ast")
    (:file "print-unreadable-object-ast")
    (:file "prog-ast")
+   (:file "place-asts-mixin")
    (:file "setf-ast")
    (:file "remf-ast")
    (:file "restart-bind-ast")

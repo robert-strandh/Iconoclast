@@ -313,10 +313,11 @@
      #:prog-or-prog*-ast
      #:prog-ast
      #:prog*-ast
+     #:place-asts-mixin
+     #:place-asts
      #:setf-or-psetf-ast
      #:setf-ast
      #:psetf-ast
-     #:place-asts
      #:stream-symbol-ast
      #:object-ast
      #:prefix-ast

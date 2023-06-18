@@ -1,15 +1,7 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric place-asts (ast))
-
-(defclass setf-or-psetf-ast (form-asts-mixin ast)
-  ((%place-asts
-      :initform '()
-      :initarg :place-asts
-      :reader place-asts)))
-
-(defmethod children append ((ast setf-or-psetf-ast))
-  (list (cons "place-asts" (place-asts ast))))
+(defclass setf-or-psetf-ast (place-asts-mixin form-asts-mixin ast)
+  ())
 
 (defclass setf-ast (setf-or-psetf-ast)
   ())
