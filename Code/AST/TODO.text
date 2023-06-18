@@ -105,7 +105,7 @@ c restart-case
 c return
 _ rotatef
 c setf
-_ shiftf
+c shiftf
 _ step
 _ time
 _ trace

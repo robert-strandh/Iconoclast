@@ -315,6 +315,7 @@
      #:prog*-ast
      #:place-asts-mixin
      #:place-asts
+     #:shiftf-ast
      #:setf-or-psetf-ast
      #:setf-ast
      #:psetf-ast
