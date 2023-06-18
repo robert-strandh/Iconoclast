@@ -99,7 +99,7 @@ c psetf
 c psetq
 c push
 c pushnew
-_ remf
+c remf
 c restart-bind
 c restart-case
 c return

@@ -322,6 +322,8 @@
      #:prefix-ast
      #:per-line-prefix-ast
      #:suffix-ast
+     #:remf-ast
+     #:indicator-ast
      #:step-form-ast
      #:when-ast
      #:unless-ast

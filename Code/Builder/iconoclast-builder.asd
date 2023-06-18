@@ -95,6 +95,7 @@
     (:file "print-unreadable-object-ast")
     (:file "prog-ast")
     (:file "setf-ast")
+    (:file "remf-ast")
     (:file "restart-bind-ast")
     (:file "restart-case-ast")
     (:file "return-ast")
