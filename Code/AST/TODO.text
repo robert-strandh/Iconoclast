@@ -95,7 +95,7 @@ c prog
 c prog*
 c prog1
 c prog2
-_ psetf
+c psetf
 c psetq
 c push
 _ pushnew
@@ -104,7 +104,7 @@ c restart-bind
 c restart-case
 c return
 _ rotatef
-_ setf
+c setf
 _ shiftf
 _ step
 _ time
