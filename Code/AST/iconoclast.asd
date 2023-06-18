@@ -90,6 +90,7 @@
    (:file "shiftf-ast")
    (:file "setf-ast")
    (:file "step-ast")
+   (:file "time-ast")
    (:file "remf-ast")
    (:file "restart-bind-ast")
    (:file "restart-case-ast")

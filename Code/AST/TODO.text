@@ -106,8 +106,8 @@ c return
 c rotatef
 c setf
 c shiftf
-_ step
-_ time
+c step
+c time
 _ trace
 c typecase
 c unless

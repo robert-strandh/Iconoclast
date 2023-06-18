@@ -321,6 +321,7 @@
      #:setf-ast
      #:psetf-ast
      #:step-ast
+     #:time-ast
      #:stream-symbol-ast
      #:object-ast
      #:prefix-ast
