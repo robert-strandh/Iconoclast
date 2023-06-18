@@ -309,6 +309,9 @@
      #:print-unreadable-object-ast
      #:stream-ast
      #:identity-ast
+     #:prog-or-prog*-ast
+     #:prog-ast
+     #:prog*-ast
      #:stream-symbol-ast
      #:object-ast
      #:prefix-ast

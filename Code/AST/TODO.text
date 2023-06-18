@@ -91,8 +91,8 @@ c pprint-exit-if-list-exhausted
 c pprint-logical-block
 c pprint-pop
 c print-unreadable-object
-_ prog
-_ prog*
+c prog
+c prog*
 c prog1
 c prog2
 _ psetf
