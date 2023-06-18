@@ -7,5 +7,5 @@
     :initarg :object-ast
     :reader object-ast)))
 
-(defmethod children append ((ast pprint-logical-block-ast))
+(defmethod children append ((ast object-ast-mixin))
   (list (cons "object-ast" (object-ast ast))))
