@@ -103,7 +103,7 @@ c remf
 c restart-bind
 c restart-case
 c return
-_ rotatef
+c rotatef
 c setf
 c shiftf
 _ step

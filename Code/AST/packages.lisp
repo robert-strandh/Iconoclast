@@ -316,6 +316,7 @@
      #:place-asts-mixin
      #:place-asts
      #:shiftf-ast
+     #:rotatef-ast
      #:setf-or-psetf-ast
      #:setf-ast
      #:psetf-ast
