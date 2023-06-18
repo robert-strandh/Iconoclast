@@ -98,7 +98,7 @@ c prog2
 c psetf
 c psetq
 c push
-_ pushnew
+c pushnew
 _ remf
 c restart-bind
 c restart-case

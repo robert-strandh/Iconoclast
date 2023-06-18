@@ -302,6 +302,7 @@
      #:package-ast
      #:item-ast
      #:push-ast
+     #:pushnew-ast
      #:pop-ast
      #:pprint-exit-if-list-exhausted-ast
      #:pprint-pop-ast

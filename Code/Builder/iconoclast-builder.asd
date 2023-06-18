@@ -87,6 +87,7 @@
     (:file "in-package-ast")
     (:file "multiple-value-bind-ast")
     (:file "push-ast")
+    (:file "pushnew-ast")
     (:file "pop-ast")
     (:file "pprint-exit-if-list-exhausted-ast")
     (:file "pprint-pop-ast")
