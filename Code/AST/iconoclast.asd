@@ -82,6 +82,7 @@
    (:file "pprint-exit-if-list-exhausted-ast")
    (:file "pprint-pop-ast")
    (:file "pprint-logical-block-ast")
+   (:file "print-unreadable-object-ast")
    (:file "restart-bind-ast")
    (:file "restart-case-ast")
    (:file "return-ast")

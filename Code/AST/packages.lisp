@@ -306,6 +306,9 @@
      #:pprint-exit-if-list-exhausted-ast
      #:pprint-pop-ast
      #:pprint-logical-block-ast
+     #:print-unreadable-object-ast
+     #:stream-ast
+     #:identity-ast
      #:stream-symbol-ast
      #:object-ast
      #:prefix-ast
