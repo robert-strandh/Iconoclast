@@ -322,6 +322,10 @@
      #:psetf-ast
      #:step-ast
      #:time-ast
+     #:function-name-asts
+     #:function-name-asts-mixin
+     #:trace-ast
+     #:untrace-ast
      #:stream-symbol-ast
      #:object-ast
      #:prefix-ast

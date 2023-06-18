@@ -91,6 +91,7 @@
    (:file "setf-ast")
    (:file "step-ast")
    (:file "time-ast")
+   (:file "trace-ast")
    (:file "remf-ast")
    (:file "restart-bind-ast")
    (:file "restart-case-ast")

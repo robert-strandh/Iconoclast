@@ -99,6 +99,7 @@
     (:file "shiftf-ast")
     (:file "step-ast")
     (:file "time-ast")
+    (:file "trace-ast")
     (:file "setf-ast")
     (:file "remf-ast")
     (:file "restart-bind-ast")

@@ -108,10 +108,10 @@ c setf
 c shiftf
 c step
 c time
-_ trace
+c trace
 c typecase
 c unless
-_ untrace
+c untrace
 c when
 n with-accessors
 n with-compilation-unit
