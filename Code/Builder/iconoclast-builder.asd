@@ -107,4 +107,5 @@
     (:file "return-ast")
     (:file "typecase-ast")
     (:file "handler-bind-ast")
-    (:file "when-ast")))
+    (:file "when-ast")
+    (:file "with-input-from-string-ast")))

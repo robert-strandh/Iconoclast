@@ -337,4 +337,8 @@
      #:when-ast
      #:unless-ast
      #:handler-binding-ast
-     #:handler-bind-ast))
+     #:handler-bind-ast
+     #:with-input-from-string-ast
+     #:string-ast
+     #:start-ast
+     #:end-ast))

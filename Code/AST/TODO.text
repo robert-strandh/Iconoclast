@@ -117,7 +117,7 @@ n with-accessors
 n with-compilation-unit
 n with-condition-restarts
 n with-hash-table-iterator
-_ with-input-from-string
+c with-input-from-string
 _ with-open-file
 _ with-open-stream
 _ with-output-to-string
