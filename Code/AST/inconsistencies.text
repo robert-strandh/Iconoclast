@@ -54,3 +54,9 @@ related to the object argument using the relation :OBJECT.
 However, in QUOTE, the node is related to the object argument using
 the relation :MATERIAL.
 
+=================================================================
+
+In SETQ and PSETQ, the node is related to the value forms using the
+relation :VALUE-FORM, but in PSETF and PSETQ the similar relation is
+:NEW-VALUE.
+
