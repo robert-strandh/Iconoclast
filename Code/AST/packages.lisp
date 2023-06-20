@@ -341,4 +341,6 @@
      #:with-input-from-string-ast
      #:string-ast
      #:start-ast
-     #:end-ast))
+     #:end-ast
+     #:with-output-to-string-ast
+     #:element-type-ast))

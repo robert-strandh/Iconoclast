@@ -120,7 +120,7 @@ n with-hash-table-iterator
 c with-input-from-string
 _ with-open-file
 _ with-open-stream
-_ with-output-to-string
+c with-output-to-string
 n with-package-iterator
 n with-simple-restart
 n with-slots

@@ -108,4 +108,5 @@
     (:file "typecase-ast")
     (:file "handler-bind-ast")
     (:file "when-ast")
-    (:file "with-input-from-string-ast")))
+    (:file "with-input-from-string-ast")
+    (:file "with-output-to-string-ast")))
