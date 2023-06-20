@@ -338,6 +338,9 @@
      #:unless-ast
      #:handler-binding-ast
      #:handler-bind-ast
+     #:handler-case-ast
+     #:handler-clause-ast
+     #:no-error-clause-ast
      #:with-input-from-string-ast
      #:string-ast
      #:start-ast
