@@ -346,4 +346,6 @@
      #:element-type-ast
      #:with-open-file-ast
      #:filespec-ast
-     #:option-asts))
+     #:option-asts
+     #:with-open-stream-ast
+     #:stream-ast))

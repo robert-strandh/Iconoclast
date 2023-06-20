@@ -110,4 +110,5 @@
     (:file "when-ast")
     (:file "with-input-from-string-ast")
     (:file "with-output-to-string-ast")
-    (:file "with-open-file-ast")))
+    (:file "with-open-file-ast")
+    (:file "with-open-stream-ast")))
