@@ -343,4 +343,7 @@
      #:start-ast
      #:end-ast
      #:with-output-to-string-ast
-     #:element-type-ast))
+     #:element-type-ast
+     #:with-open-file-ast
+     #:filespec-ast
+     #:option-asts))

@@ -118,7 +118,7 @@ n with-compilation-unit
 n with-condition-restarts
 n with-hash-table-iterator
 c with-input-from-string
-_ with-open-file
+c with-open-file
 _ with-open-stream
 c with-output-to-string
 n with-package-iterator
