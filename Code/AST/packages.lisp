@@ -348,4 +348,5 @@
      #:filespec-ast
      #:option-asts
      #:with-open-stream-ast
-     #:stream-ast))
+     #:stream-ast
+     #:with-standard-io-syntax-ast))
