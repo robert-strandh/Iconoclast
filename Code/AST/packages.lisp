@@ -341,10 +341,6 @@
      #:handler-case-ast
      #:handler-clause-ast
      #:no-error-clause-ast
-     #:with-input-from-string-ast
-     #:string-ast
-     #:start-ast
-     #:end-ast
      #:with-output-to-string-ast
      #:element-type-ast
      #:with-open-file-ast
