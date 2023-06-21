@@ -29,8 +29,6 @@
      #:special-ast
      #:value
      #:declaration-asts
-     #:declaration-specifier-asts
-     #:declare-ast
      #:declaration-asts-mixin
      #:supplied-p-parameter-ast-mixin
      #:supplied-p-parameter-ast
@@ -45,28 +43,6 @@
      #:section-ast
      #:single-parameter-section-ast
      #:multi-parameter-section-ast
-     #:required-section-ast-mixin
-     #:required-section-ast
-     #:lambda-list-keyword-ast-mixin
-     #:lambda-list-keyword-ast
-     #:optional-section-ast-mixin
-     #:optional-section-ast
-     #:rest-section-ast-mixin
-     #:rest-section-ast
-     #:key-section-ast-mixin
-     #:key-section-ast
-     #:environment-section-ast-mixin
-     #:environment-section-ast
-     #:whole-section-ast-mixin
-     #:whole-section-ast
-     #:aux-section-ast-mixin
-     #:aux-section-ast
-     #:rest-parameter-ast
-     #:aux-parameter-ast
-     #:whole-parameter-ast
-     #:environment-parameter-ast
-     #:initform-ast-mixin
-     #:specializer-ast
      #:specialized-parameter-ast
      #:method-qualifier-asts
      #:ordinary-lambda-list-ast
