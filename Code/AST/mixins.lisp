@@ -85,15 +85,8 @@
 (defmethod children append ((ast test-ast-mixin))
   (list (cons "test-ast" (test-ast ast))))
 
-(defgeneric variable-name-ast (parameter-ast))
-
-(defclass variable-name-ast-mixin ()
-  ((%variable-name-ast
-    :initarg :variable-name-ast
-    :reader variable-name-ast)))
-
-(defmethod children append ((ast variable-name-ast-mixin))
-  (list (cons "variable-name-ast" (variable-name-ast ast))))
+(define-ast-class variable-name-ast-mixin ()
+  ((1 variable-name-ast)))
 
 (defgeneric name (ast))
 
