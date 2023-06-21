@@ -13,3 +13,29 @@
              :origin source
              :allow-other-keys t
              initargs)))
+
+(defun initarg-from-slot-reader-name (slot-reader-name)
+  (intern (symbol-name slot-reader-name) (find-package "KEYWORD")))
+
+(defmacro define-relations (ast-name relations)
+  `(progn ,@(loop ;; Avoid MOP function CLASS-PROTOTYPE. 
+                  with instance = (make-instance ast-name)
+                  with designators = (ico:slot-designators instance)
+                  for relation in relations
+                  for designator = (find (third relation) designators
+                                         :test #'eq :key #'second)
+                  for slot-reader-name = (second designator)
+                  collect
+                  `(defmethod abp:relate
+                       ((builder builder)
+                        (relation (eql ,(first relation)))
+                        (left ,ast-name)
+                        (right ,(second relation))
+                        &key)
+                     (reinitialize-instance left
+                       ,(initarg-from-slot-reader-name slot-reader-name)
+                       ,@(case (first designator)
+                           ((ico:? 1)
+                            '(right))
+                           (otherwise
+                            `((append (,slot-reader-name left) (list right))))))))))
