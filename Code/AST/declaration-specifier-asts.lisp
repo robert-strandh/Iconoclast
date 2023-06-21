@@ -1,67 +1,59 @@
 (cl:in-package #:iconoclast)
 
-(defclass declaration-specifier-ast (ast)
+(define-ast-class declaration-specifier-ast (ast)
   ())
 
-(defclass dynamic-extent-ast (name-asts-mixin declaration-specifier-ast)
+(define-ast-class dynamic-extent-ast (name-asts-mixin declaration-specifier-ast)
   ())
 
-(defclass type-or-ftype-ast
+(define-ast-class type-or-ftype-ast
     (type-specifier-ast-mixin name-asts-mixin declaration-specifier-ast)
   ())
 
-(defclass type-ast (type-or-ftype-ast)
+(define-ast-class type-ast (type-or-ftype-ast)
   ())
 
-(defclass ftype-ast (type-or-ftype-ast)
+(define-ast-class ftype-ast (type-or-ftype-ast)
   ())
 
-(defclass ignore-or-ignorable-ast (name-asts-mixin declaration-specifier-ast)
+(define-ast-class ignore-or-ignorable-ast (name-asts-mixin declaration-specifier-ast)
   ())
 
-(defclass ignore-ast (ignore-or-ignorable-ast)
+(define-ast-class ignore-ast (ignore-or-ignorable-ast)
   ())
 
-(defclass ignorable-ast (ignore-or-ignorable-ast)
+(define-ast-class ignorable-ast (ignore-or-ignorable-ast)
   ())
 
-(defclass inline-or-notinline-ast (name-asts-mixin declaration-specifier-ast)
+(define-ast-class inline-or-notinline-ast (name-asts-mixin declaration-specifier-ast)
   ())
 
-(defclass inline-ast (inline-or-notinline-ast)
+(define-ast-class inline-ast (inline-or-notinline-ast)
   ())
 
-(defclass notinline-ast (inline-or-notinline-ast)
+(define-ast-class notinline-ast (inline-or-notinline-ast)
   ())
 
-(defclass special-ast (name-asts-mixin declaration-specifier-ast)
+(define-ast-class special-ast (name-asts-mixin declaration-specifier-ast)
   ())
 
-(defclass optimize-quality-ast (value-mixin ast)
+(define-ast-class optimize-quality-ast (value-mixin ast)
   ())
 
-(defclass speed-ast (optimize-quality-ast)
+(define-ast-class speed-ast (optimize-quality-ast)
   ())
 
-(defclass compilation-speed-ast (optimize-quality-ast)
+(define-ast-class compilation-speed-ast (optimize-quality-ast)
   ())
 
-(defclass space-ast (optimize-quality-ast)
+(define-ast-class space-ast (optimize-quality-ast)
   ())
 
-(defclass debug-ast (optimize-quality-ast)
+(define-ast-class debug-ast (optimize-quality-ast)
   ())
 
-(defclass safety-ast (optimize-quality-ast)
+(define-ast-class safety-ast (optimize-quality-ast)
   ())
 
-(defgeneric quality-asts (ast))
-
-(defclass optimize-ast (declaration-specifier-ast)
-  ((%quality-asts
-    :initform '()
-    :initarg :quality-asts
-    :reader quality-asts)))
-
-(defmethod children append ((ast optimize-ast))
-  (list (cons "quality-asts" (quality-asts ast))))
+(define-ast-class optimize-ast (declaration-specifier-ast)
+  ((* quality-asts)))

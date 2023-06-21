@@ -9,16 +9,6 @@
 (defclass subsidiary-item-ast (value-mixin ast)
   ())
 
-(defclass compound-type-specifier-ast (type-specifier-ast)
-  ((%subsidiary-item-asts
-    :initform '()
-    :initarg :subsidiary-item-asts
-    :reader subsidiary-item-asts)
-   (%atomic-type-specifier-ast
-    :initform nil
-    :initarg :atomic-type-specifier-ast
-    :reader atomic-type-specifier-ast)))
-
-(defmethod children append ((ast compound-type-specifier-ast))
-  (list (cons "subsidiary-item-asts" (subsidiary-item-asts ast))
-        (cons "atomic-type-specifier-ast" (atomic-type-specifier-ast ast))))
+(define-ast-class compound-type-specifier-ast (type-specifier-ast)
+  ((* subsidiary-item-asts)
+   (? atomic-type-specifier-ast)))
