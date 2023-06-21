@@ -71,23 +71,7 @@
      #:incf-ast
      #:declare-asts
      #:body-asts
-     #:block-name-ast
-     #:block-name-reference-asts
-     #:block-name-reference-ast
-     #:block-name-definition-ast
-     #:block-ast
-     #:return-from-ast
-     #:catch-ast
      #:result-form-ast
-     #:throw-ast
-     #:situation-ast
-     #:situation-asts
-     #:eval-when-ast
-     #:lexical-function-ast
-     #:flet-or-labels-or-macrolet-ast
-     #:flet-ast
-     #:labels-ast
-     #:macrolet-ast
      #:lambda-expression-ast
      #:segment-asts-mixin
      #:tagbody-ast
