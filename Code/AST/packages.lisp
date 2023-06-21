@@ -19,20 +19,9 @@
      #:form-ast-mixin
      #:binding-asts-mixin
      #:binding-asts
-     #:place-ast
-     #:place-ast-mixin
-     #:form-asts-mixin
-     #:test-ast-mixin
-     #:tag-ast-mixin
-     #:name-ast-mixin
-     #:name-asts-mixin
      #:function-ast
      #:argument-asts
      #:application-ast
-     #:name-asts
-     #:clause-asts
-     #:clause-asts-mixin
-     #:tag-ast
      #:tag-reference-asts
      #:tag-reference-ast
      #:tag-definition-ast
@@ -48,7 +37,6 @@
      #:declration-specifier-with-variables-ast
      #:dynamic-extent-ast
      #:type-name-ast
-     #:type-specifier-ast
      #:atomic-type-specifier-ast
      #:compound-type-specifier-ast
      #:type-or-ftype-ast
@@ -77,8 +65,6 @@
      #:declaration-specifier-asts
      #:declare-ast
      #:declaration-asts-mixin
-     #:documentation-ast-mixin
-     #:form-asts
      #:supplied-p-parameter-ast-mixin
      #:supplied-p-parameter-ast
      #:optional-parameter-ast
@@ -133,12 +119,7 @@
      #:let-or-let*-ast
      #:let-ast
      #:let*-ast
-     #:name-ast
-     #:name
-     #:name-mixin
      #:default-initarg-ast
-     #:default-initarg-asts
-     #:default-initarg-asts-mixin
      #:and-ast
      #:or-ast
      #:delta-ast
@@ -147,7 +128,6 @@
      #:incf-ast
      #:function-name-ast
      #:declare-asts
-     #:documentation-ast
      #:documentation
      #:body-asts
      #:block-name-ast
@@ -174,7 +154,6 @@
      #:tag-asts
      #:segment-asts
      #:go-ast
-     #:test-ast
      #:then-ast
      #:else-ast
      #:if-ast
@@ -226,16 +205,12 @@
      #:condition-report-ast
      #:report-ast
      #:metaclass-ast
-     #:slot-specifier-asts-mixin
-     #:superclass-asts-mixin
-     #:superclass-asts
      #:initarg-asts
      #:initform-ast
      #:reader-asts
      #:writer-asts
      #:accessor-asts
      #:allocation
-     #:slot-specifier-asts
      #:slot-specifier-ast
      #:initarg-name-ast
      #:declaim-ast
