@@ -5,23 +5,11 @@
   (:shadow #:documentation)
   (:export
      #:ast
-     #:literal-ast
-     #:literal
      #:origin
      #:children
      #:slot-designators
      #:?
-     #:string-designator-ast
-     #:designated-string
-     #:unparsed-ast
-     #:unparsed-form-ast
-     #:form
      #:form-ast-mixin
-     #:binding-asts-mixin
-     #:binding-asts
-     #:function-ast
-     #:argument-asts
-     #:application-ast
      #:tag-reference-asts
      #:tag-reference-ast
      #:tag-definition-ast
@@ -126,9 +114,7 @@
      #:delta-ast-mixin
      #:decf-ast
      #:incf-ast
-     #:function-name-ast
      #:declare-asts
-     #:documentation
      #:body-asts
      #:block-name-ast
      #:block-name-reference-asts
