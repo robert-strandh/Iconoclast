@@ -28,6 +28,9 @@
   (loop for element in node
         collect (cons "" element)))
 
+(defgeneric slot-designators (ast)
+  (:method-combination append))
+
 (defun slot-name-from-reader-name (reader-name)
   (intern (concatenate 'string "%" (symbol-name reader-name))))
 
@@ -84,7 +87,7 @@
 (defmacro define-ast-class (name superclass-names slot-designators)
   `(progn ,@(loop for designator in slot-designators
                   for name = (reader-name-from-slot-designator designator)
-                  collect `(defgeneric ,name (ast))
+                  collect `(ensure-generic-function ',name :lambda-list '(ast))
                   collect `(export ',name))
 
           (export ',name)
@@ -94,6 +97,11 @@
 
           (defmethod children append ((ast ,name))
             (list ,@(mapcar #'child-clause-from-slot-designator
-                            slot-designators)))))
+                            slot-designators)))
+
+          (defmethod slot-designators append ((ast ,name))
+            '(,@(loop for slot-designator in slot-designators
+                      when (member (first slot-designator) '(? 1 *))
+                        collect slot-designator)))))
 
 ; LocalWords:  reinitialization
