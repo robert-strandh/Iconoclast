@@ -10,28 +10,15 @@
      #:slot-designators
      #:?
      #:form-ast-mixin
-     #:tag-reference-asts
-     #:tag-reference-ast
-     #:tag-definition-ast
      #:tag
      #:form-ast
-     #:variable-name-ast
-     #:variable-definition-ast
-     #:variable-reference-asts
-     #:variable-reference-ast
-     #:special-variable-bound-ast
-     #:special-variable-reference-ast
      #:declaration-specifier-ast
      #:declration-specifier-with-variables-ast
      #:dynamic-extent-ast
-     #:type-name-ast
-     #:atomic-type-specifier-ast
-     #:compound-type-specifier-ast
      #:type-or-ftype-ast
      #:type-ast
      #:ftype-ast
      #:subsidiary-item-ast
-     #:subsidiary-item-asts
      #:ignore-or-ignorable-ast
      #:ignore-ast
      #:ignorable-ast
@@ -40,15 +27,7 @@
      #:inline-ast
      #:notinline-ast
      #:special-ast
-     #:optimize-ast
-     #:quality-asts
      #:value
-     #:optimize-quality-ast
-     #:speed-ast
-     #:compilation-speed-ast
-     #:space-ast
-     #:debug-ast
-     #:safety-ast
      #:declaration-asts
      #:declaration-specifier-asts
      #:declare-ast
