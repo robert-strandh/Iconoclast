@@ -9,6 +9,8 @@
      #:literal
      #:origin
      #:children
+     #:slot-designators
+     #:?
      #:string-designator-ast
      #:designated-string
      #:unparsed-ast
