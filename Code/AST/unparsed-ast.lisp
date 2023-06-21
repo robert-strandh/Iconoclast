@@ -1,11 +1,8 @@
 (cl:in-package #:iconoclast)
 
-(defclass unparsed-ast (ast)
+(define-ast-class unparsed-ast (ast)
   ())
 
-(defgeneric form (ast))
+(define-ast-class unparsed-form-ast (unparsed-ast)
+  ((1 form)))
 
-(defclass unparsed-form-ast (unparsed-ast)
-  ((%form
-      :initarg :form
-      :reader form)))

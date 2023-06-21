@@ -1,9 +1,4 @@
 (cl:in-package #:iconoclast)
 
-(defclass literal-ast (ast)
-  ((%literal
-    :initarg :literal
-    :reader literal)))
-
-(defmethod children append ((ast literal-ast))
-  (list (cons "literal" (literal ast))))
+(define-ast-class literal-ast (ast)
+  ((1 literal)))
