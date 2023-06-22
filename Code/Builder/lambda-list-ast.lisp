@@ -36,10 +36,6 @@
 
 (define-make-node-method :aux-parameter ico:aux-parameter-ast)
 
-(defmethod abp:node-kind
-    ((builder builder) (node ico:required-parameter-ast))
-  :required-parameter)
-
 (define-relations ico:required-section-ast-mixin
   ((:required-section t ico:required-section-ast)))
 
@@ -104,9 +100,6 @@
   ((:supplied t ico:supplied-p-parameter-ast)))
 
 (define-make-node-method :pattern ico:pattern-ast)
-
-(defmethod abp:node-kind ((buildern builder) (node ico:pattern-ast))
-  :pattern)
 
 (defmethod abp:node-relation
     ((builder builder)
