@@ -4,15 +4,18 @@
   ())
 
 (defmacro define-make-node-method (kind class-name)
-  `(defmethod abp:make-node
-       ((builder builder)
-        (kind (eql ,kind))
-        &rest initargs
-        &key source)
-      (apply #'make-instance ',class-name
-             :origin source
-             :allow-other-keys t
-             initargs)))
+  `(progn 
+     (defmethod abp:make-node
+         ((builder builder)
+          (kind (eql ,kind))
+          &rest initargs
+          &key source)
+       (apply #'make-instance ',class-name
+              :origin source
+              :allow-other-keys t
+              initargs))
+     (defmethod abp:node-kind ((builder builder) (node ,class-name))
+       ,kind)))
 
 (defun initarg-from-slot-reader-name (slot-reader-name)
   (intern (symbol-name slot-reader-name) (find-package "KEYWORD")))
@@ -25,6 +28,10 @@
                   for designator = (find (third relation) designators
                                          :test #'eq :key #'second)
                   for slot-reader-name = (second designator)
+                  when (null designator)
+                    do (error "No designator for ~s in AST ~s"
+                              (third relation)
+                              ast-name)
                   collect
                   `(defmethod abp:relate
                        ((builder builder)
