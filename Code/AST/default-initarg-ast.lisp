@@ -1,4 +1,4 @@
 (cl:in-package #:iconoclast)
 
-(defclass default-initarg-ast (initform-ast-mixin name-ast ast)
+(define-ast-class default-initarg-ast (initform-ast-mixin name-ast ast)
   ())

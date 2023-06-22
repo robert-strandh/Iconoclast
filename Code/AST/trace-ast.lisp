@@ -2,14 +2,11 @@
 
 (defgeneric function-name-asts (ast))
 
-(defclass function-name-asts-mixin ()
-  ((%function-name-asts
-    :initform '()
-    :initarg :function-name-asts
-    :reader function-name-asts)))
+(define-ast-class function-name-asts-mixin ()
+  ((* function-name-asts)))
 
-(defclass trace-ast (function-name-asts-mixin ast)
+(define-ast-class trace-ast (function-name-asts-mixin ast)
   ())
 
-(defclass untrace-ast (function-name-asts-mixin ast)
+(define-ast-class untrace-ast (function-name-asts-mixin ast)
   ())

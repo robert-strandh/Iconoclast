@@ -1,11 +1,4 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric place (ast))
-
-(defclass place-ast (ast)
-  ((%place
-    :initarg :place
-    :reader place)))
-
-(defmethod children append ((ast place-ast))
-  (list (cons "place" (place ast))))
+(define-ast-class place-ast (ast)
+  ((1 place)))

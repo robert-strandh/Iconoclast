@@ -1,12 +1,4 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric result-ast (ast))
-
-(defclass result-ast-mixin ()
-  ((%result-ast
-    :initform nil
-    :initarg :result-ast
-    :reader result-ast)))
-
-(defmethod children append ((ast result-ast-mixin))
-  (list (cons "result-ast" (result-ast ast))))
+(define-ast-class result-ast-mixin ()
+  ((? result-ast)))

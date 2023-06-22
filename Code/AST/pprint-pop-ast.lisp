@@ -1,4 +1,4 @@
 (cl:in-package #:iconoclast)
 
-(defclass pprint-pop-ast (ast)
+(define-ast-class pprint-pop-ast (ast)
   ())

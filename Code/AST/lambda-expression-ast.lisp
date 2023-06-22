@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast)
 
-(defclass lambda-expression-ast
+(define-ast-class lambda-expression-ast
     (form-asts-mixin
      documentation-ast-mixin
      declaration-asts-mixin

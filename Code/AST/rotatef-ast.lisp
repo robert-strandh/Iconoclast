@@ -1,4 +1,4 @@
 (cl:in-package #:iconoclast)
 
-(defclass rotatef-ast (place-asts-mixin form-ast-mixin ast)
+(define-ast-class rotatef-ast (place-asts-mixin form-ast-mixin ast)
   ())

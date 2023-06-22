@@ -1,4 +1,4 @@
 (cl:in-package #:iconoclast)
 
-(defclass progn-ast (form-asts-mixin ast)
+(define-ast-class progn-ast (form-asts-mixin ast)
   ())

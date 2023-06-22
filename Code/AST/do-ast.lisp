@@ -2,36 +2,17 @@
 
 (defgeneric step-form-ast (ast))
 
-(defclass do-iteration-variable-ast
+(define-ast-class do-iteration-variable-ast
     (variable-name-ast-mixin init-form-ast-mixin ast)
-  ((%step-form-ast
-    :initform nil
-    :initarg :step-form-ast
-    :reader step-form-ast)))
+  ((? step-form-ast)))
 
-(defmethod children append ((ast do-iteration-variable-ast))
-  (list (cons "step-form-ast" (step-form-ast ast))))
-
-(defgeneric do-iteration-variable-asts (ast))
-
-(defgeneric end-test-ast (ast))
-
-(defclass do-do*-ast
+(define-ast-class do-do*-ast
     (segment-asts-mixin result-ast-mixin declaration-asts-mixin ast)
-  ((%do-iteration-variable-asts
-    :initform '()
-    :initarg :do-iteration-variable-asts
-    :reader do-iteration-variable-asts)
-   (%end-test-ast
-    :initarg :end-test-ast
-    :reader end-test-ast)))
+  ((* do-iteration-variable-asts)
+   (1 end-test-ast)))
 
-(defmethod children append ((ast do-do*-ast))
-  (list (cons "do-iteration-variable-asts" (do-iteration-variable-asts ast))
-        (cons "end-test-ast" (end-test-ast ast))))
-
-(defclass do-ast (do-do*-ast)
+(define-ast-class do-ast (do-do*-ast)
   ())
 
-(defclass do*-ast (do-do*-ast)
+(define-ast-class do*-ast (do-do*-ast)
   ())

@@ -1,4 +1,4 @@
 (cl:in-package #:iconoclast)
 
-(defclass with-standard-io-syntax-ast (form-asts-mixin ast)
+(define-ast-class with-standard-io-syntax-ast (form-asts-mixin ast)
   ())

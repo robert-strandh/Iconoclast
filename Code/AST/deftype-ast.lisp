@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast)
 
-(defclass deftype-ast
+(define-ast-class deftype-ast
     (name-ast-mixin
      lambda-list-ast-mixin
      declaration-asts-mixin

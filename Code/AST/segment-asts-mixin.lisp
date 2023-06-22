@@ -1,18 +1,10 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric segment-asts (ast))
+(define-ast-class segment-asts-mixin ()
+  ((* segment-asts)))
 
-(defclass segment-asts-mixin ()
-  ((%segment-asts
-    :initform '()
-    :initarg :segment-asts
-    :reader segment-asts)))
-
-(defmethod children append ((ast segment-asts-mixin))
-  (list (cons "segment-asts" (segment-asts ast))))
-
-(defclass tagbody-segment-ast (form-asts-mixin tag-ast-mixin ast)
+(define-ast-class tagbody-segment-ast (form-asts-mixin tag-ast-mixin ast)
   ())
 
-(defclass go-ast (tag-ast-mixin ast)
+(define-ast-class go-ast (tag-ast-mixin ast)
   ())

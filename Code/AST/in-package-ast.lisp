@@ -1,4 +1,4 @@
 (cl:in-package #:iconoclast)
 
-(defclass in-package-ast (name-ast-mixin ast)
+(define-ast-class in-package-ast (name-ast-mixin ast)
   ())
