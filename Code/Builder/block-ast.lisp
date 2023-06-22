@@ -4,13 +4,5 @@
 
 (define-make-node-method :block-name ico:block-name-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :name))
-     (left ico:block-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    ;; We need source information
-    ;; for the name, no?
-    :name-ast right))
+(define-relations ico:block-ast
+  ((:name t ico:name-ast)))

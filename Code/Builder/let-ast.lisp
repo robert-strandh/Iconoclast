@@ -6,20 +6,6 @@
 
 (define-make-node-method :let* ico:let*-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :name))
-     (left ico:variable-binding-ast)
-     (right ico:variable-name-ast)
-     &key)
-  (reinitialize-instance left
-    :variable-name-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :value))
-     (left ico:variable-binding-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :form-ast right))
+(define-relations ico:variable-binding-ast
+  ((:name ico:variable-name-ast ico:variable-name-ast)
+   (:value t ico:form-ast)))

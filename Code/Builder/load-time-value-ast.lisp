@@ -2,20 +2,6 @@
 
 (define-make-node-method :load-time-value ico:load-time-value-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :form))
-     (left ico:load-time-value-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :form-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :read-only-p))
-     (left ico:load-time-value-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :read-only-p-ast right))
+(define-relations ico:load-time-value-ast
+  ((:form t ico:form-ast)
+   (:read-only-p t ico:read-only-p-ast)))

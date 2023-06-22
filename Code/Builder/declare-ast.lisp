@@ -18,25 +18,11 @@
         #+(or)(declaration 'ico:declaration-ast))
     :origin source))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :declaration))
-     (left ico:declaration-asts-mixin)
-     (right ico:declaration-specifier-ast)
-     &key)
-  (reinitialize-instance left
-    :declaration-asts
-      (append (ico:declaration-asts left)
-              (list right))))
+(define-relations ico:declaration-asts-mixin
+  ((:declaration ico:declaration-specifier-ast ico:declaration-asts)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :argument))
-     (left ico:declaration-specifier-ast)
-     (right ico:name-mixin)
-     &key)
-  (reinitialize-instance left
-    :name-asts (append (ico:name-asts left) (list right))))
+(define-relations ico:declaration-specifier-ast
+  ((:argument ico:name-mixin ico:name-asts)))
 
 (defmethod abp:make-node
     ((builder builder)
@@ -51,11 +37,5 @@
         (safety 'ico:safety-ast))
     :origin source :value value))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :argument))
-     (left ico:optimize-ast)
-     (right ico:optimize-quality-ast)
-     &key)
-  (reinitialize-instance left
-    :quality-asts (append (ico:quality-asts left) (list right))))
+(define-relations ico:optimize-ast
+  ((:argument ico:optimize-quality-ast ico:quality-asts)))

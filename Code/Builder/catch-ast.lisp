@@ -2,41 +2,12 @@
 
 (define-make-node-method :catch ico:catch-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :tag-form))
-     (left ico:catch-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :tag-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :form))
-     (left ico:catch-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :form-asts
-      (append (ico:form-asts left) (list right))))
+(define-relations ico:catch-ast
+  ((:tag-form t ico:tag-ast)
+   (:form t ico:form-asts)))
 
 (define-make-node-method :throw ico:throw-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :tag-form))
-     (left ico:throw-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :tag-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :result-form))
-     (left ico:throw-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :form-ast right))
+(define-relations ico:throw-ast
+  ((:tag-form t ico:tag-asts)
+   (:result-form t ico:form-ast)))

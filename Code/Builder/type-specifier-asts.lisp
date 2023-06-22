@@ -2,49 +2,14 @@
 
 (define-make-node-method :atomic-type-specifier ico:atomic-type-specifier-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :name))
-     (left ico:atomic-type-specifier-ast)
-     (right ico:type-name-ast)
-     &key)
-  (reinitialize-instance left
-    :name-ast right))
+(define-relations ico:atomic-type-specifier-ast
+  ((:name ico:type-name-ast ico:name-ast)))
 
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :subsidiary-item))
-     &key source value)
-  (make-instance 'ico:subsidiary-item-ast
-    :origin source
-    :value value))
+(define-make-node-method :subsidiary-item ico:subsidiary-item-ast)
 
 (define-make-node-method :compound-type-specifier ico:compound-type-specifier-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :name))
-     (left ico:compound-type-specifier-ast)
-     (right ico:type-name-ast)
-     &key)
-  (reinitialize-instance left
-    :name-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :argument))
-     (left ico:compound-type-specifier-ast)
-     (right ico:subsidiary-item-ast)
-     &key)
-  (reinitialize-instance left
-    :subsidiary-item-asts
-    (append (ico:subsidiary-item-asts left) (list right))))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :argument))
-     (left ico:compound-type-specifier-ast)
-     (right ico:atomic-type-specifier-ast)
-     &key)
-  (reinitialize-instance left
-    :atomic-type-specifier-ast right))
+(define-relations ico:compound-type-specifier-ast
+  ((:name ico:type-name-ast ico:name-ast)
+   (:argument ico:subsidiary-item-ast ico:subsidiary-item-asts)
+   (:argument ico:atomic-type-specifier-ast ico:atomic-type-specifier-ast)))

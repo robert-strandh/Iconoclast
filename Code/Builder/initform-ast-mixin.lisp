@@ -1,9 +1,4 @@
 (cl:in-package #:iconoclast-builder)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :initform))
-     (left ico:initform-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :initform-ast right))
+(define-relations ico:initform-ast-mixin
+  ((:initform t ico:initform-ast)))

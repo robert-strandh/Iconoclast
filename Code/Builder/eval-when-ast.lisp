@@ -10,11 +10,5 @@
     :origin source
     :name situation))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :situation))
-     (left ico:eval-when-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :situation-asts (append (ico:situation-asts left) (list right))))
+(define-relations ico:eval-when-ast
+  ((:situation t ico:situation-asts)))

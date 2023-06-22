@@ -8,11 +8,5 @@
 
 (define-make-node-method :local-function-binding ico:lexical-function-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :name))
-     (left ico:lexical-function-ast)
-     (right ico:function-name-ast)
-     &key)
-  (reinitialize-instance left
-    :name-ast right))
+(define-relations ico:lexical-function-ast
+  ((:name ico:function-name-ast ico:name-ast)))

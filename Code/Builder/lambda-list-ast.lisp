@@ -40,93 +40,38 @@
     ((builder builder) (node ico:required-parameter-ast))
   :required-parameter)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :required-section))
-     (left ico:required-section-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :required-section-ast right))
+(define-relations ico:required-section-ast-mixin
+  ((:required-section t ico:required-section-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :optional-section))
-     (left ico:optional-section-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :optional-section-ast right))
+(define-relations ico:optional-section-ast-mixin
+  ((:optional-section t ico:optional-section-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :rest-section))
-     (left ico:rest-section-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :rest-section-ast right))
+(define-relations ico:rest-section-ast-mixin
+  ((:rest-section t ico:rest-section-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :keyword-section))
-     (left ico:key-section-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :key-section-ast right))
+(define-relations ico:keywod-section-ast-mixin
+  ((:keywod-section t ico:keywod-section-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :aux-section))
-     (left ico:aux-section-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :aux-section-ast right))
+(define-relations ico:aux-section-ast-mixin
+  ((:aux-section t ico:aux-section-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :env-section))
-     (left ico:environment-section-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :environment-section-ast right))
+(define-relations ico:environment-section-ast-mixin
+  ((:en-section t ico:environment-section-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :whole-section))
-     (left ico:whole-section-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :whole-section-ast right))
+(define-relations ico:whole-section-ast-mixin
+  ((:whole-section t ico:whole-section-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :name))
-     (left ico:parameter-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :name-ast right))
+(define-relations ico:parameter-ast
+  ((:name t ico:name-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :keyword))
-     (left ico:lambda-list-keyword-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :name-ast right))
+(define-relations ico:lambda-list-keyword-ast-mixin
+  ((:keyword t ico:name-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :keyword))
-     (left ico:key-parameter-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :keyword-ast right))
+(define-relations ico:key-parameter-ast
+  ((:keyword t ico:keyword-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :value))
-     (left ico:aux-parameter-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :init-form-ast right))
+(define-relations ico:aux-parameter-ast
+  ((:value t ico:init-form-ast)))
 
 (define-make-node-method
     :ordinary-lambda-list ico:ordinary-lambda-list-ast)
@@ -143,47 +88,20 @@
 (define-make-node-method
     :deftype-lambda-list ico:deftype-lambda-list-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :parameter))
-     (left ico:single-parameter-section-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :parameter-ast right))
+(define-relations ico:single-parameter-section-ast
+  ((:parameter t ico:parameter-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :parameter))
-     (left ico:multi-parameter-section-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :parameter-asts
-    (append (ico:parameter-asts left) (list right))))
+(define-relations ico:multi-parameter-section-ast
+  ((:parameter t ico:parameter-asts)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :lambda-list))
-     (left ico:lambda-list-ast-mixin)
-     (right ico:lambda-list-ast)
-     &key)
-  (reinitialize-instance left :lambda-list-ast right))
+(define-relations ico:lambda-list-ast-mixin
+  ((:lambda-list ico:lambda-list-ast ico:lambda-list-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :default))
-     (left ico:init-form-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :init-form-ast right))
+(define-relations ico:init-form-ast-mixin
+  ((:default t ico:init-form-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :supplied))
-     (left ico:supplied-p-parameter-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :supplied-p-parameter-ast right))
+(define-relations ico:supplied-p-parameter-ast-mixin
+  ((:supplied t ico:supplied-p-parameter-ast)))
 
 (define-make-node-method :pattern ico:pattern-ast)
 

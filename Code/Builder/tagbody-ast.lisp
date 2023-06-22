@@ -12,20 +12,6 @@
     :origin source
     :name name))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :label))
-     (left ico:tagbody-segment-ast)
-     (right ico:tag-ast)
-     &key)
-  (reinitialize-instance left
-    :tag-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :statement))
-     (left ico:tagbody-segment-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :form-asts (append (ico:form-asts left) (list right))))
+(define-relations ico:tagbody-segment-ast
+  ((:label ico:tag-ast ico:tag-ast)
+   (:statement t ico:form-asts)))
