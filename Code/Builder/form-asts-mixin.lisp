@@ -6,7 +6,7 @@
 ;;; FIXME: :REST is a poor choice.
 
 (define-relations ico:prog1-ast
-  ((:rest t ico:form-ast)))
+  ((:rest t ico:form-asts)))
 
 (define-relations ico:prog2-ast
-  ((:rest t ico:form-ast)))
+  ((:rest t ico:form-asts)))
