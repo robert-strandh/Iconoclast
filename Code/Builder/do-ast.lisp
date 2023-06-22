@@ -7,48 +7,15 @@
 
 (define-make-node-method :do* ico:do*-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :variable))
-     (left ico:do-iteration-variable-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :variable-name-ast right))
+(define-relations ico:do-iteration-variable-ast
+  ((:variable t ico:variable-name-ast)))
 
-;;; FIXME: :INIT is a back choice for the relation.
+;;; FIXME: :INIT is a bad choice for the relation.
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :init))
-     (left ico:do-iteration-variable-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :init-form-ast right))
+(define-relations ico:do-iteration-variable-ast
+  ((:init t ico:init-form-ast)
+   (:step t ico:step-form-ast)))
 
-;;; FIXME: :STEP is a back choice for the relation.
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :step))
-     (left ico:do-iteration-variable-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :step-form-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :variable))
-     (left ico:do-do*-ast)
-     (right t)
-     &key)
-  (reinitialize-instance
-      left :do-iteration-variable-asts
-      (append (ico:do-iteration-variable-asts left) (list right))))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :end-test))
-     (left ico:do-do*-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :end-test-ast right))
+(define-relations ico:do-do*-ast
+  ((:variable t ico:do-iteration-variable-asts)
+   (:end-test t ico:end-test-ast)))

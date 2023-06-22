@@ -6,29 +6,14 @@
 (define-make-node-method
     :typecase-otherwise-clause ico:typecase-otherwise-clause-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :type))
-     (left ico:typecase-normal-clause-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :type-specifier-ast right))
+(define-relations ico:typecase-normal-clause-ast
+  ((:type t ico:type-specifier-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :keyform))
-     (left ico:typecase-base-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :form-ast right))
+(define-relations ico:typecase-base-ast
+  ((:clause t ico:clause-asts)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :keyplace))
-     (left ico:ctypecase-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :place-ast right))
+(define-relations ico:ctypecase-ast
+  ((:keyplace t ico:place-ast)))
 
 (define-make-node-method :typecase ico:typecase-ast)
 

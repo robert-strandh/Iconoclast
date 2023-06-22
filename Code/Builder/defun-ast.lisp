@@ -2,11 +2,5 @@
 
 (define-make-node-method :defun ico:defun-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :name))
-     (left ico:defun-ast)
-     (right ico:function-name-ast)
-     &key)
-  (reinitialize-instance left
-    :name-ast right))
+(define-relations ico:defun-ast
+  ((:name ico:function-name-ast ico:name-ast)))

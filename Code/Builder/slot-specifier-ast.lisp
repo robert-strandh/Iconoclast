@@ -4,71 +4,12 @@
 
 (define-make-node-method :condition-slot-specifier ico:slot-specifier-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :name))
-     (left ico:slot-specifier-ast)
-     (right ico:variable-name-ast)
-     &key)
-  (reinitialize-instance left
-    :name-ast right))
-
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :initarg-name))
-     &key name source)
-  (make-instance 'ico:initarg-name-ast
-    :origin source
-    :name name))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :initarg))
-     (left ico:slot-specifier-ast)
-     (right ico:initarg-name-ast)
-     &key)
-  (reinitialize-instance
-      left :initarg-asts (append (ico:initarg-asts left) (list right))))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :type))
-     (left ico:slot-specifier-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :type-specifier-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :reader))
-     (left ico:slot-specifier-ast)
-     (right t)
-     &key)
-  (reinitialize-instance
-      left :reader-asts (append (ico:reader-asts left) (list right))))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :writer))
-     (left ico:slot-specifier-ast)
-     (right t)
-     &key)
-  (reinitialize-instance
-      left :writer-asts (append (ico:writer-asts left) (list right))))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :accessor))
-     (left ico:slot-specifier-ast)
-     (right t)
-     &key)
-  (reinitialize-instance
-      left :accessor-asts (append (ico:accessor-asts left) (list right))))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :allocation))
-     (left ico:slot-specifier-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :allocation right))
+(define-relations ico:slot-specifier-ast
+  ((:name ico:variable-name-ast ico:name-ast)
+  (:initarg-name ico:initarg-name-ast ico:initarg-asts)
+  (:initarg ico:initarg-name-ast ico:initarg-asts)
+  (:type t ico:type-specifier-ast)
+  (:reader t ico:reader-asts)
+  (:writer t ico:writer-asts)
+  (:accessor t ico:accessor-asts)
+  (:allocation t ico:allocation)))

@@ -4,11 +4,5 @@
 
 (define-make-node-method :untrace ico:untrace-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :function-name))
-     (left ico:function-name-asts-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :function-name-asts (append (ico:function-name-asts left) (list right))))
+(define-relations ico:function-name-asts-mixin
+  ((:function-name t ico:function-name-asts)))

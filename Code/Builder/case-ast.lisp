@@ -4,30 +4,14 @@
 
 (define-make-node-method :case-otherwise-clause ico:case-otherwise-clause-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :key))
-     (left ico:case-normal-clause-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :key-asts (append (ico:key-asts left) (list right))))
+(define-relations ico:case-normal-clause-ast
+  ((:key t ico:key-asts)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :keyform))
-     (left ico:case-or-ecase-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :form-ast right))
+(define-relations ico:case-or-ecase-ast
+  ((:keyform t ico:form-asts)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :keyplace))
-     (left ico:ccase-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :place-ast right))
+(define-relations ico:ccase-ast
+  ((:keyplace t ico:place-ast)))
 
 (define-make-node-method :case ico:case-ast)
 

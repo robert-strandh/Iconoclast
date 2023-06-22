@@ -9,5 +9,5 @@
 (define-make-node-method :throw ico:throw-ast)
 
 (define-relations ico:throw-ast
-  ((:tag-form t ico:tag-asts)
+  ((:tag-form t ico:tag-ast)
    (:result-form t ico:form-ast)))

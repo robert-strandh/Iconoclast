@@ -2,30 +2,12 @@
 
 (define-make-node-method :defgeneric ico:defgeneric-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :name))
-     (left ico:defgeneric-ast)
-     (right ico:function-name-ast)
-     &key)
-  (reinitialize-instance left
-    :name-ast right))
+(define-relations ico:defgeneric-ast
+  ((:name ico:function-name-ast ico:name-ast)
+   (:generic-function-class t ico:generic-function-class-ast)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :generic-function-class))
-     (left ico:defgeneric-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :generic-function-class-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :method-class))
-     (left ico:defgeneric-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :method-class-ast right))
+(define-relations ico:defgeneric-ast
+  ((:method-class t ico:method-class-ast)))
 
 (define-make-node-method :method-combination-name ico:name-ast)
 
@@ -57,13 +39,5 @@
 
 (define-make-node-method :method-description ico:method-description-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :method))
-     (left ico:defgeneric-ast)
-     (right ico:method-description-ast)
-     &key)
-  (reinitialize-instance
-      left
-    :method-description-asts
-    (append (ico:method-description-asts left) (list right))))
+(define-relations ico:defgeneric-ast
+  ((:method ico:method-description-ast ico:method-description-asts)))

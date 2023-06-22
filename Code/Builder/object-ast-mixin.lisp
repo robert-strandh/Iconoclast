@@ -1,9 +1,4 @@
 (cl:in-package #:iconoclast-builder)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :object))
-     (left ico:object-ast-mixin)
-     (right t)
-     &key)
-  (reinitialize-instance left :object-ast right))
+(define-relations ico:object-ast-mixin
+  ((:object t ico:object-ast)))

@@ -2,36 +2,12 @@
 
 (define-make-node-method :condition-report ico:condition-report-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :function))
-     (left ico:condition-report-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :argument-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :lambda))
-     (left ico:condition-report-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :argument-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :string))
-     (left ico:condition-report-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :argument-ast right))
+(define-relations ico:condition-report-ast
+  ((:function t ico:argument-ast)
+   (:lambda t ico:argument-ast)
+   (:string t ico:argument-ast)))
 
 (define-make-node-method :define-condition ico:define-condition-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :report))
-     (left ico:define-condition-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :report-ast right))
+(define-relations ico:define-condition-ast
+  ((:report t ico:report-ast)))

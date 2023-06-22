@@ -2,20 +2,6 @@
 
 (define-make-node-method :the ico:the-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :type))
-     (left ico:the-ast)
-     (right ico:type-specifier-ast)
-     &key)
-  (reinitialize-instance left
-    :value-type-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :form))
-     (left ico:the-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :form-ast right))
+(define-relations ico:the-ast
+  ((:type ico:type-specifier-ast ico:value-type-ast)
+   (:form t ico:form-ast)))

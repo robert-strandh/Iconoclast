@@ -4,83 +4,16 @@
 
 (define-make-node-method :restart-case ico:restart-case-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :name))
-     (left ico:restart-clause-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :name-ast right))
+(define-relations ico:restart-clause-ast
+  ((:name t ico:name-ast)
+   (:report-lambda t ico:report-ast)
+   (:report-name t ico:report-ast)
+   (:report-string t ico:report-ast)
+   (:interactive-name t ico:interactive-ast)
+   (:interactive-lambda t ico:interactive-ast)
+   (:test-name t ico:test-ast)
+   (:test-lambda t ico:test-ast)
+   (:form t ico:form-asts)))
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :report-lambda))
-     (left ico:restart-clause-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :report-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :report-name))
-     (left ico:restart-clause-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :report-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :report-string))
-     (left ico:restart-clause-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :report-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :interactive-name))
-     (left ico:restart-clause-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :interactive-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :interactive-lambda))
-     (left ico:restart-clause-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :interactive-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :test-name))
-     (left ico:restart-clause-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :test-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :test-lambda))
-     (left ico:restart-clause-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :test-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :form))
-     (left ico:restart-case-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left :form-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :clause))
-     (left ico:restart-case-ast)
-     (right ico:restart-clause-ast)
-     &key)
-  (reinitialize-instance left
-    :clause-asts (append (ico:clause-asts left) (list right))))
+(define-relations ico:restart-case-ast
+  ((:clause ico:restart-clause-ast ico:clause-asts)))

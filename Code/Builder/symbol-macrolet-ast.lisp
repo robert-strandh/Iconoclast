@@ -2,32 +2,11 @@
 
 (define-make-node-method :symbol-macro-binding ico:symbol-expansion-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :name))
-     (left ico:symbol-expansion-ast)
-     (right ico:variable-name-ast)
-     &key)
-  (reinitialize-instance left
-    :symbol-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :expansion))
-     (left ico:symbol-expansion-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :expansion-ast right))
+(define-relations ico:symbol-expansion-ast
+  ((:name ico:variable-name-ast ico:symbol-ast)
+   (:expansion t ico:expansion-ast)))
 
 (define-make-node-method :symbol-macrolet ico:symbol-macrolet-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :binding))
-     (left ico:symbol-macrolet-ast)
-     (right ico:symbol-expansion-ast)
-     &key)
-  (reinitialize-instance left
-    :symbol-expansion-asts
-      (append (ico:symbol-expansion-asts left) (list right))))
+(define-relations ico:symbol-macrolet-ast
+  ((:binding ico:symbol-expansion-ast ico:symbol-expansion-asts)))

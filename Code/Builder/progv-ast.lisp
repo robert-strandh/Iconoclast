@@ -2,20 +2,6 @@
 
 (define-make-node-method :progv ico:progv-ast)
 
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :symbols))
-     (left ico:progv-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :symbols-ast right))
-
-(defmethod abp:relate
-    ((builder builder)
-     (relation (eql :values))
-     (left ico:progv-ast)
-     (right t)
-     &key)
-  (reinitialize-instance left
-    :values-ast right))
+(define-relations ico:progv-ast
+  ((:symbols t ico:symbols-ast)
+   (:values t ico:values-ast)))

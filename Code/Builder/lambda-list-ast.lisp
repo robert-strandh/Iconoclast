@@ -49,8 +49,8 @@
 (define-relations ico:rest-section-ast-mixin
   ((:rest-section t ico:rest-section-ast)))
 
-(define-relations ico:keywod-section-ast-mixin
-  ((:keywod-section t ico:keywod-section-ast)))
+(define-relations ico:key-section-ast-mixin
+  ((:keyword-section t ico:key-section-ast)))
 
 (define-relations ico:aux-section-ast-mixin
   ((:aux-section t ico:aux-section-ast)))
