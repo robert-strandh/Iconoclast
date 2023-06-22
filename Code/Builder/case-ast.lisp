@@ -8,7 +8,7 @@
   ((:key t ico:key-asts)))
 
 (define-relations ico:case-or-ecase-ast
-  ((:keyform t ico:form-asts)))
+  ((:keyform t ico:form-ast)))
 
 (define-relations ico:ccase-ast
   ((:keyplace t ico:place-ast)))
