@@ -21,9 +21,6 @@
 (define-relations ico:declaration-asts-mixin
   ((:declaration ico:declaration-specifier-ast ico:declaration-asts)))
 
-(define-relations ico:declaration-specifier-ast
-  ((:argument ico:name-mixin ico:name-asts)))
-
 (defmethod abp:make-node
     ((builder builder)
      (kind (eql :optimization-specification))
