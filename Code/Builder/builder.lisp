@@ -3,6 +3,9 @@
 (defclass builder ()
   ())
 
+(defgeneric relations (ast)
+  (:method-combination append))
+
 (defmacro define-make-node-method (kind class-name)
   `(progn 
      (defmethod abp:make-node
@@ -33,16 +36,26 @@
                               (third relation)
                               ast-name)
                   collect
-                  `(defmethod abp:relate
-                       ((builder builder)
-                        (relation (eql ,(first relation)))
-                        (left ,ast-name)
-                        (right ,(second relation))
-                        &key)
-                     (reinitialize-instance left
-                       ,(initarg-from-slot-reader-name slot-reader-name)
-                       ,@(case (first designator)
-                           ((ico:? 1)
-                            '(right))
-                           (otherwise
-                            `((append (,slot-reader-name left) (list right))))))))))
+                  (let ((relation-name (first relation))
+                        (relation-cardinality (first designator)))
+                    `(progn
+                       (defmethod relations append ((ast ,ast-name))
+                         (if (null (,slot-reader-name ast))
+                             '()
+                             (list (cons ',relation-name
+                                         ',relation-cardinality))))
+                       
+                       (defmethod abp:relate
+                           ((builder builder)
+                            (relation (eql ,relation-name))
+                            (left ,ast-name)
+                            (right ,(second relation))
+                            &key)
+                         (reinitialize-instance left
+                           ,(initarg-from-slot-reader-name slot-reader-name)
+                           ,@(case relation-cardinality
+                               ((ico:? 1)
+                                '(right))
+                               (otherwise
+                                `((append (,slot-reader-name left)
+                                          (list right))))))))))))
