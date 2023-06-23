@@ -48,6 +48,22 @@
                              (list (cons ',relation-name
                                          ',relation-cardinality))))
                        
+                       (defmethod abp:node-relation
+                           ((builder builder)
+                            (relation (eql ,relation-name))
+                            (node ,ast-name))
+                         (values 
+                          ,(case relation-cardinality
+                             (ico:?
+                              `(if (null (,slot-reader-name node))
+                                   '()
+                                   (list (,slot-reader-name node))))
+                             (1
+                              `(list (,slot-reader-name node)))
+                             (otherwise
+                              `(,slot-reader-name node)))
+                          nil))
+
                        (defmethod abp:relate
                            ((builder builder)
                             (relation (eql ,relation-name))
