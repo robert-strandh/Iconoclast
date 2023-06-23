@@ -6,6 +6,9 @@
 (defgeneric relations (ast)
   (:method-combination append))
 
+(defmethod abp:node-relations ((builder builder) node)
+  (relations node))
+
 (defmacro define-make-node-method (kind class-name)
   `(progn 
      (defmethod abp:make-node
