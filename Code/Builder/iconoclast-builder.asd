@@ -10,6 +10,7 @@
     (:file "builder")
     (:file "test")
     (:file "application-ast")
+    (:file "variable-name-ast-mixin")
     (:file "unparsed-ast")
     (:file "documentation-ast-mixin")
     (:file "documentation-ast")
