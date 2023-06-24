@@ -1,34 +1,15 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-setq-1 ()
-  (run-test
-      '(setq)
-      '(ico:setq-ast
-        ("form-asts" nil)
-        ("variable-name-asts" nil))))
+(define-test setq)
 
-(defun test-setq-2 ()
-  (run-test
-      '(setq a 234)
-      '(ico:setq-ast
-        ("form-asts"
-         ((ico:unparsed-form-ast :form 234)))
-        ("variable-name-asts"
-         ((ico:variable-name-ast :name a))))))
+(define-test setq-empty
+  :parent setq
+  (compare-parse-and-unparse '(setq)))
 
-(defun test-setq-3 ()
-  (run-test 
-      '(setq a 234 b 345)
-      '(ico:setq-ast
-        ("form-asts"
-         ((ico:unparsed-form-ast :form 234)
-          (ico:unparsed-form-ast :form 345)))
-        ("variable-name-asts"
-         ((ico:variable-name-ast :name a)
-          (ico:variable-name-ast :name b))))))
+(define-test setq-one-pair
+  :parent setq
+  (compare-parse-and-unparse '(setq a 234)))
 
-(defun test-setq ()
-  (format *trace-output* "Testing SETQ~%")
-  (test-setq-1)
-  (test-setq-2)
-  (test-setq-3))
+(define-test setq-two-pairs
+  :parent setq
+  (compare-parse-and-unparse '(setq a 234 b 345)))

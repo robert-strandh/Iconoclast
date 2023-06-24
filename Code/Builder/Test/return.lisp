@@ -1,15 +1,11 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-return-1 ()
-  (run-test
-   '(return)
-   '(ico:return-ast ("form-ast" nil))))
+(define-test return)
 
-(defun test-return-2 ()
-  '(return 234)
-  '(ico:return-ast ("form-ast" (ico:unparsed-form-ast :form 234))))
+(define-test return-1
+  :parent return
+  (compare-parse-and-unparse '(return)))
 
-(defun test-return ()
-  (format *trace-output* "Testing RETURN~%")
-  (test-return-1)
-  (test-return-2))
+(define-test return-2
+  :parent return
+  (compare-parse-and-unparse '(return 234)))

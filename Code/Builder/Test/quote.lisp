@@ -1,5 +1,7 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-quote ()
-  (format *trace-output* "Testing QUOTE~%")
-  nil)
+(define-test quote)
+
+(define-test quote-simple-object
+  :parent quote
+  (compare-parse-and-unparse '(quote 234)))

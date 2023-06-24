@@ -1,13 +1,7 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-multiple-value-call-1 ()
-  (run-test
-   '(multiple-value-call a)
-   '(ico:multiple-value-call-ast
-     ("form-asts" nil)
-     ("function-form-ast"
-      (ico:unparsed-form-ast :form a)))))
+(define-test multiple-value-call)
 
-(defun test-multiple-value-call ()
-  (format *trace-output* "Testing MULTIPLE-VALUE-CALL~%")
-  (test-multiple-value-call-1))
+(define-test multiple-value-call-only-function-form
+  :parent multiple-value-call
+  (compare-parse-and-unparse '(multiple-value-call a)))

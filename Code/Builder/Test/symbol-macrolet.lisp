@@ -1,25 +1,11 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-symbol-macrolet-1 ()
-  (let ((result (bld::test '(symbol-macrolet ()))))
-    (assert (equal (convert-ast result)
-                   '(ico:symbol-macrolet-ast
-                     ("declaration-asts" nil)
-                     ("form-asts" nil)
-                     ("symbol-expansion-asts" nil))))))
+(define-test symbol-macrolet)
 
-(defun test-symbol-macrolet-2 ()
-  (let ((result (bld::test '(symbol-macrolet ((f 234))))))
-    (assert (equal (convert-ast result)
-                   '(ico:symbol-macrolet-ast
-                     ("declaration-asts" nil)
-                     ("form-asts" nil)
-                     ("symbol-expansion-asts"
-                      ((ico:symbol-expansion-ast
-                        ("expansion-ast" (ico:unparsed-form-ast :form 234))
-                        ("symbol-ast" (ico:variable-name-ast :name f))))))))))
+(define-test symbol-macrolet-no-definitions
+  :parent symbol-macrolet
+  (compare-parse-and-unparse '(symbol-macrolet ())))
 
-(defun test-symbol-macrolet ()
-  (format *trace-output* "Testing SYMBOL-MACROLET~%")
-  (test-symbol-macrolet-1)
-  (test-symbol-macrolet-2))
+(define-test symbol-macrolet-one-definition
+  :parent symbol-macrolet
+  (compare-parse-and-unparse '(symbol-macrolet ((f 234)))))

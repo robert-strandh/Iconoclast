@@ -1,54 +1,19 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-type-1 ()
-  (let ((result (bld::test '(the fixnum a))))
-    (assert (equal (convert-ast result)
-                   '(ico:the-ast
-                     ("form-ast" (ico:unparsed-form-ast :form a))
-                     ("value-type-ast"
-                      (ico:atomic-type-specifier-ast
-                       ("name-ast" (ico:type-name-ast :name fixnum)))))))))
+(define-test type)
 
-(defun test-type-2 ()
-  (let ((result (bld::test '(the (integer 2 3) a))))
-    (assert (equal (convert-ast result)
-                   '(ico:the-ast
-                     ("form-ast" (ico:unparsed-form-ast :form a))
-                     ("value-type-ast"
-                      (ico:compound-type-specifier-ast
-                       ("atomic-type-specifier-ast" nil)
-                       ("name-ast" (ico:type-name-ast :name integer))
-                       ("subsidiary-item-asts"
-                        ((ico:subsidiary-item-ast :value 2)
-                         (ico:subsidiary-item-ast :value 3))))))))))
+(define-test type-1
+  :parent type
+  (compare-parse-and-unparse '(the fixnum a)))
 
-(defun test-type-3 ()
-  (let ((result (bld::test '(the (array) a))))
-    (assert (equal (convert-ast result)
-                   '(ico:the-ast
-                     ("form-ast" (ico:unparsed-form-ast :form a))
-                     ("value-type-ast"
-                      (ico:compound-type-specifier-ast
-                       ("atomic-type-specifier-ast" nil)
-                       ("name-ast" (ico:type-name-ast :name array))
-                       ("subsidiary-item-asts" nil))))))))
+(define-test type-2
+  :parent type
+  (compare-parse-and-unparse '(the (integer 2 3) a)))
 
-(defun test-type-4 ()
-  (let ((result (bld::test '(the (array fixnum) a))))
-    (assert (equal (convert-ast result)
-                   '(ico:the-ast
-                     ("form-ast" (ico:unparsed-form-ast :form a))
-                     ("value-type-ast"
-                      (ico:compound-type-specifier-ast
-                       ("atomic-type-specifier-ast"
-                        (ico:atomic-type-specifier-ast
-                         ("name-ast" (ico:type-name-ast :name fixnum))))
-                       ("name-ast" (ico:type-name-ast :name array))
-                       ("subsidiary-item-asts" nil))))))))
+(define-test type-3
+  :parent type
+  (compare-parse-and-unparse '(the (array) a)))
 
-(defun test-type ()
-  (format *trace-output* "Testing TYPE~%")
-  (test-type-1)
-  (test-type-2)
-  (test-type-3)
-  (test-type-4))
+(define-test type-4
+  :parent type
+  (compare-parse-and-unparse '(the (array fixnum) a)))

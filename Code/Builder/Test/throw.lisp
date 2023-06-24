@@ -1,12 +1,7 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-throw-1 ()
-  (run-test
-   '(throw 234 345)
-   '(ico:throw-ast
-     ("result-form-ast" (ico:unparsed-form-ast :form 345))
-     ("tag-ast" (ico:unparsed-form-ast :form 234)))))
+(define-test throw)
 
-(defun test-throw ()
-  (format *trace-output* "Testing THROW~%")
-  (test-throw-1))
+(define-test throw-simple-body
+  :parent throw
+  (compare-parse-and-unparse '(throw 234 345)))

@@ -1,19 +1,19 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(define-test test-if)
+(define-test if)
 
-(define-test test-if-no-forms
-  :parent test-if
+(define-test if-no-forms
+  :parent if
   (fail (parse-and-unparse '(if))))
   
-(define-test test-if-only-test
-  :parent test-if
+(define-test if-only-test
+  :parent if
   (fail (parse-and-unparse '(if 234))))
   
-(define-test test-if-no-else
-  :parent test-if
+(define-test if-no-else
+  :parent if
   (compare-parse-and-unparse '(if 234 345)))
 
-(define-test test-if-also-else
-  :parent test-if
+(define-test if-also-else
+  :parent if
   (compare-parse-and-unparse '(if 234 345 456)))

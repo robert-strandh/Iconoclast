@@ -1,26 +1,11 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-multiple-value-bind-1 ()
-  (run-test
-   '(multiple-value-bind () (f x))
-   '(ico:multiple-value-bind-ast
-     ("declaration-asts" nil)
-     ("form-ast" (ico:unparsed-form-ast :form (f x)))
-     ("form-asts" nil)
-     ("variable-name-asts" nil))))
+(define-test multiple-value-bind)
 
-(defun test-multiple-value-bind-2 ()
-  (run-test
-   '(multiple-value-bind (x y) (f x))
-   '(ico:multiple-value-bind-ast
-     ("declaration-asts" nil)
-     ("form-ast" (ico:unparsed-form-ast :form (f x)))
-     ("form-asts" nil)
-     ("variable-name-asts"
-      ((ico:variable-name-ast :name x)
-       (ico:variable-name-ast :name y))))))
+(define-test multiple-value-bind-1
+  :parent multiple-value-bind
+  (compare-parse-and-unparse '(multiple-value-bind () (f x))))
 
-(defun test-multiple-value-bind ()
-  (format *trace-output* "Testing MULTIPLE-VALUE-BIND~%")
-  (test-multiple-value-bind-1)
-  (test-multiple-value-bind-2))
+(define-test multiple-value-bind-2
+  :parent multiple-value-bind
+  (compare-parse-and-unparse '(multiple-value-bind (x y) (f x))))

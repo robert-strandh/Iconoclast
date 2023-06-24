@@ -1,15 +1,7 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-progv-1 ()
-  (run-test
-   '(progv a b)
-   '(ico:progv-ast
-     ("form-asts" nil)
-     ("symbols-ast"
-      (ico:unparsed-form-ast :form a))
-     ("values-ast"
-      (ico:unparsed-form-ast :form b)))))
+(define-test progv)
 
-(defun test-progv ()
-  (format *trace-output* "Testing PROGV~%")
-  (test-progv-1))
+(define-test progv-simple-forms
+  :parent progv
+  (compare-parse-and-unparse '(progv a b)))

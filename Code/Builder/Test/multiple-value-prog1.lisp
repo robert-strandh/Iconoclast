@@ -1,13 +1,7 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-multiple-value-prog1-1 ()
-  (run-test
-   '(multiple-value-prog1 a)
-   '(ico:multiple-value-prog1-ast
-     ("first-form-ast"
-      (ico:unparsed-form-ast :form a))
-     ("form-asts" nil))))
+(define-test multiple-value-prog1)
 
-(defun test-multiple-value-prog1 ()
-  (format *trace-output* "Testing MULTIPLE-VALUE-PROG1~%")
-  (test-multiple-value-prog1-1))
+(define-test multiple-value-prog1-no-body
+  :parent multiple-value-prog1
+  (compare-parse-and-unparse '(multiple-value-prog1 a)))

@@ -1,12 +1,7 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-catch-1 ()
-  (run-test
-   '(catch 234)
-   '(ico:catch-ast
-     ("form-asts" nil)
-     ("tag-ast" (ico:unparsed-form-ast :form 234)))))
+(define-test catch)
 
-(defun test-catch ()
-  (format *trace-output* "Testing CATCH~%")
-  (test-catch-1))
+(define-test catch-no-body
+  :parent catch
+  (compare-parse-and-unparse '(catch 234)))
