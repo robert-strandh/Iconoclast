@@ -1,24 +1,19 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-let-1 ()
-  (run-test
-   '(let ())
-   '(ico:let-ast
-     ("declaration-asts" nil)
-     ("form-asts" nil)
-     ("binding-asts" nil))))
+(define-test let)
 
-(defun test-let-2 ()
-  (run-test
-   '(let (x))
-   '(ico:let-ast
-     ("declaration-asts" nil)
-     ("form-asts" nil)
-     ("binding-asts"
-      ((ico:variable-binding-ast ("form-ast" nil)
-        ("variable-name-ast" (ico:variable-name-ast :name x))))))))
+(define-test let-empty
+  :parent let
+  (compare-parse-and-unparse '(let ())))
 
-(defun test-let ()
-  (format *trace-output* "Testing LET~%")
-  (test-let-1)
-  (test-let-2))
+(define-test let-no-initform-no-body
+  :parent let
+  (compare-parse-and-unparse '(let (x))))
+
+(define-test let-no-initform-simple-body
+  :parent let
+  (compare-parse-and-unparse '(let (x) y)))
+
+(define-test let-initform-no-body
+  :parent let
+  (compare-parse-and-unparse '(let ((x 10)) y)))

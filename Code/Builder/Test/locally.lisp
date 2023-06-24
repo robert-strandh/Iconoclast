@@ -1,37 +1,19 @@
 (cl:in-package #:iconoclast-builder-test)
 
-;;; Test that (LOCALLY) generates a LOCALLY-AST with an empty
-;;; list of declarations and an empty list of forms.
-(defun test-locally-1 ()
-  (run-test
-   '(locally)
-   '(ico:locally-ast
-     ("declaration-asts" nil)
-     ("form-asts" nil))))
+(define-test locally)
 
-(defun test-locally-2 ()
-  (run-test
-   '(locally 234)
-   '(ico:locally-ast
-     ("declaration-asts" nil)
-     ("form-asts"
-      ((ico:unparsed-form-ast :form 234))))))
+(define-test locally-empty
+  :parent locally
+  (compare-parse-and-unparse '(locally)))
 
-;;; Test that the FORM-ASTs appear in the right order.
-(defun test-locally-3 ()
-  (run-test
-   '(locally 234 345)
-   '(ico:locally-ast
-     ("declaration-asts" nil)
-     ("form-asts"
-      ((ico:unparsed-form-ast :form 234)
-       (ico:unparsed-form-ast :form 345))))))
+(define-test locally-no-declarations-simple-body
+  :parent locally
+  (compare-parse-and-unparse '(locally 234)))
 
-;;; None of these tests has any declarations in it.  We test for
-;;; declarations using LOCALLY in a later test when we test the
-;;; parsing of declarations.
-(defun test-locally ()
-  (format *trace-output* "Testing LOCALLY~%")
-  (test-locally-1)
-  (test-locally-2)
-  (test-locally-3))
+(define-test locally-single-declaration-no-body
+  :parent locally
+  (compare-parse-and-unparse '(locally (declare (inline f)))))
+
+(define-test locally-single-declaration-simple-body
+  :parent locally
+  (compare-parse-and-unparse '(locally (declare (inline f) 234))))
