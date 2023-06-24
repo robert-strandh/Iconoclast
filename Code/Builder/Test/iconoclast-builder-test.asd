@@ -1,10 +1,12 @@
 (cl:in-package #:asdf-user)
 
 (defsystem #:iconoclast-builder-test
-  :depends-on (#:iconoclast-builder)
+  :depends-on (#:iconoclast-builder
+               #:parachute)
   :serial t
   :components
   ((:file "packages")
+   (:file "utilities")
    (:file "convert-ast")
    (:file "test-macro")
    (:file "locally")
