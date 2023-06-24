@@ -46,7 +46,10 @@
                          (if (null (,slot-reader-name ast))
                              '()
                              (list (cons ',relation-name
-                                         ',relation-cardinality))))
+                                         ,(if (eq relation-cardinality
+                                                 'ico:?)
+                                              ''abp:?
+                                              `',relation-cardinality)))))
                        
                        (defmethod abp:node-relation
                            ((builder builder)
