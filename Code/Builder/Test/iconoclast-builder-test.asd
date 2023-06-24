@@ -8,7 +8,6 @@
   ((:file "packages")
    (:file "utilities")
    (:file "convert-ast")
-   (:file "test-macro")
    (:file "locally")
    (:file "let")
    (:file "the")
