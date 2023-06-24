@@ -16,7 +16,7 @@
   ((* declaration-asts)))
 
 (define-ast-class documentation-ast-mixin ()
-  ((1 documentation-ast)))
+  ((? documentation-ast)))
 
 (define-ast-class name-ast-mixin ()
   ((1 name-ast)))
