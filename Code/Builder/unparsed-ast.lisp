@@ -17,3 +17,9 @@
      (make-instance 'ico:key-ast
        :key expression))
     (t (error "Unknown context: ~s" context))))
+
+(defmethod abp:node-kind ((builder builder) (node ico:unparsed-form-ast))
+  :unparsed)
+
+(defmethod abp:node-initargs ((builder builder) (node ico:unparsed-form-ast))
+  `(:expression ,(ico:form node)))
