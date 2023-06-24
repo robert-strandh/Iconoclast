@@ -1,7 +1,10 @@
 (cl:in-package #:iconoclast)
 
-(define-ast-class form-ast-mixin ()
+(define-ast-class required-form-ast-mixin ()
   ((1 form-ast)))
+
+(define-ast-class optional-form-ast-mixin ()
+  ((? form-ast)))
 
 (define-ast-class place-ast-mixin ()
   ((1 place-ast)))

@@ -13,7 +13,8 @@
 (define-ast-class typecase-base-ast (clause-asts-mixin ast)
   ())
 
-(define-ast-class typecase-or-etypecase-ast (form-ast-mixin typecase-base-ast)
+(define-ast-class typecase-or-etypecase-ast
+    (required-form-ast-mixin typecase-base-ast)
   ())
 
 (define-ast-class typecase-ast (typecase-or-etypecase-ast)

@@ -10,5 +10,8 @@
    (? interactive-ast)
    (? test-ast)))
 
-(define-ast-class restart-case-ast (clause-asts-mixin form-ast-mixin ast)
+(define-ast-class restart-case-ast
+    (clause-asts-mixin
+     required-form-ast-mixin
+     ast)
   ())

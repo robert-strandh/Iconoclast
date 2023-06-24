@@ -16,5 +16,6 @@
 (define-ast-class block-ast (name-ast-mixin form-asts-mixin ast)
   ())
 
-(define-ast-class return-from-ast (name-ast-mixin form-ast-mixin ast)
+(define-ast-class return-from-ast
+    (name-ast-mixin optional-form-ast-mixin ast)
   ())

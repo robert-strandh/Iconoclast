@@ -3,7 +3,7 @@
 (defgeneric variable-name-ast (ast))
 
 (define-ast-class variable-binding-ast
-    (form-ast-mixin variable-name-ast-mixin ast)
+    (optional-form-ast-mixin variable-name-ast-mixin ast)
   ())
 
 (define-ast-class let-or-let*-ast

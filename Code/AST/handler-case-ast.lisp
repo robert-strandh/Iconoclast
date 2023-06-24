@@ -15,5 +15,8 @@
      ast)
   ())
 
-(define-ast-class handler-case-ast (clause-asts-mixin form-ast-mixin ast)
+(define-ast-class handler-case-ast
+    (clause-asts-mixin
+     required-form-ast-mixin
+     ast)
   ((? no-error-clause-ast)))

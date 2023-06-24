@@ -16,7 +16,7 @@
   ((%key :initarg :key :reader key)))
 
 (define-ast-class case-or-ecase-ast
-    (form-ast-mixin clause-asts-mixin ast)
+    (required-form-ast-mixin clause-asts-mixin ast)
   ())
 
 (define-ast-class case-ast (case-or-ecase-ast)
