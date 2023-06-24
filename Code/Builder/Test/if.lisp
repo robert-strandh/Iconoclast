@@ -1,13 +1,19 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-if-1 ()
-  (run-test
-   '(if 234 345 456)
-   '(ico:if-ast
-     ("else-ast" (ico:unparsed-form-ast :form 456))
-     ("test-ast" (ico:unparsed-form-ast :form 234))
-     ("then-ast" (ico:unparsed-form-ast :form 345)))))
+(define-test test-if)
 
-(defun test-if ()
-  (format *trace-output* "Testing IF~%")
-  (test-if-1))
+(define-test test-if-no-forms
+  :parent test-if
+  (fail (parse-and-unparse '(if))))
+  
+(define-test test-if-only-test
+  :parent test-if
+  (fail (parse-and-unparse '(if 234))))
+  
+(define-test test-if-no-else
+  :parent test-if
+  (compare-parse-and-unparse '(if 234 345)))
+
+(define-test test-if-also-else
+  :parent test-if
+  (compare-parse-and-unparse '(if 234 345 456)))

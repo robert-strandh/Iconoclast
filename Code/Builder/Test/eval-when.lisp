@@ -1,21 +1,26 @@
 (cl:in-package #:iconoclast-builder-test)
 
-(defun test-eval-when-1 ()
-  (run-test
-   '(eval-when () 234)
-   '(ico:eval-when-ast
-     ("form-asts" ((ico:unparsed-form-ast :form 234)))
-     ("situation-asts" nil))))
+(define-test eval-when)
 
-(defun test-eval-when-2 ()
-  (run-test
-   '(eval-when (:compile-toplevel) 234)
-   '(ico:eval-when-ast
-     ("form-asts" ((ico:unparsed-form-ast :form 234)))
-     ("situation-asts"
-      ((ico:situation-ast :name :compile-toplevel))))))
+(define-test eval-when-no-situations-no-body
+  :parent eval-when
+  (compare-parse-and-unparse '(eval-when ())))
 
-(defun test-eval-when ()
-  (format *trace-output* "Testing EVAL-WHEN~%")
-  (test-eval-when-1)
-  (test-eval-when-2))
+(define-test eval-when-no-situations-simple-body
+  :parent eval-when
+  (compare-parse-and-unparse '(eval-when () 234)))
+
+(define-test eval-when-compile-toplevel-no-body
+  :parent eval-when
+  (compare-parse-and-unparse
+   '(eval-when (:compile-toplevel))))
+
+(define-test eval-when-load-toplevel-no-body
+  :parent eval-when
+  (compare-parse-and-unparse
+   '(eval-when (:load-toplevel))))
+
+(define-test eval-when-execute-no-body
+  :parent eval-when
+  (compare-parse-and-unparse
+   '(eval-when (:execute))))
