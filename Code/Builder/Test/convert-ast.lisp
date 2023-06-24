@@ -22,7 +22,7 @@
 
 (defmethod convert-ast ((ast ico:unparsed-form-ast))
   (cons (class-name (class-of ast))
-        `(:form ,(bld:form ast))))
+        `(:form ,(ico:form ast))))
 
 (defun convert-child (child)
   (if (equal (car child) "")
