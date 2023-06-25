@@ -36,4 +36,5 @@
    (:file "multiple-value-bind")
    (:file "return")
    (:file "and")
-   (:file "or")))
+   (:file "or")
+   (:file "assert")))
