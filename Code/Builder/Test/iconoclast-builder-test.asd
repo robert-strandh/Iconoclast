@@ -37,4 +37,5 @@
    (:file "return")
    (:file "and")
    (:file "or")
-   (:file "assert")))
+   (:file "assert")
+   (:file "case")))
