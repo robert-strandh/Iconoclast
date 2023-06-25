@@ -39,4 +39,5 @@
    (:file "or")
    (:file "assert")
    (:file "case")
-   (:file "ccase")))
+   (:file "ccase")
+   (:file "ecase")))
