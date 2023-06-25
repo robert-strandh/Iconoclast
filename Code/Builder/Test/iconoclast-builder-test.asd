@@ -35,4 +35,5 @@
    (:file "type-specifiers")
    (:file "multiple-value-bind")
    (:file "return")
-   (:file "and")))
+   (:file "and")
+   (:file "or")))
