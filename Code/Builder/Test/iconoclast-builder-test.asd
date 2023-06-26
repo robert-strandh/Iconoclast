@@ -48,4 +48,5 @@
    (:file "declaim")
    (:file "incf")
    (:file "decf")
-   (:file "defclass")))
+   (:file "defclass")
+   (:file "defconstant")))
