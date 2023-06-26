@@ -40,4 +40,5 @@
    (:file "assert")
    (:file "case")
    (:file "ccase")
-   (:file "ecase")))
+   (:file "ecase")
+   (:file "check-type")))
