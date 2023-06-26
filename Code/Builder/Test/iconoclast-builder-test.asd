@@ -49,4 +49,5 @@
    (:file "incf")
    (:file "decf")
    (:file "defclass")
-   (:file "defconstant")))
+   (:file "defconstant")
+   (:file "defgeneric")))
