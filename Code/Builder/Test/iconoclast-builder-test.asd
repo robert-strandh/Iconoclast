@@ -55,4 +55,5 @@
    (:file "define-condition")
    (:file "define-symbol-macro")
    (:file "defmacro")
-   (:file "defmethod")))
+   (:file "defmethod")
+   (:file "defpackage")))
