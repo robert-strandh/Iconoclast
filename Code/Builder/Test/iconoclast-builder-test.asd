@@ -57,4 +57,5 @@
    (:file "defmacro")
    (:file "defmethod")
    (:file "defpackage")
-   (:file "defparameter")))
+   (:file "defparameter")
+   (:file "defvar")))
