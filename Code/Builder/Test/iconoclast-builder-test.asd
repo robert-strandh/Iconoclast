@@ -44,4 +44,6 @@
    (:file "check-type")
    (:file "cond")
    (:file "ctypecase")
-   (:file "etypecase")))
+   (:file "etypecase")
+   (:file "declaim")
+   (:file "decf")))
