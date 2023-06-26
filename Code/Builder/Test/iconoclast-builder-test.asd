@@ -46,4 +46,5 @@
    (:file "ctypecase")
    (:file "etypecase")
    (:file "declaim")
+   (:file "incf")
    (:file "decf")))
