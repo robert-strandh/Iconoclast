@@ -41,4 +41,5 @@
    (:file "case")
    (:file "ccase")
    (:file "ecase")
-   (:file "check-type")))
+   (:file "check-type")
+   (:file "cond")))
