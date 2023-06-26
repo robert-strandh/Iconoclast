@@ -56,4 +56,5 @@
    (:file "define-symbol-macro")
    (:file "defmacro")
    (:file "defmethod")
-   (:file "defpackage")))
+   (:file "defpackage")
+   (:file "defparameter")))
