@@ -51,4 +51,5 @@
    (:file "defclass")
    (:file "defconstant")
    (:file "defgeneric")
-   (:file "define-compiler-macro")))
+   (:file "define-compiler-macro")
+   (:file "define-condition")))
