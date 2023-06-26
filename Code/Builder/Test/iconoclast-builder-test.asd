@@ -42,4 +42,5 @@
    (:file "ccase")
    (:file "ecase")
    (:file "check-type")
-   (:file "cond")))
+   (:file "cond")
+   (:file "ctypecase")))
