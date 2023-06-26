@@ -54,4 +54,5 @@
    (:file "define-compiler-macro")
    (:file "define-condition")
    (:file "define-symbol-macro")
-   (:file "defmacro")))
+   (:file "defmacro")
+   (:file "defmethod")))
