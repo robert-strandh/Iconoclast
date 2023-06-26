@@ -43,4 +43,5 @@
    (:file "ecase")
    (:file "check-type")
    (:file "cond")
-   (:file "ctypecase")))
+   (:file "ctypecase")
+   (:file "etypecase")))
