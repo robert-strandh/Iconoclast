@@ -89,4 +89,5 @@
    (:file "print-unreadable-object")
    (:file "prog")
    (:file "progstar")
-   (:file "psetf")))
+   (:file "psetf")
+   (:file "psetq")))
