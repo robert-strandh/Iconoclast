@@ -7,25 +7,25 @@
   (compare-parse-and-unparse
    '(pprint-logical-block (a b))))
 
-(define-test pprint-logical-block-one-keyword-argument
+(define-test pprint-logical-block-prefix
   :parent pprint-logical-block
   (compare-parse-and-unparse
-   '(pprint-logical-block (a b c d))))
+   '(pprint-logical-block (a b :prefix c))))
 
-(define-test pprint-logical-block-two-keyword-arguments
+(define-test pprint-logical-block-per-line-prefix
   :parent pprint-logical-block
   (compare-parse-and-unparse
-   '(pprint-logical-block (a b c d e f))))
+   '(pprint-logical-block (a b :per-line-prefix c))))
 
-(define-test pprint-logical-block-three-keyword-arguments
+(define-test pprint-logical-block-suffix
   :parent pprint-logical-block
   (compare-parse-and-unparse
-   '(pprint-logical-block (a b c d e f g h))))
+   '(pprint-logical-block (a b :suffix c))))
 
-(define-test pprint-logical-block-four-keyword-arguments
+(define-test pprint-logical-block-suffix-twice
   :parent pprint-logical-block
   (compare-parse-and-unparse
-   '(pprint-logical-block (a b c d e f g h i j))))
+   '(pprint-logical-block (a b :suffix c :suffix d))))
 
 (define-test pprint-logical-block-declaration
   :parent pprint-logical-block
