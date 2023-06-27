@@ -79,4 +79,5 @@
    (:file "ignore-errors")
    (:file "in-package")
    (:file "lambda")
-   (:file "multiple-value-list")))
+   (:file "multiple-value-list")
+   (:file "multiple-value-setq")))
