@@ -72,4 +72,5 @@
    (:file "do-external-symbols")
    (:file "do-symbols")
    (:file "dolist")
-   (:file "dotimes")))
+   (:file "dotimes")
+   (:file "formatter")))
