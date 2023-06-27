@@ -73,4 +73,5 @@
    (:file "do-symbols")
    (:file "dolist")
    (:file "dotimes")
-   (:file "formatter")))
+   (:file "formatter")
+   (:file "handler-bind")))
