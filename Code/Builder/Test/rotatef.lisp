@@ -20,4 +20,4 @@
 (define-test rotatef-three-places
   :parent rotatef
   (compare-parse-and-unparse
-   '(rotatef)))
+   '(rotatef a b c)))
