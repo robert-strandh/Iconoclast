@@ -99,4 +99,5 @@
    (:file "rotatef")
    (:file "setf")
    (:file "shiftf")
-   (:file "step")))
+   (:file "step")
+   (:file "time")))
