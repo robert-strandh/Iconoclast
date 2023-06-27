@@ -86,4 +86,5 @@
    (:file "pprint-exit-if-list-exhausted")
    (:file "pprint-logical-block")
    (:file "pprint-pop")
-   (:file "print-unreadable-object")))
+   (:file "print-unreadable-object")
+   (:file "prog")))
