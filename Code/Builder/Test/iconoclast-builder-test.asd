@@ -107,4 +107,5 @@
    (:file "untrace")
    (:file "when")
    (:file "with-accessors")
-   (:file "with-compilation-unit")))
+   (:file "with-compilation-unit")
+   (:file "with-condition-restarts")))
