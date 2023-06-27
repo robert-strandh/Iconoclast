@@ -80,4 +80,5 @@
    (:file "in-package")
    (:file "lambda")
    (:file "multiple-value-list")
-   (:file "multiple-value-setq")))
+   (:file "multiple-value-setq")
+   (:file "nth-value")))
