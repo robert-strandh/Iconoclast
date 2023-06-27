@@ -75,4 +75,5 @@
    (:file "dotimes")
    (:file "formatter")
    (:file "handler-bind")
-   (:file "handler-case")))
+   (:file "handler-case")
+   (:file "ignore-errors")))
