@@ -61,4 +61,5 @@
    (:file "defmethod")
    (:file "defpackage")
    (:file "defparameter")
+   (:file "defsetf")
    (:file "defvar")))
