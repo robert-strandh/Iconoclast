@@ -74,4 +74,5 @@
    (:file "dolist")
    (:file "dotimes")
    (:file "formatter")
-   (:file "handler-bind")))
+   (:file "handler-bind")
+   (:file "handler-case")))
