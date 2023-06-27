@@ -106,4 +106,5 @@
    (:file "unless")
    (:file "untrace")
    (:file "when")
-   (:file "with-accessors")))
+   (:file "with-accessors")
+   (:file "with-compilation-unit")))
