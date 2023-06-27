@@ -104,4 +104,5 @@
    (:file "trace")
    (:file "typecase")
    (:file "unless")
-   (:file "untrace")))
+   (:file "untrace")
+   (:file "when")))
