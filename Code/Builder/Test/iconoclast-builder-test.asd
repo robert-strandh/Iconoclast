@@ -98,4 +98,5 @@
    (:file "restart-case")
    (:file "rotatef")
    (:file "setf")
-   (:file "shiftf")))
+   (:file "shiftf")
+   (:file "step")))
