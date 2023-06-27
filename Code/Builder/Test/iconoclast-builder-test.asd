@@ -87,4 +87,5 @@
    (:file "pprint-logical-block")
    (:file "pprint-pop")
    (:file "print-unreadable-object")
-   (:file "prog")))
+   (:file "prog")
+   (:file "progstar")))
