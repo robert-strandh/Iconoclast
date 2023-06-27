@@ -103,4 +103,5 @@
    (:file "time")
    (:file "trace")
    (:file "typecase")
-   (:file "unless")))
+   (:file "unless")
+   (:file "untrace")))
