@@ -95,4 +95,5 @@
    (:file "pushnew")
    (:file "remf")
    (:file "restart-bind")
-   (:file "restart-case")))
+   (:file "restart-case")
+   (:file "rotatef")))
