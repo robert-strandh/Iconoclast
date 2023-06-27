@@ -96,4 +96,5 @@
    (:file "remf")
    (:file "restart-bind")
    (:file "restart-case")
-   (:file "rotatef")))
+   (:file "rotatef")
+   (:file "setf")))
