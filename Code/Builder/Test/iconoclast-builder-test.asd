@@ -77,4 +77,5 @@
    (:file "handler-bind")
    (:file "handler-case")
    (:file "ignore-errors")
-   (:file "in-package")))
+   (:file "in-package")
+   (:file "lambda")))
