@@ -66,4 +66,5 @@
    (:file "defun")
    (:file "defvar")
    (:file "destructuring-bind")
-   (:file "do")))
+   (:file "do")
+   (:file "dostar")))
