@@ -55,6 +55,7 @@
    (:file "define-condition")
    (:file "define-method-combination")
    (:file "define-modify-macro")
+   (:file "define-setf-expander")
    (:file "define-symbol-macro")
    (:file "defmacro")
    (:file "defmethod")
