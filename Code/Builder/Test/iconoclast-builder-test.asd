@@ -100,4 +100,5 @@
    (:file "setf")
    (:file "shiftf")
    (:file "step")
-   (:file "time")))
+   (:file "time")
+   (:file "trace")))
