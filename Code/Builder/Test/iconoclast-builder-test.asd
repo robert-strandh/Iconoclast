@@ -105,4 +105,5 @@
    (:file "typecase")
    (:file "unless")
    (:file "untrace")
-   (:file "when")))
+   (:file "when")
+   (:file "with-accessors")))
