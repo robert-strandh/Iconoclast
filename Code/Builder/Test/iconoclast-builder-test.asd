@@ -91,4 +91,5 @@
    (:file "progstar")
    (:file "psetf")
    (:file "psetq")
-   (:file "push")))
+   (:file "push")
+   (:file "pushnew")))
