@@ -62,4 +62,5 @@
    (:file "defpackage")
    (:file "defparameter")
    (:file "defsetf")
+   (:file "deftype")
    (:file "defvar")))
