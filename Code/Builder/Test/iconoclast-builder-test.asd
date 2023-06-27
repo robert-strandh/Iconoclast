@@ -68,4 +68,5 @@
    (:file "destructuring-bind")
    (:file "do")
    (:file "dostar")
-   (:file "do-all-symbols")))
+   (:file "do-all-symbols")
+   (:file "do-external-symbols")))
