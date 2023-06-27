@@ -67,4 +67,5 @@
    (:file "defvar")
    (:file "destructuring-bind")
    (:file "do")
-   (:file "dostar")))
+   (:file "dostar")
+   (:file "do-all-symbols")))
