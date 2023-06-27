@@ -63,4 +63,5 @@
    (:file "defparameter")
    (:file "defsetf")
    (:file "deftype")
+   (:file "defun")
    (:file "defvar")))
