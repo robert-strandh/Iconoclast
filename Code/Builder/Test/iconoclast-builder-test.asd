@@ -84,4 +84,5 @@
    (:file "nth-value")
    (:file "pop")
    (:file "pprint-exit-if-list-exhausted")
-   (:file "pprint-logical-block")))
+   (:file "pprint-logical-block")
+   (:file "pprint-pop")))
