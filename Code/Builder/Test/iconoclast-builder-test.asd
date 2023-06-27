@@ -92,4 +92,5 @@
    (:file "psetf")
    (:file "psetq")
    (:file "push")
-   (:file "pushnew")))
+   (:file "pushnew")
+   (:file "remf")))
