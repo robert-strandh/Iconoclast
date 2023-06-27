@@ -94,4 +94,5 @@
    (:file "push")
    (:file "pushnew")
    (:file "remf")
-   (:file "restart-bind")))
+   (:file "restart-bind")
+   (:file "restart-case")))
