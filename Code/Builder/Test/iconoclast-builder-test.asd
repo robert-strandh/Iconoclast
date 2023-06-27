@@ -78,4 +78,5 @@
    (:file "handler-case")
    (:file "ignore-errors")
    (:file "in-package")
-   (:file "lambda")))
+   (:file "lambda")
+   (:file "multiple-value-list")))
