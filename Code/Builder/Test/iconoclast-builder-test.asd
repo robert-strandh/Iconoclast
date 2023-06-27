@@ -70,4 +70,5 @@
    (:file "dostar")
    (:file "do-all-symbols")
    (:file "do-external-symbols")
-   (:file "do-symbols")))
+   (:file "do-symbols")
+   (:file "dolist")))
