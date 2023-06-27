@@ -93,4 +93,5 @@
    (:file "psetq")
    (:file "push")
    (:file "pushnew")
-   (:file "remf")))
+   (:file "remf")
+   (:file "restart-bind")))
