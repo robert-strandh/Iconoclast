@@ -64,4 +64,5 @@
    (:file "defsetf")
    (:file "deftype")
    (:file "defun")
-   (:file "defvar")))
+   (:file "defvar")
+   (:file "destructuring-bind")))
