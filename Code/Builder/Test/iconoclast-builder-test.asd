@@ -81,4 +81,5 @@
    (:file "lambda")
    (:file "multiple-value-list")
    (:file "multiple-value-setq")
-   (:file "nth-value")))
+   (:file "nth-value")
+   (:file "pop")))
