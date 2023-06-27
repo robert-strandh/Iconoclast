@@ -101,4 +101,5 @@
    (:file "shiftf")
    (:file "step")
    (:file "time")
-   (:file "trace")))
+   (:file "trace")
+   (:file "typecase")))
