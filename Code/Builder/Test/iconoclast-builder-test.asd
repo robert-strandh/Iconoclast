@@ -109,4 +109,5 @@
    (:file "with-accessors")
    (:file "with-compilation-unit")
    (:file "with-condition-restarts")
-   (:file "with-hash-table-iterator")))
+   (:file "with-hash-table-iterator")
+   (:file "with-input-from-string")))
