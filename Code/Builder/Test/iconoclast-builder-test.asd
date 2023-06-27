@@ -83,4 +83,5 @@
    (:file "multiple-value-setq")
    (:file "nth-value")
    (:file "pop")
-   (:file "pprint-exist-if-list-exhausted")))
+   (:file "pprint-exit-if-list-exhausted")
+   (:file "pprint-logical-block")))
