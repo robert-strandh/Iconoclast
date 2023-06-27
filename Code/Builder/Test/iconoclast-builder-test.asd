@@ -71,4 +71,5 @@
    (:file "do-all-symbols")
    (:file "do-external-symbols")
    (:file "do-symbols")
-   (:file "dolist")))
+   (:file "dolist")
+   (:file "dotimes")))
