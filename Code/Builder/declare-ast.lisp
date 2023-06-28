@@ -15,11 +15,20 @@
         (notinline 'ico:notinline-ast)
         (optimize 'ico:optimize-ast)
         (special 'ico:special-ast)
-        #+(or)(declaration 'ico:declaration-ast))
+        #+(or)(declaration 'ico:declaration-declaration-ast))
     :origin source))
 
+(defmethod abp:node-kind
+    ((builder builder) (node ico:declaration-specifier-ast))
+  :declaration-specifier)
+
+(define-make-node-method :declaration ico:declaration-ast)
+
+(define-relations ico:declaration-ast
+  ((:declaration-specifier t ico:declaration-specifier-asts)))
+
 (define-relations ico:declaration-asts-mixin
-  ((:declaration ico:declaration-specifier-ast ico:declaration-asts)))
+  ((:declaration ico:declaration-ast ico:declaration-asts)))
 
 (defmethod abp:make-node
     ((builder builder)
