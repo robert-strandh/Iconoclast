@@ -1,26 +1,35 @@
 (cl:in-package #:iconoclast-builder)
 
+(defun make-declaration-specifier-ast (class-name identifier-name origin)
+  (make-instance class-name
+    :identifier-ast (make-instance 'ico:name-ast :name identifier-name)
+    :origin origin))
+
 (defmethod abp:make-node
     ((builder builder)
      (kind (eql :declaration-specifier))
      &key source ((:kind declaration-kind)))
-  (make-instance
-      (case declaration-kind
-        (dynamic-extent 'ico:dynamic-extent-ast)
-        (type 'ico:type-ast)
-        (ftype 'ico:ftype-ast)
-        (ignore 'ico:ignore-ast)
-        (ignorable 'ico:ignorable-ast)
-        (inline 'ico:inline-ast)
-        (notinline 'ico:notinline-ast)
-        (optimize 'ico:optimize-ast)
-        (special 'ico:special-ast)
-        #+(or)(declaration 'ico:declaration-declaration-ast))
-    :origin source))
+  (make-declaration-specifier-ast
+   (case declaration-kind
+     (dynamic-extent 'ico:dynamic-extent-ast)
+     (type 'ico:type-ast)
+     (ftype 'ico:ftype-ast)
+     (ignore 'ico:ignore-ast)
+     (ignorable 'ico:ignorable-ast)
+     (inline 'ico:inline-ast)
+     (notinline 'ico:notinline-ast)
+     (optimize 'ico:optimize-ast)
+     (special 'ico:special-ast)
+     #+(or)(declaration 'ico:declaration-declaration-ast))
+   declaration-kind source))
 
 (defmethod abp:node-kind
     ((builder builder) (node ico:declaration-specifier-ast))
   :declaration-specifier)
+
+(defmethod abp:node-initargs
+    ((builder builder) (node ico:declaration-specifier-ast))
+  (list :kind (ico:name (ico:identifier-ast node))))
 
 (define-make-node-method :declaration ico:declaration-ast)
 
