@@ -54,7 +54,7 @@
   ((* default-initarg-asts)))
 
 (define-ast-class initform-ast-mixin ()
-  ((1 initform-ast)))
+  ((? initform-ast)))
 
 (define-ast-class superclass-asts-mixin ()
   ((* superclass-asts)))
