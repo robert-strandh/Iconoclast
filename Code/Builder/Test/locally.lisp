@@ -16,4 +16,4 @@
 
 (define-test locally-single-declaration-simple-body
   :parent locally
-  (compare-parse-and-unparse '(locally (declare (inline f) 234))))
+  (compare-parse-and-unparse '(locally (declare (inline f)) 234)))
