@@ -20,7 +20,7 @@
 (define-test pushnew-test-not
   :parent pushnew
   (compare-parse-and-unparse
-   '(pushnew a b :test-not)))
+   '(pushnew a b :test-not x)))
 
 (define-test pushnew-multiple-keys
   :parent pushnew
