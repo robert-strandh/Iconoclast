@@ -1,9 +1,8 @@
 (cl:in-package #:iconoclast-builder)
 
-(defmethod abp:make-node
+(define-make-node-method :documentation ico:documentation-ast)
+
+(defmethod abp:node-initargs
     ((builder builder)
-     (kind (eql :documentation))
-     &key source string)
-  (make-instance 'ico:documentation-ast
-    :origin source
-    :documentation string))
+     (ast ico:documentation-ast))
+  (list :string (ico:%string ast)))
