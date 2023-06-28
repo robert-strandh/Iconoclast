@@ -111,4 +111,5 @@
    (:file "with-condition-restarts")
    (:file "with-hash-table-iterator")
    (:file "with-input-from-string")
-   (:file "with-open-file")))
+   (:file "with-open-file")
+   (:file "with-open-stream")))
