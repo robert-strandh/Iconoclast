@@ -26,48 +26,60 @@
 (defun initarg-from-slot-reader-name (slot-reader-name)
   (intern (symbol-name slot-reader-name) (find-package "KEYWORD")))
 
-(defmacro define-relations (ast-name relations)
-  `(progn ,@(loop ;; Avoid MOP function CLASS-PROTOTYPE. 
-                  with instance = (make-instance ast-name)
-                  with designators = (ico:slot-designators instance)
-                  for relation in relations
-                  for designator = (find (third relation) designators
-                                         :test #'eq :key #'second)
-                  for slot-reader-name = (second designator)
-                  when (null designator)
-                    do (error "No designator for ~s in AST ~s"
-                              (third relation)
-                              ast-name)
-                  collect
-                  (let ((relation-name (first relation))
-                        (relation-cardinality (first designator)))
-                    `(progn
-                       (defmethod relations append ((ast ,ast-name))
-                         (if (null (,slot-reader-name ast))
-                             '()
-                             (list (cons ',relation-name
-                                         ,(if (eq relation-cardinality
-                                                 'ico:?)
-                                              ''abp:?
-                                              `',relation-cardinality)))))
-                       
-                       (defmethod abp:node-relation
-                           ((builder builder)
-                            (relation (eql ,relation-name))
-                            (node ,ast-name))
-                         (values (,slot-reader-name node) nil))
+(defun find-designator (relation designators)
+  (find (third relation) designators :test #'eq :key #'second))
 
-                       (defmethod abp:relate
-                           ((builder builder)
-                            (relation (eql ,relation-name))
-                            (left ,ast-name)
-                            (right ,(second relation))
-                            &key)
-                         (reinitialize-instance left
-                           ,(initarg-from-slot-reader-name slot-reader-name)
-                           ,@(case relation-cardinality
-                               ((ico:? 1)
-                                '(right))
-                               (otherwise
-                                `((append (,slot-reader-name left)
-                                          (list right))))))))))))
+(defmacro define-relations (ast-name relations)
+  (let* (;; Avoid MOP function CLASS-PROTOTYPE.
+         (instance (make-instance ast-name))
+         (designators (ico:slot-designators instance)))
+    `(progn (defmethod relations append ((ast ,ast-name))
+              (append 
+               ,@(loop for relation in relations
+                       for designator = (find-designator relation designators)
+                       for slot-reader-name = (second designator)
+                       when (null designator)
+                         do (error "No designator for ~s in AST ~s"
+                                   (third relation)
+                                   ast-name)
+                       collect
+                       (let ((relation-name (first relation))
+                             (relation-cardinality (first designator)))
+                         `(if (null (,slot-reader-name ast))
+                              '()
+                              (list (cons ',relation-name
+                                          ,(if (eq relation-cardinality
+                                                   'ico:?)
+                                               ''abp:?
+                                               `',relation-cardinality))))))))
+            ,@(loop for relation in relations
+                    for designator = (find-designator relation designators)
+                    for slot-reader-name = (second designator)
+                    when (null designator)
+                      do (error "No designator for ~s in AST ~s"
+                                (third relation)
+                                ast-name)
+                    collect
+                    (let ((relation-name (first relation))
+                          (relation-cardinality (first designator)))
+                      `(progn
+                         (defmethod abp:node-relation
+                             ((builder builder)
+                              (relation (eql ,relation-name))
+                              (node ,ast-name))
+                           (values (,slot-reader-name node) nil))
+
+                         (defmethod abp:relate
+                             ((builder builder)
+                              (relation (eql ,relation-name))
+                              (left ,ast-name)
+                              (right ,(second relation))
+                              &key)
+                           (reinitialize-instance left
+                             ,(initarg-from-slot-reader-name slot-reader-name)
+                             ,@(case relation-cardinality
+                                 ((ico:? 1)
+                                  '(right))
+                                 (otherwise
+                                  `((append (,slot-reader-name left)
+                                            (list right)))))))))))))
