@@ -116,4 +116,5 @@
    (:file "with-output-to-string")
    (:file "with-package-iterator")
    (:file "with-simple-restart")
-   (:file "with-slots")))
+   (:file "with-slots")
+   (:file "with-standard-io-syntax")))
