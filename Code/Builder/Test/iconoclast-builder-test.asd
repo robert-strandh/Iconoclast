@@ -113,4 +113,5 @@
    (:file "with-input-from-string")
    (:file "with-open-file")
    (:file "with-open-stream")
-   (:file "with-output-to-string")))
+   (:file "with-output-to-string")
+   (:file "with-package-iterator")))
