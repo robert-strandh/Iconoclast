@@ -57,9 +57,6 @@
 (define-relations ico:whole-section-ast-mixin
   ((:whole-section t ico:whole-section-ast)))
 
-(define-relations ico:parameter-ast
-  ((:name t ico:name-ast)))
-
 (define-relations ico:lambda-list-keyword-ast-mixin
   ((:keyword t ico:name-ast)))
 
@@ -100,10 +97,3 @@
   ((:supplied t ico:supplied-p-parameter-ast)))
 
 (define-make-node-method :pattern ico:pattern-ast)
-
-(defmethod abp:node-relation
-    ((builder builder)
-     (relation (eql :name))
-     (parameter-ast ico:required-parameter-ast))
-  (ico:name (ico:name-ast parameter-ast)))
-
