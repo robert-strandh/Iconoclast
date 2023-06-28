@@ -22,6 +22,7 @@
    (:file "name-ast")
    (:file "tag-ast")
    (:file "type-specifier-asts")
+   (:file "declaration-ast")
    (:file "declaration-specifier-asts")
    (:file "declare-ast")
    (:file "let-ast")
