@@ -115,4 +115,5 @@
    (:file "with-open-stream")
    (:file "with-output-to-string")
    (:file "with-package-iterator")
-   (:file "with-simple-restart")))
+   (:file "with-simple-restart")
+   (:file "with-slots")))
