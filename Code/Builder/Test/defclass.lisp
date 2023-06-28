@@ -28,15 +28,15 @@
 
 (define-test defclass-one-slot-with-reader
   :parent defclass
-  (compare-parse-and-unparse '(defclass foo () ((s (reader s))))))
+  (compare-parse-and-unparse '(defclass foo () ((s :reader s)))))
 
 (define-test defclass-one-slot-with-writer
   :parent defclass
-  (compare-parse-and-unparse '(defclass foo () ((s (writer s))))))
+  (compare-parse-and-unparse '(defclass foo () ((s :writer (setf s))))))
 
 (define-test defclass-one-slot-with-accessor
   :parent defclass
-  (compare-parse-and-unparse '(defclass foo () ((s (accessor s))))))
+  (compare-parse-and-unparse '(defclass foo () ((s :accessor s)))))
 
 (define-test defclass-one-slot-with-allocation
   :parent defclass

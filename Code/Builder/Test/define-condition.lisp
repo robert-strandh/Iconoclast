@@ -28,15 +28,15 @@
 
 (define-test define-condition-one-slot-with-reader
   :parent define-condition
-  (compare-parse-and-unparse '(define-condition foo () ((s (reader s))))))
+  (compare-parse-and-unparse '(define-condition foo () ((s :reader s)))))
 
 (define-test define-condition-one-slot-with-writer
   :parent define-condition
-  (compare-parse-and-unparse '(define-condition foo () ((s (writer s))))))
+  (compare-parse-and-unparse '(define-condition foo () ((s :writer (setf s))))))
 
 (define-test define-condition-one-slot-with-accessor
   :parent define-condition
-  (compare-parse-and-unparse '(define-condition foo () ((s (accessor s))))))
+  (compare-parse-and-unparse '(define-condition foo () ((s :accessor s)))))
 
 (define-test define-condition-one-slot-with-allocation
   :parent define-condition
