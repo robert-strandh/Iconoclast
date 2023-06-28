@@ -21,5 +21,11 @@
 (defmethod abp:node-kind ((builder builder) (node ico:unparsed-form-ast))
   :unparsed)
 
+(defmethod abp:node-kind ((builder builder) (node ico:place-ast))
+  :unparsed)
+
 (defmethod abp:node-initargs ((builder builder) (node ico:unparsed-form-ast))
   `(:expression ,(ico:form node)))
+
+(defmethod abp:node-initargs ((builder builder) (node ico:place-ast))
+  `(:expression ,(ico:place node)))
