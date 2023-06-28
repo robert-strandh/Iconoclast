@@ -1,7 +1,11 @@
 (cl:in-package #:iconoclast)
 
 (define-ast-class declaration-specifier-ast (ast)
-  ())
+  ((%identifier-ast
+    :initarg :identifier-ast
+    :reader identifier-ast)))
+
+(export 'identifier-ast)
 
 (define-ast-class dynamic-extent-ast (name-asts-mixin declaration-specifier-ast)
   ())
