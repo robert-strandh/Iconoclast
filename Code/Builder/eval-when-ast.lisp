@@ -10,5 +10,8 @@
     :origin source
     :name situation))
 
+(defmethod abp:node-kind ((builder builder) (node ico:situation-ast))
+  :eval-when-situation)
+
 (define-relations ico:eval-when-ast
   ((:situation t ico:situation-asts)))
