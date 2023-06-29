@@ -4,13 +4,7 @@
 
 (define-make-node-method :tagbody-segment ico:tagbody-segment-ast)
 
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :tag))
-     &key name source)
-  (make-instance 'ico:tag-ast
-    :origin source
-    :name name))
+(define-make-node-method :tag ico:tag-ast)
 
 (define-relations ico:tagbody-segment-ast
   ((:label ico:tag-ast ico:tag-ast)
