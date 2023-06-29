@@ -117,4 +117,7 @@
    (:file "with-package-iterator")
    (:file "with-simple-restart")
    (:file "with-slots")
-   (:file "with-standard-io-syntax")))
+   (:file "with-standard-io-syntax"))
+  :perform (test-op (operation component)
+             (uiop:symbol-call '#:iconoclast-builder-test '#:test
+                               "ICONOCLAST-BUILDER-TEST")))
