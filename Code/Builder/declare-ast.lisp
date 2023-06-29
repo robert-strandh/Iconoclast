@@ -52,5 +52,55 @@
         (safety 'ico:safety-ast))
     :origin source :value value))
 
+(defmethod abp:node-kind
+    ((builder builder) (node ico:speed-ast))
+  :optimization-specification)
+
+(defmethod abp:node-initargs
+    ((builder builder) (node ico:speed-ast))
+  `(:source ,(ico:origin node)
+    :quality 'speed
+    :value ,(ico:value node)))
+
+(defmethod abp:node-kind
+    ((builder builder) (node ico:compilation-speed-ast))
+  :optimization-specification)
+
+(defmethod abp:node-initargs
+    ((builder builder) (node ico:compilation-speed-ast))
+  `(:source ,(ico:origin node)
+    :quality 'compilation-speed
+    :value ,(ico:value node)))
+
+(defmethod abp:node-kind
+    ((builder builder) (node ico:space-ast))
+  :optimization-specification)
+
+(defmethod abp:node-initargs
+    ((builder builder) (node ico:space-ast))
+  `(:source ,(ico:origin node)
+    :quality 'space
+    :value ,(ico:value node)))
+
+(defmethod abp:node-kind
+    ((builder builder) (node ico:debug-ast))
+  :optimization-specification)
+
+(defmethod abp:node-initargs
+    ((builder builder) (node ico:debug-ast))
+  `(:source ,(ico:origin node)
+    :quality 'debug
+    :value ,(ico:value node)))
+
+(defmethod abp:node-kind
+    ((builder builder) (node ico:safety-ast))
+  :optimization-specification)
+
+(defmethod abp:node-initargs
+    ((builder builder) (node ico:safety-ast))
+  `(:source ,(ico:origin node)
+    :quality 'safety
+    :value ,(ico:value node)))
+
 (define-relations ico:optimize-ast
   ((:argument ico:optimize-quality-ast ico:quality-asts)))
