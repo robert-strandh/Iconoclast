@@ -12,6 +12,9 @@
 (define-relations ico:typecase-base-ast
   ((:clause t ico:clause-asts)))
 
+(define-relations ico:typecase-or-etypecase-ast
+  ((:keyform t ico:keyform-ast)))
+
 (define-relations ico:ctypecase-ast
   ((:keyplace t ico:place-ast)))
 
