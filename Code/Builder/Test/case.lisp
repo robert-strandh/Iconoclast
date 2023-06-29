@@ -32,7 +32,9 @@
 
 (define-test case-one-t-clause-no-form
   :parent case
-  (compare-parse-and-unparse '(case x (t))))
+  (is #'equal
+      '(case x (otherwise))
+      (parse-and-unparse '(case x (t)))))
 
 (define-test case-one-otherwise-clause-one-form
   :parent case
