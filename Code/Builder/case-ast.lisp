@@ -4,6 +4,9 @@
 
 (define-make-node-method :case-otherwise-clause ico:case-otherwise-clause-ast)
 
+(defmethod abp:node-kind ((builder builder) (node ico:key-ast))
+  :key)
+
 (define-relations ico:case-normal-clause-ast
   ((:key t ico:key-asts)))
 
