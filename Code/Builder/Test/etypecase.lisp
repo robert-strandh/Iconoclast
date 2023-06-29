@@ -4,20 +4,20 @@
 
 (define-test etypecase-no-clauses
   :parent etypecase
-  (compare-parse-and-unparse '(etypecase)))
+  (compare-parse-and-unparse '(etypecase x)))
 
 (define-test etypecase-one-clause-no-form
   :parent etypecase
-  (compare-parse-and-unparse '(etypecase (t))))
+  (compare-parse-and-unparse '(etypecase x (t))))
 
 (define-test etypecase-one-clause-one-form
   :parent etypecase
-  (compare-parse-and-unparse '(etypecase (t 234))))
+  (compare-parse-and-unparse '(etypecase x (t 234))))
 
 (define-test etypecase-one-clause-two-forms
   :parent etypecase
-  (compare-parse-and-unparse '(etypecase (t 234 345))))
+  (compare-parse-and-unparse '(etypecase x (t 234 345))))
 
 (define-test etypecase-two-clauses
   :parent etypecase
-  (compare-parse-and-unparse '(etypecase (fixnum 11) (t 234 345))))
+  (compare-parse-and-unparse '(etypecase x (fixnum 11) (t 234 345))))
