@@ -11,10 +11,10 @@
   ((:key t ico:key-asts)))
 
 (define-relations ico:case-or-ecase-ast
-  ((:keyform t ico:form-ast)))
+  ((:keyform t ico:keyform-ast)))
 
 (define-relations ico:ccase-ast
-  ((:keyplace t ico:place-ast)))
+  ((:keyplace t ico:keyplace-ast)))
 
 (define-make-node-method :case ico:case-ast)
 
