@@ -10,4 +10,5 @@
 (define-make-node-method :define-condition ico:define-condition-ast)
 
 (define-relations ico:define-condition-ast
-  ((:report t ico:report-ast)))
+  ((:parent-type t ico:parent-type-asts)
+   (:report t ico:report-ast)))
