@@ -16,7 +16,7 @@
   ((:keyform t ico:keyform-ast)))
 
 (define-relations ico:ctypecase-ast
-  ((:keyplace t ico:place-ast)))
+  ((:keyplace t ico:keyplace-ast)))
 
 (define-make-node-method :typecase ico:typecase-ast)
 

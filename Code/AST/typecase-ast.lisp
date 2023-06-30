@@ -22,5 +22,5 @@
 (define-ast-class etypecase-ast (typecase-or-etypecase-ast)
   ())
 
-(define-ast-class ctypecase-ast (place-ast-mixin typecase-base-ast)
-  ())
+(define-ast-class ctypecase-ast (typecase-base-ast)
+  ((1 keyplace-ast)))
