@@ -12,10 +12,12 @@
 
 (define-test case-one-normal-clause-atomic-key-one-form
   :parent case
+  :depends-on (case-one-normal-clause-atomic-key-no-form)
   (compare-parse-and-unparse '(case x (y a))))
 
 (define-test case-one-normal-clause-atomic-key-two-forms
   :parent case
+  :depends-on (case-one-normal-clause-atomic-key-one-form)
   (compare-parse-and-unparse '(case x (y a a))))
 
 (define-test case-one-normal-clause-singleton-key-no-form
@@ -24,6 +26,7 @@
 
 (define-test case-one-normal-clause-two-keys-no-form
   :parent case
+  :depends-on (case-one-normal-clause-singleton-key-no-form)
   (compare-parse-and-unparse '(case x ((y z)))))
 
 (define-test case-one-otherwise-clause-no-form
