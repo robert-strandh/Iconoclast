@@ -11,6 +11,10 @@
     ((builder builder) (node ico:lambda-list-keyword-ast))
   :lambda-list-keyword)
 
+(defmethod abp:node-initargs
+    ((builder builder) (node ico:lambda-list-keyword-ast))
+  `(:keyword ,(ico:name node)))
+
 (defmethod abp:make-node
     ((builder builder)
      (kind (eql :keyword))
@@ -62,7 +66,7 @@
   ((:whole-section t ico:whole-section-ast)))
 
 (define-relations ico:lambda-list-keyword-ast-mixin
-  ((:keyword t ico:name-ast)))
+  ((:keyword t ico:lambda-list-keyword-ast)))
 
 (define-relations ico:key-parameter-ast
   ((:keyword t ico:keyword-ast)))
