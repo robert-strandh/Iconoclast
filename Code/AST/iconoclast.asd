@@ -58,6 +58,7 @@
    (:file "check-type-ast")
    (:file "cond-ast")
    (:file "declaim-ast")
+   (:file "define-compiler-macro-ast")
    (:file "defmacro-ast")
    (:file "defvar-ast")
    (:file "deftype-ast")

@@ -47,7 +47,7 @@ c decf
 c defclass
 c defconstant
 c defgeneric
-n define-compiler-macro
+c define-compiler-macro
 c define-condition
 n define-method-combination
 n define-modify-macro
