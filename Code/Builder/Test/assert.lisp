@@ -4,7 +4,7 @@
 
 (define-test assert-just-test-form
   :parent assert
-  (compare-parse-and-unparse '(assert x)))
+  (is #'equal (parse-and-unparse '(assert x)) '(assert x nil)))
 
 (define-test assert-just-one-place
   :parent assert
