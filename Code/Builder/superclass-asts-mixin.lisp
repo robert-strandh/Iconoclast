@@ -4,5 +4,4 @@
 ;;; the relation is :PARENT-TYPE, so we need two different methods.
 
 (define-relations ico:superclass-asts-mixin
-  ((:superclass t ico:superclass-asts)
-   (:parent-type t ico:superclass-asts)))
+  ((:superclass t ico:superclass-asts)))
