@@ -35,7 +35,7 @@ Macro operators
 ---------------
 
 c and
-n assert
+c assert
 n call-method
 c case
 c ccase
