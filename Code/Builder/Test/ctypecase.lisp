@@ -20,4 +20,4 @@
 
 (define-test ctypecase-two-clauses
   :parent ctypecase
-  (compare-parse-and-unparse '(ctypecase (fixnum 11) (t 234 345))))
+  (compare-parse-and-unparse '(ctypecase x (fixnum 11) (t 234 345))))
