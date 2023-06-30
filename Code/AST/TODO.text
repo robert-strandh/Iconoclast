@@ -78,7 +78,7 @@ c handler-case
 n ignore-errors
 c in-package
 c incf
-? lambda
+c lambda
 n loop
 n loop-finish
 c multiple-value-bind
