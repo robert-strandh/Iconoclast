@@ -60,6 +60,7 @@
     (:file "the-ast")
     (:file "unwind-protect-ast")
     (:file "setq-ast")
+    (:file "assert-ast")
     (:file "case-ast")
     (:file "cond-ast")
     (:file "declaim-ast")
