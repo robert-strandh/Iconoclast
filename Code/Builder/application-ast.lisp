@@ -3,5 +3,5 @@
 (define-make-node-method :application ico:application-ast)
 
 (define-relations ico:application-ast
-  ((:function t ico:function-ast)
+  ((:function-name t ico:function-name-ast)
    (:argument t ico:argument-asts)))
