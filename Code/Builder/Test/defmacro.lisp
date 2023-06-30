@@ -29,8 +29,9 @@
 
 (define-test defmacro-one-optional-no-init-form-list
   :parent defmacro
-  (compare-parse-and-unparse
-   '(defmacro foo (&optional (x)))))
+  (is #'equal
+      (parse-and-unparse '(defmacro foo (&optional (x))))
+      '(defmacro foo (&optional x))))
 
 (define-test defmacro-one-optional-init-form
   :parent defmacro
@@ -74,8 +75,9 @@
 
 (define-test defmacro-one-key-list
   :parent defmacro
-  (compare-parse-and-unparse
-   '(defmacro foo (&key (x)))))
+  (is #'equal
+      (parse-and-unparse '(defmacro foo (&key (x))))
+      '(defmacro foo (&key x))))
 
 (define-test defmacro-one-key-initform
   :parent defmacro
@@ -114,8 +116,9 @@
 
 (define-test defmacro-one-aux-list
   :parent defmacro
-  (compare-parse-and-unparse
-   '(defmacro foo (&aux (x)))))
+  (is #'equal
+      (parse-and-unparse '(defmacro foo (&aux (x))))
+      '(defmacro foo (&aux x))))
 
 (define-test defmacro-one-aux-initarg
   :parent defmacro

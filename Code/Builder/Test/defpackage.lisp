@@ -57,4 +57,4 @@
 (define-test defpackage-size
   :parent defpackage
   (compare-parse-and-unparse
-   '(defpackage hello (:size f))))
+   '(defpackage hello (:size 234))))
