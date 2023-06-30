@@ -40,7 +40,7 @@
 
 (define-ast-class key-section-ast
     (lambda-list-keyword-ast-mixin multi-parameter-section-ast)
-  ())
+  ((? allow-other-keys-ast)))
 
 (define-ast-class keyword-ast (name-mixin ast)
   ())

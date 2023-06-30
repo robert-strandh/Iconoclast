@@ -7,6 +7,10 @@
   (make-instance 'ico:lambda-list-keyword-ast
     :name keyword))
 
+(defmethod abp:node-kind
+    ((builder builder) (node ico:lambda-list-keyword-ast))
+  :lambda-list-keyword)
+
 (defmethod abp:make-node
     ((builder builder)
      (kind (eql :keyword))
