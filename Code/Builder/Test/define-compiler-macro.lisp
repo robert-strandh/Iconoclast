@@ -74,8 +74,9 @@
 
 (define-test define-compiler-macro-one-key-list
   :parent define-compiler-macro
-  (compare-parse-and-unparse
-   '(define-compiler-macro foo (&key (x)))))
+  (is #'equal
+      (parse-and-unparse '(define-compiler-macro foo (&key (x))))
+      '(define-compiler-macro foo (&key x))))
 
 (define-test define-compiler-macro-one-key-initform
   :parent define-compiler-macro
@@ -114,8 +115,9 @@
 
 (define-test define-compiler-macro-one-aux-list
   :parent define-compiler-macro
-  (compare-parse-and-unparse
-   '(define-compiler-macro foo (&aux (x)))))
+  (is #'equal
+      (parse-and-unparse '(define-compiler-macro foo (&aux (x))))
+      '(define-compiler-macro foo (&aux x))))
 
 (define-test define-compiler-macro-one-aux-initarg
   :parent define-compiler-macro
