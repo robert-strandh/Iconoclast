@@ -16,6 +16,10 @@
     ((:key)
      (make-instance 'ico:key-ast
        :key expression))
+    ((:quote)
+     (make-instance 'ico:quote-ast
+       :object-ast (make-instance 'ico:literal-ast
+                     :literal expression)))
     (t (error "Unknown context: ~s" context))))
 
 (defmethod abp:node-kind ((builder builder) (node ico:unparsed-form-ast))
