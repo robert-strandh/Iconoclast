@@ -62,6 +62,7 @@
     (:file "setq-ast")
     (:file "assert-ast")
     (:file "case-ast")
+    (:file "check-type-ast")
     (:file "cond-ast")
     (:file "declaim-ast")
     (:file "defmacro-ast")
