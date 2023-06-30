@@ -9,15 +9,18 @@
 
 (define-test with-hash-table-iterator-declaration
   :parent with-hash-table-iterator
+  :depends-on (with-hash-table-iterator-empty)
   (compare-parse-and-unparse
    '(with-hash-table-iterator (x y) (declare (inline f)))))
 
 (define-test with-hash-table-iterator-one-form
   :parent with-hash-table-iterator
+  :depends-on (with-hash-table-iterator-empty)
   (compare-parse-and-unparse
    '(with-hash-table-iterator (x y) z)))
 
 (define-test with-hash-table-iterator-two-forms
   :parent with-hash-table-iterator
+  :depends-on (with-hash-table-iterator-empty)
   (compare-parse-and-unparse
    '(with-hash-table-iterator (x y) z w)))

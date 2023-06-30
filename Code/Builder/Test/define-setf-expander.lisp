@@ -13,15 +13,18 @@
 
 (define-test define-setf-expander-declaration
   :parent define-setf-expander
+  :depends-on (define-setf-expander-empty)
   (compare-parse-and-unparse
    '(define-setf-expander f (x) (declare (inline f)))))
 
 (define-test define-setf-expander-documentation
   :parent define-setf-expander
+  :depends-on (define-setf-expander-empty)
   (compare-parse-and-unparse
    '(define-setf-expander f (x) "doc" x)))
 
 (define-test define-setf-expander-just-form
   :parent define-setf-expander
+  :depends-on (define-setf-expander-empty)
   (compare-parse-and-unparse
    '(define-setf-expander f (x) x)))

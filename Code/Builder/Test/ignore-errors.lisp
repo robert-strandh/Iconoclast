@@ -9,10 +9,12 @@
 
 (define-test ignore-errors-one-form
   :parent ignore-errors
+  :depends-on (ignore-errors-empty)
   (compare-parse-and-unparse
    '(ignore-errors x)))
 
 (define-test ignore-errors-two-forms
   :parent ignore-errors
+  :depends-on (ignore-errors-empty)
   (compare-parse-and-unparse
    '(ignore-errors x y)))

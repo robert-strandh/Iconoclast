@@ -9,25 +9,30 @@
 
 (define-test with-accessors-one-slot-entry
   :parent with-accessors
+  :depends-on (with-accessors-no-slot-entries)
   (compare-parse-and-unparse
    '(with-accessors ((a b)) x)))
 
 (define-test with-accessors-two-slot-entries
   :parent with-accessors
+  :depends-on (with-accessors-no-slot-entries)
   (compare-parse-and-unparse
    '(with-accessors ((a b) (c d)) x)))
 
 (define-test with-accessors-declaration
   :parent with-accessors
+  :depends-on (with-accessors-no-slot-entries)
   (compare-parse-and-unparse
    '(with-accessors ((a b) (c d)) x (declare (inline f)))))
 
 (define-test with-accessors-one-body-form
   :parent with-accessors
+  :depends-on (with-accessors-no-slot-entries)
   (compare-parse-and-unparse
    '(with-accessors ((a b) (c d)) x y)))
 
 (define-test with-accessors-two-body-forms
   :parent with-accessors
+  :depends-on (with-accessors-no-slot-entries)
   (compare-parse-and-unparse
    '(with-accessors ((a b) (c d)) x y z)))
