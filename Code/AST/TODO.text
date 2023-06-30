@@ -39,7 +39,7 @@ c assert
 n call-method
 c case
 c ccase
-n check-type
+c check-type
 c cond
 c ctypecase
 c declaim
