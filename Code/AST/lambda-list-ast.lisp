@@ -27,8 +27,8 @@
 (define-ast-class required-section-ast (multi-parameter-section-ast)
   ())
 
-(define-ast-class lambda-list-keyword-ast-mixin (name-ast-mixin)
-  ())
+(define-ast-class lambda-list-keyword-ast-mixin ()
+  ((1 lambda-list-keyword-ast)))
 
 (define-ast-class optional-section-ast
        (lambda-list-keyword-ast-mixin multi-parameter-section-ast)
