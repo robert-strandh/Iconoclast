@@ -2,7 +2,8 @@
 
 (defun parse-and-unparse (form)
   (let* ((builder (make-instance 'bld:builder))
-         (ast (ses:parse builder t form)))
+         (syntax (ses:find-syntax (first form)))
+         (ast (ses:parse builder syntax form)))
     (ses:unparse builder t ast)))
 
 (defun compare-parse-and-unparse (form)
