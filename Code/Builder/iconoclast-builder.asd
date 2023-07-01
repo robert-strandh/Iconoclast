@@ -40,6 +40,7 @@
     (:file "delta-ast-mixin")
     (:file "decf-ast")
     (:file "incf-ast")
+    (:file "lambda-ast")
     (:file "function-ast")
     (:file "segment-asts-mixin")
     (:file "tagbody-ast")
