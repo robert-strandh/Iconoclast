@@ -4,6 +4,7 @@
 
 (define-relations ico:defgeneric-ast
   ((:name ico:function-name-ast ico:name-ast)
+   (:argument-precedence-order t ico:argument-precedence-order-asts)
    (:generic-function-class t ico:generic-function-class-ast)
    (:method-class t ico:method-class-ast)))
 
