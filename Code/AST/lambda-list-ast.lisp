@@ -194,5 +194,14 @@
      parameter-ast)
   ())
 
+(define-ast-class rest-parameter-ast (parameter-ast)
+  ())
+
+(define-ast-class environment-parameter-ast (parameter-ast)
+  ())
+
+(define-ast-class whole-parameter-ast (parameter-ast)
+  ())
+
 (define-ast-class pattern-ast (destructuring-lambda-list-ast)
   ())
