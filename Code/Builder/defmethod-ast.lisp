@@ -9,4 +9,5 @@
 (define-make-node-method :defmethod ico:defmethod-ast)
 
 (define-relations ico:defmethod-ast
-  ((:name ico:function-name-ast ico:name-ast)))
+  ((:name ico:function-name-ast ico:name-ast)
+   (:qualifier t ico:method-qualifier-asts)))
