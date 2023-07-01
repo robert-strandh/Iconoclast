@@ -8,15 +8,21 @@
 
 (define-test ecase-one-clause-atomic-key-no-form
   :parent ecase
-  (compare-parse-and-unparse '(ecase x (y))))
+  (is #'equal
+      (parse-and-unparse '(ecase x (y)))
+      '(ecase x ((y)))))
 
 (define-test ecase-one-clause-atomic-key-one-form
   :parent ecase
-  (compare-parse-and-unparse '(ecase x (y a))))
+  (is #'equal
+      (parse-and-unparse '(ecase x (y a)))
+      '(ecase x ((y) a))))
 
 (define-test ecase-one-clause-atomic-key-two-forms
   :parent ecase
-  (compare-parse-and-unparse '(ecase x (y a a))))
+  (is #'equal
+      (parse-and-unparse '(ecase x (y a a)))
+      '(ecase x ((y) a a))))
 
 (define-test ecase-one-clause-singleton-key-no-form
   :parent ecase

@@ -9,17 +9,23 @@
 (define-test ccase-one-clause-atomic-key-no-form
   :parent ccase
   :depends-on (ccase-no-clauses)
-  (compare-parse-and-unparse '(ccase x (y))))
+  (is #'equal
+      (parse-and-unparse '(ccase x (y)))
+      '(ccase x ((y)))))
 
 (define-test ccase-one-clause-atomic-key-one-form
   :parent ccase
   :depends-on (ccase-one-clause-atomic-key-no-form)
-  (compare-parse-and-unparse '(ccase x (y a))))
+  (is #'equal
+      (parse-and-unparse '(ccase x (y a)))
+      '(ccase x ((y) a))))
 
 (define-test ccase-one-clause-atomic-key-two-forms
   :parent ccase
   :depends-on (ccase-one-clause-atomic-key-one-form)
-  (compare-parse-and-unparse '(ccase x (y a a))))
+  (is #'equal
+      (parse-and-unparse '(ccase x (y a a)))
+      '(ccase x ((y) a a))))
 
 (define-test ccase-one-clause-singleton-key-no-form
   :parent ccase
