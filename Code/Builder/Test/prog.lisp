@@ -14,8 +14,9 @@
 
 (define-test prog-one-var-list
   :parent prog
-  (compare-parse-and-unparse
-   '(prog ((x)))))
+  (is #'equal
+      (parse-and-unparse '(prog ((x))))
+      '(prog (x))))
 
 (define-test prog-one-var-initform
   :parent prog
