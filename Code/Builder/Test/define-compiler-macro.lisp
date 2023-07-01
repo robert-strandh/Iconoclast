@@ -29,8 +29,9 @@
 
 (define-test define-compiler-macro-one-optional-no-init-form-list
   :parent define-compiler-macro
-  (compare-parse-and-unparse
-   '(define-compiler-macro foo (&optional (x)))))
+  (is #'equal
+      (parse-and-unparse '(define-compiler-macro foo (&optional (x))))
+      '(define-compiler-macro foo (&optional x))))
 
 (define-test define-compiler-macro-one-optional-init-form
   :parent define-compiler-macro

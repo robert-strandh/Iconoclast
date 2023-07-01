@@ -24,11 +24,15 @@
 
 (define-test defgeneric-one-optional-list
   :parent defgeneric
-  (compare-parse-and-unparse '(defgeneric foo (&optional (x)))))
+  (is #'equal
+      (parse-and-unparse '(defgeneric foo (&optional (x))))
+      '(defgeneric foo (&optional x))))
 
 (define-test defgeneric-two-optionals
   :parent defgeneric
-  (compare-parse-and-unparse '(defgeneric foo (&optional (x) y))))
+  (is #'equal
+      (parse-and-unparse '(defgeneric foo (&optional (x) y)))
+      '(defgeneric foo (&optional x y))))
 
 (define-test defgeneric-rest
   :parent defgeneric
@@ -44,7 +48,9 @@
 
 (define-test defgeneric-one-key-list
   :parent defgeneric
-  (compare-parse-and-unparse '(defgeneric foo (&key (x)))))
+  (is #'equal
+      (parse-and-unparse '(defgeneric foo (&key (x))))
+      '(defgeneric foo (&key x))))
 
 (define-test defgeneric-one-key-with-keyword
   :parent defgeneric

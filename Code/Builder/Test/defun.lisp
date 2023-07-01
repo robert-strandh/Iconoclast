@@ -22,8 +22,9 @@
 
 (define-test defun-optional-list
   :parent defun
-  (compare-parse-and-unparse
-   '(defun f (&optional (x)))))
+  (is #'equal
+      (parse-and-unparse '(defun f (&optional (x))))
+      '(defun f (&optional x))))
 
 (define-test defun-optional-initform
   :parent defun
@@ -52,8 +53,9 @@
 
 (define-test defun-key-list
   :parent defun
-  (compare-parse-and-unparse
-   '(defun f (&key (x)))))
+  (is #'equal
+      (parse-and-unparse '(defun f (&key (x))))
+      '(defun f (&key x))))
 
 (define-test defun-key-initform
   :parent defun
@@ -87,8 +89,9 @@
 
 (define-test defun-aux-list
   :parent defun
-  (compare-parse-and-unparse
-   '(defun f (&aux (x)))))
+  (is #'equal
+      (parse-and-unparse '(defun f (&aux (x))))
+      '(defun f (&aux x))))
 
 (define-test defun-aux-initform
   :parent defun
