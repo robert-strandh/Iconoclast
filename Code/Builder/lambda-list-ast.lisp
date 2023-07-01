@@ -15,12 +15,10 @@
     ((builder builder) (node ico:lambda-list-keyword-ast))
   `(:keyword ,(ico:name node)))
 
-(defmethod abp:make-node
-    ((builder builder)
-     (kind (eql :keyword))
-     &key name)
-  (make-instance 'ico:keyword-ast
-    :name name))
+(define-make-node-method :keyword ico:keyword-ast)
+
+(defmethod abp:node-initargs ((builder builder) (node ico:keyword-ast))
+  `(:name ,(ico:name node)))
 
 (define-make-node-method :required-section ico:required-section-ast)
 
