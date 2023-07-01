@@ -4,10 +4,8 @@
 
 (define-relations ico:defgeneric-ast
   ((:name ico:function-name-ast ico:name-ast)
-   (:generic-function-class t ico:generic-function-class-ast)))
-
-(define-relations ico:defgeneric-ast
-  ((:method-class t ico:method-class-ast)))
+   (:generic-function-class t ico:generic-function-class-ast)
+   (:method-class t ico:method-class-ast)))
 
 ;;; The following code doesn't really work, and we expect an overhaul
 ;;; of the method-combination option for DEFGENERIC anyway, so it is
