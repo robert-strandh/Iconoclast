@@ -44,6 +44,12 @@
 
 (define-make-node-method :aux-parameter ico:aux-parameter-ast)
 
+(define-make-node-method :rest-parameter ico:rest-parameter-ast)
+
+(define-make-node-method :environment-parameter ico:environment-parameter-ast)
+
+(define-make-node-method :whole-parameter ico:whole-parameter-ast)
+
 (define-relations ico:required-section-ast-mixin
   ((:required-section t ico:required-section-ast)))
 
@@ -60,7 +66,7 @@
   ((:aux-section t ico:aux-section-ast)))
 
 (define-relations ico:environment-section-ast-mixin
-  ((:en-section t ico:environment-section-ast)))
+  ((:environment-section t ico:environment-section-ast)))
 
 (define-relations ico:whole-section-ast-mixin
   ((:whole-section t ico:whole-section-ast)))
@@ -85,6 +91,9 @@
 
 (define-make-node-method
     :destructuring-lambda-list ico:destructuring-lambda-list-ast)
+
+(define-make-node-method
+    :macro-lambda-list ico:macro-lambda-list-ast)
 
 (define-make-node-method
     :deftype-lambda-list ico:deftype-lambda-list-ast)
