@@ -10,6 +10,12 @@
 (define-relations ico:case-normal-clause-ast
   ((:key t ico:key-asts)))
 
+(defmethod abp:node-kind ((builder builder) (node ico:key-ast))
+  :unparsed)
+
+(defmethod abp:node-initargs ((builder builder) (node ico:key-ast))
+  `(:expression ,(ico:key node) :context :key))
+
 (define-relations ico:case-or-ecase-ast
   ((:keyform t ico:keyform-ast)))
 
