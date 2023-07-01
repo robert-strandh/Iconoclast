@@ -16,4 +16,5 @@
    (:form t ico:form-asts)))
 
 (define-relations ico:restart-case-ast
-  ((:clause ico:restart-clause-ast ico:clause-asts)))
+  ((:form t ico:form-ast)
+   (:clause ico:restart-clause-ast ico:clause-asts)))
