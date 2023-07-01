@@ -29,8 +29,9 @@
 
 (define-test defmethod-optional-list
   :parent defmethod
-  (compare-parse-and-unparse
-   '(defmethod foo (x &optional (y)))))
+  (is #'equal
+      (parse-and-unparse '(defmethod foo (x &optional (y))))
+      '(defmethod foo (x &optional y))))
 
 (define-test defmethod-optional-initform
   :parent defmethod
@@ -59,8 +60,9 @@
 
 (define-test defmethod-key-list
   :parent defmethod
-  (compare-parse-and-unparse
-   '(defmethod foo (x &key (y)))))
+  (is #'equal
+      (parse-and-unparse '(defmethod foo (x &key (y))))
+      '(defmethod foo (x &key y))))
 
 (define-test defmethod-key-initarg
   :parent defmethod
@@ -94,8 +96,9 @@
 
 (define-test defmethod-aux-list
   :parent defmethod
-  (compare-parse-and-unparse
-   '(defmethod foo (x &aux (y)))))
+  (is #'equal
+      (parse-and-unparse '(defmethod foo (x &aux (y))))
+      '(defmethod foo (x &aux y))))
 
 (define-test defmethod-aux-initform
   :parent defmethod

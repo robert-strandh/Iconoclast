@@ -29,8 +29,9 @@
 
 (define-test destructuring-bind-one-optional-no-init-form-list
   :parent destructuring-bind
-  (compare-parse-and-unparse
-   '(destructuring-bind (&optional (x)) y)))
+  (is #'equal
+      (parse-and-unparse '(destructuring-bind (&optional (x)) y))
+      '(destructuring-bind (&optional x) y)))
 
 (define-test destructuring-bind-one-optional-init-form
   :parent destructuring-bind
@@ -74,8 +75,9 @@
 
 (define-test destructuring-bind-one-key-list
   :parent destructuring-bind
-  (compare-parse-and-unparse
-   '(destructuring-bind (&key (x)) y)))
+  (is #'equal
+      (parse-and-unparse '(destructuring-bind (&key (x)) y))
+      '(destructuring-bind (&key x) y)))
 
 (define-test destructuring-bind-one-key-initform
   :parent destructuring-bind
@@ -114,8 +116,9 @@
 
 (define-test destructuring-bind-one-aux-list
   :parent destructuring-bind
-  (compare-parse-and-unparse
-   '(destructuring-bind (&aux (x)) y)))
+  (is #'equal
+      (parse-and-unparse '(destructuring-bind (&aux (x)) y))
+      '(destructuring-bind (&aux x) y)))
 
 (define-test destructuring-bind-one-aux-initarg
   :parent destructuring-bind

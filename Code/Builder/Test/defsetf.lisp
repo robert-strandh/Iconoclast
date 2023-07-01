@@ -35,8 +35,9 @@
 (define-test defsetf-long-form-optional-list
   :parent defsetf
   :depends-on (defsetf-long-form-empty)
-  (compare-parse-and-unparse
-   '(defsetf f (&optional (x)) ())))
+  (is #'equal
+      (parse-and-unparse '(defsetf f (&optional (x)) ()))
+      '(defsetf f (&optional x) ())))
 
 (define-test defsetf-long-form-optional-initform
   :parent defsetf
@@ -65,8 +66,9 @@
 (define-test defsetf-long-form-key-list
   :parent defsetf
   :depends-on (defsetf-long-form-empty)
-  (compare-parse-and-unparse
-   '(defsetf f (&key (x)) ())))
+  (is #'equal
+      (parse-and-unparse '(defsetf f (&key (x)) ()))
+      '(defsetf f (&key x) ())))
 
 (define-test defsetf-long-form-key-initform
   :parent defsetf

@@ -19,7 +19,9 @@
 (define-test define-modify-macro-one-optional-list
   :parent define-modify-macro
   :depends-on (define-modify-macro-empty-lambda-list) 
-  (compare-parse-and-unparse '(define-modify-macro a (&optional (x)) b)))
+  (is #'equal
+      (parse-and-unparse '(define-modify-macro a (&optional (x)) b))
+      '(define-modify-macro a (&optional x) b)))
 
 (define-test define-modify-macro-one-optional-initform
   :parent define-modify-macro
