@@ -4,9 +4,8 @@
 
 (define-test with-output-to-string-empty
   :parent with-output-to-string
-  (is #'equal
-      (parse-and-unparse '(with-output-to-string (x)))
-      '(with-output-to-string (x nil))))
+  (compare-parse-and-unparse
+   '(with-output-to-string (x))))
 
 (define-test with-output-to-string-with-string-form
   :parent with-output-to-string
@@ -20,18 +19,15 @@
 
 (define-test with-output-to-string-declaration
   :parent with-output-to-string
-  (is #'equal
-      (parse-and-unparse '(with-output-to-string (x) (declare (inline f))))
-      '(with-output-to-string (x nil) (declare (inline f)))))
+  (compare-parse-and-unparse
+   '(with-output-to-string (x) (declare (inline f)))))
 
 (define-test with-output-to-string-one-body-form
   :parent with-output-to-string
-  (is #'equal
-      (parse-and-unparse '(with-output-to-string (x) y))
-      '(with-output-to-string (x nil) y)))
+  (compare-parse-and-unparse
+   '(with-output-to-string (x) y)))
 
 (define-test with-output-to-string-two-body-forms
   :parent with-output-to-string
-  (is #'equal
-      (parse-and-unparse '(with-output-to-string (x) y z))
-      '(with-output-to-string (x nil) y z)))
+  (compare-parse-and-unparse
+   '(with-output-to-string (x) y z)))
