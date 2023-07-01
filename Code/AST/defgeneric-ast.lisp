@@ -5,7 +5,8 @@
      lambda-list-ast-mixin
      documentation-ast-mixin
      ast)
-  ((? generic-function-class-ast)
+  ((* argument-precedence-order-asts)
+   (? generic-function-class-ast)
    (? method-class-ast)
    (? method-combination-name-and-arguments-ast)
    (* method-description-asts)))
