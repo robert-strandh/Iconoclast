@@ -66,7 +66,7 @@
 (define-test defgeneric-with-declarations
   :parent defgeneric
   (compare-parse-and-unparse
-   '(defgeneric foo (x y) (declare (inline f)))))
+   '(defgeneric foo (x y) (declare (optimize speed)))))
 
 (define-test defgeneric-with-documentation
   :parent defgeneric
