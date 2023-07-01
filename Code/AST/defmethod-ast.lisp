@@ -1,5 +1,8 @@
 (cl:in-package #:iconoclast)
 
+(define-ast-class method-qualifier-ast (name-mixin ast)
+  ())
+
 (define-ast-class specialized-parameter-ast (name-ast-mixin ast)
   ((? specializer-ast)))
 
