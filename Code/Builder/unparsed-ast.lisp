@@ -20,6 +20,9 @@
      (make-instance 'ico:quote-ast
        :object-ast (make-instance 'ico:literal-ast
                      :literal expression)))
+    ((:method-qualifier)
+     (make-instance 'ico:method-qualifier-ast
+       :name expression))
     (t (error "Unknown context: ~s" context))))
 
 (defmethod abp:node-kind ((builder builder) (node ico:unparsed-form-ast))
@@ -28,8 +31,15 @@
 (defmethod abp:node-kind ((builder builder) (node ico:place-ast))
   :unparsed)
 
+(defmethod abp:node-kind ((builder builder) (node ico:method-qualifier-ast))
+  :unparsed)
+
 (defmethod abp:node-initargs ((builder builder) (node ico:unparsed-form-ast))
   `(:expression ,(ico:form node)))
 
 (defmethod abp:node-initargs ((builder builder) (node ico:place-ast))
   `(:expression ,(ico:place node)))
+
+(defmethod abp:node-initargs
+    ((builder builder) (node ico:method-qualifier-ast))
+  `(:expression ,(ico:name node)))
