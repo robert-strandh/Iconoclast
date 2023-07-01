@@ -5,7 +5,8 @@
      (kind (eql :unparsed))
      &key source expression context)
   (case context
-    ((:form :condition-report :restart-report-string :format-control)
+    ((:form :condition-report :restart-report-string
+      :format-control :quote)
      (make-instance 'ico:unparsed-form-ast
        :origin source
        :form expression))
@@ -16,10 +17,6 @@
     ((:key)
      (make-instance 'ico:key-ast
        :key expression))
-    ((:quote)
-     (make-instance 'ico:quote-ast
-       :object-ast (make-instance 'ico:literal-ast
-                     :literal expression)))
     ((:method-qualifier)
      (make-instance 'ico:method-qualifier-ast
        :name expression))
