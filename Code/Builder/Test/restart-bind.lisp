@@ -5,7 +5,7 @@
 (define-test restart-bind-empty
   :parent restart-bind
   (compare-parse-and-unparse
-   '(restart-bind)))
+   '(restart-bind ())))
 
 (define-test restart-bind-one-clause-no-pairs
   :parent restart-bind
