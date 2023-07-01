@@ -16,7 +16,9 @@
 
 (define-test defclass-one-simple-slot
   :parent defclass
-  (compare-parse-and-unparse '(defclass foo () (s))))
+  (is #'equal
+      (parse-and-unparse '(defclass foo () (s)))
+      '(defclass foo () ((s)))))
 
 (define-test defclass-one-slot-with-initform
   :parent defclass

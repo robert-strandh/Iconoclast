@@ -16,7 +16,9 @@
 
 (define-test define-condition-one-simple-slot
   :parent define-condition
-  (compare-parse-and-unparse '(define-condition foo () (s))))
+  (is #'equal
+      (parse-and-unparse '(define-condition foo () (s)))
+      '(define-condition foo () ((s)))))
 
 (define-test define-condition-one-slot-with-initform
   :parent define-condition
