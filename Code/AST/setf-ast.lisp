@@ -1,7 +1,7 @@
 (cl:in-package #:iconoclast)
 
-(define-ast-class setf-or-psetf-ast (place-asts-mixin form-asts-mixin ast)
-  ())
+(define-ast-class setf-or-psetf-ast (place-asts-mixin ast)
+  ((* new-value-asts)))
 
 (define-ast-class setf-ast (setf-or-psetf-ast)
   ())
