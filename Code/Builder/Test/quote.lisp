@@ -4,5 +4,4 @@
 
 (define-test quote-simple-object
   :parent quote
-  (skip "Results in Parachute error"
-    (compare-parse-and-unparse '(quote 234))))
+  (compare-parse-and-unparse '(quote 234)))
