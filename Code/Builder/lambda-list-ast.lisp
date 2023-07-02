@@ -76,7 +76,7 @@
   ((:keyword t ico:keyword-ast)))
 
 (define-relations ico:aux-parameter-ast
-  ((:value t ico:init-form-ast)))
+  ((:value t ico:form-ast)))
 
 (define-make-node-method
     :ordinary-lambda-list ico:ordinary-lambda-list-ast)
