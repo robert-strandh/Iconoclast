@@ -15,8 +15,9 @@
    (? step-form-ast)))
 
 (define-ast-class do-do*-ast
-    (segment-asts-mixin result-ast-mixin declaration-asts-mixin ast)
+    (segment-asts-mixin declaration-asts-mixin ast)
   ((* do-iteration-variable-asts)
+   (* result-asts)
    (1 end-test-ast)))
 
 (define-ast-class do-ast (do-do*-ast)

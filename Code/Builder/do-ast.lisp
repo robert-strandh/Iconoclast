@@ -15,4 +15,5 @@
 
 (define-relations ico:do-do*-ast
   ((:variable t ico:do-iteration-variable-asts)
+   (:result t ico:result-asts)
    (:end-test t ico:end-test-ast)))
