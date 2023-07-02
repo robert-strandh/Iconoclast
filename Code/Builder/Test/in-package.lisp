@@ -9,10 +9,12 @@
 
 (define-test in-package-symbol
   :parent in-package
-  (compare-parse-and-unparse
-   '(in-package hello)))
+  (is #'equal
+      '(in-package "HELLO")
+      (parse-and-unparse '(in-package hello))))
 
 (define-test in-package-character
   :parent in-package
-  (compare-parse-and-unparse
-   '(in-package #\a)))
+  (is #'equal
+      `(in-package "a")
+      (parse-and-unparse '(in-package #\a))))
