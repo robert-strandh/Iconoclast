@@ -9,8 +9,9 @@
 (define-ast-class do-variable-name-ast (name-ast)
   ())
   
-(define-ast-class do-iteration-variable-ast (init-form-ast-mixin ast)
+(define-ast-class do-iteration-variable-ast (ast)
   ((1 do-variable-name-ast)
+   (? init-form-ast)
    (? step-form-ast)))
 
 (define-ast-class do-do*-ast
