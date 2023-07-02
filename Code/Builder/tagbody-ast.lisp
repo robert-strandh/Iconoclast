@@ -8,4 +8,4 @@
 
 (define-relations ico:tagbody-segment-ast
   ((:label ico:tag-ast ico:tag-ast)
-   (:statement t ico:form-asts)))
+   (:statement t ico:statement-asts)))
