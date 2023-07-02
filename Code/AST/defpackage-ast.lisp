@@ -10,4 +10,5 @@
    (* intern-asts)
    (* shadow-asts)
    (* import-from-asts)
-   (* shadowing-import-from-asts)))
+   (* shadowing-import-from-asts)
+   (? size-ast)))

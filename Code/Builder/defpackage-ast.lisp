@@ -9,7 +9,8 @@
   (:intern t ico:intern-asts)
   (:shadow t ico:shadow-asts)
   (:import-from t ico:import-from-asts)
-  (:shadowing-import-from t ico:shadowing-import-from-asts)))
+  (:shadowing-import-from t ico:shadowing-import-from-asts)
+  (:size t ico:size-ast)))
 
 (define-make-node-method :import-from ico:import-from-ast)
 
