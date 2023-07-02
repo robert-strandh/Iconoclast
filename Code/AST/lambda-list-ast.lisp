@@ -190,7 +190,7 @@
   ((? keyword-ast)))
 
 (define-ast-class aux-parameter-ast
-    (init-form-ast-mixin
+    (optional-form-ast-mixin
      parameter-ast)
   ())
 
