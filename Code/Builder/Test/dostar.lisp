@@ -24,8 +24,9 @@
 
 (define-test do*-one-var-list
   :parent do*
-  (compare-parse-and-unparse
-   '(do* ((x)) (y))))
+  (is #'equal
+      '(do* (x) (y))
+      (parse-and-unparse '(do* ((x)) (y)))))
 
 (define-test do*-one-var-initform
   :parent do*
