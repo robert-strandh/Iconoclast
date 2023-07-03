@@ -28,7 +28,6 @@
    (:file "declare-ast")
    (:file "let-ast")
    (:file "lambda-list-ast")
-   (:file "unparse-lambda-list-ast")
    (:file "block-ast")
    (:file "catch-ast")
    (:file "eval-when-ast")
