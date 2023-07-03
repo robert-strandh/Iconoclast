@@ -15,4 +15,5 @@
 (define-make-node-method :import-from ico:import-from-ast)
 
 (define-relations ico:import-from-ast
-  ((:package t ico:package-name-ast)))
+  ((:package t ico:package-name-ast)
+   (:name t ico:name-asts)))
