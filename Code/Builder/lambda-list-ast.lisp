@@ -72,6 +72,9 @@
 (define-relations ico:lambda-list-keyword-ast-mixin
   ((:keyword t ico:lambda-list-keyword-ast)))
 
+(define-relations ico:key-section-ast
+  ((:allow-other-keys t ico:allow-other-keys-ast)))
+
 (define-relations ico:key-parameter-ast
   ((:keyword t ico:keyword-ast)))
 
