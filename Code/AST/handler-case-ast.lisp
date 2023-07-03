@@ -1,12 +1,11 @@
 (cl:in-package #:iconoclast)
 
 (define-ast-class handler-clause-ast
-    (variable-name-ast-mixin
-     type-specifier-ast-mixin
+    (type-specifier-ast-mixin
      declaration-asts-mixin
      form-asts-mixin
      ast)
-  ())
+  ((? variable-name-ast)))
 
 (define-ast-class no-error-clause-ast
     (lambda-list-ast-mixin
