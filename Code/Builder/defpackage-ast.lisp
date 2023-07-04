@@ -14,6 +14,9 @@
 
 (define-make-node-method :import-from ico:import-from-ast)
 
-(define-relations ico:import-from-ast
+(define-make-node-method
+    :shadowing-import-from ico:shadowing-import-from-ast)
+
+(define-relations ico:import-from-or-shadowing-import-from-ast
   ((:package t ico:package-name-ast)
    (:name t ico:name-asts)))
