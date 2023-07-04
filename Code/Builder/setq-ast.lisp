@@ -6,4 +6,4 @@
 
 (define-relations ico:setq-or-psetq-ast
   ((:name ico:variable-name-ast ico:variable-name-asts)
-   (:value-form t ico:value-form-asts)))
+   (:value t ico:value-asts)))
