@@ -83,7 +83,7 @@ n loop
 n loop-finish
 c multiple-value-bind
 n multiple-value-list
-n multiple-value-setq
+c multiple-value-setq
 n nth-value
 c or
 c pop
