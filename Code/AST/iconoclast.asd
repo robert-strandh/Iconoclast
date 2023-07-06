@@ -79,6 +79,7 @@
    (:file "dolist-ast")
    (:file "dotimes-ast")
    (:file "formatter-ast")
+   (:file "ignore-errors-ast")
    (:file "in-package-ast")
    (:file "multiple-value-bind-ast")
    (:file "multiple-value-setq-ast")
