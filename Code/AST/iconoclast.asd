@@ -82,6 +82,7 @@
    (:file "in-package-ast")
    (:file "multiple-value-bind-ast")
    (:file "multiple-value-setq-ast")
+   (:file "nth-value-ast")
    (:file "push-ast")
    (:file "pushnew-ast")
    (:file "pop-ast")
