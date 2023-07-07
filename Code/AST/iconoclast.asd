@@ -112,4 +112,5 @@
    (:file "with-output-to-string-ast")
    (:file "with-open-file-ast")
    (:file "with-open-stream-ast")
+   (:file "with-slots-ast")
    (:file "with-standard-io-syntax-ast")))
