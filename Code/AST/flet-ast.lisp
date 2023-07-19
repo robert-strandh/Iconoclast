@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast)
 
-(define-ast-class lexical-function-ast
+(define-ast-class local-function-ast
     (name-ast-mixin
      lambda-list-ast-mixin
      declaration-asts-mixin
