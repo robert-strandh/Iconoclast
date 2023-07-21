@@ -1,7 +1,5 @@
 (cl:in-package #:iconoclast)
 
-(defgeneric variable-name-ast (ast))
-
 (define-ast-class variable-binding-ast
     (optional-form-ast-mixin variable-name-ast-mixin ast)
   ())
