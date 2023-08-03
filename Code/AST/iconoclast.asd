@@ -66,6 +66,7 @@
    (:file "defmethod-ast")
    (:file "defconstant-ast")
    (:file "defgeneric-ast")
+   (:file "define-symbol-macro-ast")
    (:file "defpackage-ast")
    (:file "slot-specifier-ast")
    (:file "default-initarg-ast")
