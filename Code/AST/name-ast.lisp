@@ -64,5 +64,11 @@
 (define-ast-class global-function-name-reference-ast (function-name-ast)
   ())
 
+;;; This class can be used in a call to CHANGE-CLASS with a
+;;; FUNCTION-NAME-AST as an argument, once it is known that the
+;;; FUNCTION-NAME-AST corresponds the definition of a global-function.
+(define-ast-class global-function-name-definition-ast (function-name-ast)
+  ())
+
 (define-ast-class type-name-ast (name-ast)
   ())
