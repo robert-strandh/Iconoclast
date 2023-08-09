@@ -111,6 +111,7 @@
    (:file "when-ast")
    (:file "with-accessors-ast")
    (:file "with-compilation-unit-ast")
+   (:file "with-condition-restarts-ast")
    (:file "with-input-from-string-ast")
    (:file "with-output-to-string-ast")
    (:file "with-open-file-ast")
