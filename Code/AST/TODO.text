@@ -116,7 +116,7 @@ c when
 c with-accessors
 c with-compilation-unit
 c with-condition-restarts
-n with-hash-table-iterator
+c with-hash-table-iterator
 c with-input-from-string
 c with-open-file
 c with-open-stream
