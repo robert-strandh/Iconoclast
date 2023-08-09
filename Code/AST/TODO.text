@@ -121,7 +121,7 @@ c with-input-from-string
 c with-open-file
 c with-open-stream
 c with-output-to-string
-n with-package-iterator
+c with-package-iterator
 n with-simple-restart
 n with-slots
 c with-standard-io-syntax
