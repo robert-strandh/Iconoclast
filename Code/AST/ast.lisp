@@ -12,6 +12,24 @@
 (defclass ast ()
   ((%origin :initarg :origin :initform nil :reader origin)))
 
+;;; This class is the base class for all AST classes representing
+;;; special forms.
+(defclass special-form-ast (ast)
+  ())
+
+;;; This class is the base class for all AST classes representing
+;;; macro forms.
+(defclass macro-form-ast (ast)
+  ())
+
+;;; This class is the base class for all AST classes representing
+;;; function forms.  Currently, the s-expression-syntax library does
+;;; not have any syntax objects for function forms, so this library
+;;; does not have any subclasses of this class, but we may add such
+;;; subclasses in the future.
+(defclass function-form-ast (ast)
+  ())
+
 ;;; This generic function returns a list of pairs.  The CAR of each
 ;;; pair is a string that names the child in question, and the CDR is
 ;;; the child AST.  We use the APPEND method combination so that each
