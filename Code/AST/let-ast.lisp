@@ -5,7 +5,10 @@
   ())
 
 (define-ast-class let-or-let*-ast
-    (binding-asts-mixin declaration-asts-mixin form-asts-mixin ast)
+    (binding-asts-mixin
+     declaration-asts-mixin
+     form-asts-mixin
+     special-form-ast)
   ())
 
 (define-ast-class let-ast (let-or-let*-ast)

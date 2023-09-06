@@ -10,7 +10,10 @@
   ())
 
 (define-ast-class flet-or-labels-or-macrolet-ast
-    (binding-asts-mixin declaration-asts-mixin form-asts-mixin ast)
+    (binding-asts-mixin
+     declaration-asts-mixin
+     form-asts-mixin
+     special-form-ast)
   ())
 
 (define-ast-class flet-ast (flet-or-labels-or-macrolet-ast)

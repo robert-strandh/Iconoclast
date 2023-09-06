@@ -5,6 +5,6 @@
    (1 accessor-name-ast)))
 
 (define-ast-class with-accessors-ast
-    (form-asts-mixin declaration-asts-mixin ast)
+    (form-asts-mixin declaration-asts-mixin macro-form-ast)
   ((* slot-entry-asts)
    (1 instance-form-ast)))

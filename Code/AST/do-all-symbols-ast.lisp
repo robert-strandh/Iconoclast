@@ -4,5 +4,5 @@
     (result-ast-mixin
      declaration-asts-mixin
      segment-asts-mixin
-     ast)
+     macro-form-ast)
   ((1 variable-name-ast)))

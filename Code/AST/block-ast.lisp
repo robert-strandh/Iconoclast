@@ -13,9 +13,10 @@
 (define-ast-class block-name-reference-ast (block-name-ast)
   ((? block-name-definition-ast)))
 
-(define-ast-class block-ast (name-ast-mixin form-asts-mixin ast)
+(define-ast-class block-ast
+    (name-ast-mixin form-asts-mixin special-form-ast)
   ())
 
 (define-ast-class return-from-ast
-    (name-ast-mixin optional-form-ast-mixin ast)
+    (name-ast-mixin optional-form-ast-mixin special-form-ast)
   ())

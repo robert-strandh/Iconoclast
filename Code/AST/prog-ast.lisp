@@ -4,7 +4,7 @@
     (binding-asts-mixin
      declaration-asts-mixin
      segment-asts-mixin
-     ast)
+     macro-form-ast)
   ())
 
 (define-ast-class prog-ast (prog-or-prog*-ast)

@@ -3,7 +3,7 @@
 (define-ast-class with-input-from-string-ast
     (declaration-asts-mixin
      form-asts-mixin
-     ast)
+     macro-form-ast)
   ((1 var-ast)
    (1 string-ast)
    (? index-ast)

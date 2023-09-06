@@ -4,5 +4,6 @@
     (type-specifier-ast-mixin required-form-ast-mixin ast)
   ())
 
-(define-ast-class handler-bind-ast (binding-asts-mixin form-asts-mixin ast)
+(define-ast-class handler-bind-ast
+    (binding-asts-mixin form-asts-mixin macro-form-ast)
   ())

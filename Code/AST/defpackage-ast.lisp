@@ -12,7 +12,8 @@
     (import-from-or-shadowing-import-from-ast)
   ())
 
-(define-ast-class defpackage-ast (name-ast-mixin documentation-ast-mixin ast)
+(define-ast-class defpackage-ast
+    (name-ast-mixin documentation-ast-mixin macro-form-ast)
   ((* nickname-asts)
    (* use-asts)
    (* export-asts)

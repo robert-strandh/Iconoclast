@@ -7,5 +7,5 @@
   ((? tag-ast)
    (* statement-asts)))
 
-(define-ast-class go-ast (tag-ast-mixin ast)
+(define-ast-class go-ast (tag-ast-mixin special-form-ast)
   ())

@@ -4,7 +4,7 @@
     (object-ast-mixin
      declaration-asts-mixin
      form-asts-mixin
-     ast)
+     macro-form-ast)
   ((1 stream-symbol-ast)
    (? prefix-ast)
    (? per-line-prefix-ast)

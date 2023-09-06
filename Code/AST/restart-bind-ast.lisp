@@ -8,5 +8,6 @@
    (? report-function-ast)
    (? test-function-ast)))
 
-(define-ast-class restart-bind-ast (binding-asts-mixin form-asts-mixin ast)
+(define-ast-class restart-bind-ast
+    (binding-asts-mixin form-asts-mixin macro-form-ast)
   ())

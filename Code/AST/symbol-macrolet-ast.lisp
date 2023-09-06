@@ -5,5 +5,5 @@
    (1 expansion-ast)))
 
 (define-ast-class symbol-macrolet-ast
-    (declaration-asts-mixin form-asts-mixin ast)
+    (declaration-asts-mixin form-asts-mixin special-form-ast)
   ((* symbol-expansion-asts)))

@@ -6,5 +6,5 @@
      declaration-asts-mixin
      documentation-ast-mixin
      form-asts-mixin
-     ast)
+     macro-form-ast)
   ())

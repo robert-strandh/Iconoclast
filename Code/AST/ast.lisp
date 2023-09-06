@@ -24,9 +24,9 @@
 
 ;;; This class is the base class for all AST classes representing
 ;;; function forms.  Currently, the s-expression-syntax library does
-;;; not have any syntax objects for function forms, so this library
-;;; does not have any subclasses of this class, but we may add such
-;;; subclasses in the future.
+;;; not have any syntax objects for function forms, so the only AST
+;;; class that is the subclass of this class is APPLICATION-AST which
+;;; represents general function applications.
 (defclass function-form-ast (ast)
   ())
 

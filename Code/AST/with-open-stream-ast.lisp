@@ -3,6 +3,6 @@
 (define-ast-class with-open-stream-ast
     (declaration-asts-mixin
      form-asts-mixin
-     ast)
+     macro-form-ast)
   ((1 var-ast)
    (1 stream-ast)))

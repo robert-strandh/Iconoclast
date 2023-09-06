@@ -10,7 +10,7 @@
 (define-ast-class typecase-otherwise-clause-ast (typecase-clause-ast)
   ())
 
-(define-ast-class typecase-base-ast (clause-asts-mixin ast)
+(define-ast-class typecase-base-ast (clause-asts-mixin macro-form-ast)
   ())
 
 (define-ast-class typecase-or-etypecase-ast (typecase-base-ast)

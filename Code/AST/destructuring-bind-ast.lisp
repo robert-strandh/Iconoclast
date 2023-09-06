@@ -5,5 +5,5 @@
      required-form-ast-mixin
      declaration-asts-mixin
      form-asts-mixin
-     ast)
+     macro-form-ast)
   ())

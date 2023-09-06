@@ -4,7 +4,7 @@
     (name-ast-mixin
      lambda-list-ast-mixin
      documentation-ast-mixin
-     ast)
+     macro-form-ast)
   ((* argument-precedence-order-asts)
    (? generic-function-class-ast)
    (? method-class-ast)

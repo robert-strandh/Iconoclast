@@ -5,7 +5,7 @@
      slot-specifier-asts-mixin
      name-ast-mixin
      default-initarg-asts-mixin
-     ast)
+     macro-form-ast)
   ((* parent-type-asts)
    (? report-ast)))
 

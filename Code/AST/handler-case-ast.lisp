@@ -17,5 +17,5 @@
 (define-ast-class handler-case-ast
     (clause-asts-mixin
      required-form-ast-mixin
-     ast)
+     macro-form-ast)
   ((? no-error-clause-ast)))
