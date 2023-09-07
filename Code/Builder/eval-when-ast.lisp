@@ -13,5 +13,8 @@
 (defmethod abp:node-kind ((builder builder) (node ico:situation-ast))
   :eval-when-situation)
 
+(defmethod abp:node-kind ((builder builder) (node ico:eval-when-ast))
+  :eval-when)
+
 (define-relations ico:eval-when-ast
   ((:situation t ico:situation-asts)))
