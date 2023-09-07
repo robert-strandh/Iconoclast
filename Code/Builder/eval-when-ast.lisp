@@ -18,3 +18,6 @@
 
 (define-relations ico:eval-when-ast
   ((:situation t ico:situation-asts)))
+
+(defmethod abp:node-initargs ((builder builder) (node ico:situation-ast))
+  `(:situation ,(ico:name node)))
