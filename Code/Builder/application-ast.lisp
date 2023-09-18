@@ -4,4 +4,5 @@
 
 (define-relations ico:application-ast
   ((:function-name t ico:function-name-ast)
+   (:function t ico:function-name-ast)
    (:argument t ico:argument-asts)))
