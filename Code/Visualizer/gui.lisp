@@ -13,6 +13,10 @@
                        (1/5 (clim:scrolling () interactor))))))
 
 (defun display-ast (frame pane)
+  (loop for y from 0 to 500 by 10
+        do (if (zerop (mod y 50))
+               (clim:draw-line* pane 0 y 10 y)
+               (clim:draw-line* pane 0 y 5 y)))
   (display-ast* (ast frame) pane 10 10))
 
 ;;; Default method for ASTs that have not yet been dealt with in
