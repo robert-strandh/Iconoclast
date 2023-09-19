@@ -4,7 +4,7 @@
 (defun display-asts (asts pane hpos vpos)
   (let ((child-vpos vpos))
     (loop for ast in asts
-          do (incf child-vpos (display-ast* ast pane hpos child-vpos)))
+          do (setf child-vpos (display-ast* ast pane hpos child-vpos)))
     child-vpos))
 
 (defun display-simple-declaration-ast (ast name pane hpos vpos)
