@@ -5,25 +5,16 @@
          (height 20))
     (draw-ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
-      (loop for lexical-function-ast in (ico:binding-asts ast)
-            do (setf child-vpos
-                     (+ (display-ast* lexical-function-ast pane
-                                      (+ hpos width 20)
-                                      child-vpos)
-                        10)))
-      (loop for declaration-ast in (ico:declaration-asts ast)
-            do (setf child-vpos
-                     (+ (display-ast* declaration-ast pane
-                                      (+ hpos width 15)
-                                      child-vpos)
-                        10)))
-      (loop for form-ast in (ico:form-asts ast)
-            do (setf child-vpos
-                     (+ (display-ast* form-ast pane
-                                      (+ hpos width 10)
-                                      child-vpos)
-                        10)))
-      (+ child-vpos height))))
+      (setf child-vpos
+            (display-asts (ico:binding-asts ast)
+                          pane (+ hpos width 20) child-vpos))
+      (setf child-vpos
+            (display-asts (ico:declaration-asts ast)
+                          pane (+ hpos width 15) child-vpos))
+      (setf child-vpos
+            (display-asts (ico:form-asts ast)
+                          pane (+ hpos width 10) child-vpos))
+      (+ child-vpos height 10))))
 
 (defmethod display-ast* ((ast ico:flet-ast) pane hpos vpos)
   (display-flet-or-labels "flet" ast pane hpos vpos))

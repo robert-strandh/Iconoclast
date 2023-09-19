@@ -5,4 +5,4 @@
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
     (draw-ast pane hpos vpos width height name)
-    (+ vpos height)))
+    (+ vpos height 10)))

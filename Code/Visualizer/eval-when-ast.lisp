@@ -6,16 +6,10 @@
          (height 20))
     (draw-ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
-      (loop for variable-binding-ast in (ico:situation-asts ast)
-            do (setf child-vpos
-                     (+ (display-ast* variable-binding-ast pane
-                                      (+ hpos width 20)
-                                      child-vpos)
-                        10)))
-      (loop for form-ast in (ico:form-asts ast)
-            do (setf child-vpos
-                     (+ (display-ast* form-ast pane
-                                      (+ hpos width 10)
-                                      child-vpos)
-                        10)))
-      (+ child-vpos height))))
+      (setf child-vpos
+            (display-asts (ico:situation-asts ast)
+                          pane (+ hpos width 20) child-vpos))
+      (setf child-vpos
+            (display-asts (ico:form-asts ast)
+                          pane (+ hpos width 10) child-vpos))
+      (+ child-vpos height 10))))

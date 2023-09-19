@@ -14,4 +14,4 @@
             (display-ast* (ico:form-ast ast) pane
                           (+ hpos width 10)
                           child-vpos))
-      (+ child-vpos height))))
+      (+ child-vpos height 10))))

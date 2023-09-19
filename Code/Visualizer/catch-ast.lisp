@@ -11,10 +11,7 @@
                              (+ hpos width 20)
                              child-vpos)
                10))
-      (loop for child in (ico:form-asts ast)
-            do (setf child-vpos
-                     (+ (display-ast* child pane
-                                      (+ hpos width 10)
-                                      child-vpos)
-                        10)))
-      (+ child-vpos height))))
+      (setf child-vpos
+            (display-asts (ico:form-asts ast)
+                          pane (+ hpos width 10) child-vpos))
+      (+ child-vpos height 10))))
