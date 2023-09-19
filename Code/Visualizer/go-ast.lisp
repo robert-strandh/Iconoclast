@@ -10,4 +10,4 @@
             (display-ast* (ico:tag-ast ast) pane
                           (+ hpos width 10)
                           child-vpos))
-      (+ child-vpos height 10))))
+      child-vpos)))

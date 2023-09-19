@@ -14,7 +14,7 @@
       (setf child-vpos
             (display-asts (ico:form-asts ast)
                           pane (+ hpos width 10) child-vpos))
-      (+ child-vpos height 10))))
+      child-vpos)))
 
 (defmethod display-ast* ((ast ico:let-ast) pane hpos vpos)
   (display-let-or-let* "let" ast pane hpos vpos))

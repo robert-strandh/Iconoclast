@@ -9,4 +9,4 @@
       (setf child-vpos
             (display-asts (ico:name-asts ast)
                           pane (+ hpos width 10) child-vpos))
-      (+ child-vpos height 10))))
+      child-vpos)))
