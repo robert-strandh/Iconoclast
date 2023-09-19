@@ -22,7 +22,7 @@
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
     (draw-ast pane hpos vpos width height name)
-    (+ vpos height)))
+    (+ vpos height 10)))
 
 (defun visualize (ast &key new-process-p)
   (let ((frame (clim:make-application-frame 'visualizer :ast ast)))
