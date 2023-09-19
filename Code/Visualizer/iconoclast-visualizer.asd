@@ -8,6 +8,7 @@
   :components
   ((:file "packages")
    (:file "display-ast")
+   (:file "utilities")
    (:file "progn-ast")
    (:file "name-ast")
    (:file "literal-ast")
