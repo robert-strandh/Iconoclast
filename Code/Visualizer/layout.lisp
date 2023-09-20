@@ -50,3 +50,41 @@
     (20 ico:rest-section-ast)
     (20 ico:key-section-ast)
     (20 ico:aux-section-ast)))
+
+(defmethod layout ((ast ico:when-ast))
+  `((40 ico:test-ast)
+    (20 ico:form-asts)))
+
+(defmethod layout ((ast ico:unless-ast))
+  `((40 ico:test-ast)
+    (20 ico:form-asts)))
+
+(defmethod layout ((ast ico:and-ast))
+  `((20 ico:form-asts)))
+
+(defmethod layout ((ast ico:or-ast))
+  `((20 ico:form-asts)))
+
+(defmethod layout ((ast ico:cond-clause-ast))
+  `((20 ico:test-ast)
+    (40 ico:form-asts)))
+
+(defmethod layout ((ast ico:cond-ast))
+  `((20 ico:clause-asts)))
+
+(defmethod layout ((ast ico:case-normal-clause-ast))
+  `((20 ico:key-asts)
+    (40 ico:form-asts)))
+
+(defmethod layout ((ast ico:case-otherwise-clause-ast))
+  `((40 ico:form-asts)))
+
+(defmethod layout ((ast ico:case-or-ecase-ast))
+  `((20 ico:keyform-ast)
+    (40 ico:clause-asts)))
+
+(defmethod layout ((ast ico:ccase-ast))
+  `((20 ico:keyplace-ast)
+    (40 ico:clause-asts)))
+
+
