@@ -7,6 +7,7 @@
   :serial t
   :components
   ((:file "packages")
+   (:file "layout")
    (:file "display-ast")
    (:file "utilities")
    (:file "progn-ast")
