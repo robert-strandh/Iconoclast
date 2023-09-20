@@ -28,6 +28,7 @@
    (:file "multiple-value-prog1-ast")
    (:file "progv-ast")
    (:file "setq-ast")
+   (:file "tagbody-ast")
    (:file "special-ast")
    (:file "ignore-ast")
    (:file "inline-ast")
