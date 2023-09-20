@@ -19,15 +19,6 @@
                (clim:draw-line* pane 0 y 5 y)))
   (display-ast* (ast frame) pane 10 10))
 
-;;; Default method for ASTs that have not yet been dealt with in
-;;; specific methods.
-(defmethod display-ast* (ast pane hpos vpos)
-  (let* ((name (format nil "~s" (class-name (class-of ast))))
-         (width (+ (clim:stream-string-width pane name) 10))
-         (height 20))
-    (draw-ast pane hpos vpos width height name)
-    (+ vpos height 10)))
-
 (defun visualize (ast &key new-process-p)
   (let ((frame (clim:make-application-frame 'visualizer :ast ast)))
     (flet ((run ()
