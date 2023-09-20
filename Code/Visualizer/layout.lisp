@@ -26,6 +26,24 @@
 (defmethod layout ((ast ico:multi-parameter-section-ast))
   `((20 ico:parameter-asts)))
 
+(defmethod layout ((ast ico:required-parameter-ast))
+  '((20 ico:name-ast)))
+
+(defmethod layout ((ast ico:optional-parameter-ast))
+  `((20 ico:name-ast)
+    (30 ico:init-form-ast)
+    (40 ico:supplied-p-parameter-ast)))
+
+(defmethod layout ((ast ico:key-parameter-ast))
+  `((20 ico:keyword-ast)
+    (30 ico:name-ast)
+    (40 ico:init-form-ast)
+    (50 ico:supplied-p-parameter-ast)))
+
+(defmethod layout ((ast ico:aux-parameter-ast))
+  `((20 ico:name-ast)
+    (30 ico:form-ast)))
+
 (defmethod layout ((ast ico:ordinary-lambda-list-ast))
   `((20 ico:required-section-ast)
     (20 ico:optional-section-ast)
