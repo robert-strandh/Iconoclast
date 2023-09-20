@@ -31,6 +31,7 @@
    (:file "setq-ast")
    (:file "tagbody-ast")
    (:file "the-ast")
+   (:file "unwind-protect-ast")
    (:file "special-ast")
    (:file "ignore-ast")
    (:file "inline-ast")
