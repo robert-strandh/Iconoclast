@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast)
 
-(define-ast-class with-accessors-slot-entry (ast)
+(define-ast-class with-accessors-slot-entry-ast (ast)
   ((1 variable-name-ast)
    (1 accessor-name-ast)))
 
