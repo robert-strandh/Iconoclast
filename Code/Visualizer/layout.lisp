@@ -87,4 +87,54 @@
   `((20 ico:keyplace-ast)
     (40 ico:clause-asts)))
 
+(defmethod layout ((ast ico:incf-ast))
+  `((20 ico:place-ast)
+    (30 ico:delta-ast)))
 
+(defmethod layout ((ast ico:decf-ast))
+  `((20 ico:place-ast)
+    (30 ico:delta-ast)))
+
+(defmethod layout ((ast ico:push-ast))
+  `((20 ico:item-ast)
+    (20 ico:place-ast)))
+
+(defmethod layout ((ast ico:pop-ast))
+  `((20 ico:place-ast)))
+
+(defmethod layout ((ast ico:multiple-value-list-ast))
+  `((20 ico:form-asts)))
+
+(defmethod layout ((ast ico:multiple-value-setq-ast))
+  `((40 ico:name-ast)
+    (20 ico:values-ast)))
+
+(defmethod layout ((ast ico:nth-value-ast))
+  `((20 ico:n-ast)
+    (20 ico:form-ast)))
+
+(defmethod layout ((ast ico:shiftf-ast))
+  `((20 ico:value-ast)
+    (40 ico:place-asts)))
+
+(defmethod layout ((ast ico:rotatef-ast))
+  `((20 ico:place-asts)))
+
+(defmethod layout ((ast ico:defmethod-ast))
+  `((20 ico:name-ast)
+    (50 ico:method-qualifier-asts)
+    (60 ico:lambda-list-ast)
+    (40 ico:declaration-asts)
+    (20 ico:form-asts)))
+
+(defmethod layout ((ast ico:defpackage-ast))
+  `((20 ico:name-ast)
+    (40 ico:nickname-asts)
+    (40 ico:use-asts)
+    (40 ico:export-asts)
+    (40 ico:shadow-asts)
+    (40 ico:import-from-asts)
+    (40 ico:shadowing-import-from-asts)
+    (40 ico:size-ast)))
+
+    
