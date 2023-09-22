@@ -12,6 +12,9 @@
 (define-ast-class form-asts-mixin ()
   ((* form-asts)))
 
+(define-ast-class implicit-progn-ast-mixin (form-asts-mixin)
+  ())
+
 (define-ast-class declaration-asts-mixin ()
   ((* declaration-asts)))
 
