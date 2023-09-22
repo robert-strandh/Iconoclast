@@ -2,7 +2,7 @@
 
 (define-ast-class with-open-file-ast
     (declaration-asts-mixin
-     form-asts-mixin
+     implicit-progn-ast-mixin
      macro-form-ast)
   ((1 stream-ast)
    (1 filespec-ast)

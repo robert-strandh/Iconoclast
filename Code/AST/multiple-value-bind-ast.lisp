@@ -1,7 +1,7 @@
 (cl:in-package #:iconoclast)
 
 (define-ast-class multiple-value-bind-ast
-    (form-asts-mixin
+    (implicit-progn-ast-mixin
      declaration-asts-mixin
      macro-form-ast)
   ((1 values-ast)

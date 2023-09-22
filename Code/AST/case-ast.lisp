@@ -3,7 +3,7 @@
 ;;; FIXME: How do we distinguish between a clause that
 ;;; has the key (say) A and one that has the key (A)?
 
-(define-ast-class case-clause-ast (form-asts-mixin ast)
+(define-ast-class case-clause-ast (implicit-progn-ast-mixin ast)
   ())
 
 (define-ast-class case-normal-clause-ast (case-clause-ast)

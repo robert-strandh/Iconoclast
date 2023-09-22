@@ -9,5 +9,5 @@
    (? test-function-ast)))
 
 (define-ast-class restart-bind-ast
-    (binding-asts-mixin form-asts-mixin macro-form-ast)
+    (binding-asts-mixin implicit-progn-ast-mixin macro-form-ast)
   ())

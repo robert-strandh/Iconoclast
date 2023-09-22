@@ -5,14 +5,14 @@
      lambda-list-ast-mixin
      declaration-asts-mixin
      documentation-ast-mixin
-     form-asts-mixin
+     implicit-progn-ast-mixin
      ast)
   ())
 
 (define-ast-class flet-or-labels-or-macrolet-ast
     (binding-asts-mixin
      declaration-asts-mixin
-     form-asts-mixin
+     implicit-progn-ast-mixin
      special-form-ast)
   ())
 

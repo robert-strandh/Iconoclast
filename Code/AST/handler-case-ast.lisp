@@ -3,14 +3,14 @@
 (define-ast-class handler-clause-ast
     (type-specifier-ast-mixin
      declaration-asts-mixin
-     form-asts-mixin
+     implicit-progn-ast-mixin
      ast)
   ((? variable-name-ast)))
 
 (define-ast-class no-error-clause-ast
     (lambda-list-ast-mixin
      declaration-asts-mixin
-     form-asts-mixin
+     implicit-progn-ast-mixin
      ast)
   ())
 

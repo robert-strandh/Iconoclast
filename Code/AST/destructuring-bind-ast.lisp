@@ -4,6 +4,6 @@
     (lambda-list-ast-mixin
      required-form-ast-mixin
      declaration-asts-mixin
-     form-asts-mixin
+     implicit-progn-ast-mixin
      macro-form-ast)
   ())

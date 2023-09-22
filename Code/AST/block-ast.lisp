@@ -14,7 +14,7 @@
   ((? block-name-definition-ast)))
 
 (define-ast-class block-ast
-    (name-ast-mixin form-asts-mixin special-form-ast)
+    (name-ast-mixin implicit-progn-ast-mixin special-form-ast)
   ())
 
 (define-ast-class return-from-ast

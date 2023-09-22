@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast)
 
-(define-ast-class typecase-clause-ast (form-asts-mixin ast)
+(define-ast-class typecase-clause-ast (implicit-progn-ast-mixin ast)
   ())
 
 (define-ast-class typecase-normal-clause-ast

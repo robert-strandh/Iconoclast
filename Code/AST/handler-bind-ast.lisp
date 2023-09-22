@@ -5,5 +5,5 @@
   ())
 
 (define-ast-class handler-bind-ast
-    (binding-asts-mixin form-asts-mixin macro-form-ast)
+    (binding-asts-mixin implicit-progn-ast-mixin macro-form-ast)
   ())

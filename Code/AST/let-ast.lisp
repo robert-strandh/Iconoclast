@@ -7,7 +7,7 @@
 (define-ast-class let-or-let*-ast
     (binding-asts-mixin
      declaration-asts-mixin
-     form-asts-mixin
+     implicit-progn-ast-mixin
      special-form-ast)
   ())
 
