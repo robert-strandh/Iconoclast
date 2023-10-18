@@ -47,6 +47,13 @@
 (define-ast-class type-specifier-ast-mixin ()
   ((1 type-specifier-ast)))
 
+;;; For some reason, the TYPE-SPECIFIER-AST slot is never initialized,
+;;; so to avoid problems when all nodes are walked, I currently
+;;; initialize it to nil, so that it at least has a value.
+(defmethod initialize-instance :after
+    ((ast type-specifier-ast-mixin) &key &allow-other-keys)
+  (reinitialize-instance ast :type-specifier-ast nil))
+
 (define-ast-class value-mixin ()
   ((1 value)))
 
