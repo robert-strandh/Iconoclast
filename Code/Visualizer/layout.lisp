@@ -314,3 +314,9 @@
     (40 ico:instance-form-ast)
     (30 ico:declaration-asts)
     (20 ico:form-asts)))
+
+(defmethod layout ((ast ico:local-function-ast))
+  `((20 ico:name-ast)
+    (60 ico:lambda-list-ast)
+    (40 ico:declaration-asts)
+    (20 ico:form-asts)))
