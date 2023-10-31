@@ -10,3 +10,6 @@
     ((builder builder)
      (ast ico:name-ast))
   (list :name (ico:name ast)))
+
+(defmethod abp:node-kind ((builder builder) ico:variable-name-ast)
+  :variable-name)
