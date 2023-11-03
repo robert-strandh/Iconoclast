@@ -4,4 +4,5 @@
   (:use #:common-lisp)
   (:local-nicknames (#:ico #:iconoclast)
                     (#:iaw #:iconoclast-ast-walker))
-  (:export))
+  (:export
+   #:extract-declaration-specifier-asts))
