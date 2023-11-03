@@ -5,4 +5,5 @@
   (:local-nicknames (#:ico #:iconoclast)
                     (#:iaw #:iconoclast-ast-walker))
   (:export
-   #:extract-declaration-specifier-asts))
+   #:extract-declaration-specifier-asts
+   #:split-declaration-specifier-ast))
