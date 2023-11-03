@@ -6,4 +6,5 @@
   :serial t
   :components
   ((:file "packages")
-   (:file "extract-declaration-specifier-asts")))
+   (:file "extract-declaration-specifier-asts")
+   (:file "split-declaration-specifier-ast")))
