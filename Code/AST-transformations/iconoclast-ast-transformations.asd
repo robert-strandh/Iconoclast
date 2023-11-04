@@ -7,4 +7,5 @@
   :components
   ((:file "packages")
    (:file "extract-declaration-specifier-asts")
-   (:file "split-declaration-specifier-ast")))
+   (:file "split-declaration-specifier-ast")
+   (:file "split-let-or-letstar-ast")))
