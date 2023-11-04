@@ -8,5 +8,5 @@
   ((:file "packages")
    (:file "extract-declaration-specifier-asts")
    (:file "split-declaration-specifier-ast")
-   (:file "split-let-or-letstar-ast")
-   (:file "associate-variable-asts-and-declaration-specifier-asts")))
+   (:file "associate-variable-asts-and-declaration-specifier-asts")
+   (:file "split-let-or-letstar-ast")))
