@@ -119,4 +119,5 @@
    (:file "with-package-iterator-ast")
    (:file "with-simple-restart-ast")
    (:file "with-slots-ast")
-   (:file "with-standard-io-syntax-ast")))
+   (:file "with-standard-io-syntax-ast")
+   (:file "special-variable-bind-ast")))
