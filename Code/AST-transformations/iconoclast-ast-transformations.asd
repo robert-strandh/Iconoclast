@@ -6,6 +6,7 @@
   :serial t
   :components
   ((:file "packages")
+   (:file "application-lambda-to-labels")
    (:file "extract-declaration-specifier-asts")
    (:file "split-declaration-specifier-ast")
    (:file "associate-variable-asts-and-declaration-specifier-asts")
