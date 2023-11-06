@@ -6,6 +6,7 @@
   :serial t
   :components
   ((:file "packages")
+   (:file "client")
    (:file "application-lambda-to-labels")
    (:file "eliminate-special-declarations")
    (:file "extract-declaration-specifier-asts")
