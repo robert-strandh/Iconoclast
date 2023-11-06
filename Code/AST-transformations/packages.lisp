@@ -6,4 +6,11 @@
                     (#:iaw #:iconoclast-ast-walker))
   (:export
    #:extract-declaration-specifier-asts
-   #:split-declaration-specifier-ast))
+   #:split-declaration-specifier-ast
+   #:application-lambda-to-labels
+   #:function-lambda-to-labels
+   #:flet-to-labels
+   #:let-to-labels
+   #:let*-to-labels
+   #:eliminate-special-declarations
+   #:lexify-lambda-list))
