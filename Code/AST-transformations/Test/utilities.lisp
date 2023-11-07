@@ -3,6 +3,16 @@
 (defclass client (cb:macro-transforming-client)
   ())
 
+(defun parse-transform-and-unparse (form transformation)
+  (let* ((cst (cst:cst-from-expression form))
+         (environment (cb:create-environment))
+         (client (make-instance 'client))
+         (cmd:*client* client)
+         (ast (cb:cst-to-ast client cst environment))
+         (builder (make-instance 'bld:builder))
+         (transformed-ast (funcall transformation ast)))
+    (ses:unparse builder t transformed-ast)))
+
 (defun parse-lexify-and-unparse (lambda-application)
   (let* ((cst (cst:cst-from-expression lambda-application))
          (environment (cb:create-environment))
