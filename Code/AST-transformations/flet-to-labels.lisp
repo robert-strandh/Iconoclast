@@ -14,5 +14,5 @@
   (change-class ast 'ico:labels-ast))
 
 (defun flet-to-labels (ast)
-  (let ((client (make-instance 'flet-to-ast-client)))
+  (let ((client (make-instance 'flet-to-labels-client)))
     (iaw:walk-ast client ast)))
