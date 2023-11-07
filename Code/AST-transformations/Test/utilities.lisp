@@ -13,9 +13,6 @@
          (transformed-ast (funcall transformation ast)))
     (ses:unparse builder t transformed-ast)))
 
-(defun parse-lexify-and-unparse (lambda-application)
-  (parse-transform-and-unparse lambda-application #'iat:lexify-lambda-list))
-
 ;;; The problem that is solved by this function is that the
 ;;; transformation will introduce symbols using GENSYM, and we don't
 ;;; know what they will be.  So we just make sure that a symbol

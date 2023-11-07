@@ -1,5 +1,8 @@
 (cl:in-package #:iconoclast-ast-transformations-test)
 
+(defun parse-lexify-and-unparse (lambda-application)
+  (parse-transform-and-unparse lambda-application #'iat:lexify-lambda-list))
+
 (define-test lexify-lambda-list)
 
 (define-test lexify-lambda-list-one-required-special
