@@ -12,4 +12,5 @@
    (:file "utilities")
    (:file "configuration")
    (:file "lexify-lambda-list")
-   (:file "application-lambda-to-labels")))
+   (:file "application-lambda-to-labels")
+   (:file "function-lambda-to-labels")))
