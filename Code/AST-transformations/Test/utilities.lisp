@@ -14,14 +14,7 @@
     (ses:unparse builder t transformed-ast)))
 
 (defun parse-lexify-and-unparse (lambda-application)
-  (let* ((cst (cst:cst-from-expression lambda-application))
-         (environment (cb:create-environment))
-         (client (make-instance 'client))
-         (cmd:*client* client)
-         (ast (cb:cst-to-ast client cst environment))
-         (builder (make-instance 'bld:builder))
-         (transformed-ast (iat:lexify-lambda-list ast)))
-    (ses:unparse builder t transformed-ast)))
+  (parse-transform-and-unparse lambda-application #'iat:lexify-lambda-list))
 
 ;;; The problem that is solved by this function is that the
 ;;; transformation will introduce symbols using GENSYM, and we don't
