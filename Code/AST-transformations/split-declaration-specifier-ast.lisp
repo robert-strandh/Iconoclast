@@ -22,11 +22,14 @@
                                             
 (defun split-simple-declaration-specifier-ast (ast)
   (loop with origin = (ico:origin ast)
-        for name-ast in (ico:name-asts ast)
         with class = (class-of ast)
+        for name-ast in (ico:name-asts ast)
         for declaration-specifier-ast
           = (make-instance class
-              :name-ast name-ast
+              :identifier-ast
+              (make-instance 'ico:name-ast
+                :name (ico:identifier-ast ast))
+              :name-asts (list name-ast)
               :origin origin)
         if (typep name-ast 'ico:function-name-ast)
           collect declaration-specifier-ast into result2
