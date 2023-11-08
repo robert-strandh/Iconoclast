@@ -28,7 +28,7 @@
           = (make-instance class
               :identifier-ast
               (make-instance 'ico:name-ast
-                :name (ico:identifier-ast ast))
+                :name (ico:name (ico:identifier-ast ast)))
               :name-asts (list name-ast)
               :origin origin)
         if (typep name-ast 'ico:function-name-ast)
