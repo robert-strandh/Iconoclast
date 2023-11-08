@@ -10,7 +10,7 @@
       (loop for declaration-specifier-ast in declaration-specifier-asts
             do (multiple-value-bind (named not-named)
                    (split-declaration-specifier-ast
-                    declaration-specifier-asts)
+                    declaration-specifier-ast)
                  (setf named-ast-pairs (append named-ast-pairs named))
                  (setf not-named-asts (append not-named-asts not-named))))
       (let* ((variable-name-asts
@@ -29,20 +29,23 @@
                (if (null binding-asts)
                    (change-class
                     ast 'ico:locally-ast
-                    :declaration-asts other-asts)
+                    :declaration-asts
+                    (list (make-instance 'ico:declaration-ast
+                            :declaration-specifier-asts other-asts)))
                    (let ((inner
                            (make-instance 'ico:let-ast
                              :form-asts (ico:form-asts ast))))
                      (reinitialize-instance ast
                        :binding-asts (list (first binding-asts))
                        :declaration-asts
-                       (make-instance 'ico:declaration-ast
-                         :declaration-specifier-asts 
-                         (list (first associated-asts)))
+                       (list (make-instance 'ico:declaration-ast
+                               :declaration-specifier-asts 
+                               (first associated-asts)))
                        :form-asts (list inner))
                      (split inner
                             (rest binding-asts)
-                            (rest associated-asts))))))
+                            (rest associated-asts))))
+               ast))
       (split ast (ico:binding-asts ast) associated-asts))))
 
 (defmethod iaw:walk-ast-node :around
