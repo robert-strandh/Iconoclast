@@ -2,7 +2,7 @@
 
 (defun parse-flet-to-labels-and-unparse (flet)
   (parse-transform-and-unparse
-   flet #'iat:flet-to-labels))
+   flet #'iat:flet-to-labels-everywhere))
 
 (define-test flet-to-labels)
 
