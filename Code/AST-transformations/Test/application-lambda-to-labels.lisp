@@ -2,7 +2,7 @@
 
 (defun parse-application-lambda-to-labels-and-unparse (lambda-application)
   (parse-transform-and-unparse
-   lambda-application #'iat:application-lambda-to-labels))
+   lambda-application #'iat:application-lambda-to-labels-everywhere))
 
 (define-test application-lambda-to-labels)
 
