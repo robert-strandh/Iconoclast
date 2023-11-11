@@ -10,6 +10,7 @@
    #:application-lambda-to-labels
    #:application-lambda-to-labels-everywhere
    #:function-lambda-to-labels
+   #:function-lambda-to-labels-everywhere
    #:flet-to-labels
    #:let-to-labels
    #:let*-to-labels
