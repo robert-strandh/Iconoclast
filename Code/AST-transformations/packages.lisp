@@ -12,6 +12,7 @@
    #:function-lambda-to-labels
    #:function-lambda-to-labels-everywhere
    #:flet-to-labels
+   #:flet-to-labels-everywhere
    #:let-to-labels
    #:let*-to-labels
    #:eliminate-special-declarations
