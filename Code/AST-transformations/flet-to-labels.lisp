@@ -5,14 +5,17 @@
 ;;;; work because all the references to functions have already been
 ;;;; resolved in the FLET AST, so no capture is possible.
 
+(defun flet-to-labels (flet-ast)
+  (change-class flet-ast 'ico:labels-ast))
+
 (defclass flet-to-labels-client (client) ())
 
 (defmethod iaw:walk-ast-node :around
     ((client flet-to-labels-client) (ast ico:flet-ast))
   ;; Start by converting any children of this AST node.
   (call-next-method)
-  (change-class ast 'ico:labels-ast))
+  (flet-to-labels ast))
 
-(defun flet-to-labels (ast)
+(defun flet-to-labels-everywhere (ast)
   (let ((client (make-instance 'flet-to-labels-client)))
     (iaw:walk-ast client ast)))
