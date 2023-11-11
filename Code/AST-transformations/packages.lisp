@@ -8,6 +8,7 @@
    #:extract-declaration-specifier-asts
    #:split-declaration-specifier-ast
    #:application-lambda-to-labels
+   #:application-lambda-to-labels-everywhere
    #:function-lambda-to-labels
    #:flet-to-labels
    #:let-to-labels
