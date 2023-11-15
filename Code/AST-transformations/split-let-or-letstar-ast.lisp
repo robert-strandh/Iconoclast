@@ -5,22 +5,22 @@
 (defun compute-declaration-ast-associations (ast)
   (let ((declaration-specifier-asts
           (extract-declaration-specifier-asts (ico:declaration-asts ast))))
-    (let ((named-ast-pairs '())
-          (not-named-asts '()))
+    (let ((variable-ast-pairs '())
+          (other-asts '()))
       (loop for declaration-specifier-ast in declaration-specifier-asts
-            do (multiple-value-bind (named not-named)
-                   (split-declaration-specifier-ast
-                    declaration-specifier-ast)
-                 (setf named-ast-pairs (append named-ast-pairs named))
-                 (setf not-named-asts (append not-named-asts not-named))))
-      (let* ((variable-name-asts
-               (loop for variable-binding-ast in (ico:binding-asts ast)
-                     collect (ico:variable-name-ast variable-binding-ast))))
-        (multiple-value-bind (associated-asts remaining-asts)
-            (associate-variable-asts-and-declaration-specifier-asts
-             variable-name-asts named-ast-pairs)
-          (values associated-asts
-                  (append remaining-asts not-named-asts)))))))
+            do (if (typep declaration-specifier-ast
+                          'ico:restricting-declaration-specifier-ast)
+                   (let ((pairs (split-declaration-specifier-ast
+                                 declaration-specifier-ast)))
+                     (loop for pair in pairs
+                           for (name-ast . declaration-specifier-ast)
+                             = pair
+                           do (if (typep name-ast 'ico:variable-name-ast)
+                                  (push pair variable-ast-pairs)
+                                  (push declaration-specifier-ast
+                                        other-asts))))
+                   (push declaration-specifier-ast other-asts)))
+      (values variable-ast-pairs other-asts))))
 
 (defun split-let-or-let-star-ast-helper (ast)
   (multiple-value-bind (associated-asts other-asts)
