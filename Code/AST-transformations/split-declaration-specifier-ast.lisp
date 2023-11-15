@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast-ast-transformations)
 
-;;; This function takes a DECLARATION-SPECIFIER-AST and return two
+;;; This function takes a DECLARATION-SPECIFIER-AST and returns two
 ;;; lists as two return values.  Each element of first list is of the
 ;;; form (<variable-name-ast> . <declaration-specifier-ast>) such that
 ;;; <declaration-specifier-ast> is a DECLARATION-SPECIFIER-AST of the
