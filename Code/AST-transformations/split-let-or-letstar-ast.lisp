@@ -20,7 +20,13 @@
                                   (push declaration-specifier-ast
                                         other-asts))))
                    (push declaration-specifier-ast other-asts)))
-      (values variable-ast-pairs other-asts))))
+      (let ((variable-name-asts
+              (loop for variable-binding-ast in (ico:binding-asts ast)
+                    collect (ico:variable-name-ast variable-binding-ast))))
+        (multiple-value-bind (associated-asts remaining-asts)
+            (associate-variable-asts-and-declaration-specifier-asts
+             variable-name-asts variable-ast-pairs)
+          (values associated-asts (append remaining-asts other-asts)))))))
 
 (defun split-let-or-let-star-ast-helper (ast)
   (multiple-value-bind (associated-asts other-asts)
