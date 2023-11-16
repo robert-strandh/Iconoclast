@@ -80,6 +80,9 @@
 (defun declaration-specifier-asts (dictionary key)
   (gethash key dictionary))
 
+(defun remove-declaration-specifier-asts (dictionary key)
+  (remhash key dictionary))
+
 (defgeneric add-dictionary-entry
     (dictionary reference declaration-specifier-ast))
 
