@@ -147,3 +147,11 @@
         do (add-dictionary-entry
             dictionary name-ast declaration-specifier-ast)))
 
+(defun create-declaration-dictionary (declaration-asts)
+  (loop with dictionary = (make-hash-table :test #'equal)
+        for declaration-ast in declaration-asts
+        do (loop for declaration-specifier-ast
+                   in (ico:declaration-specifier-asts declaration-ast)
+                 do (add-dictionary-entries
+                     dictionary declaration-specifier-ast))
+        finally (return dictionary)))
