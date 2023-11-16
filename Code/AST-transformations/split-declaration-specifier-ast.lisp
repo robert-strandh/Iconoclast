@@ -77,6 +77,9 @@
 (defun add-entry (dictionary key value)
   (push value (gethash key dictionary)))
 
+(defun declaration-specifier-asts (dictionary key)
+  (gethash key dictionary))
+
 (defgeneric add-dictionary-entry
     (dictionary reference declaration-specifier-ast))
 
