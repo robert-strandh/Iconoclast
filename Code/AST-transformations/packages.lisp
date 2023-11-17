@@ -6,6 +6,7 @@
                     (#:iaw #:iconoclast-ast-walker))
   (:export
    #:extract-declaration-specifier-asts
+   #:extract-special-declared-variable-asts
    #:split-declaration-specifier-ast
    #:application-lambda-to-labels
    #:application-lambda-to-labels-everywhere
