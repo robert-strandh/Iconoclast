@@ -17,4 +17,5 @@
    #:let-to-labels
    #:let*-to-labels
    #:eliminate-special-declarations
-   #:lexify-lambda-list))
+   #:lexify-lambda-list
+   #:split-let-or-let*))
