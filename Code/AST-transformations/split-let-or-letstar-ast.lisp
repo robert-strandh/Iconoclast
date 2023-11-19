@@ -21,10 +21,10 @@
     (remove-declaration-specifier-asts dictionary key)
     (reinitialize-instance ast
       :binding-asts (list binding-ast)
-      :declartion-asts
+      :declaration-asts
       (list (make-instance 'ico:declare-ast
-              :declaration-specifier-asts declaration-specifier-asts
-              :form-asts (list inner))))))
+              :declaration-specifier-asts declaration-specifier-asts))
+      :form-asts (list inner))))
 
 (defun split-let-or-let*-ast-helper (ast)
   (let* ((declaration-asts (ico:declaration-asts ast))
@@ -41,7 +41,7 @@
        ast 'ico:locally-ast
        :declaration-asts
        (list (make-instance 'ico:declare-ast
-               :declaraton-specifier-asts declaration-specifier-asts))))))
+               :declaration-specifier-asts declaration-specifier-asts))))))
 
 (defmethod iaw:walk-ast-node :around
     ((client split-let-or-let*-client) (ast ico:let-ast))
@@ -56,6 +56,6 @@
   (change-class ast 'ico:let-ast)
   (split-let-or-let*-ast-helper ast))
 
-(defun split-let-or-let*-ast (ast)
+(defun split-let-or-let* (ast)
   (let ((client (make-instance 'split-let-or-let*-client)))
     (iaw:walk-ast client ast)))
