@@ -38,10 +38,11 @@
                     of dictionary
                   append value)))
       (change-class
-       ast 'ico:locally-ast
+       ast-to-split 'ico:locally-ast
        :declaration-asts
        (list (make-instance 'ico:declare-ast
-               :declaration-specifier-asts declaration-specifier-asts))))))
+               :declaration-specifier-asts declaration-specifier-asts)))))
+  ast)
 
 (defmethod iaw:walk-ast-node :around
     ((client split-let-or-let*-client) (ast ico:let-ast))
