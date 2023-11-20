@@ -7,6 +7,7 @@
   (:export
    #:extract-declaration-specifier-asts
    #:extract-special-declared-variable-asts
+   #:extract-variable-asts-in-lambda-list
    #:split-declaration-specifier-ast
    #:application-lambda-to-labels
    #:application-lambda-to-labels-everywhere
