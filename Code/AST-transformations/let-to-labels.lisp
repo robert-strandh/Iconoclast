@@ -6,7 +6,7 @@
 (defclass let-to-labels-client (client) ())
 
 (defun bindings-and-body-to-labels
-    (binding-asts declaration-asts form-asts)
+    (binding-asts declaration-asts form-asts origin)
   (let* ((name (gensym))
          (local-function-definition
            (make-instance 'ico:local-function-name-definition-ast
@@ -32,7 +32,8 @@
                         collect (make-instance 'ico:required-parameter-ast
                                   :name-ast variable-name-ast))))
               :declaration-asts declaration-asts
-              :form-asts form-asts))
+              :form-asts form-asts
+              :origin origin))
       :form-asts
       (list (make-instance 'ico:application-ast
               :function-name-ast local-function-reference
@@ -44,7 +45,10 @@
   ;; Start by converting any children of this AST node.
   (call-next-method)
   (bindings-and-body-to-labels
-   (ico:binding-asts ast) (ico:declaration-asts ast) (ico:form-asts ast)))
+   (ico:binding-asts ast)
+   (ico:declaration-asts ast)
+   (ico:form-asts ast)
+   (ico:origin ast)))
 
 (defun let-to-labels (ast)
   (let ((client (make-instance 'let-to-labels-client)))

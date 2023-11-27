@@ -20,7 +20,8 @@
                   (last binding-asts)
                   ;; This is not quite right.
                   declaration-asts
-                  form-asts))
+                  form-asts
+                  (ico:origin ast)))
                (result (make-instance 'ico:let*-ast
                          :binding-asts
                          (butlast binding-asts)
