@@ -16,6 +16,7 @@
          (declaration-specifier-asts
            (declaration-specifier-asts dictionary key))
          (inner (make-instance 'ico:let-ast
+                  :origin (ico:origin ast)
                   :form-asts (ico:form-asts ast)
                   :binding-asts (rest binding-asts))))
     (remove-declaration-specifier-asts dictionary key)
