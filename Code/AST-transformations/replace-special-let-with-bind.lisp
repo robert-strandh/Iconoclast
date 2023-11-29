@@ -1,9 +1,9 @@
 (cl:in-package #:iconoclast-ast-transformations)
 
-(defclass replace-special-let-with-progv-client (client) ())
+(defclass replace-special-let-with-bind-client (client) ())
 
 (defmethod iaw:walk-ast-node :around
-    ((client replace-special-let-with-progv-client) (ast ico:let-ast))
+    ((client replace-special-let-with-bind-client) (ast ico:let-ast))
   (call-next-method)
   (let ((binding-asts (ico:binding-asts ast)))
     (assert (= 1 (length binding-asts)))
@@ -21,6 +21,6 @@
                                       binding-form-ast))))))
   ast)
 
-(defun replace-special-let-with-progv (ast)
-  (let ((client (make-instance 'replace-special-let-with-progv-client)))
+(defun replace-special-let-with-bind (ast)
+  (let ((client (make-instance 'replace-special-let-with-bind-client)))
     (iaw:walk-ast client ast)))
