@@ -48,6 +48,13 @@
 
 (defmethod add-dictionary-entry
     (dictionary
+     (reference ico:special-variable-reference-ast)
+     declaration-specifier-ast)
+  (add-dictionary-entry
+   dictionary (ico:name reference) declaration-specifier-ast))
+
+(defmethod add-dictionary-entry
+    (dictionary
      (reference ico:variable-definition-ast)
      declaration-specifier-ast)
   (let ((definition (ico:variable-definition-ast reference)))
@@ -67,7 +74,6 @@
   (let ((name (ico:name reference)))
     (add-entry dictionary `(function ,name) declaration-specifier-ast)))
   
-
 (defgeneric add-dictionary-entries (dictionary declaration-specifier-ast))
 
 (defmethod add-dictionary-entries
