@@ -99,7 +99,7 @@
 (defun rest-section-lexified-p (rest-section-ast)
   (or
     (null rest-section-ast)
-    (typep (ico:parameter-ast rest-section-ast)
+    (typep (ico:name-ast (ico:parameter-ast rest-section-ast))
            'ico:variable-definition-ast)))
 
 (defun key-section-lexified-p (key-section-ast)
