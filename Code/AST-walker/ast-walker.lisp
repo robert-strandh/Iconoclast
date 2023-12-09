@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast-ast-walker)
 
-;;;; This system implements a general AST walker.  All it does it
+;;;; This function implements a general AST walker.  All it does it
 ;;;; traverse the AST tree without invoking any action.  To implement
 ;;;; some action, client code can define an :AROUND method on
 ;;;; WALK-AST-NODE, that specializes to a particular CLIENT class.
