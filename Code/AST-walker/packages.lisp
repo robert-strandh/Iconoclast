@@ -2,5 +2,9 @@
 
 (defpackage #:iconoclast-ast-walker
   (:use #:common-lisp)
-  (:export #:walk-ast)
-  (:export #:walk-ast-node))
+  (:local-nicknames (#:ico #:iconoclast))
+  (:export #:walk-ast
+           #:walk-ast-node
+           #:walk-lambda-list-ast
+           #:walk-section-ast
+           #:walk-parameter-ast))
