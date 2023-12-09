@@ -61,7 +61,7 @@
 
 (defmethod walk-section-ast (client (ast ico:multi-parameter-section-ast))
   (loop for parameter-ast in (ico:parameter-asts ast)
-        do (walk-parameter-ast parameter-ast)))
+        do (walk-parameter-ast client parameter-ast)))
 
 (defmethod walk-lambda-list-ast (client ast)
   (loop for section-accessor in (lambda-list-section-accessors ast)
