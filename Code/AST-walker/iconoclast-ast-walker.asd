@@ -5,5 +5,6 @@
   :serial t
   :components
   ((:file "packages")
-   (:file "ast-walker")))
+   (:file "ast-walker")
+   (:file "lambda-list-walker")))
 
