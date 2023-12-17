@@ -1,0 +1,12 @@
+@node General structure of AST classes
+@chapter General structure of AST classes
+
+@section Package
+
+The package for this part is named @code{iconoclast}.  The package
+definition in the file @code{packages.lisp} does not contain a
+complete list of exported symbols.  Instead, the macro
+@code{define-ast-class} @xref{Utilities} generates explicit calls to
+@code{export}.
+
+@section Utilities

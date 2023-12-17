@@ -15,6 +15,7 @@ This document describes the implementation of Iconoclast.
 
 @menu
 * Introduction
+* General structure of AST classes
 * AST classes for special forms
 * AST classes for standard macro forms
 * Index:: Complete index.
@@ -22,6 +23,7 @@ This document describes the implementation of Iconoclast.
 
 @include chap-introduction.texi
 @part Part 1: AST classes
+@include chap-ast-classes-general-structure.texi
 @include chap-ast-classes-for-special-forms.texi
 @include chap-ast-classes-for-standard-macro-forms.texi
 @part Part 2: Builder
