@@ -1,0 +1,35 @@
+\input texinfo
+
+@settitle Iconoclast, AST classes for Common Lisp
+
+@titlepage
+@title Iconoclast documentation
+@end titlepage
+
+@contents
+
+@node Top
+@top Iconoclast
+
+This document describes the implementation of Iconoclast.
+
+@menu
+* Introduction
+* AST classes for special forms
+* AST classes for standard macro forms
+* Index:: Complete index.
+@end menu
+
+@include chap-introduction.texi
+@part Part 1: AST classes
+@include chap-ast-classes-for-special-forms.texi
+@include chap-ast-classes-for-standard-macro-forms.texi
+@part Part 2: Builder
+@include chap-builder.texi
+
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+@bye

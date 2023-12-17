@@ -1,0 +1,6 @@
+@node Introduction
+@chapter Introduction
+
+Iconoclast is a library that provides AST classes for standard Common
+Lisp special forms and macro forms, and a collection of functions for
+building and transforming hierarchies of instances of those classes.
