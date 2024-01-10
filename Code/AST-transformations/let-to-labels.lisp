@@ -5,6 +5,14 @@
 
 (defclass let-to-labels-client (client) ())
 
+;;; If the BINDING-AST has a FORM-AST that is not NIL, then return it.
+;;; Otherwise, build a LITERAL-AST with the literal NIL.
+(defun form-ast (binding-ast)
+  (let ((result (ico:form-ast binding-ast)))
+    (if (null result)
+        (make-instance 'ico:literal-ast :literal nil)
+        result)))
+
 (defun bindings-and-body-to-labels
     (binding-asts declaration-asts form-asts origin)
   (let* ((name (gensym))
@@ -38,7 +46,7 @@
       (list (make-instance 'ico:application-ast
               :function-name-ast local-function-reference
               :argument-asts
-              (mapcar #'ico:form-ast binding-asts))))))
+              (mapcar #'form-ast binding-asts))))))
 
 (defmethod iaw:walk-ast-node :around
     ((client let-to-labels-client) (ast ico:let-ast))
