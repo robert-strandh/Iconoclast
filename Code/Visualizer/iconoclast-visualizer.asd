@@ -24,6 +24,7 @@
    (:file "if-ast")
    (:file "return-from-ast")
    (:file "let-ast")
+   (:file "special-variable-bind-ast")
    (:file "load-time-value-ast")
    (:file "locally-ast")
    (:file "multiple-value-call-ast")
