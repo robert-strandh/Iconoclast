@@ -5,7 +5,7 @@
 ;;; LET*.
 
 (define-ast-class special-variable-binding-ast
-    (required-form-ast-mixin variable-name-ast-mixin)
+    (required-form-ast-mixin variable-name-ast-mixin ast)
   ())
 
 (define-ast-class special-variable-bind-ast
