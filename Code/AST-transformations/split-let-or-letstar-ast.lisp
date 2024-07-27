@@ -21,6 +21,7 @@
                   :binding-asts (rest binding-asts))))
     (remove-declaration-specifier-asts dictionary key)
     (reinitialize-instance ast
+      :origin (ico:origin binding-ast)
       :binding-asts (list binding-ast)
       :declaration-asts
       (list (make-instance 'ico:declare-ast
