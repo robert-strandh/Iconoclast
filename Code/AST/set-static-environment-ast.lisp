@@ -7,7 +7,5 @@
 ;;; list is typically either a VARIABLE-REFERENCE-AST or a
 ;;; MAKE-CELL-AST.
 
-(define-ast-class set-static-environment-ast
-    (form-asts-mixin
-     ast)
+(define-ast-class set-static-environment-ast (form-asts-mixin ast)
   ((1 function-reference-ast)))
