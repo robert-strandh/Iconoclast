@@ -121,4 +121,5 @@
    (:file "with-slots-ast")
    (:file "with-standard-io-syntax-ast")
    (:file "special-variable-bind-ast")
-   (:file "set-static-environment-ast")))
+   (:file "set-static-environment-ast")
+   (:file "static-environment-reference-ast")))
