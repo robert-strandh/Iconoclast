@@ -120,4 +120,5 @@
    (:file "with-simple-restart-ast")
    (:file "with-slots-ast")
    (:file "with-standard-io-syntax-ast")
-   (:file "special-variable-bind-ast")))
+   (:file "special-variable-bind-ast")
+   (:file "set-static-environment-ast")))
