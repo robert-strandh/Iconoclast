@@ -5,4 +5,5 @@
                "iconoclast-ast-walker")
   :serial t
   :components
-  ((:file "packages")))
+  ((:file "packages")
+   (:file "function-tree")))
