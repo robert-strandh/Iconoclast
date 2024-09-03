@@ -1,6 +1,8 @@
 (cl:in-package #:iconoclast-closure-conversion-test)
 
-(defclass client (icc:tree-node-client) ())
+(defclass client (icc:tree-node-client
+                  trucler-reference:client)
+  ())
 
 (defmethod cb:convert-with-parser-p ((client client) operator)
   (special-operator-p operator))
@@ -15,6 +17,14 @@
             do (clo:make-special-operator client environment symbol t))
     environment))
 
+(defun simplify-ast (ast)
+  (let* ((ast (iat:lexify-lambda-list ast))
+         (ast (iat:split-let-or-let* ast))
+         (ast (iat:replace-special-let-with-bind ast))
+         (ast (iat:let-to-labels ast))
+         (ast (iat:flet-to-labels ast)))
+    ast))
+
 (defun cst-to-ast (client cst environment)
   (let ((cmd:*client* client))
     (cb:cst-to-ast client cst environment)))
@@ -24,9 +34,11 @@
 
 (defun test (form)
   (let* ((client (make-instance 'client))
-         (environment (make-environment client))
+         (global-environment (make-environment client))
+         (environment (make-instance 'trucler-reference:environment
+                        :global-environment global-environment))
          (ast (form-to-ast client form environment)))
-    ast))
+    (icc:compute-function-tree (simplify-ast ast))))
     
 (defun test1 ()
   (test '(progn (let ((x 10) (y 20)) (+ x y)) (let ((z 30)) z))))
