@@ -27,4 +27,5 @@
 (defun compute-function-tree (ast)
   (let ((*current-node* (make-instance 'tree-node))
         (client (make-instance 'tree-node-client)))
-    (aw:walk-ast client ast)))
+    (aw:walk-ast client ast)
+    *current-node*))
