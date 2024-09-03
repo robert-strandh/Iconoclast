@@ -2,5 +2,6 @@
 
 (defpackage #:iconoclast-closure-conversion
   (:use #:common-lisp)
-  (:local-nicknames (#:aw #:iconoclast-ast-walker))
+  (:local-nicknames (#:ico #:iconoclast)
+                    (#:aw #:iconoclast-ast-walker))
   (:export))
