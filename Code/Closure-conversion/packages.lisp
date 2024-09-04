@@ -5,4 +5,5 @@
   (:local-nicknames (#:ico #:iconoclast)
                     (#:aw #:iconoclast-ast-walker))
   (:export #:tree-node-client
-           #:compute-function-tree))
+           #:compute-function-tree
+           #:compute-ownership))
