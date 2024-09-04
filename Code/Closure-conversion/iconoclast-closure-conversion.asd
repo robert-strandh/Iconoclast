@@ -6,4 +6,5 @@
   :serial t
   :components
   ((:file "packages")
-   (:file "function-tree")))
+   (:file "function-tree")
+   (:file "ownership")))
