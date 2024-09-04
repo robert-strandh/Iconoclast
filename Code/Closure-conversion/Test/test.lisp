@@ -32,14 +32,17 @@
 (defun form-to-ast (client form environment)
   (cst-to-ast client (cst:cst-from-expression form) environment))
 
-(defun test (form)
+(defun test-ast (form)
   (let* ((client (make-instance 'client))
          (global-environment (make-environment client))
          (environment (make-instance 'trucler-reference:environment
                         :global-environment global-environment))
          (ast (form-to-ast client form environment)))
-    (icc:compute-function-tree (simplify-ast ast))))
+    (simplify-ast ast)))
     
+(defun test (form)
+  (icc:compute-function-tree (test-ast form)))
+
 (defun test1 ()
   (test '(progn (let ((x 10) (y 20)) (+ x y)) (let ((z 30)) z))))
 
