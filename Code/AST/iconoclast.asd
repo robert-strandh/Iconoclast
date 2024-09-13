@@ -26,6 +26,7 @@
    (:file "declaration-specifier-asts")
    (:file "declare-ast")
    (:file "let-ast")
+   (:file "let-temporary-ast")
    (:file "lambda-list-ast")
    (:file "block-ast")
    (:file "catch-ast")
