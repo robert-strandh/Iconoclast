@@ -20,4 +20,5 @@
    #:eliminate-special-declarations
    #:lexify-lambda-list
    #:split-let-or-let*
-   #:replace-special-let-with-bind))
+   #:replace-special-let-with-bind
+   #:split-setq))
