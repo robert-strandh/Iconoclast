@@ -50,6 +50,7 @@
    (:file "quote-ast")
    (:file "setq-ast")
    (:file "simple-setq-ast")
+   (:file "special-variable-setq-ast")
    (:file "symbol-macrolet-ast")
    (:file "the-ast")
    (:file "unwind-protect-ast")
