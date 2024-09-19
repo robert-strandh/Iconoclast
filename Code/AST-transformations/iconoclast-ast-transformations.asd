@@ -19,4 +19,5 @@
    (:file "associate-variable-asts-and-declaration-specifier-asts")
    (:file "split-let-or-letstar-ast")
    (:file "replace-special-let-with-bind")
-   (:file "extract-variable-asts-in-lambda-list")))
+   (:file "extract-variable-asts-in-lambda-list")
+   (:file "split-setq-ast")))
