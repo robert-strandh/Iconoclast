@@ -76,7 +76,7 @@
     (loop for parameter-ast in (ico:parameter-asts required-section-ast)
           always (required-parameter-ast-lexified-p parameter-ast))))
           
-(defun optional-or-key-parameter-ast-lexified-p (ast)
+(defun optional-parameter-ast-lexified-p (ast)
   (let ((name-ast (ico:name-ast ast))
         (supplied-p-parameter-ast (ico:supplied-p-parameter-ast ast))
         (init-form-ast (ico:init-form-ast ast)))
@@ -89,12 +89,27 @@
           (null (ico:literal init-form-ast))))
       (not (null supplied-p-parameter-ast))
       (typep supplied-p-parameter-ast 'ico:variable-definition-ast))))
+          
+(defun key-parameter-ast-lexified-p (ast)
+  (let ((name-ast (ico:name-ast ast))
+        (supplied-p-parameter-ast (ico:supplied-p-parameter-ast ast))
+        (init-form-ast (ico:init-form-ast ast)))
+    (and
+      (typep name-ast 'ico:variable-definition-ast)
+      (or
+        (null init-form-ast)
+        (and
+          (typep init-form-ast 'ico:literal-ast)
+          (null (ico:literal init-form-ast))))
+      (not (null supplied-p-parameter-ast))
+      (typep supplied-p-parameter-ast 'ico:variable-definition-ast)
+      (not (null (ico:keyword-ast ast))))))
 
 (defun optional-section-lexified-p (optional-section-ast)
   (or
     (null optional-section-ast)
     (loop for ast in (ico:parameter-asts optional-section-ast)
-          always (optional-or-key-parameter-ast-lexified-p ast))))
+          always (optional-parameter-ast-lexified-p ast))))
 
 (defun rest-section-lexified-p (rest-section-ast)
   (or
@@ -106,7 +121,7 @@
   (or
     (null key-section-ast)
     (loop for ast in (ico:parameter-asts key-section-ast)
-          always (optional-or-key-parameter-ast-lexified-p ast))))
+          always (key-parameter-ast-lexified-p ast))))
 
 (defun aux-section-lexified-p (aux-section-ast)
   (or
