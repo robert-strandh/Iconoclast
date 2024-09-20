@@ -44,6 +44,9 @@
               :origin origin))
       :form-asts
       (list (make-instance 'ico:application-ast
+              :origin (if (= (length binding-asts) 1)
+                          (ico:origin (first binding-asts))
+                          nil)
               :function-name-ast local-function-reference
               :argument-asts
               (mapcar #'form-ast binding-asts))))))
