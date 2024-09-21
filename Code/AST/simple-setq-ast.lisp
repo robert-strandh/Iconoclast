@@ -6,5 +6,5 @@
 ;;; AST class SPECIAL-VARIABLE-SETQ-AST can be used instead. 
 
 (define-ast-class simple-setq-ast (ast)
-  ((* value-ast)
-   (* variable-name-ast)))
+  ((1 value-ast)
+   (1 variable-name-ast)))
