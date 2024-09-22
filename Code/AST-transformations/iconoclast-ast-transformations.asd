@@ -21,4 +21,5 @@
    (:file "replace-special-let-with-bind")
    (:file "extract-variable-asts-in-lambda-list")
    (:file "split-setq-ast")
-   (:file "local-function-inlining")))
+   (:file "local-function-inlining")
+   (:file "closure-conversion")))
