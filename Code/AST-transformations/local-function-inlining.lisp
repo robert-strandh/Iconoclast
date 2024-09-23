@@ -2,15 +2,107 @@
 
 ;;; This file will contain code for inlining local functions defined
 ;;; by LABELS-ASTs.
+
+;;; To understand the following discussion, recall that local
+;;; functions introduced by LABELS are the one constructs that can
+;;; introduce new lexical variables, and that all lambda-list
+;;; variables are lexical.  We have reduced all other
+;;; variable-introducing constructs to LABELS, so there are no
+;;; instances of LET, LET*, FLET, or LAMBDA.
+
+;;; We say that a local function ESCAPES, if it is still accessible
+;;; after the function that created it (the parent function) exits.
+;;; We will use a conservative approximation of ESCAPES.
+
+;;; We say that a variable introduced by some function is CAPTURED if
+;;; it is shared by some other function that escapes.
+
+;;; The lexical environment created by some function F can be shared
+;;; by its parent function G, provided:
 ;;;
-;;; For a function to be a candidate for inlining, we use the
-;;; following criteria:
+;;;   * F does not escape,
 ;;;
-;;;   * It must not "escape".  We approximate this criterion by
-;;;     requiring the name of the function to appear only in the
-;;;     operator position of an application.
+;;;   * F is not recursive (directly or indirectly).
 ;;;
-;;;   * It must not be recursive, directly or indirectly.
+;;;   * No variable introduced by F is captured.
+
+;;; To illustrate this idea, we use the following examples:
+;;;
+;;; (defun aa ()
+;;;   (labels ((ff (y)
+;;;              (labels ((gg (x)
+;;;                         (if (zerop x) y (* x (gg (1- x))))))
+;;;                (gg y))))
+;;;     (loop for i from 0 to 5
+;;;           collect (ff i))))
+;;;
+;;; (aa) => (0 1 4 18 96 600)
+
+;;; In function AA, FF does not escape, is not recursive, and Y is not
+;;; captured.  Therefore, we can create Y as part of AA like this:
+
+;;; (defun bb (y)
+;;;   (labels ((gg (x)
+;;;              (if (zerop x) y (* x (gg (1- x))))))
+;;;     (loop for i from 0 to 5
+;;;           do (setq y i)
+;;;           collect (gg y))))
+;;;
+;;; (bb nil) => (0 1 4 18 96 600)
+
+;;; We can't illustrate using LET inside BB because LET has the same
+;;; power to introduce variables as LET does, so we have BB introduce
+;;; Y and we use SETQ on it instead.
+
+;;; However, in this example:
+
+;;; (defun cc ()
+;;;   (labels ((ff (y)
+;;;              (labels ((gg (x)
+;;;                         (if (zerop x) y (* x (gg (1- x))))))
+;;;                (lambda () (gg y)))))
+;;;     (loop for i from 0 to 5
+;;;           collect (ff i))))
+;;;
+;;; (mapcar #'funcall (cc) => (0 1 4 18 96 600)
+
+;;; The function GG escapes, so Y is captured.  Therefore, if we
+;;; attempt to allocate Y as part of CC, we will fail:
+
+;;; (defun dd (y)
+;;;   (labels ((gg (x)
+;;;              (if (zerop x) y (* x (gg (1- x))))))
+;;;     (loop for i from 0 to 5
+;;;           do (setq y i)
+;;;           collect (lambda () (gg y)))))
+;;;
+;;; (mapcar #'funcall (dd nil) => (600 600 600 600 600 600)
+
+;;; When the environment introduced by some function can be shared by
+;;; its parent, the function can be inlined.  But we have no way of
+;;; expressing this idea other than using LET in the parent function,
+;;; which is not really inlining in the sense we use it here, since
+;;; LET is just a different way of doing something similar to LABELS.
+;;; And we can't modify the signature of the parent function either,
+;;; the way we did in function BB and DD above.  So we use a different
+;;; AST type, LET-TEMPORARY to express this idea.  The equivalent of
+;;; inlining GG in BB above in pseudo source code would look like this:
+
+;;; (defun bb ()
+;;;   (labels ((gg (x)
+;;;              (if (zerop x) y (* x (gg (1- x))))))
+;;;     (loop for i from 0 to 5
+;;;           collect (let-temporary (y i)
+;;;                     (gg y)))))
+;;;
+;;; (bb) => (0 1 4 18 96 600)
+
+;;; In addition to the requirements above, we put the following
+;;; restrictions on inlining:
+;;;
+;;;   * We approximate the ESCAPE criterion by requiring the name of
+;;;     the function to appear only in the operator position of an
+;;;     application for it not to escape.
 ;;;
 ;;;   * It must be called only once.  We might relax this criterion
 ;;;     later when we have a better idea of the increased code size
@@ -23,42 +115,5 @@
 ;;;     criterion later if the candidate for inlining does not close
 ;;;     over any variables.
 
-(defun aa ()
-  (labels ((ff (y)
-             (labels ((gg (x)
-                        (if (zerop x) y (* x (gg (1- x))))))
-               (gg y))))
-    (loop for i from 0 to 5
-          collect (ff i))))
-
-;;; (aa) => (0 1 4 18 96 600)
-
-(defun bb (y)
-  (labels ((gg (x)
-             (if (zerop x) y (* x (gg (1- x))))))
-    (loop for i from 0 to 5
-          do (setq y i)
-          collect (gg y))))
-
-;;; (bb nil) => (0 1 4 18 96 600)
-
-(defun cc ()
-  (labels ((ff (y)
-             (labels ((gg (x)
-                        (if (zerop x) y (* x (gg (1- x))))))
-               (lambda () (gg y)))))
-    (loop for i from 0 to 5
-          collect (ff i))))
-
-;;; (mapcar #'funcall (cc) => (0 1 4 18 96 600)
-
-(defun dd (y)
-  (labels ((gg (x)
-             (if (zerop x) y (* x (gg (1- x))))))
-    (loop for i from 0 to 5
-          do (setq y i)
-          collect (lambda () (gg y)))))
-
-;;; (mapcar #'funcall (dd nil) => (600 600 600 600 600 600)
 
 ; LocalWords:  inlining
