@@ -23,4 +23,42 @@
 ;;;     criterion later if the candidate for inlining does not close
 ;;;     over any variables.
 
+(defun aa ()
+  (labels ((ff (y)
+             (labels ((gg (x)
+                        (if (zerop x) y (* x (gg (1- x))))))
+               (gg y))))
+    (loop for i from 0 to 5
+          collect (ff i))))
+
+;;; (aa) => (0 1 4 18 96 600)
+
+(defun bb (y)
+  (labels ((gg (x)
+             (if (zerop x) y (* x (gg (1- x))))))
+    (loop for i from 0 to 5
+          do (setq y i)
+          collect (gg y))))
+
+;;; (bb nil) => (0 1 4 18 96 600)
+
+(defun cc ()
+  (labels ((ff (y)
+             (labels ((gg (x)
+                        (if (zerop x) y (* x (gg (1- x))))))
+               (lambda () (gg y)))))
+    (loop for i from 0 to 5
+          collect (ff i))))
+
+;;; (mapcar #'funcall (cc) => (0 1 4 18 96 600)
+
+(defun dd (y)
+  (labels ((gg (x)
+             (if (zerop x) y (* x (gg (1- x))))))
+    (loop for i from 0 to 5
+          do (setq y i)
+          collect (lambda () (gg y)))))
+
+;;; (mapcar #'funcall (dd nil) => (600 600 600 600 600 600)
+
 ; LocalWords:  inlining
