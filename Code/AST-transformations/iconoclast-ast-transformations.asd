@@ -22,6 +22,7 @@
    (:file "extract-variable-asts-in-lambda-list")
    (:file "split-setq-ast")
    (:file "ast-parents")
+   (:file "escaped-functions")
    (:file "function-tree")
    (:file "local-function-inlining")
    (:file "closure-conversion")))
