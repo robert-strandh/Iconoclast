@@ -114,6 +114,7 @@
 ;;;     functions might close over the variable.  We might relax this
 ;;;     criterion later if the candidate for inlining does not close
 ;;;     over any variables.
-
+;;;
+;;;   * Every lambda-list parameter must be required.
 
 ; LocalWords:  inlining
