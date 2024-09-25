@@ -2,7 +2,7 @@
 
 ;;; Some transformations will require us to know the parent of some
 ;;; AST.  The AST tree is (almost) a tree, in that each AST has a
-;;; unique parment, or no parent for the root AST.  For example, each
+;;; unique parent, or no parent for the root AST.  For example, each
 ;;; reference to a lexical variable has its own AST, so there is no
 ;;; sharing there.  It is only almost a tree, because references and
 ;;; definitions of variables, functions, blocks, and tagbody tags are
