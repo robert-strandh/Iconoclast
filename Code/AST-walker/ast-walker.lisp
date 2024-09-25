@@ -8,7 +8,43 @@
 ;;;; recursive processing takes place, or call WALK-AST-NODE
 ;;;; recursively with some new AST node.
 
+;;;; As it turns out, the AST tree is not quite a tree in that ASTs
+;;;; defining variables, functions, block names, and tagbody tags are
+;;;; linked to their referencing ASTS, and vice versa.  We want to
+;;;; avoid such traversal, not only becase it would give us an
+;;;; infinite computation, but we want to traverse such pairs of ASTS
+;;;; as if those links do not exist.  We handle this situation by
+;;;; defining an intermediate generic function MAYBE-WALK that takes
+;;;; two ASTs and calls WALK-AST-NODE only when appropriate.
+
 (defgeneric walk-ast-node (client node))
+
+(defgeneric maybe-walk (client parent-node child-node))
+
+;;; By default, we call WALK-AST-NODE.
+(defmethod maybe-walk (client parent-node child-node)
+  (walk-ast-node client child-node))
+
+(defmethod maybe-walk (client (parent-node ico:function-name-ast) child-node)
+  child-node)
+
+(defmethod maybe-walk
+    (client (parent-node ico:function-name-ast) (child-node ico:name-ast))
+  (walk-ast-node client child-node))
+
+(defmethod maybe-walk (client (parent-node ico:variable-name-ast) child-node)
+  child-node)
+
+(defmethod maybe-walk
+    (client (parent-node ico:variable-name-ast) (child-node ico:name-ast))
+  (walk-ast-node client child-node))
+
+(defmethod maybe-walk (client (parent-node ico:block-name-ast) child-node)
+  child-node)
+
+;;; A TAG-AST is considered a leaf, be it a definition or a reference.
+(defmethod maybe-walk (client (parent-node ico:tag-ast) child-node)
+  child-node)
 
 (defmethod walk-ast-node (client node)
   node)
@@ -24,16 +60,16 @@
              (*
               (set-slot ast slot-reader
                         (loop for child in (funcall slot-reader ast)
-                              collect (walk-ast-node client child))))
+                              collect (maybe-walk client ast child))))
              (iconoclast:?
               (let ((possible-child (funcall slot-reader ast)))
                 (unless (null possible-child)
                   (set-slot ast slot-reader
-                            (walk-ast-node client possible-child)))))
+                            (maybe-walk client ast possible-child)))))
              (1
               (let ((child (funcall slot-reader ast)))
                 (set-slot ast slot-reader
-                          (walk-ast-node client child))))))
+                          (maybe-walk client ast child))))))
   ast)
 
 (defvar *visited*)
