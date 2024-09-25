@@ -3,10 +3,13 @@
 ;;;; This function implements a general AST walker.  All it does it
 ;;;; traverse the AST tree without invoking any action.  To implement
 ;;;; some action, client code can define an :AROUND method on
-;;;; WALK-AST-NODE, that specializes to a particular CLIENT class.
+;;;; WALK-AST-NODE that specializes to a particular CLIENT class.
 ;;;; That around method can then implement actions before or after
 ;;;; recursive processing takes place, or call WALK-AST-NODE
-;;;; recursively with some new AST node.
+;;;; recursively with some new AST node.  If the client-provided
+;;;; :AROUND method does not end up calling CALL-NEXT-METHOD it must
+;;;; return an AST which the walker will substitute into the AST tree
+;;;; in place of the original AST.
 
 ;;;; As it turns out, the AST tree is not quite a tree in that ASTs
 ;;;; defining variables, functions, block names, and tagbody tags are
