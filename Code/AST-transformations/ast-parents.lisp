@@ -1,10 +1,13 @@
 (cl:in-package #:iconoclast-ast-transformations)
 
 ;;; Some transformations will require us to know the parent of some
-;;; AST.  The AST tree is really a tree, so each AST has a unique
-;;; parment, or no parent for the root AST.  For example, each
+;;; AST.  The AST tree is (almost) a tree, in that each AST has a
+;;; unique parment, or no parent for the root AST.  For example, each
 ;;; reference to a lexical variable has its own AST, so there is no
-;;; sharing there.
+;;; sharing there.  It is only almost a tree, because references and
+;;; definitions of variables, functions, blocks, and tagbody tags are
+;;; linked together.  However, the AST walker ignores such links, so
+;;; as far as the walker is concerned, we have a tree.
 
 (defclass ast-parents-client (client)
   ((%table :initform (make-hash-table :test #'eq)
