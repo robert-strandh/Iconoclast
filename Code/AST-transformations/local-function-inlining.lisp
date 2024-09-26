@@ -12,7 +12,8 @@
 
 ;;; We say that a local function ESCAPES, if it is still accessible
 ;;; after the function that created it (the parent function) exits.
-;;; We will use a conservative approximation of ESCAPES.
+;;; We will use a conservative approximation of ESCAPES.  See separate
+;;; component for computing escaped functions.
 
 ;;; We say that a variable introduced by some function is CAPTURED if
 ;;; it is shared by some other function that escapes.
