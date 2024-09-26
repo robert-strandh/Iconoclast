@@ -26,4 +26,5 @@
 (defun compute-escaped-functions (ast)
   (let ((client (make-instance 'escaped-functions-client))
         (*parents* (compute-parents ast)))
-    (iaw:walk-ast client ast)))
+    (iaw:walk-ast client ast)
+    client))
