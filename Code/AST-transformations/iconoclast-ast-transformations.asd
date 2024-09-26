@@ -25,5 +25,6 @@
    (:file "ast-ownership")
    (:file "escaped-functions")
    (:file "function-tree")
+   (:file "call-graph")
    (:file "local-function-inlining")
    (:file "closure-conversion")))
