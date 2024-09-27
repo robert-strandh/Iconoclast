@@ -149,4 +149,22 @@
          (null (ico:rest-section-ast lambda-list-ast))
          (null (ico:key-section-ast lambda-list-ast)))))
 
+;;; This function return true if and only if the function represented
+;;; by LOCAL-FUNCTION-AST can be inlined.
+(defun function-can-be-inlined-p
+    (local-function-ast
+     ast-owners
+     function-tree
+     escaped-functions
+     call-graph)
+  (and (not (function-escapes-p local-function-ast escaped-functions))
+       (not (function-is-recursive-p local-function-ast call-graph))
+       (only-required-parameters local-function-ast)
+       (not (some-variable-escapes
+             (ico:lambda-list-ast local-function-ast)
+             ast-owners
+             function-tree
+             escaped-functions))
+       (= 1 (number-of-call-sites local-function-ast call-graph))))
+
 ; LocalWords:  inlining
