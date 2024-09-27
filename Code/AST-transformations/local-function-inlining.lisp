@@ -139,4 +139,14 @@
   (let ((node (gethash local-function-ast (node-table call-graph))))
     (length (caller-nodes node))))
 
+;;; This function returns true if and only if the lambda list of the
+;;; function represented by LOCAL-FUNCTION-AST contains only required
+;;; parameters.  We don't check the AUX section because the lambda
+;;; list has been lexified already.
+(defun only-required-parameters (local-function-ast)
+  (let ((lambda-list-ast (ico:lambda-list-ast local-function-ast)))
+    (and (null (ico:optional-section-ast lambda-list-ast))
+         (null (ico:rest-section-ast lambda-list-ast))
+         (null (ico:key-section-ast lambda-list-ast)))))
+
 ; LocalWords:  inlining
