@@ -105,9 +105,9 @@
 ;;;     the function to appear only in the operator position of an
 ;;;     application for it not to escape.
 ;;;
-;;;   * It must be called only once.  We might relax this criterion
-;;;     later when we have a better idea of the increased code size
-;;;     that inlining would create.
+;;;   * It must be called from one single call site.  We might relax
+;;;     this criterion later when we have a better idea of the
+;;;     increased code size that inlining would create.
 ;;;
 ;;;   * It must be called from the same function that defines it.  The
 ;;;     reason for this criterion is that if it closes over some
@@ -132,5 +132,11 @@
                               thereis (or (eq caller-node node)
                                           (aux caller-node)))))))
       (aux node))))
+
+;;; This function returns the number of call sites of some
+;;; LOCAL-FUNCTION-AST.
+(defun number-of-call-sites (local-function-ast call-graph)
+  (let ((node (gethash local-function-ast (node-table call-graph))))
+    (length (caller-nodes node))))
 
 ; LocalWords:  inlining
