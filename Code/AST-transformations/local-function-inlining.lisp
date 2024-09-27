@@ -118,4 +118,19 @@
 ;;;
 ;;;   * Every lambda-list parameter must be required.
 
+;;; This function returns true if and only if some LOCAL-FUNCTION-AST
+;;; is recursive, directly or indirectly.
+(defun function-is-recursive-p (local-function-ast call-graph)
+  (let ((node (gethash local-function-ast (node-table call-graph)))
+        (visited (make-hash-table :test #'eq)))
+    (labels ((aux (new-node)
+               (cond ((gethash new-node visited)
+                      nil)
+                     (t
+                      (setf (gethash new-node visited) t)
+                      (loop for caller-node in (caller-nodes new-node)
+                              thereis (or (eq caller-node node)
+                                          (aux caller-node)))))))
+      (aux node))))
+
 ; LocalWords:  inlining
