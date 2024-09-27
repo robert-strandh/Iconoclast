@@ -27,4 +27,8 @@
   (let ((client (make-instance 'escaped-functions-client))
         (*parents* (compute-parents ast)))
     (iaw:walk-ast client ast)
-    client))
+    (escaped-functions client)))
+
+(defun function-escapes-p (local-function-ast escaped-functions)
+  (check-type local-function-ast ico:local-function-ast)
+  (member local-function-ast escaped-functions :test #'eq))
