@@ -38,3 +38,8 @@
 
 (defun function-node (ast function-tree)
   (gethash ast (node-table function-tree)))
+
+(defun function-parent (local-function-ast function-tree)
+  (let* ((function-node (function-node local-function-ast function-tree))
+         (parent-node (parent-node function-node)))
+    (node-function parent-node)))
