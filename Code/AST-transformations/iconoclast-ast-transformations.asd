@@ -26,5 +26,6 @@
    (:file "escaped-functions")
    (:file "function-tree")
    (:file "call-graph")
+   (:file "captured-variable")
    (:file "local-function-inlining")
    (:file "closure-conversion")))
