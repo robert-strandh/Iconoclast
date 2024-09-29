@@ -1,7 +1,7 @@
 (cl:in-package #:iconoclast)
 
 (define-ast-class tag-ast (name-ast)
-  ())
+  ((? segment-ast)))
 
 (defgeneric tag-reference-asts (tag-definition-ast))
 
