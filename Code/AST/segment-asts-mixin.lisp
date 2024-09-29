@@ -5,7 +5,8 @@
 
 (define-ast-class tagbody-segment-ast (ast)
   ((? tag-ast)
-   (* statement-asts)))
+   (* statement-asts)
+   (? tagbody-ast)))
 
 (define-ast-class go-ast (tag-ast-mixin special-form-ast)
   ())
