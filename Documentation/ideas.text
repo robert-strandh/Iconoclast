@@ -1,0 +1,2 @@
+Add meters for AST transformations, measuring execution time, number
+of calls, and perhaps size of AST before and after transformation.
