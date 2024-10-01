@@ -38,3 +38,49 @@
 ;;; For each shared variable, we have the function that defines it,
 ;;; functions that references it, and perhaps some intermediate
 ;;; functions that neither define nor reference it.
+
+;;; Before closure conversion can happen, we must translate any
+;;; BLOCK/RETURN-FROM pair and any TAGBODY/GO pair that spans function
+;;; borders.  The reason is that these constructs introduce a variable
+;;; containing a unique identifier of the corresponding entry in the
+;;; dynamic environment, and this variable is referenced both by the
+;;; BLOCK/TAGBODY and the RETURN-FROM/GO.  We suggest doing this by
+;;; introducing four new AST classes:
+;;;
+;;;   * BLOCK-WITH-VARIABLE-AST.  This AST has a slot for a
+;;;     VARIABLE-REFERENCE-AST and the FORM-ASTs of the original
+;;;     BLOCK-AST.  We wrap the original BLOCK-AST in a
+;;;     LET-TEMPORARY-AST containing a VARIABLE-DEFINITION-AST that
+;;;     has a corresponding VARIABLE-REFERENCE-AST in the
+;;;     BLOCK-WITH-VARIABLE-AST.  The semantics of the new
+;;;     BLOCK-WITH-VARIABLE-AST is that it creates an entry on the
+;;;     dynamic environment, and puts a unique value (the IDENTITY)
+;;;     both in the entry on the dynamic environment and in the
+;;;     variable.  It then evaluates the FORM-ASTs in the augmented
+;;;     dynamic environment.
+;;;
+;;;   * RETURN-FROM-WITH-VARIABLE-AST.  This AST has a slot for a
+;;;     VARIABLE-REFERENCE-AST of the same variable as its associated
+;;;     BLOCK-WITH-VARIABLE-AST, and a slot for the FORM-AST that
+;;;     evaluates to the return values.
+;;;
+;;;   * TAGBODY-WITH-VARIABLE-AST.  This AST has a slot for a
+;;;     VARIABLE-REFERENCE-AST and the SEGMENT-ASTs of the original
+;;;     TAGBODY-AST.  We wrap the original TAGBODY-AST in a
+;;;     LET-TEMPORARY-AST containing a VARIABLE-DEFINITION-AST that
+;;;     has a corresponding VARIABLE-REFERENCE-AST in the
+;;;     TAGBODY-WITH-VARIABLE-AST.  The semantics of the new
+;;;     TAGBODY-WITH-VARIABLE-AST is that it creates an entry on the
+;;;     dynamic environment, and puts a unique value (the IDENTITY)
+;;;     both in the entry on the dynamic environment and in the
+;;;     variable.  In native code, the entry contains a vector of
+;;;     addresses for each segment.  In the AST evaluator, it contains
+;;;     a vector of "unwinders", each of which is a function that
+;;;     THROWs to a place where the corresponding segment is
+;;;     evaluated.
+;;;
+;;;   * GO-WITH-VARIABLE-AST.  This AST has a slot for a
+;;;     VARIABLE-REFERENCE-AST of the same variable as its associated
+;;;     TAGBODY-WITH-VARIABLE-AST, and a slot for a literal
+;;;     non-negative integer corresponding to the index in the vector
+;;;     of the entry on the dynamic environment.
