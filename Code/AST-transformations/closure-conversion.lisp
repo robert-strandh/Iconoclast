@@ -12,20 +12,29 @@
 ;;; represented by that node, and a list of child nodes.  We also
 ;;; maintain a hash table mapping local functions to tree nodes.
 ;;;
-;;; For each closed-over variable, we have the function that defines
-;;; it, functions that references it, and perhaps some intermediate
-;;; functions that neither define nor reference it.  There are two
-;;; cases, depending on whether the variable is assigned to, or just
-;;; referenced.  If it is assigned to, then the function that defines
-;;; the variable must create a cell and put the value in that cell.
-;;; In every function having a child function that references the
-;;; variable the cell must be included in the static environment of
-;;; every such child function.  Every using function and every
-;;; intermediate function must reference its static environment and
-;;; store the cell i a new lexical variable.  References to the
-;;; variable must be replaced by a new AST type READ-CELL-AST, and
-;;; assignments to the variable must be replaced by a new AST type
-;;; WRITE-CELL-AST.
+;;; We start by doing assignment conversion where required.  To begin
+;;; with, we might be conservative and do assignment conversion
+;;; whenever a shared variable is assigned to.  Assignment conversion
+;;; consists of introducing a new AST MAKE-CELL-AST that has slot
+;;; containing a VARIABLE-REFERENCE-AST, say for variable V, and it
+;;; has a cell as its value.  A LET-TEMPORARY-AST can be used to
+;;; introduce a new lexical variable, say W, holding the cell.  The
+;;; MAKE-CELL-AST and the LET-TEMPORARY-AST are introduced in the
+;;; function that owns the VARIABLE-DEFINITION-AST for V.  Any
+;;; SETQ-AST (we assume a transformation that makes SETQ-AST have a
+;;; single pair) that with a VARIABLE-DEFINITION-AST for V as its
+;;; VARIABLE-AST is replaced by a CELL-WRITE-AST that has slots for
+;;; the VARIABLE-DEFINITION-AST for W and the original FORM-AST of the
+;;; SETQ-AST.  Remaining VARIABLE-REFERENCE-ASTs for V are then
+;;; replaced by new ASTs of type CELL-READ-AST, with a slot for a
+;;; VARIABLE-REFERENCE-AST for W.
 ;;;
-;;; If the closed-over variable is never assigned to, no cell needs to
-;;; be introduced.
+;;; The technique described in the previous paragraph is often very
+;;; conservative.  We need to establish a more precise rule for when
+;;; and where cells need to be introduced.
+;;;
+;;; After assignment conversion, no shared variable is assigned to.
+;;;
+;;; For each shared variable, we have the function that defines it,
+;;; functions that references it, and perhaps some intermediate
+;;; functions that neither define nor reference it.
