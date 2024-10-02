@@ -37,6 +37,7 @@
    (:file "segment-asts-mixin")
    (:file "tagbody-ast")
    (:file "tagbody-with-variable-ast")
+   (:file "go-with-variable-ast")
    (:file "if-ast")
    (:file "load-time-value-ast")
    (:file "locally-ast")
