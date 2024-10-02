@@ -182,7 +182,8 @@
     ((client inlinable-functions-client) (ast ico:local-function-ast))
   (when (function-can-be-inlined-p
          ast  *ast-owners* *function-tree* *escaped-functions* *call-graph*)
-    (push ast (local-function-asts client))))
+    (push ast (local-function-asts client)))
+  ast)
 
 (defun inlinable-functions (ast)
   (let ((*ast-owners* (compute-owners ast))
