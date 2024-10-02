@@ -167,4 +167,30 @@
              escaped-functions))
        (= 1 (number-of-call-sites local-function-ast call-graph))))
 
+(defclass inlinable-functions-client (client)
+  ((%local-function-asts :initform '() :accessor local-function-asts)))
+
+(defvar *ast-owners*)
+
+(defvar *function-tree*)
+
+(defvar *escaped-functions*)
+
+(defvar  *call-graph*)
+
+(defmethod iaw:walk-ast-node :around
+    ((client inlinable-functions-client) (ast ico:local-function-ast))
+  (when (function-can-be-inlined-p
+         ast  *ast-owners* *function-tree* *escaped-functions* *call-graph*)
+    (push ast (local-function-asts client))))
+
+(defun inlinable-functions (ast)
+  (let ((*ast-owners* (compute-owners ast))
+        (*function-tree* (compute-function-tree ast))
+        (*escaped-functions* (compute-escaped-functions ast))
+        (*call-graph* (compute-call-graph ast))
+        (client (make-instance 'inlinable-functions-client)))
+    (iaw:walk-ast client ast)
+    (local-function-asts client)))
+
 ; LocalWords:  inlining
