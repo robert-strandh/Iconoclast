@@ -70,6 +70,9 @@
         (*parents* (compute-parents ast))
         (*owners* (compute-owners ast)))
     (iaw:walk-ast create-nodes-client ast)
+    ;; We need a node for NIL which is owner of outermost ASTs.
+    (setf (gethash nil (node-table create-nodes-client))
+          (make-instance 'node :function-ast nil))
     (let ((call-graph-client
             (make-instance 'call-graph-client
               :node-table (node-table create-nodes-client))))
