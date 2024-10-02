@@ -62,7 +62,8 @@
     ((client create-nodes-client) (ast ico:local-function-ast))
   (call-next-method)
   (setf (gethash ast (node-table client))
-        (make-instance 'node :function-ast ast)))
+        (make-instance 'node :function-ast ast))
+  ast)
 
 (defun compute-call-graph (ast)
   (let ((create-nodes-client (make-instance 'create-nodes-client))

@@ -21,7 +21,8 @@
           for parent-ast = (parent reference-ast *parents*)
           unless (and (typep parent-ast 'ico:application-ast)
                       (eq reference-ast (ico:function-name-ast parent-ast)))
-            do (push ast (escaped-functions client)))))
+            do (push ast (escaped-functions client))))
+  ast)
 
 (defun compute-escaped-functions (ast)
   (let ((client (make-instance 'escaped-functions-client))
