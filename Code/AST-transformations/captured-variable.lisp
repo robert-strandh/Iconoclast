@@ -59,9 +59,10 @@
      ast-owners
      function-tree
      escaped-functions)
-  (loop with required-section-ast
-          = (ico:required-section-ast lambda-list-ast)
-        for parameter-ast in (ico:parameter-asts required-section-ast)
-        for name-ast = (ico:name-ast parameter-ast)
-          thereis (variable-escapes
-                   name-ast ast-owners function-tree escaped-functions)))
+  (let ((required-section-ast (ico:required-section-ast lambda-list-ast)))
+    (if (null required-section-ast)
+        nil
+        (loop for parameter-ast in (ico:parameter-asts required-section-ast)
+              for name-ast = (ico:name-ast parameter-ast)
+                thereis (variable-escapes
+                         name-ast ast-owners function-tree escaped-functions)))))
