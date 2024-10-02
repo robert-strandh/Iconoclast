@@ -19,12 +19,12 @@
    (%child-nodes :initform '() :accessor child-nodes)))
 
 (defmethod iaw:walk-ast-node :around
-    ((client ast-parents-client) (ast ico:local-function-ast))
+    ((client function-tree-client) (ast ico:local-function-ast))
   (let ((node (make-instance 'function-node
                 :node-function ast
                 :parent-node *parent-node*)))
     (push node (child-nodes *parent-node*))
-    (setf (gethash ast (table client)) node)
+    (setf (gethash ast (node-table client)) node)
     (let ((*parent-node* node))
       (call-next-method))))
 
