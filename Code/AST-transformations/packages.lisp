@@ -21,4 +21,5 @@
    #:lexify-lambda-list
    #:split-let-or-let*
    #:replace-special-let-with-bind
-   #:split-setq))
+   #:split-setq
+   #:inlinable-functions))
