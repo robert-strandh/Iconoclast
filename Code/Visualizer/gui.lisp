@@ -1,7 +1,8 @@
 (cl:in-package #:iconoclast-visualizer)
 
 (clim:define-application-frame visualizer ()
-    ((%ast :initarg :ast :reader ast))
+  ((%ast :initarg :ast :accessor ast)
+   (%previous :initform '() :accessor previous))
   (:panes (application
            :application
            :scroll-bars nil
@@ -37,3 +38,14 @@
 (define-visualizer-command (com-inspect-layout :name t)
     ((layout 'layout))
   (clouseau:inspect layout))
+
+(define-visualizer-command (com-simplify-ast :name t) ()
+  (let ((ast (ast clim:*application-frame*)))
+    (push ast (previous clim:*application-frame*))
+    (setq ast (iat:lexify-lambda-list ast)
+          ast (iat:split-let-or-let* ast)
+          ast (iat:replace-special-let-with-bind ast)
+          ast (iat:let-to-labels ast)
+          ast (iat:flet-to-labels ast)
+          ast (iat:split-setq ast))
+    (setf (ast clim:*application-frame*) ast)))
