@@ -59,5 +59,9 @@
   (setf (selected-asts clim:*application-frame*)
         (iat:inlinable-functions (ast clim:*application-frame*))))
 
+(define-visualizer-command (com-escaped-functions :name t) ()
+  (setf (selected-asts clim:*application-frame*)
+        (iat:compute-escaped-functions (ast clim:*application-frame*))))
+
 (define-visualizer-command (com-clear-selection :name t) ()
   (setf (selected-asts clim:*application-frame*) '()))
