@@ -2,6 +2,7 @@
 
 (defsystem #:iconoclast-visualizer
   :depends-on (#:iconoclast
+               #:iconoclast-ast-transformations
                #:mcclim
                #:clouseau)
   :serial t
