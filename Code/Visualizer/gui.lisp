@@ -49,3 +49,7 @@
           ast (iat:flet-to-labels ast)
           ast (iat:split-setq ast))
     (setf (ast clim:*application-frame*) ast)))
+
+(define-visualizer-command (com-back :name t) ()
+  (setf (ast clim:*application-frame*)
+        (pop (previous clim:*application-frame*))))
