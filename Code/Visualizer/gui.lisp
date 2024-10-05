@@ -2,7 +2,8 @@
 
 (clim:define-application-frame visualizer ()
   ((%ast :initarg :ast :accessor ast)
-   (%previous :initform '() :accessor previous))
+   (%previous :initform '() :accessor previous)
+   (%selected-asts :initform '() :accessor selected-asts))
   (:panes (application
            :application
            :scroll-bars nil
@@ -55,6 +56,8 @@
         (pop (previous clim:*application-frame*))))
 
 (define-visualizer-command (com-inlinable-functions :name t) ()
-  (format *trace-output* 
-          "~s~%"
-          (iat:inlinable-functions (ast clim:*application-frame*))))
+  (setf (selected-asts clim:*application-frame*)
+        (iat:inlinable-functions (ast clim:*application-frame*))))
+
+(define-visualizer-command (com-clear-selection :name t) ()
+  (setf (selected-asts clim:*application-frame*) '()))
