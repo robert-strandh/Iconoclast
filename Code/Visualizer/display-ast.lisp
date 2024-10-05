@@ -2,6 +2,8 @@
 
 (defgeneric display-ast* (ast pane hpos vpos))
 
+(defgeneric selected-asts (frame))
+
 ;;; Default method for ASTs that have not yet been dealt with in
 ;;; specific methods.
 (defmethod display-ast* (ast pane hpos vpos)
@@ -9,7 +11,10 @@
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20)
          (slot-designators (ico:slot-designators ast)))
-    (draw-ast pane hpos vpos width height name)
+    (if (member ast (selected-asts clim:*application-frame*))
+        (clim:with-drawing-options (pane :ink clim:+red+)
+          (draw-ast pane hpos vpos width height name))
+        (draw-ast pane hpos vpos width height name))
     (let ((child-vpos (+ vpos height 10)))
       (loop for (delta-hpos slot-reader) in (layout ast)
             for slot-designator
