@@ -22,4 +22,5 @@
    #:split-let-or-let*
    #:replace-special-let-with-bind
    #:split-setq
+   #:compute-escaped-functions
    #:inlinable-functions))
