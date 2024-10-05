@@ -53,3 +53,8 @@
 (define-visualizer-command (com-back :name t) ()
   (setf (ast clim:*application-frame*)
         (pop (previous clim:*application-frame*))))
+
+(define-visualizer-command (com-inlinable-functions :name t) ()
+  (format *trace-output* 
+          "~s~%"
+          (iat:inlinable-functions (ast clim:*application-frame*))))
