@@ -61,6 +61,10 @@
    (ico:form-asts ast)
    (ico:origin ast)))
 
+(defparameter *let-to-labels-meter*
+  (make-instance 'ast-meter))
+
 (defun let-to-labels (ast)
-  (let ((client (make-instance 'let-to-labels-client)))
-    (iaw:walk-ast client ast)))
+  (with-ast-meter (*let-to-labels-meter* ast)
+    (let ((client (make-instance 'let-to-labels-client)))
+      (iaw:walk-ast client ast))))
