@@ -31,11 +31,10 @@
 (defmethod maybe-walk (client (parent-node ico:function-name-ast) child-node)
   child-node)
 
-(defmethod maybe-walk
-    (client (parent-node ico:function-name-ast) (child-node ico:name-ast))
-  (walk-ast-node client child-node))
-
 (defmethod maybe-walk (client (parent-node ico:variable-name-ast) child-node)
+  child-node)
+
+(defmethod maybe-walk (client (parent-node ico:function-name-ast) child-node)
   child-node)
 
 (defmethod maybe-walk (client (parent-node ico:block-name-ast) child-node)
