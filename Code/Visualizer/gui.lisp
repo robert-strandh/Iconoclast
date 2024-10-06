@@ -65,3 +65,8 @@
 
 (define-visualizer-command (com-clear-selection :name t) ()
   (setf (selected-asts clim:*application-frame*) '()))
+
+(define-visualizer-command (com-ast-size :name t) ()
+  (format *standard-input*
+          "Size is: ~s~%"
+          (iat:ast-size (ast clim:*application-frame*))))
