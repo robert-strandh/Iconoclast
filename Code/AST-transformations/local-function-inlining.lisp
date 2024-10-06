@@ -180,6 +180,7 @@
 
 (defmethod iaw:walk-ast-node :around
     ((client inlinable-functions-client) (ast ico:local-function-ast))
+  (call-next-method)
   (when (function-can-be-inlined-p
          ast  *ast-owners* *function-tree* *escaped-functions* *call-graph*)
     (push ast (local-function-asts client)))
