@@ -23,7 +23,8 @@
     ((client ast-owners-client) (ast ico:local-function-ast))
   (let ((*owner* ast))
     (call-next-method))
-  (setf (gethash ast (owner-table client)) *owner*))
+  (setf (gethash ast (owner-table client)) *owner*)
+  ast)
 
 (defun compute-owners (ast)
   (let ((client (make-instance 'ast-owners-client))
