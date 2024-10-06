@@ -8,6 +8,7 @@
   ((:file "packages")
    (:file "client")
    (:file "ast-size")
+   (:file "meters")
    (:file "application-lambda-to-labels")
    (:file "function-lambda-to-labels")
    (:file "flet-to-labels")
