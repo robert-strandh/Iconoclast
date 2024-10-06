@@ -15,7 +15,7 @@
    #:function-lambda-to-labels-everywhere
    #:flet-to-labels
    #:flet-to-labels-everywhere
-   #:let-to-labels
+   #:let-to-labels #:*let-to-labels-meter*
    #:let*-to-labels
    #:eliminate-special-declarations
    #:lexify-lambda-list
@@ -24,4 +24,5 @@
    #:split-setq
    #:ast-size
    #:compute-escaped-functions
-   #:inlinable-functions))
+   #:inlinable-functions
+   #:report))
