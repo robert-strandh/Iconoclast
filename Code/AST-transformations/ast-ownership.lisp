@@ -21,9 +21,9 @@
 
 (defmethod iaw:walk-ast-node :around
     ((client ast-owners-client) (ast ico:local-function-ast))
-  (setf (gethash ast (owner-table client)) *owner*)
   (let ((*owner* ast))
-    (call-next-method)))
+    (call-next-method))
+  (setf (gethash ast (owner-table client)) *owner*))
 
 (defun compute-owners (ast)
   (let ((client (make-instance 'ast-owners-client))
