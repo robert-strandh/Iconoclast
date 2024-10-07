@@ -10,21 +10,17 @@
 ;;; as far as the walker is concerned, we have a tree.
 
 (defclass ast-parents-client (client)
-  ((%table :initform (make-hash-table :test #'eq)
-           :reader table)))
+  ((%ast-info :initarg :ast-info :reader ast-info)))
 
 (defvar *parent*)
 
 (defmethod iaw:walk-ast-node :around ((client ast-parents-client) ast)
-  (setf (gethash ast (table client)) *parent*)
+  (setf (gethash ast (parents (ast-info client))) *parent*)
   (let ((*parent* ast))
     (call-next-method)))
 
-(defun compute-parents (ast)
-  (let ((client (make-instance 'ast-parents-client))
+(defun compute-parents (ast ast-info)
+  (let ((client (make-instance 'ast-parents-client :ast-info ast-info))
         (*parent* nil))
     (iaw:walk-ast client ast)
     client))
-
-(defun parent (ast ast-parents)
-  (gethash ast (table ast-parents)))
