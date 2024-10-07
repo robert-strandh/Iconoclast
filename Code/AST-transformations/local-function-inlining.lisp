@@ -195,4 +195,32 @@
     (iaw:walk-ast client ast)
     (local-function-asts client)))
 
+(defun replace-call-site (local-function-ast reference-ast)
+  (let* ((application-ast (parent reference-ast *parents*))
+         (lambda-list-ast (ico:lambda-list-ast local-function-ast))
+         (required-section-ast (ico:required-section-ast lambda-list-ast))
+         (required-parameter-asts
+           (if (null required-section-ast)
+               '()
+               (ico:parameter-asts required-section-ast))))
+    (check-type application-ast ico:application-ast)
+    (let ((function-name-ast (ico:function-name-ast application-ast))
+          (argument-asts (ico:argument-asts application-ast)))
+      (assert (= (length required-parameter-asts) (length argument-asts)))
+      )))
+
+(defun inline-function (local-function-ast)
+  (let* ((name-definition-ast (ico:name-ast local-function-ast))
+         (reference-asts
+           (ico:local-function-name-reference-asts name-definition-ast)))
+    ;; Replace each call site with the body of the function.
+    (loop for reference-ast in reference-asts
+          do (replace-call-site local-function-ast reference-ast))))
+
+(defun inline-inlinable-functions (ast)
+  (let ((inlinable-functions (inlinable-functions ast))
+        (*parents* (compute-parents ast)))
+    (loop for inlinable-function in inlinable-functions
+          do (inline-function inlinable-function))))
+
 ; LocalWords:  inlining
