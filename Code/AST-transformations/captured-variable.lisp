@@ -17,52 +17,36 @@
 ;;; that F-AST is an ancestor of G-AST in the function tree of some
 ;;; AST, return true if and only if some LOCAL-FUNCTION-AST in the
 ;;; path between G-AST and F-AST (excluding F-AST itself) escapes.
-(defun some-function-escapes (f-ast g-ast function-tree escaped-functions)
+(defun some-function-escapes (f-ast g-ast ast-info)
   (loop for ast = g-ast then (function-parent ast function-tree)
         until (eq ast f-ast)
-          thereis (function-escapes-p ast escaped-functions)))
+          thereis (function-escapes-p ast (escaped-functions ast-info))))
 
 ;;; Given a a VARIABLE-DEFINITION-AST and a VARIABLE-REFERENCE-AST of
 ;;; some variable, return true if and only if that particular
 ;;; VARIABLE-REFERENCE-AST escapes.
 (defun variable-reference-escapes-p
-    (variable-definition-ast
-     variable-reference-ast
-     ast-owners
-     function-tree
-     escaped-functions)
-  (let ((defining-owner (owner variable-definition-ast ast-owners))
-        (referencing-owner (owner variable-reference-ast ast-owners)))
-    (some-function-escapes
-     defining-owner referencing-owner function-tree escaped-functions)))
+    (variable-definition-ast variable-reference-ast ast-info)
+  (let ((defining-owner
+          (owner variable-definition-ast (owners ast-info)))
+        (referencing-owner
+          (owner variable-reference-ast (owners ast-info))))
+    (some-function-escapes defining-owner referencing-owner ast-info)))
 
 ;;; Given a a VARIABLE-DEFINITION-AST of some variable, return true if
 ;;; and only if the variable escapes.
-(defun variable-escapes
-    (variable-definition-ast
-     ast-owners
-     function-tree
-     escaped-functions)
+(defun variable-escapes (variable-definition-ast ast-info)
   (loop for ast in (ico:variable-reference-asts variable-definition-ast)
           thereis (variable-reference-escapes-p
-                   variable-definition-ast
-                   ast
-                   ast-owners
-                   function-tree
-                   escaped-functions)))
+                   variable-definition-ast ast ast-info)))
 
 ;;; Given a LAMBDA-LIST-AST with only required lexical parameters,
 ;;; return true if and only if any of the introduced variables
 ;;; escapes.
-(defun some-variable-escapes
-    (lambda-list-ast
-     ast-owners
-     function-tree
-     escaped-functions)
+(defun some-variable-escapes (lambda-list-ast ast-info)
   (let ((required-section-ast (ico:required-section-ast lambda-list-ast)))
     (if (null required-section-ast)
         nil
         (loop for parameter-ast in (ico:parameter-asts required-section-ast)
               for name-ast = (ico:name-ast parameter-ast)
-                thereis (variable-escapes
-                         name-ast ast-owners function-tree escaped-functions)))))
+                thereis (variable-escapes name-ast ast-info)))))
