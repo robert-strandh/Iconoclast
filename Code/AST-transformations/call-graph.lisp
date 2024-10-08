@@ -24,17 +24,17 @@
    (%callee-nodes :initform '() :accessor callee-nodes)))
 
 (defclass call-graph-client (client)
-  ((%ast-info :initform (make-hash-table :test #'eq) :reader ast-info)))
+  ((%ast-info :initarg :ast-info :reader ast-info)))
 
 (defclass create-nodes-client (client)
-  ((%ast-info :initform (make-hash-table :test #'eq) :reader ast-info)))
+  ((%ast-info :initarg :ast-info :reader ast-info)))
 
 (defmethod iaw:walk-ast-node :around
     ((client call-graph-client) (ast ico:local-function-ast))
   (call-next-method)
   (let* ((name-ast (ico:name-ast ast))
          (reference-asts (ico:local-function-name-reference-asts name-ast)))
-    (loop with callee-node = (gethash ast (node-table client))
+    (loop with callee-node = (gethash ast (node-table (ast-info client)))
           for reference-ast in reference-asts
           for parent = (parent reference-ast (ast-info client))
           when (and (typep parent 'ico:application-ast)
