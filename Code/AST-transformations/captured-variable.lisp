@@ -18,9 +18,9 @@
 ;;; AST, return true if and only if some LOCAL-FUNCTION-AST in the
 ;;; path between G-AST and F-AST (excluding F-AST itself) escapes.
 (defun some-function-escapes (f-ast g-ast ast-info)
-  (loop for ast = g-ast then (function-parent ast function-tree)
+  (loop for ast = g-ast then (function-parent ast (function-tree ast-info))
         until (eq ast f-ast)
-          thereis (function-escapes-p ast (escaped-functions ast-info))))
+          thereis (function-escapes-p ast ast-info)))
 
 ;;; Given a a VARIABLE-DEFINITION-AST and a VARIABLE-REFERENCE-AST of
 ;;; some variable, return true if and only if that particular
@@ -28,9 +28,9 @@
 (defun variable-reference-escapes-p
     (variable-definition-ast variable-reference-ast ast-info)
   (let ((defining-owner
-          (owner variable-definition-ast (owners ast-info)))
+          (owner variable-definition-ast ast-info))
         (referencing-owner
-          (owner variable-reference-ast (owners ast-info))))
+          (owner variable-reference-ast ast-info)))
     (some-function-escapes defining-owner referencing-owner ast-info)))
 
 ;;; Given a a VARIABLE-DEFINITION-AST of some variable, return true if
