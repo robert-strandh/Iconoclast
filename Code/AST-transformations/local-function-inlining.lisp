@@ -120,8 +120,8 @@
 
 ;;; This function returns true if and only if some LOCAL-FUNCTION-AST
 ;;; is recursive, directly or indirectly.
-(defun function-is-recursive-p (local-function-ast call-graph)
-  (let ((node (gethash local-function-ast (node-table call-graph)))
+(defun function-is-recursive-p (local-function-ast ast-info)
+  (let ((node (gethash local-function-ast (node-table ast-info)))
         (visited (make-hash-table :test #'eq)))
     (labels ((aux (new-node)
                (cond ((gethash new-node visited)
@@ -135,8 +135,8 @@
 
 ;;; This function returns the number of call sites of some
 ;;; LOCAL-FUNCTION-AST.
-(defun number-of-call-sites (local-function-ast call-graph)
-  (let ((node (gethash local-function-ast (node-table call-graph))))
+(defun number-of-call-sites (local-function-ast ast-info)
+  (let ((node (gethash local-function-ast (node-table ast-info))))
     (length (caller-nodes node))))
 
 ;;; This function returns true if and only if the lambda list of the
@@ -151,52 +151,32 @@
 
 ;;; This function return true if and only if the function represented
 ;;; by LOCAL-FUNCTION-AST can be inlined.
-(defun function-can-be-inlined-p
-    (local-function-ast
-     ast-owners
-     function-tree
-     escaped-functions
-     call-graph)
-  (and (not (function-escapes-p local-function-ast escaped-functions))
-       (not (function-is-recursive-p local-function-ast call-graph))
+(defun function-can-be-inlined-p (local-function-ast ast-info)
+  (and (not (function-escapes-p local-function-ast ast-info))
+       (not (function-is-recursive-p local-function-ast ast-info))
        (only-required-parameters local-function-ast)
        (not (some-variable-escapes
-             (ico:lambda-list-ast local-function-ast)
-             ast-owners
-             function-tree
-             escaped-functions))
-       (= 1 (number-of-call-sites local-function-ast call-graph))))
+             (ico:lambda-list-ast local-function-ast) ast-info))
+       (= 1 (number-of-call-sites local-function-ast ast-info))))
 
 (defclass inlinable-functions-client (client)
-  ((%local-function-asts :initform '() :accessor local-function-asts)))
-
-(defvar *ast-owners*)
-
-(defvar *function-tree*)
-
-(defvar *escaped-functions*)
-
-(defvar  *call-graph*)
+  ((%ast-info :initarg :ast-info :reader ast-info)))
 
 (defmethod iaw:walk-ast-node :around
     ((client inlinable-functions-client) (ast ico:local-function-ast))
   (call-next-method)
-  (when (function-can-be-inlined-p
-         ast  *ast-owners* *function-tree* *escaped-functions* *call-graph*)
+  (when (function-can-be-inlined-p ast (ast-info client))
     (push ast (local-function-asts client)))
   ast)
 
-(defun inlinable-functions (ast)
-  (let ((*ast-owners* (compute-owners ast))
-        (*function-tree* (compute-function-tree ast))
-        (*escaped-functions* (compute-escaped-functions ast))
-        (*call-graph* (compute-call-graph ast))
-        (client (make-instance 'inlinable-functions-client)))
+(defun inlinable-functions (ast ast-info)
+  (let ((client (make-instance 'inlinable-functions-client
+                  :ast-info ast-info)))
     (iaw:walk-ast client ast)
     (local-function-asts client)))
 
-(defun replace-call-site (local-function-ast reference-ast)
-  (let* ((application-ast (parent reference-ast *parents*))
+(defun replace-call-site (local-function-ast reference-ast ast-info)
+  (let* ((application-ast (parent reference-ast ast-info))
          (lambda-list-ast (ico:lambda-list-ast local-function-ast))
          (required-section-ast (ico:required-section-ast lambda-list-ast))
          (required-parameter-asts
@@ -209,18 +189,17 @@
       (assert (= (length required-parameter-asts) (length argument-asts)))
       )))
 
-(defun inline-function (local-function-ast)
+(defun inline-function (local-function-ast ast-info)
   (let* ((name-definition-ast (ico:name-ast local-function-ast))
          (reference-asts
            (ico:local-function-name-reference-asts name-definition-ast)))
     ;; Replace each call site with the body of the function.
     (loop for reference-ast in reference-asts
-          do (replace-call-site local-function-ast reference-ast))))
+          do (replace-call-site local-function-ast reference-ast ast-info))))
 
-(defun inline-inlinable-functions (ast)
-  (let ((inlinable-functions (inlinable-functions ast))
-        (*parents* (compute-parents ast)))
+(defun inline-inlinable-functions (ast ast-info)
+  (let ((inlinable-functions (inlinable-functions ast ast-info)))
     (loop for inlinable-function in inlinable-functions
-          do (inline-function inlinable-function))))
+          do (inline-function inlinable-function ast-info))))
 
 ; LocalWords:  inlining
