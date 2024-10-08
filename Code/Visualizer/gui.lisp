@@ -56,12 +56,16 @@
         (pop (previous clim:*application-frame*))))
 
 (define-visualizer-command (com-inlinable-functions :name t) ()
-  (setf (selected-asts clim:*application-frame*)
-        (iat:inlinable-functions (ast clim:*application-frame*))))
+  (let* ((ast (ast clim:*application-frame*))
+         (ast-info (iat:compute-ast-info ast)))
+    (setf (selected-asts clim:*application-frame*)
+          (iat:inlinable-functions ast ast-info))))
 
 (define-visualizer-command (com-escaped-functions :name t) ()
-  (setf (selected-asts clim:*application-frame*)
-        (iat:compute-escaped-functions (ast clim:*application-frame*))))
+  (let* ((ast (ast clim:*application-frame*))
+         (ast-info (iat:compute-ast-info ast)))
+    (setf (selected-asts clim:*application-frame*)
+          (iat:compute-escaped-functions ast ast-info))))
 
 (define-visualizer-command (com-clear-selection :name t) ()
   (setf (selected-asts clim:*application-frame*) '()))
