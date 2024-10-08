@@ -160,7 +160,8 @@
        (= 1 (number-of-call-sites local-function-ast ast-info))))
 
 (defclass inlinable-functions-client (client)
-  ((%ast-info :initarg :ast-info :reader ast-info)))
+  ((%ast-info :initarg :ast-info :reader ast-info)
+   (%local-function-asts :initform '() :accessor local-function-asts)))
 
 (defmethod iaw:walk-ast-node :around
     ((client inlinable-functions-client) (ast ico:local-function-ast))
