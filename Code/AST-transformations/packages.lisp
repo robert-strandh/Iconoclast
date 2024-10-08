@@ -23,6 +23,7 @@
    #:replace-special-let-with-bind
    #:split-setq
    #:ast-size
+   #:compute-ast-info
    #:compute-escaped-functions
    #:inlinable-functions
    #:report))
