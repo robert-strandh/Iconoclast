@@ -9,27 +9,20 @@
 ;;; We can probably use a list here, becuse the number of escaped
 ;;; functions is likely to be small.
 (defclass escaped-functions-client (client)
-  ((%escaped-functions :initform '() :accessor escaped-functions)))
-
-(defvar *parents*)
+  ((%ast-info :initarg :ast-info :reader ast-info)))
 
 (defmethod iaw:walk-ast-node :around
     ((client escaped-functions-client) (ast ico:local-function-ast))
   (let ((definition-ast (ico:name-ast ast)))
     (loop for reference-ast
             in (ico:local-function-name-reference-asts definition-ast)
-          for parent-ast = (parent reference-ast *parents*)
+          for parent-ast = (parent reference-ast (ast-info client))
           unless (and (typep parent-ast 'ico:application-ast)
                       (eq reference-ast (ico:function-name-ast parent-ast)))
-            do (push ast (escaped-functions client))))
+            do (push ast (escaped-functions (ast-info client)))))
   ast)
 
-(defun compute-escaped-functions (ast)
-  (let ((client (make-instance 'escaped-functions-client))
-        (*parents* (compute-parents ast)))
-    (iaw:walk-ast client ast)
-    (escaped-functions client)))
-
-(defun function-escapes-p (local-function-ast escaped-functions)
-  (check-type local-function-ast ico:local-function-ast)
-  (member local-function-ast escaped-functions :test #'eq))
+(defun compute-escaped-functions (ast ast-info)
+  (let ((client (make-instance 'escaped-functions-client
+                  :ast-info ast-info)))
+    (iaw:walk-ast client ast)))
