@@ -31,7 +31,9 @@
    (%nodes :initform '() :accessor nodes)
    ;; This slot contains a hash table that maps each
    ;; LOCAL-FUNCTION-AST to a node that represents it.
-   (%node-table :initarg node-table :reader node-table)))
+   (%node-table
+    :initform (make-hash-table :test #'eq)
+    :reader node-table)))
 
 (defun parent (ast ast-info)
   (gethash ast (parents ast-info)))
@@ -42,3 +44,16 @@
 (defun function-escapes-p (local-function-ast ast-info)
   (check-type local-function-ast ico:local-function-ast)
   (member local-function-ast (escaped-functions ast-info) :test #'eq))
+
+(defclass function-node ()
+  ((%node-function :initarg :node-function :reader node-function)
+   (%parent-node :initarg :parent-node :reader parent-node)
+   (%child-nodes :initform '() :accessor child-nodes)))
+
+(defun function-node (ast ast-info)
+  (gethash ast (node-table ast-info)))
+
+(defun function-parent (local-function-ast ast-info)
+  (let* ((function-node (function-node local-function-ast ast-info))
+         (parent-node (parent-node function-node)))
+    (node-function parent-node)))
