@@ -26,8 +26,12 @@
     :accessor escaped-functions)
    (%function-tree
     :reader function-tree)
+   ;; This slot contains the list of nodes of the call graph.  Each
+   ;; element is an instance of the NODE class defined above.
    (%nodes :initform '() :accessor nodes)
-   (%node-table :initarg node-table :reader node-table))
+   ;; This slot contains a hash table that maps each
+   ;; LOCAL-FUNCTION-AST to a node that represents it.
+   (%node-table :initarg node-table :reader node-table)))
 
 (defun parent (ast ast-info)
   (gethash ast (parents ast-info)))
