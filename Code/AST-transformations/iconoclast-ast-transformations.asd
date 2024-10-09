@@ -25,7 +25,7 @@
    (:file "split-setq-ast")
    (:file "ast-info")
    (:file "compute-parent-asts")
-   (:file "ast-ownership")
+   (:file "compute-owner-asts")
    (:file "escaped-functions")
    (:file "function-tree")
    (:file "call-graph")
