@@ -11,22 +11,7 @@
 ;;; APPLICATION-AST, then the owner of the APPLICATION-AST is a
 ;;; caller.
 
-(defclass node ()
-  (;; This slot contains the LOCAL-FUNCTION-AST represented by this
-   ;; node.
-   (%function-ast :initarg :function-ast :reader function-ast)
-   ;; This slot contains a list nodes, each of which represents a
-   ;; caller of the LOCAL-FUNCTION-AST represented by this node.
-   ;; Elements are added to this list as new callers are found.
-   (%caller-nodes :initform '() :accessor caller-nodes)
-   ;; This slot contains a list of nodes, each of which represents a
-   ;; callee of the LOCAL-FUNCTION-AST represented by this node.
-   (%callee-nodes :initform '() :accessor callee-nodes)))
-
 (defclass call-graph-client (client)
-  ((%ast-info :initarg :ast-info :reader ast-info)))
-
-(defclass create-nodes-client (client)
   ((%ast-info :initarg :ast-info :reader ast-info)))
 
 (defmethod iaw:walk-ast-node :around
@@ -34,37 +19,22 @@
   (call-next-method)
   (let* ((name-ast (ico:name-ast ast))
          (reference-asts (ico:local-function-name-reference-asts name-ast)))
-    (loop with callee-node = (gethash ast (node-table (ast-info client)))
+    (loop with ast-info = (ast-info client)
           for reference-ast in reference-asts
-          for parent = (parent-ast reference-ast (ast-info client))
-          when (and (typep parent 'ico:application-ast)
-                    (eq reference-ast (ico:function-name-ast parent)))
-            do (let* ((owner-ast (owner-ast parent (ast-info client)))
-                      (caller-node
-                        (gethash owner-ast (node-table (ast-info client)))))
-                 (pushnew caller-node
-                          (caller-nodes callee-node)
+          for parent-ast = (parent-ast reference-ast ast-info)
+          when (and (typep parent-ast 'ico:application-ast)
+                    (eq reference-ast (ico:function-name-ast parent-ast)))
+            do (let ((caller-ast (owner-ast parent-ast ast-info)))
+                 (pushnew caller-ast
+                          (function-caller-asts ast ast-info)
                           :test #'eq)
-                 (pushnew callee-node
-                          (callee-nodes caller-node)
+                 (pushnew ast
+                          (function-callee-asts caller-ast ast-info)
                           :test #'eq))))
   ast)
 
-(defmethod iaw:walk-ast-node :around
-    ((client create-nodes-client) (ast ico:local-function-ast))
-  (call-next-method)
-  (setf (gethash ast (node-table (ast-info client)))
-        (make-instance 'node :function-ast ast))
-  ast)
-
 (defun compute-call-graph (ast ast-info)
-  (let ((create-nodes-client
-          (make-instance 'create-nodes-client :ast-info ast-info)))
-    (iaw:walk-ast create-nodes-client ast)
-    ;; We need a node for NIL which is owner of outermost ASTs.
-    (setf (gethash nil (node-table ast-info))
-          (make-instance 'node :function-ast nil))
-    (let ((call-graph-client
-            (make-instance 'call-graph-client :ast-info ast-info)))
-      (iaw:walk-ast call-graph-client ast)
-      call-graph-client)))
+  (let ((call-graph-client
+          (make-instance 'call-graph-client :ast-info ast-info)))
+    (iaw:walk-ast call-graph-client ast)
+    call-graph-client))
