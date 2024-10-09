@@ -15,7 +15,7 @@
 (defvar *parent*)
 
 (defmethod iaw:walk-ast-node :around ((client ast-parents-client) ast)
-  (setf (gethash ast (parents (ast-info client))) *parent*)
+  (setf (parent ast (ast-info client)) *parent*)
   (let ((*parent* ast))
     (call-next-method)))
 

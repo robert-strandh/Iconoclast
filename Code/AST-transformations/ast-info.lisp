@@ -38,6 +38,9 @@
 (defun parent (ast ast-info)
   (gethash ast (parents ast-info)))
 
+(defun (setf parent) (parent ast ast-info)
+  (setf (gethash ast (parents ast-info)) parent))
+
 (defun owner (ast ast-info)
   (gethash ast (owners ast-info)))
 
