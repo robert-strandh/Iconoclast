@@ -44,6 +44,9 @@
 (defun owner (ast ast-info)
   (gethash ast (owners ast-info)))
 
+(defun (setf owner) (owner ast ast-info)
+  (setf (gethash ast (owners ast-info)) owner))
+
 (defun function-escapes-p (local-function-ast ast-info)
   (check-type local-function-ast ico:local-function-ast)
   (member local-function-ast (escaped-functions ast-info) :test #'eq))
