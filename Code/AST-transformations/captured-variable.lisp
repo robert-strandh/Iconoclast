@@ -18,7 +18,7 @@
 ;;; AST, return true if and only if some LOCAL-FUNCTION-AST in the
 ;;; path between G-AST and F-AST (excluding F-AST itself) escapes.
 (defun some-function-escapes (f-ast g-ast ast-info)
-  (loop for ast = g-ast then (function-parent ast (function-tree ast-info))
+  (loop for ast = g-ast then (function-parent-ast ast ast-info)
         until (eq ast f-ast)
           thereis (function-escapes-p ast ast-info)))
 
