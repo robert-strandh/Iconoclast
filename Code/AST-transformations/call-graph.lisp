@@ -39,7 +39,7 @@
           for parent = (parent-ast reference-ast (ast-info client))
           when (and (typep parent 'ico:application-ast)
                     (eq reference-ast (ico:function-name-ast parent)))
-            do (let* ((owner-ast (owner parent (ast-info client)))
+            do (let* ((owner-ast (owner-ast parent (ast-info client)))
                       (caller-node
                         (gethash owner-ast (node-table (ast-info client)))))
                  (pushnew caller-node

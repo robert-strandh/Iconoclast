@@ -41,11 +41,11 @@
 (defun (setf parent-ast) (parent-ast ast ast-info)
   (setf (gethash ast (parent-asts ast-info)) parent-ast))
 
-(defun owner (ast ast-info)
+(defun owner-ast (ast ast-info)
   (gethash ast (owner-asts ast-info)))
 
-(defun (setf owner) (owner ast ast-info)
-  (setf (gethash ast (owner-asts ast-info)) owner))
+(defun (setf owner-ast) (owner-ast ast ast-info)
+  (setf (gethash ast (owner-asts ast-info)) owner-ast))
 
 (defun function-escapes-p (local-function-ast ast-info)
   (check-type local-function-ast ico:local-function-ast)

@@ -28,9 +28,9 @@
 (defun variable-reference-escapes-p
     (variable-definition-ast variable-reference-ast ast-info)
   (let ((defining-owner
-          (owner variable-definition-ast ast-info))
+          (owner-ast variable-definition-ast ast-info))
         (referencing-owner
-          (owner variable-reference-ast ast-info)))
+          (owner-ast variable-reference-ast ast-info)))
     (some-function-escapes defining-owner referencing-owner ast-info)))
 
 ;;; Given a a VARIABLE-DEFINITION-AST of some variable, return true if

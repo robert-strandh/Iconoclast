@@ -12,22 +12,22 @@
   ((%ast-info :initarg :ast-info :reader ast-info)))
 
 
-(defvar *owner*)
+(defvar *owner-ast*)
 
 ;;; This method is used when AST is any AST class.
 (defmethod iaw:walk-ast-node :around ((client owner-asts-client) ast)
-  (setf (owner ast (ast-info client)) *owner*)
+  (setf (owner-ast ast (ast-info client)) *owner-ast*)
   (call-next-method))
 
 (defmethod iaw:walk-ast-node :around
     ((client owner-asts-client) (ast ico:local-function-ast))
-  (let ((*owner* ast))
+  (let ((*owner-ast* ast))
     (call-next-method))
-  (setf (owner ast (ast-info client)) *owner*)
+  (setf (owner-ast ast (ast-info client)) *owner-ast*)
   ast)
 
 (defun compute-owner-asts (ast ast-info)
   (let ((client (make-instance 'owner-asts-client :ast-info ast-info))
-        (*owner* nil))
+        (*owner-ast* nil))
     (iaw:walk-ast client ast)
     client))
