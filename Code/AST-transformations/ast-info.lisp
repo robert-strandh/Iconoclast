@@ -1,6 +1,6 @@
 (cl:in-package #:iconoclast-ast-transformations)
 
-(defgeneric parents (ast-info))
+(defgeneric parent-asts (ast-info))
 
 (defgeneric owners (ast-info))
 
@@ -15,9 +15,9 @@
 (defgeneric node-table (ast-info))
 
 (defclass ast-info ()
-  ((%parents
+  ((%parent-asts
     :initform (make-hash-table :test #'eq)
-    :reader parents)
+    :reader parent-asts)
    (%owners
     :initform (make-hash-table :test #'eq)
     :reader owners)
@@ -36,10 +36,10 @@
     :reader node-table)))
 
 (defun parent (ast ast-info)
-  (gethash ast (parents ast-info)))
+  (gethash ast (parent-asts ast-info)))
 
 (defun (setf parent) (parent ast ast-info)
-  (setf (gethash ast (parents ast-info)) parent))
+  (setf (gethash ast (parent-asts ast-info)) parent))
 
 (defun owner (ast ast-info)
   (gethash ast (owners ast-info)))
