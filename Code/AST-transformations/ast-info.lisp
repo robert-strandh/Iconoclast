@@ -2,7 +2,7 @@
 
 (defgeneric parent-asts (ast-info))
 
-(defgeneric owners (ast-info))
+(defgeneric owner-asts (ast-info))
 
 (defgeneric escaped-functions (ast-info))
 
@@ -18,9 +18,9 @@
   ((%parent-asts
     :initform (make-hash-table :test #'eq)
     :reader parent-asts)
-   (%owners
+   (%owner-asts
     :initform (make-hash-table :test #'eq)
-    :reader owners)
+    :reader owner-asts)
    (%escaped-functions
     :initform '()
     :accessor escaped-functions)
@@ -42,10 +42,10 @@
   (setf (gethash ast (parent-asts ast-info)) parent-ast))
 
 (defun owner (ast ast-info)
-  (gethash ast (owners ast-info)))
+  (gethash ast (owner-asts ast-info)))
 
 (defun (setf owner) (owner ast ast-info)
-  (setf (gethash ast (owners ast-info)) owner))
+  (setf (gethash ast (owner-asts ast-info)) owner))
 
 (defun function-escapes-p (local-function-ast ast-info)
   (check-type local-function-ast ico:local-function-ast)
