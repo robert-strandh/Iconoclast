@@ -121,23 +121,26 @@
 ;;; This function returns true if and only if some LOCAL-FUNCTION-AST
 ;;; is recursive, directly or indirectly.
 (defun function-is-recursive-p (local-function-ast ast-info)
-  (let ((node (gethash local-function-ast (node-table ast-info)))
-        (visited (make-hash-table :test #'eq)))
-    (labels ((aux (new-node)
-               (cond ((gethash new-node visited)
-                      nil)
-                     (t
-                      (setf (gethash new-node visited) t)
-                      (loop for caller-node in (caller-nodes new-node)
-                              thereis (or (eq caller-node node)
-                                          (aux caller-node)))))))
-      (aux node))))
+  (let ((visited (make-hash-table :test #'eq)))
+    (labels
+        ((aux (new-function-ast)
+           (cond ((gethash new-function-ast visited)
+                  nil)
+                 (t
+                  (setf (gethash new-function-ast visited) t)
+                  (loop for caller-ast
+                          in (function-caller-asts
+                              new-function-ast ast-info)
+                            thereis (or (eq caller-ast local-function-ast)
+                                        (aux caller-ast)))))))
+      (aux local-function-ast))))
 
 ;;; This function returns the number of call sites of some
 ;;; LOCAL-FUNCTION-AST.
-(defun number-of-call-sites (local-function-ast ast-info)
-  (let ((node (gethash local-function-ast (node-table ast-info))))
-    (length (caller-nodes node))))
+(defun number-of-call-sites (local-function-ast)
+  (let* ((name-ast (ico:name-ast local-function-ast))
+         (reference-asts (ico:local-function-name-reference-asts name-ast)))
+    (length reference-asts)))
 
 ;;; This function returns true if and only if the lambda list of the
 ;;; function represented by LOCAL-FUNCTION-AST contains only required
@@ -157,7 +160,7 @@
        (only-required-parameters local-function-ast)
        (not (some-variable-escapes
              (ico:lambda-list-ast local-function-ast) ast-info))
-       (= 1 (number-of-call-sites local-function-ast ast-info))))
+       (= 1 (number-of-call-sites local-function-ast))))
 
 (defclass inlinable-functions-client (client)
   ((%ast-info :initarg :ast-info :reader ast-info)
