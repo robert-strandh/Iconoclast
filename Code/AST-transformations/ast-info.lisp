@@ -67,10 +67,10 @@
 
 (defun ensure-function-ast-node (local-function-ast ast-info)
   (let ((node (gethash local-function-ast (function-ast-nodes ast-info))))
-    (when (null node)
-      (setf (gethash local-function-ast (function-ast-nodes ast-info))
-            (make-instance 'function-ast-node)))
-    node))
+    (if (null node)
+        (setf (gethash local-function-ast (function-ast-nodes ast-info))
+              (make-instance 'function-ast-node))
+        node)))
 
 (defun function-parent-ast (local-function-ast ast-info)
   (let ((node (ensure-function-ast-node local-function-ast ast-info)))
