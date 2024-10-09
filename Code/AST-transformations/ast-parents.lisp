@@ -9,18 +9,18 @@
 ;;; linked together.  However, the AST walker ignores such links, so
 ;;; as far as the walker is concerned, we have a tree.
 
-(defclass ast-parents-client (client)
+(defclass parent-asts-client (client)
   ((%ast-info :initarg :ast-info :reader ast-info)))
 
 (defvar *parent*)
 
-(defmethod iaw:walk-ast-node :around ((client ast-parents-client) ast)
+(defmethod iaw:walk-ast-node :around ((client parent-asts-client) ast)
   (setf (parent ast (ast-info client)) *parent*)
   (let ((*parent* ast))
     (call-next-method)))
 
-(defun compute-parents (ast ast-info)
-  (let ((client (make-instance 'ast-parents-client :ast-info ast-info))
+(defun compute-parent-asts (ast ast-info)
+  (let ((client (make-instance 'parent-asts-client :ast-info ast-info))
         (*parent* nil))
     (iaw:walk-ast client ast)
     client))
