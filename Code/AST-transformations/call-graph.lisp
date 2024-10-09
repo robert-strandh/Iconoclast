@@ -36,7 +36,7 @@
          (reference-asts (ico:local-function-name-reference-asts name-ast)))
     (loop with callee-node = (gethash ast (node-table (ast-info client)))
           for reference-ast in reference-asts
-          for parent = (parent reference-ast (ast-info client))
+          for parent = (parent-ast reference-ast (ast-info client))
           when (and (typep parent 'ico:application-ast)
                     (eq reference-ast (ico:function-name-ast parent)))
             do (let* ((owner-ast (owner parent (ast-info client)))

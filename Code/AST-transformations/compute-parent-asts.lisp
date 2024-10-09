@@ -12,15 +12,15 @@
 (defclass parent-asts-client (client)
   ((%ast-info :initarg :ast-info :reader ast-info)))
 
-(defvar *parent*)
+(defvar *parent-ast*)
 
 (defmethod iaw:walk-ast-node :around ((client parent-asts-client) ast)
-  (setf (parent ast (ast-info client)) *parent*)
-  (let ((*parent* ast))
+  (setf (parent-ast ast (ast-info client)) *parent-ast*)
+  (let ((*parent-ast* ast))
     (call-next-method)))
 
 (defun compute-parent-asts (ast ast-info)
   (let ((client (make-instance 'parent-asts-client :ast-info ast-info))
-        (*parent* nil))
+        (*parent-ast* nil))
     (iaw:walk-ast client ast)
     client))

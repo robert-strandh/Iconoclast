@@ -35,11 +35,11 @@
     :initform (make-hash-table :test #'eq)
     :reader node-table)))
 
-(defun parent (ast ast-info)
+(defun parent-ast (ast ast-info)
   (gethash ast (parent-asts ast-info)))
 
-(defun (setf parent) (parent ast ast-info)
-  (setf (gethash ast (parent-asts ast-info)) parent))
+(defun (setf parent-ast) (parent-ast ast ast-info)
+  (setf (gethash ast (parent-asts ast-info)) parent-ast))
 
 (defun owner (ast ast-info)
   (gethash ast (owners ast-info)))

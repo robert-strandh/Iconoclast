@@ -177,7 +177,7 @@
     (local-function-asts client)))
 
 (defun replace-call-site (local-function-ast reference-ast ast-info)
-  (let* ((application-ast (parent reference-ast ast-info))
+  (let* ((application-ast (parent-ast reference-ast ast-info))
          (lambda-list-ast (ico:lambda-list-ast local-function-ast))
          (required-section-ast (ico:required-section-ast lambda-list-ast))
          (required-parameter-asts
