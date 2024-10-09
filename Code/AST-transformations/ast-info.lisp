@@ -12,7 +12,7 @@
 
 (defgeneric nodes (ast-info))
 
-(defgeneric node-table (ast-info))
+(defgeneric function-ast-nodes (ast-info))
 
 (defclass ast-info ()
   ((%parent-asts
@@ -31,9 +31,9 @@
    (%nodes :initform '() :accessor nodes)
    ;; This slot contains a hash table that maps each
    ;; LOCAL-FUNCTION-AST to a node that represents it.
-   (%node-table
+   (%function-ast-nodes
     :initform (make-hash-table :test #'eq)
-    :reader node-table)))
+    :reader function-ast-nodes)))
 
 (defun parent-ast (ast ast-info)
   (gethash ast (parent-asts ast-info)))
@@ -51,15 +51,59 @@
   (check-type local-function-ast ico:local-function-ast)
   (member local-function-ast (escaped-functions ast-info) :test #'eq))
 
-(defclass function-node ()
-  ((%node-function :initarg :node-function :reader node-function)
-   (%parent-node :initarg :parent-node :reader parent-node)
-   (%child-nodes :initform '() :accessor child-nodes)))
+(defclass function-ast-node ()
+  ((%parent-function-ast
+    :initarg :parent-function-ast
+    :accessor parent-function-ast)
+   (%child-function-asts
+    :initform '()
+    :accessor child-function-asts)
+   (%caller-function-asts
+    :initform '()
+    :accessor caller-function-asts)
+   (%callee-function-asts
+    :initform '()
+    :accessor callee-function-asts)))
 
-(defun function-node (ast ast-info)
-  (gethash ast (node-table ast-info)))
+(defun ensure-function-ast-node (local-function-ast ast-info)
+  (let ((node (gethash local-function-ast (function-ast-nodes ast-info))))
+    (when (null node)
+      (setf (gethash local-function-ast (function-ast-nodes ast-info))
+            (make-instance 'function-ast-node)))
+    node))
 
-(defun function-parent (local-function-ast ast-info)
-  (let* ((function-node (function-node local-function-ast ast-info))
-         (parent-node (parent-node function-node)))
-    (node-function parent-node)))
+(defun function-parent-ast (local-function-ast ast-info)
+  (let ((node (ensure-function-ast-node local-function-ast ast-info)))
+    (parent-function-ast node)))
+
+(defun (setf function-parent-ast)
+    (function-parent-ast local-function-ast ast-info)
+  (let ((node (ensure-function-ast-node local-function-ast ast-info)))
+    (setf (parent-function-ast node) function-parent-ast)))
+
+(defun function-child-asts (local-function-ast ast-info)
+  (let ((node (ensure-function-ast-node local-function-ast ast-info)))
+    (child-function-asts node)))
+
+(defun (setf function-child-asts)
+    (function-child-asts local-function-ast ast-info)
+  (let ((node (ensure-function-ast-node local-function-ast ast-info)))
+    (setf (child-function-asts node) function-child-asts)))
+
+(defun function-caller-asts (local-function-ast ast-info)
+  (let ((node (ensure-function-ast-node local-function-ast ast-info)))
+    (caller-function-asts node)))
+
+(defun (setf function-caller-asts)
+    (function-caller-asts local-function-ast ast-info)
+  (let ((node (ensure-function-ast-node local-function-ast ast-info)))
+    (setf (caller-function-asts node) function-caller-asts)))
+
+(defun function-callee-asts (local-function-ast ast-info)
+  (let ((node (ensure-function-ast-node local-function-ast ast-info)))
+    (callee-function-asts node)))
+
+(defun (setf function-callee-asts)
+    (function-callee-asts local-function-ast ast-info)
+  (let ((node (ensure-function-ast-node local-function-ast ast-info)))
+    (setf (callee-function-asts node) function-callee-asts)))
