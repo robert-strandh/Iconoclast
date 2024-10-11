@@ -61,6 +61,11 @@
     (setf (selected-asts clim:*application-frame*)
           (iat:inlinable-functions ast ast-info))))
 
+(define-visualizer-command (com-inline-selected-functions :name t) ()
+  (let* ((selected-asts (selected-asts clim:*application-frame*))
+         (ast-info (iat:compute-ast-info ast)))
+    (iat:inline-inlinable-functions selected-asts ast-info)))
+
 (define-visualizer-command (com-escaped-functions :name t) ()
   (let* ((ast (ast clim:*application-frame*))
          (ast-info (iat:compute-ast-info ast)))
