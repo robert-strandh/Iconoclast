@@ -231,7 +231,7 @@
                 :declaration-asts (ico:declaration-asts local-function-ast)
                 :form-asts (ico:form-asts local-function-ast))))
         (change-class application-ast
-                      'progn-ast
+                      'ico:progn-ast
                       :form-asts (list (create-let-temporary-asts
                                         required-parameter-asts
                                         argument-asts
