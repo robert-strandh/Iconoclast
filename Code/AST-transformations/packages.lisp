@@ -26,4 +26,5 @@
    #:compute-ast-info
    #:compute-escaped-functions
    #:inlinable-functions
+   #:inline-inlinable-functions
    #:report))
