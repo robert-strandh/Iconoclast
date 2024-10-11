@@ -196,8 +196,23 @@
 ;;; A better way would be to clone the AST but to make sure we
 ;;; carefully add variable references to their respective definitions.
 
+(defun create-let-temporary-asts
+    (variable-definition-asts form-asts locally-ast)
+  (if (null variable-definition-asts)
+      locally-ast
+      (make-instance 'ico:let-temporary-ast
+        :binding-ast
+        (make-instance 'ico:variable-binding-ast
+          :variable-name-ast (first variable-definition-asts)
+          :form-ast (first form-asts))
+        :form-asts (list (create-let-temporary-asts
+                          (rest variable-definition-asts)
+                          (rest form-asts)
+                          locally-ast)))))
+
 (defun replace-call-site (local-function-ast reference-ast ast-info)
   (let* ((application-ast (parent-ast reference-ast ast-info))
+         (name-ast (ico:name-ast local-function-ast))
          (lambda-list-ast (ico:lambda-list-ast local-function-ast))
          (required-section-ast (ico:required-section-ast lambda-list-ast))
          (required-parameter-asts
@@ -208,7 +223,19 @@
     (let ((function-name-ast (ico:function-name-ast application-ast))
           (argument-asts (ico:argument-asts application-ast)))
       (assert (= (length required-parameter-asts) (length argument-asts)))
-      )))
+      (assert (eq (ico:local-function-name-definition-ast function-name-ast)
+                  name-ast))
+      (let ((locally-ast
+              (make-instance 'ico:locally-ast
+                :origin (ico:origin local-function-ast)
+                :declaration-asts (ico:declaration-asts local-function-ast)
+                :form-asts (ico:form-asts local-function-ast))))
+        (change-class application-ast
+                      'progn-ast
+                      :form-asts (list (create-let-temporary-asts
+                                        required-parameter-asts
+                                        argument-asts
+                                        locally-ast)))))))
 
 (defun inline-function (local-function-ast ast-info)
   (let* ((name-definition-ast (ico:name-ast local-function-ast))
