@@ -245,9 +245,8 @@
     (loop for reference-ast in reference-asts
           do (replace-call-site local-function-ast reference-ast ast-info))))
 
-(defun inline-inlinable-functions (ast ast-info)
-  (let ((inlinable-functions (inlinable-functions ast ast-info)))
-    (loop for inlinable-function in inlinable-functions
-          do (inline-function inlinable-function ast-info))))
+(defun inline-inlinable-functions (local-function-asts ast-info)
+  (loop for local-function-ast in local-function-asts
+        do (inline-function local-function-ast ast-info)))
 
 ; LocalWords:  inlining
