@@ -218,7 +218,9 @@
          (required-parameter-asts
            (if (null required-section-ast)
                '()
-               (ico:parameter-asts required-section-ast))))
+               (ico:parameter-asts required-section-ast)))
+         (variable-definition-asts
+           (mapcar #'ico:name-ast required-parameter-asts)))
     (check-type application-ast ico:application-ast)
     (let ((function-name-ast (ico:function-name-ast application-ast))
           (argument-asts (ico:argument-asts application-ast)))
@@ -233,7 +235,7 @@
         (change-class application-ast
                       'ico:progn-ast
                       :form-asts (list (create-let-temporary-asts
-                                        required-parameter-asts
+                                        variable-definition-asts
                                         argument-asts
                                         locally-ast)))))))
 
