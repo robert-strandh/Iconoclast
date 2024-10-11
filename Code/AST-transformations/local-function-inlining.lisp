@@ -179,6 +179,23 @@
     (iaw:walk-ast client ast)
     (local-function-asts client)))
 
+;;; The current way we inline a function is that we take the ASTs in
+;;; the lambda list and the body, and we generate LET-TEMPORARY-ASTs
+;;; using the lambda-list entries and we wrap the body in a
+;;; LOCALLY-AST in case there are declarations in the body.  However,
+;;; this way works only if we inline a single site.  If we were to
+;;; inline several sites, we would have some ASTs shared, and, with
+;;; few exceptions, the AST is supposed to be a tree.  We also cannot
+;;; simply clone the AST, because references to lexical variables in
+;;; an outer scope can't just be cloned; they have to be added to the
+;;; list of VARIABLE-REFERENCE-ASTs that is in the
+;;; VARIABLE-DEFINITION-AST.  Furthermore, since the body ASTs can not
+;;; be shared, we must delete the original function AST when we
+;;; inline.  We do this by removing it from its parent LABELS-AST.
+;;;
+;;; A better way would be to clone the AST but to make sure we
+;;; carefully add variable references to their respective definitions.
+
 (defun replace-call-site (local-function-ast reference-ast ast-info)
   (let* ((application-ast (parent-ast reference-ast ast-info))
          (lambda-list-ast (ico:lambda-list-ast local-function-ast))
