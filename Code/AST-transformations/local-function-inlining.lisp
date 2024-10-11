@@ -255,8 +255,13 @@
         (reinitialize-instance labels-ast
           :binding-asts new-binding-asts)))))
 
-(defun inline-inlinable-functions (local-function-asts ast-info)
+(defun inline-functions (local-function-asts ast-info)
   (loop for local-function-ast in local-function-asts
         do (inline-function local-function-ast ast-info)))
+
+(defun inline-inlinable-functions (ast)
+  (let* ((ast-info (compute-ast-info ast))
+         (inlinable-functions (inlinable-functions ast ast-info)))
+    (inline-functions inlinable-functions ast-info)))
 
 ; LocalWords:  inlining
