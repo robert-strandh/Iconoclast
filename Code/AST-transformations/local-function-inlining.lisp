@@ -243,7 +243,15 @@
            (ico:local-function-name-reference-asts name-definition-ast)))
     ;; Replace each call site with the body of the function.
     (loop for reference-ast in reference-asts
-          do (replace-call-site local-function-ast reference-ast ast-info))))
+          do (replace-call-site local-function-ast reference-ast ast-info))
+    ;; Remove the LOCAL-FUNCTION-AST from the binding of its parent
+    ;; LABELS-AST.
+    (let ((labels-ast (parent-ast local-function-ast ast-info)))
+      (check-type labels-ast ico:labels-ast)
+      (let* ((binding-asts (ico:binding-asts labels-ast))
+             (new-binding-asts (remove local-function-ast binding-asts)))
+        (reinitialize-instance labels-ast
+          :binding-asts new-binding-asts)))))
 
 (defun inline-inlinable-functions (local-function-asts ast-info)
   (loop for local-function-ast in local-function-asts
