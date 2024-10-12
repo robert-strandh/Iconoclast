@@ -17,6 +17,7 @@
    #:flet-to-labels-everywhere
    #:let-to-labels #:*let-to-labels-meter*
    #:let*-to-labels
+   #:macrolet-to-locally
    #:eliminate-special-declarations
    #:lexify-lambda-list
    #:split-let-or-let*
