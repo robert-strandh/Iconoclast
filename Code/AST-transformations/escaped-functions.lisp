@@ -13,13 +13,15 @@
 
 (defmethod iaw:walk-ast-node :around
     ((client escaped-functions-client) (ast ico:local-function-ast))
+  (call-next-method)
   (let ((definition-ast (ico:name-ast ast)))
     (loop for reference-ast
             in (ico:local-function-name-reference-asts definition-ast)
           for parent-ast = (parent-ast reference-ast (ast-info client))
           unless (and (typep parent-ast 'ico:application-ast)
                       (eq reference-ast (ico:function-name-ast parent-ast)))
-            do (push ast (escaped-functions (ast-info client)))))
+            do (push ast (escaped-functions (ast-info client)))
+               (loop-finish)))
   ast)
 
 (defun compute-escaped-functions (ast ast-info)
