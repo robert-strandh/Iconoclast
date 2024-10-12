@@ -29,4 +29,5 @@
    #:inlinable-functions
    #:inline-functions
    #:inline-inlinable-functions
+   #:assignment-conversion
    #:report))
