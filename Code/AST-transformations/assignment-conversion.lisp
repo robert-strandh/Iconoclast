@@ -39,4 +39,5 @@
   (let* ((ast-info (compute-ast-info ast))
          (client (make-instance 'assigned-to-shared-variables-client
                    :ast-info ast-info)))
-    (iaw:walk-ast client ast)))
+    (iaw:walk-ast client ast)
+    (variable-asts client)))
