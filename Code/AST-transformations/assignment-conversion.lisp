@@ -30,7 +30,8 @@
            (ico:variable-definition-ast variable-reference-ast))
          (ast-info (ast-info client)))
     (when (variable-is-shared-p variable-definition-ast ast-info)
-      (push variable-definition-ast (variable-asts client))))
+      (pushnew variable-definition-ast (variable-asts client)
+               :test #'eq)))
   ast)
 
 ;;; This function returns a list of VARIABLE-DEFINITION-ASTs such that
@@ -41,3 +42,10 @@
                    :ast-info ast-info)))
     (iaw:walk-ast client ast)
     (variable-asts client)))
+
+;;; This function will ultimately contain code for introducing
+;;; cell-related ASTs.
+(defun assignment-conversion (ast)
+  (let ((variable-asts (assigned-to-shared-variables ast)))
+    (declare (ignore variable-asts)))
+  ast)
