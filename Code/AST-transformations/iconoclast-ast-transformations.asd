@@ -14,6 +14,7 @@
    (:file "flet-to-labels")
    (:file "let-to-labels")
    (:file "letstar-to-labels")
+   (:file "macrolet-to-locally")
    (:file "eliminate-special-declarations")
    (:file "lexify-lambda-list")
    (:file "extract-declaration-specifier-asts")
