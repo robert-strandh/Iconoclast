@@ -36,16 +36,45 @@
 
 ;;; This function returns a list of VARIABLE-DEFINITION-ASTs such that
 ;;; the corresponding variable is both shared and assigned to.
-(defun assigned-to-shared-variables (ast)
-  (let* ((ast-info (compute-ast-info ast))
-         (client (make-instance 'assigned-to-shared-variables-client
-                   :ast-info ast-info)))
+(defun assigned-to-shared-variables (ast ast-info)
+  (let ((client (make-instance 'assigned-to-shared-variables-client
+                  :ast-info ast-info)))
     (iaw:walk-ast client ast)
     (variable-asts client)))
+
+(defun add-make-cell-ast
+    (local-function-ast variable-definition-ast)
+  (let* ((new-variable-reference-ast
+           (make-instance 'ico:variable-reference-ast
+             :name (ico:name variable-definition-ast)
+             :variable-definition-ast variable-definition-ast))
+         (new-variable-definition-ast
+           (make-instance 'ico:variable-definition-ast
+             :name nil
+             :variable-reference-asts '()))
+         (variable-binding-ast
+           (make-instance 'ico:variable-binding-ast
+             :variable-name-ast new-variable-definition-ast
+             :form-ast new-variable-reference-ast))
+         (let-temporary-ast
+           (make-instance 'ico:let-temporary-ast
+             :binding-ast variable-binding-ast
+             :form-asts (ico:form-asts local-function-ast))))
+    (reinitialize-instance variable-definition-ast
+      :variable-reference-asts
+      (cons new-variable-reference-ast
+            (ico:variable-reference-asts variable-definition-ast)))
+    (reinitialize-instance local-function-ast
+      :form-asts (list let-temporary-ast))))
 
 ;;; This function will ultimately contain code for introducing
 ;;; cell-related ASTs.
 (defun assignment-conversion (ast)
-  (let ((variable-asts (assigned-to-shared-variables ast)))
-    (declare (ignore variable-asts)))
+  (let* ((ast-info (compute-ast-info ast))
+         (variable-asts (assigned-to-shared-variables ast ast-info)))
+    (loop for variable-definition-ast in variable-asts
+          for local-function-ast
+            = (owner-ast variable-definition-ast ast-info)
+          do (add-make-cell-ast
+              local-function-ast variable-definition-ast)))
   ast)
