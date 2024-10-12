@@ -262,6 +262,7 @@
 (defun inline-inlinable-functions (ast)
   (let* ((ast-info (compute-ast-info ast))
          (inlinable-functions (inlinable-functions ast ast-info)))
-    (inline-functions inlinable-functions ast-info)))
+    (inline-functions inlinable-functions ast-info))
+  ast)
 
 ; LocalWords:  inlining
