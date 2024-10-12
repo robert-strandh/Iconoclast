@@ -33,4 +33,5 @@
    (:file "captured-variable")
    (:file "compute-ast-info")
    (:file "local-function-inlining")
+   (:file "assignment-conversion")
    (:file "closure-conversion")))
