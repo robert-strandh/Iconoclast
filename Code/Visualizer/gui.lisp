@@ -73,6 +73,10 @@
     (setf (selected-asts clim:*application-frame*)
           (iat:compute-escaped-functions ast ast-info))))
 
+(define-visualizer-command (com-macrolet-to-locally :name t) ()
+  (let ((ast (ast clim:*application-frame*)))
+    (iat:macrolet-to-locally ast)))
+
 (define-visualizer-command (com-clear-selection :name t) ()
   (setf (selected-asts clim:*application-frame*) '()))
 
