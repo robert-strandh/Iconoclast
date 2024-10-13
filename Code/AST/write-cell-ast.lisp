@@ -4,7 +4,7 @@
 ;;; with a reference to a shared lexical variable is replaced by an
 ;;; instance of this AST class.
 
-(define-ast-class write-cell-ast (form-ast-mixin ast)
+(define-ast-class write-cell-ast (required-form-ast-mixin ast)
   (;; This slot contains a FORM-AST that evaluates to a cell,
    ;; typically either a VARIABLE-REFERENCE-AST or a
    ;; STATIC-ENVIRONMENT-REFERENCE-AST.
