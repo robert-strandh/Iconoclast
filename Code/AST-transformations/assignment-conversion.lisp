@@ -42,16 +42,50 @@
     (iaw:walk-ast client ast)
     (variable-asts client)))
 
+(defun replace-with-cell-write (simple-setq-ast new-variable-reference-ast)
+  (change-class simple-setq-ast 'ico:write-cell-ast
+                :cell-ast new-variable-reference-ast
+                :form-ast (ico:value-ast simple-setq-ast)))
+
+(defun replace-with-cell-read
+    (old-variable-reference-ast new-variable-reference-ast)
+  (change-class old-variable-reference-ast 'ico:read-cell-ast
+                :cell-ast new-variable-reference-ast))
+
+(defun replace-with-cell-accessor
+    (old-variable-reference-ast new-variable-reference-ast ast-info)
+  (let ((parent-ast (parent-ast old-variable-reference-ast ast-info)))
+    (if (and (typep parent-ast 'ico:simple-setq-ast)
+             (eq old-variable-reference-ast
+                 (ico:variable-name-ast parent-ast)))
+        (replace-with-cell-write parent-ast new-variable-reference-ast)
+        (replace-with-cell-read
+         old-variable-reference-ast new-variable-reference-ast))))
+
+(defun replace-with-cell-accessors
+    (old-variable-reference-asts new-variable-reference-asts ast-info)
+  (loop for old-variable-reference-ast in old-variable-reference-asts
+        for new-variable-reference-ast in new-variable-reference-asts
+        do (replace-with-cell-accessor
+            old-variable-reference-ast new-variable-reference-ast ast-info)))
+
 (defun add-make-cell-ast
-    (local-function-ast variable-definition-ast)
+    (local-function-ast variable-definition-ast ast-info)
   (let* ((new-variable-reference-ast
            (make-instance 'ico:variable-reference-ast
              :name (ico:name variable-definition-ast)
              :variable-definition-ast variable-definition-ast))
+         (old-variable-reference-asts
+           (ico:variable-reference-asts variable-definition-ast))
          (new-variable-definition-ast
            (make-instance 'ico:variable-definition-ast
-             :name nil
-             :variable-reference-asts '()))
+             :name nil))
+         (new-variable-reference-asts
+           (loop repeat (length old-variable-reference-asts)
+                 collect (make-instance 'ico:variable-reference-ast
+                           :name nil
+                           :variable-definition-ast
+                           new-variable-definition-ast)))
          (variable-binding-ast
            (make-instance 'ico:variable-binding-ast
              :variable-name-ast new-variable-definition-ast
@@ -60,10 +94,13 @@
            (make-instance 'ico:let-temporary-ast
              :binding-ast variable-binding-ast
              :form-asts (ico:form-asts local-function-ast))))
+    (replace-with-cell-accessors
+     old-variable-reference-asts new-variable-reference-asts ast-info)
+    (reinitialize-instance new-variable-definition-ast
+      :variable-reference-asts new-variable-reference-asts)
     (reinitialize-instance variable-definition-ast
       :variable-reference-asts
-      (cons new-variable-reference-ast
-            (ico:variable-reference-asts variable-definition-ast)))
+      (list new-variable-reference-ast))
     (reinitialize-instance local-function-ast
       :form-asts (list let-temporary-ast))))
 
@@ -76,5 +113,5 @@
           for local-function-ast
             = (owner-ast variable-definition-ast ast-info)
           do (add-make-cell-ast
-              local-function-ast variable-definition-ast)))
+              local-function-ast variable-definition-ast ast-info)))
   ast)
