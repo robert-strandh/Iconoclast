@@ -29,6 +29,7 @@
    (:file "let-temporary-ast")
    (:file "lambda-list-ast")
    (:file "block-ast")
+   (:file "block-with-variable-ast")
    (:file "catch-ast")
    (:file "eval-when-ast")
    (:file "flet-ast")
