@@ -30,4 +30,5 @@
    #:inline-functions
    #:inline-inlinable-functions
    #:assignment-conversion
+   #:convert-block
    #:report))
