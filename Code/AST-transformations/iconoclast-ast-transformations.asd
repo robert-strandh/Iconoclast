@@ -34,4 +34,5 @@
    (:file "compute-ast-info")
    (:file "local-function-inlining")
    (:file "assignment-conversion")
+   (:file "convert-block")
    (:file "closure-conversion")))
