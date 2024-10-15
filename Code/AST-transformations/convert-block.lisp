@@ -44,9 +44,9 @@
          (definition-ast (ico:block-name-definition-ast name-ast))
          ;; We need a name for the new VARIABLE-REFERENCE-AST, so get
          ;; it from the BLOCK-NAME-DEFINITION-AST.
-         (name (ico:name (ico:name-ast definition-ast)))
+         (name (ico:name definition-ast))
          (variable-definition-ast
-           (assoc definition-ast *name-to-variable-mapping*))
+           (cdr (assoc definition-ast *name-to-variable-mapping*)))
          (variable-reference-ast
            (make-instance 'ico:variable-reference-ast
              :name name
