@@ -35,4 +35,5 @@
    (:file "local-function-inlining")
    (:file "assignment-conversion")
    (:file "convert-block")
+   (:file "convert-tagbody")
    (:file "closure-conversion")))
