@@ -31,4 +31,5 @@
    #:inline-inlinable-functions
    #:assignment-conversion
    #:convert-block
+   #:convert-tagbody
    #:report))
