@@ -32,4 +32,5 @@
    #:assignment-conversion
    #:convert-block
    #:convert-tagbody
+   #:transform-function-definition-and-reference
    #:report))
