@@ -33,4 +33,5 @@
    #:convert-block
    #:convert-tagbody
    #:transform-function-definition-and-reference
+   #:eliminate-function
    #:report))
