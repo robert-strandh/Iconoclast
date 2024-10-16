@@ -36,4 +36,5 @@
    (:file "assignment-conversion")
    (:file "convert-block")
    (:file "convert-tagbody")
+   (:file "transform-function-definition-and-reference")
    (:file "closure-conversion")))
