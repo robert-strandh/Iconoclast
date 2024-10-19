@@ -16,11 +16,12 @@
 ;;; reflects nesting.  Ownership and the function tree are computed by
 ;;; COMPUTE-AST-INFO and
 ;;;
-;;; We maintain a list, say L, of function ASTs with a non-NIL static
-;;; environment.  Initially, that list is empty.  Each entry in L
-;;; contains a function AST, and the associated LET-TEMPORARY-AST
+;;; We maintain a list, say L, of entries, where each entry represents
+;;; a local function with a non-NIL static environment.  Each entry
+;;; contains a LOCAL-FUNCTION-AST, the associated LET-TEMPORARY-AST
 ;;; extracting the static environment and the
-;;; SET-STATIC-ENVIRONMENT-AST setting the static environment
+;;; SET-STATIC-ENVIRONMENT-AST setting the static environment.
+;;; Initially, that list is empty.
 ;;;
 ;;; We handle each shared variable separately.  For each shared
 ;;; variable, we have the function that defines it, functions that
@@ -39,23 +40,23 @@
 ;;;      entries) with Fi as their owner, say R1, R2, ... Rk, and
 ;;;      remove them from E.
 ;;;
-;;;   4. If Fi is not in L then add a LET-TEMPORARY-AST with a
-;;;      STATIC-ENVIRONMENT-AST to the beginning of Fi.  Call the
-;;;      variable definition introduced S.  Add a
+;;;   4. If Fi is not in L then wrap the body FORM-ASTs of Fi in a new
+;;;      LET-TEMPORARY-AST with a STATIC-ENVIRONMENT-AST as the
+;;;      FORM-AST and a new VARIABLE-DEFINITION-AST, say S.  Add a
 ;;;      SET-STATIC-ENVIRONMENT-AST to the beginning of the body of
-;;;      the LABELS-AST that defines Fi.  Add Fi to the L with the
+;;;      the LABELS-AST that defines Fi.  Add Fi to L with the
 ;;;      associated LET-TEMPORARY-AST and SET-STATIC-ENVIRONMENT-AST.
+;;;      Call the LET-TEMPORARY-AST associated with Fi LFi and the
+;;;      SET-STATIC-ENVIRONMENT-AST associated with Fi SFi
 ;;;
 ;;;   5. Let Fj be the parent of Fi in the function tree.  Create a
 ;;;      new VARIABLE-REFERENCE-AST, say R, with Fj as the owner, and
-;;;      add it to E.  Add R to the SET-STATIC-ENVIRONMENT-AST
-;;;      associated with Fi.
+;;;      add it to E.  Add R to SFi.
 ;;;
-;;;   6. Create a new VARIABLE-DEFINITION-AST, say D, Add a
-;;;      LET-TEMPORARY-AST immediately as the first form of the
-;;;      LET-TEMPORARY-AST that introduces the static environment,
-;;;      associated with Fi.  The new LET-TEMPORARY-AST contains a
-;;;      READ-STATIC-ENVIRONMENT-AST as the form-ast and D as the
-;;;      VARIABLE-DEFINITION-AST.  Link up D and R1, R2, ... Rk.
+;;;   6. Create a new VARIABLE-DEFINITION-AST, say D.  Wrap the body
+;;;      FORM-ASTs of LFi in a new LET-TEMPORARY-AST.  The new
+;;;      LET-TEMPORARY-AST contains a READ-STATIC-ENVIRONMENT-AST as
+;;;      the FORM-AST and D as the VARIABLE-DEFINITION-AST.  Link up D
+;;;      and R1, R2, ... Rk.
 ;;;
 ;;;   7. Go to 1.
