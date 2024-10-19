@@ -128,7 +128,7 @@
    (:file "with-standard-io-syntax-ast")
    (:file "special-variable-bind-ast")
    (:file "set-static-environment-ast")
-   (:file "static-environment-reference-ast")
+   (:file "read-static-environment-ast")
    (:file "make-cell-ast")
    (:file "read-cell-ast")
    (:file "write-cell-ast")))
