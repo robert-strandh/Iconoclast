@@ -196,3 +196,12 @@
       (set-difference variable-reference-asts
                       innermost-variable-reference-asts))
     (values innermost-variable-reference-asts innermost-function-ast)))
+
+;;; Take a VARIABLE-DEFINITION-AST and a VARIABLE-REFERENCE-AST and
+;;; add the VARIABLE-REFERENCE-AST to the list of
+;;; VARIABLE-REFERENCE-ASTs of the VARIABLE-DEFINITION-AST.
+(defun link (variable-definition-ast variable-reference-ast)
+  (reinitialize-instance variable-definition-ast
+    :variable-reference-asts
+    (cons variable-reference-ast
+          (ico:variable-reference-asts variable-definition-ast))))
