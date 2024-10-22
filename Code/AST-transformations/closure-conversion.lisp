@@ -267,3 +267,25 @@
     (reinitialize-instance set-static-environment-ast
       :form-asts (append (ico:form-asts set-static-environment-ast)
                          (list variable-reference-ast)))))
+
+;;; Take a VARIABLE-DEFINITION-AST which is known to have at least one
+;;; VARIABLE-REFERENCE-AST with a different owner.  Take the innermost
+;;; VARIABLE-REFERENCE-ASTS, and add ASTs for manipulating the static
+;;; environment accordingly.
+(defun process-variable-references-with-innermost-owners
+    (variable-definition-ast ast-info)
+  (multiple-value-bind
+        (innermost-variable-reference-asts innermost-function-ast)
+      (extract-innermost-variable-references
+       variable-definition-ast ast-info)
+    (let* ((entry (ensure-closure-entry innermost-function-ast ast-info))
+           (set-static-environment-ast (set-static-environment-ast entry))
+           (let-temporary-ast (let-temporary-ast  entry))
+           (index (length (ico:form-asts set-static-environment-ast))))
+      (handle-callee-side innermost-variable-reference-asts
+                          let-temporary-ast
+                          index
+                          ast-info)
+      (handle-caller-side variable-definition-ast
+                          set-static-environment-ast
+                          ast-info))))
