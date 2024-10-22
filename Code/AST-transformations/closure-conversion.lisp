@@ -38,6 +38,19 @@
     (cons variable-reference-ast
           (ico:variable-reference-asts variable-definition-ast))))
 
+;;; WRAPPER-AST and WRAPPEE-AST are both ASTs that have a list of
+;;; FORM-ASTs that can be accesses using ICO:FORM-ASTS, and that can
+;;; be reinitialized using the :FORM-ASTS keyword.  We wrap the
+;;; FORM-ASTs of WRAPPEE-AST in the WRAPPER-AST so that the new
+;;; FORM-ASTs of WRAPPER-AST become the old forms of WRAPPEE-AST and
+;;; the new FORM-ASTs of the WRAPPEE-AST become the singleton list
+;;; containing the WRAPPER-AST.
+(defun wrap-form-asts (wrapper-ast wrappee-ast)
+  (reinitialize-instance wrapper-ast
+    :form-asts (ico:form-asts wrappee-ast))
+  (reinitialize-instance wrappee-ast
+    :form-asts (list wrapper-ast)))
+
 (defun ensure-closure-entry (local-function-ast ast-info)
   (let ((entry (find local-function-ast *true-closure-entries*
                      :key #'local-function-ast
@@ -62,8 +75,7 @@
                ;; FORM-ASTs of the body of LOCAL-FUNCTION-AST.
                (let-temporary-ast
                  (make-instance 'ico:let-temporary-ast
-                   :binding-ast binding-ast
-                   :form-asts (ico:form-asts local-function-ast)))
+                   :binding-ast binding-ast))
                ;; The SET-STATIC-ENVIRONMENT-AST will have a reference
                ;; to the VARIABLE-DEFINITION-AST of
                ;; LOCAL-FUNCTION-AST, so we need to create a new
@@ -103,12 +115,7 @@
                 (owner-ast labels-ast))
           (link variable-definition-for-function-ast
                 variable-reference-for-function-ast)
-          ;; Replace the FORM-ASTs of LOCAL-FUNCTION-AST by the
-          ;; LET-TEMPORARY-AST containing those FORM-ASTs so that
-          ;; the STATIC-ENTRY-VARIABLE-DEFINITION-AST is in scope
-          ;; for all those FORM-ASTs.
-          (reinitialize-instance local-function-ast
-            :form-asts (list let-temporary-ast))
+          (wrap-form-asts let-temporary-ast local-function-ast)
           ;; Add the new SET-STATIC-ENVIRONMENT-AST as the first
           ;; FORM-AST in the body of the LABEL-AST.
           (reinitialize-instance labels-ast
@@ -198,13 +205,3 @@
       (set-difference variable-reference-asts
                       innermost-variable-reference-asts))
     (values innermost-variable-reference-asts innermost-function-ast)))
-
-;;; WRAPPER-AST and WRAPPEE-AST are both ASTs that have a list of
-;;; FORM-ASTs that can be accesses using ICO:FORM-ASTS, and that can
-;;; be reinitialized using the :FORM-ASTS keyword.  We wrap the forms
-;;; of WRAPPEE-AST in the WRAPPER-AST.
-(defun wrap-form-asts (wrapper-ast wrappee-ast)
-  (reinitialize-instance wrapper-ast
-    :form-asts (ico:form-asts wrappee-ast))
-  (reinitialize-instance wrappee-ast
-    :form-asts (list wrapper-ast)))
