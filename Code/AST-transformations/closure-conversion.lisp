@@ -249,3 +249,21 @@
     (loop for variable-reference-ast in variable-reference-asts
           do (link variable-definition-ast variable-reference-ast))
     (wrap-form-asts variable-let-temporary-ast let-temporary-ast)))
+
+(defun handle-caller-side
+    (variable-definition-ast set-static-environment-ast ast-info)
+  (let (;; A new VARIABLE-REFERENCE-AST to be used to add to the
+        ;; set-static-environment-ast of the parent function.
+        (variable-reference-ast
+          (make-instance 'ico:variable-reference-ast
+            :variable-definition-ast variable-definition-ast
+            :name (ico:name variable-definition-ast))))
+    (setf (owner-ast variable-reference-ast ast-info)
+          (owner-ast set-static-environment-ast ast-info))
+    (link variable-definition-ast variable-reference-ast)
+    ;; Add the new VARIABLE-REFERENCE-AST to the end of the
+    ;; FORM-ASTs of the SET-STATIC-ENVIRONMENT-AST so as not to
+    ;; alter previously assigned indices.
+    (reinitialize-instance set-static-environment-ast
+      :form-asts (append (ico:form-asts set-static-environment-ast)
+                         (list variable-reference-ast)))))
