@@ -38,9 +38,8 @@
                ;; FORM-ASTs of the body of the LOCAL-FUNCTION-AST.
                (static-environment-ast
                  (make-instance 'ico:static-environment-ast))
-               ;; The VARIABLE-DEFINITION-AST that of the variable
-               ;; holding the static environment of the
-               ;; LOCAL-FUNCTION-AST.
+               ;; The VARIABLE-DEFINITION-AST of the variable holding
+               ;; the static environment of the LOCAL-FUNCTION-AST.
                (static-entry-variable-definition-ast
                  (make-instance 'ico:variable-definition-ast))
                ;; The BINDING-AST of the new LET-TEMPORARY-AST to be
@@ -81,6 +80,18 @@
                    :local-function-ast local-function-ast
                    :let-temporary-ast let-temporary-ast)))
           (check-type labels-ast ico:labels-ast)
+          (setf (owner-ast static-environment-ast ast-info)
+                local-function-ast)
+          (setf (owner-ast static-entry-variable-definition-ast ast-info)
+                local-function-ast)
+          (setf (owner-ast binding-ast ast-info)
+                local-function-ast)
+          (setf (owner-ast let-temporary-ast ast-info)
+                local-function-ast)
+          (setf (owner-ast variable-reference-for-function-ast ast-info)
+                (owner-ast labels-ast))
+          (setf (owner-ast set-static-environment-ast ast-info)
+                (owner-ast labels-ast))
           ;; We have another VARIABLE-REFERENCE-AST referring to the
           ;; LOCAL-FUNCTION-AST, so we need to add it to the list of
           ;; VARIABLE-REFERENCE-ASTs of the VARIABLE-DEFINITION-AST
