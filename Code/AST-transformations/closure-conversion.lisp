@@ -157,3 +157,30 @@
           = (function-child-asts local-function-ast ast-info)
         when (null (intersection local-function-asts function-child-asts))
           return local-function-ast))
+
+;;; Take a VARIABLE-DEFINITION-AST which is known to have at least one
+;;; VARIABLE-REFERENCE-AST with a different owner.  Return a list of
+;;; all the VARIABLE-REFERENCE-ASTs having as owner the innermost
+;;; function of all the owners of all the VARIABLE-REFERENCE-ASTs.
+(defun extract-innermost-variable-references
+    (variable-definition-ast ast-info)
+  (let* ((variable-reference-asts
+           (ico:variable-reference-asts variable-definition-ast))
+         (owner-asts
+           (loop for variable-reference-ast in variable-reference-asts
+                 collect (owner-ast variable-reference-ast ast-info)))
+         (innermost-function-ast
+           (find-innermost-function owner-asts ast-info))
+         (innermost-variable-reference-asts
+           (loop for variable-reference-ast in variable-reference-asts
+                 for owner-ast
+                   = (owner-ast variable-reference-ast ast-info)
+                 when (eq innermost-function-ast owner-ast)
+                   collect variable-reference-ast)))
+    ;; Remove the relevant VARIABLE-REFERENCE-ASTs from the list
+    ;; of VARIABLE-REFERENCE-ASTs of the VARIABLE-DEFINITION-AST.
+    (reinitialize-instance variable-definition-ast
+      :variable-reference-asts
+      (set-difference variable-reference-asts
+                      innermost-variable-reference-asts))
+    innermost-variable-reference-asts))
