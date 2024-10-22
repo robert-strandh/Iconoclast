@@ -205,3 +205,47 @@
       (set-difference variable-reference-asts
                       innermost-variable-reference-asts))
     (values innermost-variable-reference-asts innermost-function-ast)))
+
+(defun handle-callee-side
+    (variable-reference-asts let-temporary-ast index ast-info)
+  (let* ((static-environment-variable-definition-ast
+           (ico:variable-name-ast (ico:binding-ast let-temporary-ast)))
+         (static-environment-variable-reference-ast
+           (make-instance 'ico:variable-reference-ast
+             :name (ico:name static-environment-variable-definition-ast)
+             :variable-definition-ast
+             static-environment-variable-definition-ast))
+         (index-ast
+           (make-instance 'ico:literal-ast :literal index))
+         (read-static-environment-ast
+           (make-instance 'ico:read-static-environment-ast
+             :static-environment-ast
+             static-environment-variable-reference-ast   
+             :index-ast index-ast))
+         (variable-definition-ast
+           (make-instance 'ico:variable-definition-ast
+             :name (ico:name (first variable-reference-asts))))
+         (binding-ast
+           (make-instance 'ico:variable-binding-ast
+             :variable-name-ast variable-definition-ast
+             :form-ast read-static-environment-ast))
+         (variable-let-temporary-ast
+           (make-instance 'ico:let-temporary-ast
+             :binding-ast binding-ast)))
+    (setf (owner-ast static-environment-variable-reference-ast ast-info)
+          (owner-ast let-temporary-ast ast-info))
+    (setf (owner-ast index-ast ast-info)
+          (owner-ast let-temporary-ast ast-info))
+    (setf (owner-ast read-static-environment-ast ast-info)
+          (owner-ast let-temporary-ast ast-info))
+    (setf (owner-ast variable-definition-ast ast-info)
+          (owner-ast let-temporary-ast ast-info))
+    (setf (owner-ast binding-ast ast-info)
+          (owner-ast let-temporary-ast ast-info))
+    (setf (owner-ast variable-let-temporary-ast ast-info)
+          (owner-ast let-temporary-ast ast-info))
+    (link static-environment-variable-definition-ast
+          static-environment-variable-reference-ast)
+    (loop for variable-reference-ast in variable-reference-asts
+          do (link variable-definition-ast variable-reference-ast))
+    (wrap-form-asts variable-let-temporary-ast let-temporary-ast)))
