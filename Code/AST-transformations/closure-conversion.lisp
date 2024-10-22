@@ -161,7 +161,8 @@
 ;;; Take a VARIABLE-DEFINITION-AST which is known to have at least one
 ;;; VARIABLE-REFERENCE-AST with a different owner.  Return a list of
 ;;; all the VARIABLE-REFERENCE-ASTs having as owner the innermost
-;;; function of all the owners of all the VARIABLE-REFERENCE-ASTs.
+;;; function of all the owners of all the VARIABLE-REFERENCE-ASTs and
+;;; the innermost LOCAL-FUNCTION-AST.
 (defun extract-innermost-variable-references
     (variable-definition-ast ast-info)
   (let* ((variable-reference-asts
@@ -183,4 +184,4 @@
       :variable-reference-asts
       (set-difference variable-reference-asts
                       innermost-variable-reference-asts))
-    innermost-variable-reference-asts))
+    (values innermost-variable-reference-asts innermost-function-ast)))
