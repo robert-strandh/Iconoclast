@@ -29,6 +29,15 @@
 
 (defparameter *true-closure-entries* '())
 
+;;; Take a VARIABLE-DEFINITION-AST and a VARIABLE-REFERENCE-AST and
+;;; add the VARIABLE-REFERENCE-AST to the list of
+;;; VARIABLE-REFERENCE-ASTs of the VARIABLE-DEFINITION-AST.
+(defun link (variable-definition-ast variable-reference-ast)
+  (reinitialize-instance variable-definition-ast
+    :variable-reference-asts
+    (cons variable-reference-ast
+          (ico:variable-reference-asts variable-definition-ast))))
+
 (defun ensure-closure-entry (local-function-ast ast-info)
   (let ((entry (find local-function-ast *true-closure-entries*
                      :key #'local-function-ast
@@ -92,15 +101,8 @@
                 (owner-ast labels-ast))
           (setf (owner-ast set-static-environment-ast ast-info)
                 (owner-ast labels-ast))
-          ;; We have another VARIABLE-REFERENCE-AST referring to the
-          ;; LOCAL-FUNCTION-AST, so we need to add it to the list of
-          ;; VARIABLE-REFERENCE-ASTs of the VARIABLE-DEFINITION-AST
-          ;; of the LOCAL-FUNCTION-AST.
-          (reinitialize-instance variable-definition-for-function-ast
-            :variable-reference-asts
-            (cons variable-reference-for-function-ast
-                  (ico:variable-reference-asts 
-                   variable-definition-for-function-ast)))
+          (link variable-definition-for-function-ast
+                variable-reference-for-function-ast)
           ;; Replace the FORM-ASTs of LOCAL-FUNCTION-AST by the
           ;; LET-TEMPORARY-AST containing those FORM-ASTs so that
           ;; the STATIC-ENTRY-VARIABLE-DEFINITION-AST is in scope
@@ -196,12 +198,3 @@
       (set-difference variable-reference-asts
                       innermost-variable-reference-asts))
     (values innermost-variable-reference-asts innermost-function-ast)))
-
-;;; Take a VARIABLE-DEFINITION-AST and a VARIABLE-REFERENCE-AST and
-;;; add the VARIABLE-REFERENCE-AST to the list of
-;;; VARIABLE-REFERENCE-ASTs of the VARIABLE-DEFINITION-AST.
-(defun link (variable-definition-ast variable-reference-ast)
-  (reinitialize-instance variable-definition-ast
-    :variable-reference-asts
-    (cons variable-reference-ast
-          (ico:variable-reference-asts variable-definition-ast))))
