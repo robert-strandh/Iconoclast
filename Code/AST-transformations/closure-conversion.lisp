@@ -150,3 +150,10 @@
 ;;;      and R1, R2, ... Rk.
 ;;;
 ;;;   7. Go to 1.
+
+(defun find-innermost-function (local-function-asts ast-info)
+  (loop for local-function-ast in local-function-asts
+        for function-child-asts
+          = (function-child-asts local-function-ast ast-info)
+        when (null (intersection local-function-asts function-child-asts))
+          return local-function-ast))
