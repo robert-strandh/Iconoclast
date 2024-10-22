@@ -60,3 +60,93 @@
 ;;;      and R1, R2, ... Rk.
 ;;;
 ;;;   7. Go to 1.
+
+(defclass closure-entry ()
+  ((%local-function-ast
+    :initarg :local-function-ast
+    :reader local-function-ast)
+   (%let-temporary-ast
+    :initarg :let-temporary-ast
+    :reader let-temporary-ast)
+   (%set-static-environment-ast
+    :initarg set-static-environment-ast
+    :reader set-static-environment-ast)))
+
+(defparameter *true-closure-entries* '())
+
+(defun ensure-closure-entry (local-function-ast ast-info)
+  (let ((entry (find local-function-ast *true-closure-entries*
+                     :key #'local-function-ast
+                     :test #'eq)))
+    (if (null entry)
+        (let* (;; The STATIC-ENVIRONMENT-AST that will wrap the
+               ;; FORM-ASTs of the body of the LOCAL-FUNCTION-AST.
+               (static-environment-ast
+                 (make-instance 'ico:static-environment-ast))
+               ;; The VARIABLE-DEFINITION-AST that of the variable
+               ;; holding the static environment of the
+               ;; LOCAL-FUNCTION-AST.
+               (static-entry-variable-definition-ast
+                 (make-instance 'ico:variable-definition-ast))
+               ;; The BINDING-AST of the new LET-TEMPORARY-AST to be
+               ;; used to wrap the FORM-ASTs of the body of
+               ;; LOCAL-FUNCTION-AST.
+               (binding-ast
+                 (make-instance 'ico:variable-binding-ast
+                   :variable-name-ast static-entry-variable-definition-ast
+                   :form-ast static-environment-ast))
+               ;; The new LET-TEMPORARY-AST to be used to wrap the
+               ;; FORM-ASTs of the body of LOCAL-FUNCTION-AST.
+               (let-temporary-ast
+                 (make-instance 'ico:let-temporary-ast
+                   :binding-ast binding-ast
+                   :form-asts (ico:form-asts local-function-ast)))
+               ;; The SET-STATIC-ENVIRONMENT-AST will have a reference
+               ;; to the VARIABLE-DEFINITION-AST of
+               ;; LOCAL-FUNCTION-AST, so we need to create a new
+               ;; VARIABLE-REFERENCE-AST and link them up.
+               (variable-definition-for-function-ast
+                 (ico:name-ast local-function-ast))
+               (variable-reference-for-function-ast
+                 (make-instance 'ico:variable-reference-ast
+                   :variable-definition-ast
+                   variable-definition-for-function-ast))
+               ;; Presumably the LABELS-AST that contains the
+               ;; definition of the LOCAL-FUNCTION-AST we are
+               ;; processing.
+               (labels-ast
+                 (parent-ast local-function-ast ast-info))
+               (set-static-environment-ast
+                 (make-instance 'ico:set-static-environment-ast
+                   :function-reference-ast
+                   variable-reference-for-function-ast
+                   :form-asts '()))
+               (entry
+                 (make-instance 'closure-entry
+                   :local-function-ast local-function-ast
+                   :let-temporary-ast let-temporary-ast)))
+          (check-type labels-ast ico:labels-ast)
+          ;; We have another VARIABLE-REFERENCE-AST referring to the
+          ;; LOCAL-FUNCTION-AST, so we need to add it to the list of
+          ;; VARIABLE-REFERENCE-ASTs of the VARIABLE-DEFINITION-AST
+          ;; of the LOCAL-FUNCTION-AST.
+          (reinitialize-instance variable-definition-for-function-ast
+            :variable-reference-asts
+            (cons variable-reference-for-function-ast
+                  (ico:variable-reference-asts 
+                   variable-definition-for-function-ast)))
+          ;; Replace the FORM-ASTs of LOCAL-FUNCTION-AST by the
+          ;; LET-TEMPORARY-AST containing those FORM-ASTs so that
+          ;; the STATIC-ENTRY-VARIABLE-DEFINITION-AST is in scope
+          ;; for all those FORM-ASTs.
+          (reinitialize-instance local-function-ast
+            :form-asts (list let-temporary-ast))
+          ;; Add the new SET-STATIC-ENVIRONMENT-AST as the first
+          ;; FORM-AST in the body of the LABEL-AST.
+          (reinitialize-instance labels-ast
+            :form-asts (cons set-static-environment-ast
+                             (ico:form-asts labels-ast)))
+          ;; Add the new entry to the list and return the entry.
+          (push entry *true-closure-entries*)
+          entry)
+        entry)))
