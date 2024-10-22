@@ -198,3 +198,13 @@
       (set-difference variable-reference-asts
                       innermost-variable-reference-asts))
     (values innermost-variable-reference-asts innermost-function-ast)))
+
+;;; WRAPPER-AST and WRAPPEE-AST are both ASTs that have a list of
+;;; FORM-ASTs that can be accesses using ICO:FORM-ASTS, and that can
+;;; be reinitialized using the :FORM-ASTS keyword.  We wrap the forms
+;;; of WRAPPEE-AST in the WRAPPER-AST.
+(defun wrap-form-asts (wrapper-ast wrappee-ast)
+  (reinitialize-instance wrapper-ast
+    :form-asts (ico:form-asts wrappee-ast))
+  (reinitialize-instance wrappee-ast
+    :form-asts (list wrapper-ast)))
