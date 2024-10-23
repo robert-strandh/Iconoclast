@@ -309,3 +309,15 @@
                   :ast-info ast-info)))
     (iaw:walk-ast client ast)
     (variable-asts client)))
+
+(defun process-one-shared-variable-ast (variable-definition-ast ast-info)
+  (loop while (variable-is-shared-p variable-definition-ast ast-info)
+        do (process-variable-references-with-innermost-owners
+            variable-definition-ast ast-info)))
+
+(defun closure-conversion (ast)
+  (let* ((ast-info (compute-ast-info ast))
+         (variable-definition-asts (shared-variables ast ast-info)))
+    (loop for variable-definition-ast in variable-definition-asts
+          do (process-one-shared-variable-ast
+              variable-definition-ast ast-info))))
