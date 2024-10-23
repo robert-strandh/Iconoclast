@@ -30,6 +30,7 @@
    #:inline-functions
    #:inline-inlinable-functions
    #:assignment-conversion
+   #:closure-conversion
    #:convert-block
    #:convert-tagbody
    #:transform-function-definition-and-reference
