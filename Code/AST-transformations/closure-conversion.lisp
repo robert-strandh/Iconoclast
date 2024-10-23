@@ -110,9 +110,9 @@
           (setf (owner-ast let-temporary-ast ast-info)
                 local-function-ast)
           (setf (owner-ast variable-reference-for-function-ast ast-info)
-                (owner-ast labels-ast))
+                (owner-ast labels-ast ast-info))
           (setf (owner-ast set-static-environment-ast ast-info)
-                (owner-ast labels-ast))
+                (owner-ast labels-ast ast-info))
           (link variable-definition-for-function-ast
                 variable-reference-for-function-ast)
           (wrap-form-asts let-temporary-ast local-function-ast)
