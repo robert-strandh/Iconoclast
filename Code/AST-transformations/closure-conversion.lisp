@@ -289,3 +289,23 @@
       (handle-caller-side variable-definition-ast
                           set-static-environment-ast
                           ast-info))))
+
+(defclass shared-variables-client (client)
+  ((%ast-info :initarg :ast-info :reader ast-info)
+   (%variable-asts :initform '() :accessor variable-asts)))
+
+(defmethod iaw:walk-ast-node :around
+    ((client shared-variables-client) (ast ico:variable-definition-ast))
+  (call-next-method)
+  (let ((ast-info (ast-info client)))
+    (when (variable-is-shared-p ast ast-info)
+      (pushnew ast (variable-asts client) :test #'eq)))
+  ast)
+
+;;; This function returns a list of VARIABLE-DEFINITION-ASTs such that
+;;; the corresponding variable is shared.
+(defun shared-variables (ast ast-info)
+  (let ((client (make-instance 'shared-variables-client
+                  :ast-info ast-info)))
+    (iaw:walk-ast client ast)
+    (variable-asts client)))
