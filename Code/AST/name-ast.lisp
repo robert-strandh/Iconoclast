@@ -22,7 +22,7 @@
   (;; This slot contains the VARIABLE-DEFINITION-AST that corresponds
    ;; to the definition of the variable that is referred to by this
    ;; AST.
-   (? variable-definition-ast)))
+   (? definition-ast)))
 
 ;;; This class can be used in a call to CHANGE-CLASS with a
 ;;; VARIABLE-NAME-AST as an argument, once it is known that the

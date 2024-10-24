@@ -15,7 +15,7 @@
      (ast ico:function-reference-ast))
   (call-next-method)
   (change-class ast 'ico:variable-reference-ast
-                :variable-definition-ast
+                :definition-ast
                 (ico:definition-ast ast)))
 
 (defun transform-function-definition-and-reference (ast)

@@ -32,11 +32,11 @@
 ;;; Take a VARIABLE-DEFINITION-AST and a VARIABLE-REFERENCE-AST and
 ;;; add the VARIABLE-REFERENCE-AST to the list of
 ;;; VARIABLE-REFERENCE-ASTs of the VARIABLE-DEFINITION-AST.
-(defun link (variable-definition-ast variable-reference-ast)
-  (reinitialize-instance variable-definition-ast
+(defun link (definition-ast variable-reference-ast)
+  (reinitialize-instance definition-ast
     :variable-reference-asts
     (cons variable-reference-ast
-          (ico:variable-reference-asts variable-definition-ast))))
+          (ico:variable-reference-asts definition-ast))))
 
 ;;; WRAPPER-AST and WRAPPEE-AST are both ASTs that have a list of
 ;;; FORM-ASTs that can be accesses using ICO:FORM-ASTS, and that can
@@ -84,7 +84,7 @@
                  (ico:name-ast local-function-ast))
                (variable-reference-for-function-ast
                  (make-instance 'ico:variable-reference-ast
-                   :variable-definition-ast
+                   :definition-ast
                    variable-definition-for-function-ast))
                ;; Presumably the LABELS-AST that contains the
                ;; definition of the LOCAL-FUNCTION-AST we are
@@ -213,7 +213,7 @@
          (static-environment-variable-reference-ast
            (make-instance 'ico:variable-reference-ast
              :name (ico:name static-environment-variable-definition-ast)
-             :variable-definition-ast
+             :definition-ast
              static-environment-variable-definition-ast))
          (index-ast
            (make-instance 'ico:literal-ast :literal index))
@@ -256,7 +256,7 @@
         ;; set-static-environment-ast of the parent function.
         (variable-reference-ast
           (make-instance 'ico:variable-reference-ast
-            :variable-definition-ast variable-definition-ast
+            :definition-ast variable-definition-ast
             :name (ico:name variable-definition-ast))))
     (setf (owner-ast variable-reference-ast ast-info)
           (owner-ast set-static-environment-ast ast-info))

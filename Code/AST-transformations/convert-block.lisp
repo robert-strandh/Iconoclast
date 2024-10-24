@@ -50,7 +50,7 @@
          (variable-reference-ast
            (make-instance 'ico:variable-reference-ast
              :name name
-             :variable-definition-ast variable-definition-ast)))
+             :definition-ast variable-definition-ast)))
     (reinitialize-instance variable-definition-ast
       :variable-reference-asts
       (cons variable-reference-ast

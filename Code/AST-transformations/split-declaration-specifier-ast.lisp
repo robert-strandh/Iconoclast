@@ -57,7 +57,7 @@
     (dictionary
      (reference ico:variable-definition-ast)
      declaration-specifier-ast)
-  (let ((definition (ico:variable-definition-ast reference)))
+  (let ((definition (ico:definition-ast reference)))
     (add-entry dictionary definition declaration-specifier-ast)))
 
 (defmethod add-dictionary-entry

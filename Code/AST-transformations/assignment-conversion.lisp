@@ -27,7 +27,7 @@
   (call-next-method)
   (let* ((variable-reference-ast (ico:variable-name-ast ast))
          (variable-definition-ast
-           (ico:variable-definition-ast variable-reference-ast))
+           (ico:definition-ast variable-reference-ast))
          (ast-info (ast-info client)))
     (when (variable-is-shared-p variable-definition-ast ast-info)
       (pushnew variable-definition-ast (variable-asts client)
@@ -74,7 +74,7 @@
   (let* ((new-variable-reference-ast
            (make-instance 'ico:variable-reference-ast
              :name (ico:name variable-definition-ast)
-             :variable-definition-ast variable-definition-ast))
+             :definition-ast variable-definition-ast))
          (old-variable-reference-asts
            (ico:variable-reference-asts variable-definition-ast))
          (new-variable-definition-ast
@@ -84,7 +84,7 @@
            (loop repeat (length old-variable-reference-asts)
                  collect (make-instance 'ico:variable-reference-ast
                            :name nil
-                           :variable-definition-ast
+                           :definition-ast
                            new-variable-definition-ast)))
          (variable-binding-ast
            (make-instance 'ico:variable-binding-ast

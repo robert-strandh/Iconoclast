@@ -36,7 +36,7 @@
          (variable-reference-ast
            (make-instance 'ico:variable-reference-ast
              :name nil
-             :variable-definition-ast variable-definition-ast))
+             :definition-ast variable-definition-ast))
          (segment-asts (ico:segment-asts tagbody-ast))
          (relevant-segment-asts
            (if (null (ico:tag-ast (first segment-asts)))

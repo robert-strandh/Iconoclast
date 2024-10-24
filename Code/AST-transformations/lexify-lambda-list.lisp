@@ -142,7 +142,7 @@
                        :name name))
          (reference (make-instance 'ico:variable-reference-ast
                       :name name
-                      :variable-definition-ast definition)))
+                      :definition-ast definition)))
     (reinitialize-instance definition
       :variable-reference-asts (list reference))
     (values definition reference)))

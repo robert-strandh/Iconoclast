@@ -19,7 +19,7 @@
            (eq (ico:name (ico:name-ast ast1))
                (ico:name (ico:name-ast ast2))))
       (and (typep ast2 'ico:variable-reference-ast)
-           (eq (ico:variable-definition-ast ast2) ast1))))
+           (eq (ico:definition-ast ast2) ast1))))
 
 (defun collect-associated-declaration-specifier-asts
     (variable-ast declaration-specifier-ast-pairs)
