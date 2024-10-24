@@ -34,9 +34,9 @@
 ;;; VARIABLE-REFERENCE-ASTs of the VARIABLE-DEFINITION-AST.
 (defun link (definition-ast variable-reference-ast)
   (reinitialize-instance definition-ast
-    :variable-reference-asts
+    :reference-asts
     (cons variable-reference-ast
-          (ico:variable-reference-asts definition-ast))))
+          (ico:reference-asts definition-ast))))
 
 ;;; WRAPPER-AST and WRAPPEE-AST are both ASTs that have a list of
 ;;; FORM-ASTs that can be accesses using ICO:FORM-ASTS, and that can
@@ -180,34 +180,34 @@
 
 ;;; Take a VARIABLE-DEFINITION-AST which is known to have at least one
 ;;; VARIABLE-REFERENCE-AST with a different owner.  Return a list of
-;;; all the VARIABLE-REFERENCE-ASTs having as owner the innermost
-;;; function of all the owners of all the VARIABLE-REFERENCE-ASTs and
+;;; all the Reference-Asts having as owner the innermost
+;;; function of all the owners of all the Reference-Asts and
 ;;; the innermost LOCAL-FUNCTION-AST.
 (defun extract-innermost-variable-references
     (variable-definition-ast ast-info)
-  (let* ((variable-reference-asts
-           (ico:variable-reference-asts variable-definition-ast))
+  (let* ((reference-asts
+           (ico:reference-asts variable-definition-ast))
          (owner-asts
-           (loop for variable-reference-ast in variable-reference-asts
+           (loop for variable-reference-ast in reference-asts
                  collect (owner-ast variable-reference-ast ast-info)))
          (innermost-function-ast
            (find-innermost-function owner-asts ast-info))
-         (innermost-variable-reference-asts
-           (loop for variable-reference-ast in variable-reference-asts
+         (innermost-reference-asts
+           (loop for variable-reference-ast in reference-asts
                  for owner-ast
                    = (owner-ast variable-reference-ast ast-info)
                  when (eq innermost-function-ast owner-ast)
                    collect variable-reference-ast)))
-    ;; Remove the relevant VARIABLE-REFERENCE-ASTs from the list
-    ;; of VARIABLE-REFERENCE-ASTs of the VARIABLE-DEFINITION-AST.
+    ;; Remove the relevant Reference-Asts from the list
+    ;; of Reference-Asts of the VARIABLE-DEFINITION-AST.
     (reinitialize-instance variable-definition-ast
-      :variable-reference-asts
-      (set-difference variable-reference-asts
-                      innermost-variable-reference-asts))
-    (values innermost-variable-reference-asts innermost-function-ast)))
+      :reference-asts
+      (set-difference reference-asts
+                      innermost-reference-asts))
+    (values innermost-reference-asts innermost-function-ast)))
 
 (defun handle-callee-side
-    (variable-reference-asts let-temporary-ast index ast-info)
+    (reference-asts let-temporary-ast index ast-info)
   (let* ((static-environment-variable-definition-ast
            (ico:variable-name-ast (ico:binding-ast let-temporary-ast)))
          (static-environment-variable-reference-ast
@@ -224,7 +224,7 @@
              :index-ast index-ast))
          (variable-definition-ast
            (make-instance 'ico:variable-definition-ast
-             :name (ico:name (first variable-reference-asts))))
+             :name (ico:name (first reference-asts))))
          (binding-ast
            (make-instance 'ico:variable-binding-ast
              :variable-name-ast variable-definition-ast
@@ -246,7 +246,7 @@
           (owner-ast let-temporary-ast ast-info))
     (link static-environment-variable-definition-ast
           static-environment-variable-reference-ast)
-    (loop for variable-reference-ast in variable-reference-asts
+    (loop for variable-reference-ast in reference-asts
           do (link variable-definition-ast variable-reference-ast))
     (wrap-form-asts variable-let-temporary-ast let-temporary-ast)))
 
@@ -270,19 +270,19 @@
 
 ;;; Take a VARIABLE-DEFINITION-AST which is known to have at least one
 ;;; VARIABLE-REFERENCE-AST with a different owner.  Take the innermost
-;;; VARIABLE-REFERENCE-ASTS, and add ASTs for manipulating the static
+;;; REFERENCE-ASTS, and add ASTs for manipulating the static
 ;;; environment accordingly.
 (defun process-variable-references-with-innermost-owners
     (variable-definition-ast ast-info)
   (multiple-value-bind
-        (innermost-variable-reference-asts innermost-function-ast)
+        (innermost-reference-asts innermost-function-ast)
       (extract-innermost-variable-references
        variable-definition-ast ast-info)
     (let* ((entry (ensure-closure-entry innermost-function-ast ast-info))
            (set-static-environment-ast (set-static-environment-ast entry))
            (let-temporary-ast (let-temporary-ast  entry))
            (index (length (ico:form-asts set-static-environment-ast))))
-      (handle-callee-side innermost-variable-reference-asts
+      (handle-callee-side innermost-reference-asts
                           let-temporary-ast
                           index
                           ast-info)

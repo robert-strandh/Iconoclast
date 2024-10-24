@@ -45,9 +45,9 @@
          (index (position tag-definition-ast relevant-segment-asts
                           :test #'eq :key #'ico:tag-ast)))
     (reinitialize-instance variable-definition-ast
-      :variable-reference-asts
+      :reference-asts
       (cons variable-reference-ast
-            (ico:variable-reference-asts variable-definition-ast)))
+            (ico:reference-asts variable-definition-ast)))
     (change-class ast 'ico:go-with-variable-ast
                   :variable-reference-ast variable-reference-ast
                   :index-ast (make-instance 'ico:literal-ast

@@ -13,7 +13,7 @@
   (;; This slot contains a list of VARIABLE-REFERENCE-ASTs that
    ;; correspond to references to the variable that is defined by this
    ;; AST.
-   (* variable-reference-asts)))
+   (* reference-asts)))
 
 ;;; This class can be used in a call to CHANGE-CLASS with a
 ;;; VARIABLE-NAME-AST as an argument, once it is known that the

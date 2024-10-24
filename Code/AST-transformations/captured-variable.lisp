@@ -36,7 +36,7 @@
 ;;; Given a a VARIABLE-DEFINITION-AST of some variable, return true if
 ;;; and only if the variable escapes.
 (defun variable-escapes (variable-definition-ast ast-info)
-  (loop for ast in (ico:variable-reference-asts variable-definition-ast)
+  (loop for ast in (ico:reference-asts variable-definition-ast)
           thereis (variable-reference-escapes-p
                    variable-definition-ast ast ast-info)))
 

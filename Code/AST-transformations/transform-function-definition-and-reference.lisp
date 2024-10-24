@@ -7,7 +7,7 @@
      (ast ico:function-definition-ast))
   (call-next-method)
   (change-class ast 'ico:variable-definition-ast
-                :variable-reference-asts
+                :reference-asts
                 (ico:reference-asts ast)))
 
 (defmethod iaw:walk-ast-node :around

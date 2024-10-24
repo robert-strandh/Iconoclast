@@ -13,7 +13,7 @@
   (loop with definition-owner-ast
           = (owner-ast variable-definition-ast ast-info)
         for variable-reference-ast
-          in (ico:variable-reference-asts variable-definition-ast)
+          in (ico:reference-asts variable-definition-ast)
         for reference-owner-ast
           = (owner-ast variable-reference-ast ast-info)
             thereis (not (eq definition-owner-ast reference-owner-ast))))
@@ -63,9 +63,9 @@
          old-variable-reference-ast new-variable-reference-ast))))
 
 (defun replace-with-cell-accessors
-    (old-variable-reference-asts new-variable-reference-asts ast-info)
-  (loop for old-variable-reference-ast in old-variable-reference-asts
-        for new-variable-reference-ast in new-variable-reference-asts
+    (old-reference-asts new-reference-asts ast-info)
+  (loop for old-variable-reference-ast in old-reference-asts
+        for new-variable-reference-ast in new-reference-asts
         do (replace-with-cell-accessor
             old-variable-reference-ast new-variable-reference-ast ast-info)))
 
@@ -75,13 +75,13 @@
            (make-instance 'ico:variable-reference-ast
              :name (ico:name variable-definition-ast)
              :definition-ast variable-definition-ast))
-         (old-variable-reference-asts
-           (ico:variable-reference-asts variable-definition-ast))
+         (old-reference-asts
+           (ico:reference-asts variable-definition-ast))
          (new-variable-definition-ast
            (make-instance 'ico:variable-definition-ast
              :name nil))
-         (new-variable-reference-asts
-           (loop repeat (length old-variable-reference-asts)
+         (new-reference-asts
+           (loop repeat (length old-reference-asts)
                  collect (make-instance 'ico:variable-reference-ast
                            :name nil
                            :definition-ast
@@ -95,11 +95,11 @@
              :binding-ast variable-binding-ast
              :form-asts (ico:form-asts local-function-ast))))
     (replace-with-cell-accessors
-     old-variable-reference-asts new-variable-reference-asts ast-info)
+     old-reference-asts new-reference-asts ast-info)
     (reinitialize-instance new-variable-definition-ast
-      :variable-reference-asts new-variable-reference-asts)
+      :reference-asts new-reference-asts)
     (reinitialize-instance variable-definition-ast
-      :variable-reference-asts
+      :reference-asts
       (list new-variable-reference-ast))
     (reinitialize-instance local-function-ast
       :form-asts (list let-temporary-ast))))

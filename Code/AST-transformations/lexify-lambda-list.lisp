@@ -144,7 +144,7 @@
                       :name name
                       :definition-ast definition)))
     (reinitialize-instance definition
-      :variable-reference-asts (list reference))
+      :reference-asts (list reference))
     (values definition reference)))
 
 (defun lexify-required-parameter-ast (required-parameter-ast)

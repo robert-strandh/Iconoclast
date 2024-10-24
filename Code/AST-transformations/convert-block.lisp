@@ -52,9 +52,9 @@
              :name name
              :definition-ast variable-definition-ast)))
     (reinitialize-instance variable-definition-ast
-      :variable-reference-asts
+      :reference-asts
       (cons variable-reference-ast
-            (ico:variable-reference-asts variable-definition-ast)))
+            (ico:reference-asts variable-definition-ast)))
     (change-class ast 'ico:return-from-with-variable-ast
                   :variable-reference-ast variable-reference-ast))
   ast)
