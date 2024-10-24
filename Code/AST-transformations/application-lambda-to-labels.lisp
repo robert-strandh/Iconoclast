@@ -12,12 +12,12 @@
 
 (defun application-lambda-to-labels (application-ast)
   (let* ((function-name-definition-ast
-           (make-instance 'ico:local-function-name-definition-ast
+           (make-instance 'ico:definition-ast
              :name (gensym)))
          (function-name-reference-ast
            (make-instance 'ico:function-reference-ast
              :name (ico:name function-name-definition-ast)
-             :local-function-name-definition-ast
+             :definition-ast
              function-name-definition-ast))
          (operator-ast (ico:function-name-ast application-ast)))
     (reinitialize-instance function-name-definition-ast

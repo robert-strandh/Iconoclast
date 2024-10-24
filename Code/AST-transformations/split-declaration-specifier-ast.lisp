@@ -64,7 +64,7 @@
     (dictionary
      (reference ico:function-reference-ast)
      declaration-specifier-ast)
-  (let ((definition (ico:local-function-name-definition-ast reference)))
+  (let ((definition (ico:definition-ast reference)))
     (add-entry dictionary definition declaration-specifier-ast)))
 
 (defmethod add-dictionary-entry

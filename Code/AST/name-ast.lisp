@@ -43,7 +43,7 @@
 ;;; FUNCTION-NAME-AST as an argument, once it is known that the
 ;;; FUNCTION-NAME-AST corresponds to the definition of a local
 ;;; function name as in a LABELS or FLET form.
-(define-ast-class local-function-name-definition-ast (function-name-ast)
+(define-ast-class definition-ast (function-name-ast)
   (;; This slot contains a list of FUNCTION-REFERENCE-ASTs that
    ;; correspond to references to the function name that is defined by
    ;; this AST.
@@ -56,7 +56,7 @@
   (;; This slot contains the FUNCTION-DEFINITION-AST that corresponds
    ;; to the definition of the local function that is referred to by
    ;; this AST.
-   (? local-function-name-definition-ast)))
+   (? definition-ast)))
 
 ;;; This class can be used in a call to CHANGE-CLASS with a
 ;;; FUNCTION-NAME-AST as an argument, once it is known that the

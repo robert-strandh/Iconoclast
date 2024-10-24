@@ -225,7 +225,7 @@
     (let ((function-name-ast (ico:function-name-ast application-ast))
           (argument-asts (ico:argument-asts application-ast)))
       (assert (= (length required-parameter-asts) (length argument-asts)))
-      (assert (eq (ico:local-function-name-definition-ast function-name-ast)
+      (assert (eq (ico:definition-ast function-name-ast)
                   name-ast))
       (let ((locally-ast
               (make-instance 'ico:locally-ast

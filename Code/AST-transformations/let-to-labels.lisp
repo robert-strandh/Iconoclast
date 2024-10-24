@@ -17,12 +17,12 @@
     (binding-asts declaration-asts form-asts origin)
   (let* ((name (gensym))
          (local-function-definition
-           (make-instance 'ico:local-function-name-definition-ast
+           (make-instance 'ico:definition-ast
              :name name))
          (local-function-reference
            (make-instance 'ico:function-reference-ast
              :name name
-             :local-function-name-definition-ast local-function-definition)))
+             :definition-ast local-function-definition)))
     (reinitialize-instance local-function-definition
       :local-function-name-reference-asts (list local-function-reference))
     (make-instance 'ico:labels-ast

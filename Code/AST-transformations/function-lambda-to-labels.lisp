@@ -12,12 +12,12 @@
 
 (defun function-lambda-to-labels (function-ast)
   (let* ((function-name-definition-ast
-           (make-instance 'ico:local-function-name-definition-ast
+           (make-instance 'ico:definition-ast
              :name (gensym)))
          (function-name-reference-ast
            (make-instance 'ico:function-reference-ast
              :name (ico:name function-name-definition-ast)
-             :local-function-name-definition-ast
+             :definition-ast
              function-name-definition-ast))
          (argument-ast (ico:name-ast function-ast)))
     (reinitialize-instance function-name-definition-ast
