@@ -4,7 +4,7 @@
 
 (defmethod iaw:walk-ast-node :around
     ((client function-definition-and-reference-client)
-     (ast ico:definition-ast))
+     (ast ico:function-definition-ast))
   (call-next-method)
   (change-class ast 'ico:variable-definition-ast
                 :variable-reference-asts

@@ -17,7 +17,7 @@
     (binding-asts declaration-asts form-asts origin)
   (let* ((name (gensym))
          (local-function-definition
-           (make-instance 'ico:definition-ast
+           (make-instance 'ico:function-definition-ast
              :name name))
          (local-function-reference
            (make-instance 'ico:function-reference-ast

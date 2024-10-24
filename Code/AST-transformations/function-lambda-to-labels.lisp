@@ -12,7 +12,7 @@
 
 (defun function-lambda-to-labels (function-ast)
   (let* ((function-name-definition-ast
-           (make-instance 'ico:definition-ast
+           (make-instance 'ico:function-definition-ast
              :name (gensym)))
          (function-name-reference-ast
            (make-instance 'ico:function-reference-ast

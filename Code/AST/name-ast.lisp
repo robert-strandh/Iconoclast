@@ -43,7 +43,7 @@
 ;;; FUNCTION-NAME-AST as an argument, once it is known that the
 ;;; FUNCTION-NAME-AST corresponds to the definition of a local
 ;;; function name as in a LABELS or FLET form.
-(define-ast-class definition-ast (function-name-ast)
+(define-ast-class function-definition-ast (function-name-ast)
   (;; This slot contains a list of FUNCTION-REFERENCE-ASTs that
    ;; correspond to references to the function name that is defined by
    ;; this AST.
