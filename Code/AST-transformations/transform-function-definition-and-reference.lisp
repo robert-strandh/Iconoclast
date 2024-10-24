@@ -8,7 +8,7 @@
   (call-next-method)
   (change-class ast 'ico:variable-definition-ast
                 :variable-reference-asts
-                (ico:local-function-name-reference-asts ast)))
+                (ico:reference-asts ast)))
 
 (defmethod iaw:walk-ast-node :around
     ((client function-definition-and-reference-client)

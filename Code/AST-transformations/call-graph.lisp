@@ -18,7 +18,7 @@
     ((client call-graph-client) (ast ico:local-function-ast))
   (call-next-method)
   (let* ((name-ast (ico:name-ast ast))
-         (reference-asts (ico:local-function-name-reference-asts name-ast)))
+         (reference-asts (ico:reference-asts name-ast)))
     (loop with ast-info = (ast-info client)
           for reference-ast in reference-asts
           for parent-ast = (parent-ast reference-ast ast-info)

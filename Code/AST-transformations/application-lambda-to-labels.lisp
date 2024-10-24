@@ -21,7 +21,7 @@
              function-name-definition-ast))
          (operator-ast (ico:function-name-ast application-ast)))
     (reinitialize-instance function-name-definition-ast
-      :local-function-name-reference-asts
+      :reference-asts
       (list function-name-reference-ast))
     (make-instance 'ico:labels-ast
       :binding-asts

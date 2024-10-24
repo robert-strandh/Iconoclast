@@ -16,7 +16,7 @@
   (call-next-method)
   (let ((definition-ast (ico:name-ast ast)))
     (loop for reference-ast
-            in (ico:local-function-name-reference-asts definition-ast)
+            in (ico:reference-asts definition-ast)
           for parent-ast = (parent-ast reference-ast (ast-info client))
           unless (and (typep parent-ast 'ico:application-ast)
                       (eq reference-ast (ico:function-name-ast parent-ast)))

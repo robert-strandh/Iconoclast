@@ -139,7 +139,7 @@
 ;;; LOCAL-FUNCTION-AST.
 (defun number-of-call-sites (local-function-ast)
   (let* ((name-ast (ico:name-ast local-function-ast))
-         (reference-asts (ico:local-function-name-reference-asts name-ast)))
+         (reference-asts (ico:reference-asts name-ast)))
     (length reference-asts)))
 
 ;;; This function returns true if and only if the lambda list of the
@@ -242,7 +242,7 @@
 (defun inline-function (local-function-ast ast-info)
   (let* ((name-definition-ast (ico:name-ast local-function-ast))
          (reference-asts
-           (ico:local-function-name-reference-asts name-definition-ast)))
+           (ico:reference-asts name-definition-ast)))
     ;; Replace each call site with the body of the function.
     (loop for reference-ast in reference-asts
           do (replace-call-site local-function-ast reference-ast ast-info))

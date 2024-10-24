@@ -24,7 +24,7 @@
              :name name
              :definition-ast local-function-definition)))
     (reinitialize-instance local-function-definition
-      :local-function-name-reference-asts (list local-function-reference))
+      :reference-asts (list local-function-reference))
     (make-instance 'ico:labels-ast
       :binding-asts
       (list (make-instance 'ico:local-function-ast

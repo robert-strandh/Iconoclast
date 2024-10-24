@@ -47,7 +47,7 @@
   (;; This slot contains a list of FUNCTION-REFERENCE-ASTs that
    ;; correspond to references to the function name that is defined by
    ;; this AST.
-   (* local-function-name-reference-asts)))
+   (* reference-asts)))
 
 ;;; This class can be used in a call to CHANGE-CLASS with a
 ;;; FUNCTION~-NAME-AST as an argument, once it is known that the
