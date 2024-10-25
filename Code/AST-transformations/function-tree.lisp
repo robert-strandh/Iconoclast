@@ -12,8 +12,7 @@
 (defmethod iaw:walk-ast-node :around
     ((client function-tree-client) (ast ico:local-function-ast))
   (let ((ast-info (ast-info client)))
-    (setf (function-parent-ast ast ast-info) *parent-function-ast*)
-    (push ast (function-child-asts *parent-function-ast* ast-info))
+    (link-parent-and-child-function *parent-function-ast* ast ast-info)
     (let ((*parent-function-ast* ast))
       (call-next-method))))
 
