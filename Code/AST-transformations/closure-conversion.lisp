@@ -171,11 +171,28 @@
 ;;;
 ;;;   7. Go to 1.
 
+(defun function-is-an-ancestor-of-function-p
+    (putative-ancestor-function-ast function-ast ast-info)
+  (if (eq putative-ancestor-function-ast function-ast)
+      ;; We consider only proper ancestors.
+      nil
+      (loop for ancestor-ast = function-ast
+              then (function-parent-ast ancestor-ast ast-info)
+            until (null ancestor-ast)
+            when (eq ancestor-ast putative-ancestor-function-ast)
+              return t
+            finally (return nil))))
+
+(defun function-ast-is-the-ancestor-of-none-in-set
+    (function-ast function-asts ast-info)
+  (loop for ast in function-asts
+        never (function-is-an-ancestor-of-function-p
+               function-ast ast ast-info)))
+
 (defun find-innermost-function (local-function-asts ast-info)
   (loop for local-function-ast in local-function-asts
-        for function-child-asts
-          = (function-child-asts local-function-ast ast-info)
-        when (null (intersection local-function-asts function-child-asts))
+        when (function-ast-is-the-ancestor-of-none-in-set
+              local-function-ast local-function-asts ast-info)
           return local-function-ast))
 
 ;;; Take a VARIABLE-DEFINITION-AST which is known to have at least one
