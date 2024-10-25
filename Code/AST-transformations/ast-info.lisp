@@ -38,7 +38,10 @@
   (setf (gethash ast (parent-asts ast-info)) parent-ast))
 
 (defun owner-ast (ast ast-info)
-  (gethash ast (owner-asts ast-info)))
+  (multiple-value-bind (value presentp)
+      (gethash ast (owner-asts ast-info))
+    (assert presentp)
+    value))
 
 (defun (setf owner-ast) (owner-ast ast ast-info)
   (setf (gethash ast (owner-asts ast-info)) owner-ast))
