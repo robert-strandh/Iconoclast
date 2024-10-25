@@ -8,8 +8,6 @@
 
 (defgeneric (setf escaped-functions) (escaped-functions ast-info))
 
-(defgeneric function-tree (ast-info))
-
 (defgeneric nodes (ast-info))
 
 (defgeneric function-ast-nodes (ast-info))
@@ -24,8 +22,6 @@
    (%escaped-functions
     :initform '()
     :accessor escaped-functions)
-   (%function-tree
-    :reader function-tree)
    ;; This slot contains the list of nodes of the call graph.  Each
    ;; element is an instance of the NODE class defined above.
    (%nodes :initform '() :accessor nodes)
@@ -76,19 +72,15 @@
   (let ((node (ensure-function-ast-node local-function-ast ast-info)))
     (parent-function-ast node)))
 
-(defun (setf function-parent-ast)
-    (function-parent-ast local-function-ast ast-info)
-  (let ((node (ensure-function-ast-node local-function-ast ast-info)))
-    (setf (parent-function-ast node) function-parent-ast)))
+(defun link-parent-and-child-function (parent-ast child-ast ast-info)
+  (let ((parent-node (ensure-function-ast-node parent-ast ast-info))
+        (child-node (ensure-function-ast-node child-ast ast-info)))
+    (setf (parent-function-ast child-node) parent-ast)
+    (push child-ast (child-function-asts parent-node))))
 
 (defun function-child-asts (local-function-ast ast-info)
   (let ((node (ensure-function-ast-node local-function-ast ast-info)))
     (child-function-asts node)))
-
-(defun (setf function-child-asts)
-    (function-child-asts local-function-ast ast-info)
-  (let ((node (ensure-function-ast-node local-function-ast ast-info)))
-    (setf (child-function-asts node) function-child-asts)))
 
 (defun function-caller-asts (local-function-ast ast-info)
   (let ((node (ensure-function-ast-node local-function-ast ast-info)))
