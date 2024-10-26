@@ -335,6 +335,7 @@
 (defun closure-conversion (ast)
   (let* ((ast-info (compute-ast-info ast))
          (variable-definition-asts (shared-variables ast ast-info)))
+    (check-ast ast ast-info)
     (loop for variable-definition-ast in variable-definition-asts
           do (process-one-shared-variable-ast
               variable-definition-ast ast-info)))
