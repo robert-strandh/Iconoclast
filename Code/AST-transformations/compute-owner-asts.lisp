@@ -11,7 +11,6 @@
 (defclass owner-asts-client (client)
   ((%ast-info :initarg :ast-info :reader ast-info)))
 
-
 (defvar *owner-ast*)
 
 ;;; This method is used when AST is any AST class.
