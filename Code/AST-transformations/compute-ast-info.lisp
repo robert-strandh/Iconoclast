@@ -12,14 +12,22 @@
 (defclass check-ast-client (client)
   ((%ast-info :initarg :ast-info :reader ast-info)))
 
+(defun check-definition-ast (definition-ast ast-info)
+  (unless (null (owner-ast definition-ast ast-info))
+    (loop for reference-ast in (ico:reference-asts definition-ast)
+          for owner-ast = (owner-ast reference-ast ast-info)
+          do (assert (not (null owner-ast))))))
+
 (defmethod iaw:walk-ast-node :around
     ((client check-ast-client) (ast ico:variable-definition-ast))
   (call-next-method)
-  (let ((ast-info (ast-info client)))
-    (unless (null (owner-ast ast ast-info))
-      (loop for reference-ast in (ico:reference-asts ast)
-            for owner-ast = (owner-ast reference-ast ast-info)
-            do (assert (not (null owner-ast))))))
+  (check-definition-ast ast (ast-info client))
+  ast)
+
+(defmethod iaw:walk-ast-node :around
+    ((client check-ast-client) (ast ico:function-definition-ast))
+  (call-next-method)
+  (check-definition-ast ast (ast-info client))
   ast)
 
 (defun check-ast (ast ast-info)
