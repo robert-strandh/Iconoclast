@@ -22,6 +22,11 @@
     ((client owner-asts-client) (ast ico:local-function-ast))
   (let ((*owner-ast* ast))
     (call-next-method))
+  ;; The prevous form incorrectly assigned AST as the owner of the
+  ;; NAME-AST of this AST, just because it is a child of AST, but AST
+  ;; is not the "moral" owner of the name, because it can be referred
+  ;; to by a parent of AST, so we reassign ownership here.
+  (setf (owner-ast (ico:name-ast ast) (ast-info client)) *owner-ast*)
   (setf (owner-ast ast (ast-info client)) *owner-ast*)
   ast)
 
