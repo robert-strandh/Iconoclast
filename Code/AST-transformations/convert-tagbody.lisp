@@ -57,4 +57,5 @@
 (defun convert-tagbody (ast)
   (let ((client (make-instance 'convert-tagbody-client))
         (*tagbody-to-variable-mapping* '()))
-    (iaw:walk-ast client ast)))
+    (iaw:walk-ast client ast))
+  ast)

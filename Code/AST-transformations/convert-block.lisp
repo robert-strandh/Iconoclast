@@ -62,4 +62,5 @@
 (defun convert-block (ast)
   (let ((client (make-instance 'convert-block-client))
         (*name-to-variable-mapping* '()))
-    (iaw:walk-ast client ast)))
+    (iaw:walk-ast client ast))
+  ast)
