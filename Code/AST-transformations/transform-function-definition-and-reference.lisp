@@ -20,4 +20,5 @@
 
 (defun transform-function-definition-and-reference (ast)
   (let ((client (make-instance 'function-definition-and-reference-client)))
-    (iaw:walk-ast client ast)))
+    (iaw:walk-ast client ast))
+  ast)
