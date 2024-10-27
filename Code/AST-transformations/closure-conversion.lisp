@@ -24,7 +24,7 @@
     :initarg :let-temporary-ast
     :reader let-temporary-ast)
    (%set-static-environment-ast
-    :initarg set-static-environment-ast
+    :initarg :set-static-environment-ast
     :reader set-static-environment-ast)))
 
 (defparameter *true-closure-entries* '())
@@ -63,7 +63,8 @@
                ;; The VARIABLE-DEFINITION-AST of the variable holding
                ;; the static environment of the LOCAL-FUNCTION-AST.
                (static-entry-variable-definition-ast
-                 (make-instance 'ico:variable-definition-ast))
+                 (make-instance 'ico:variable-definition-ast
+                   :name 'static-entry))
                ;; The BINDING-AST of the new LET-TEMPORARY-AST to be
                ;; used to wrap the FORM-ASTs of the body of
                ;; LOCAL-FUNCTION-AST.
@@ -84,6 +85,7 @@
                  (ico:name-ast local-function-ast))
                (variable-reference-for-function-ast
                  (make-instance 'ico:variable-reference-ast
+                   :name (ico:name variable-definition-for-function-ast)
                    :definition-ast
                    variable-definition-for-function-ast))
                ;; Presumably the LABELS-AST that contains the
@@ -98,6 +100,7 @@
                    :form-asts '()))
                (entry
                  (make-instance 'closure-entry
+                   :set-static-environment-ast set-static-environment-ast
                    :local-function-ast local-function-ast
                    :let-temporary-ast let-temporary-ast)))
           (check-type labels-ast ico:labels-ast)
@@ -178,9 +181,9 @@
       nil
       (loop for ancestor-ast = function-ast
               then (function-parent-ast ancestor-ast ast-info)
-            until (null ancestor-ast)
             when (eq ancestor-ast putative-ancestor-function-ast)
               return t
+            until (null ancestor-ast)
             finally (return nil))))
 
 (defun function-ast-is-the-ancestor-of-none-in-set
@@ -197,7 +200,7 @@
 
 ;;; Take a VARIABLE-DEFINITION-AST which is known to have at least one
 ;;; VARIABLE-REFERENCE-AST with a different owner.  Return a list of
-;;; all the Reference-Asts having as owner the innermost
+;;; all the REFERENCE-ASTs having as owner the innermost
 ;;; function of all the owners of all the Reference-Asts and
 ;;; the innermost LOCAL-FUNCTION-AST.
 (defun extract-innermost-variable-references
