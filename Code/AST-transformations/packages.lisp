@@ -33,6 +33,7 @@
    #:closure-conversion
    #:convert-block
    #:remove-unused-blocks
+   #:remove-degenerate-labels
    #:convert-tagbody
    #:transform-function-definition-and-reference
    #:eliminate-function
