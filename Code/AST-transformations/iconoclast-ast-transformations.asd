@@ -35,6 +35,7 @@
    (:file "local-function-inlining")
    (:file "assignment-conversion")
    (:file "convert-block")
+   (:file "remove-unused-blocks")
    (:file "convert-tagbody")
    (:file "transform-function-definition-and-reference")
    (:file "eliminate-function")
