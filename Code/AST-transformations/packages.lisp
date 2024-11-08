@@ -32,6 +32,7 @@
    #:assignment-conversion
    #:closure-conversion
    #:convert-block
+   #:remove-unused-blocks
    #:convert-tagbody
    #:transform-function-definition-and-reference
    #:eliminate-function
