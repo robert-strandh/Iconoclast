@@ -33,6 +33,7 @@
    (:file "captured-variable")
    (:file "compute-ast-info")
    (:file "local-function-inlining")
+   (:file "remove-degenerate-labels")
    (:file "assignment-conversion")
    (:file "convert-block")
    (:file "remove-unused-blocks")
