@@ -89,11 +89,7 @@
          (variable-binding-ast
            (make-instance 'ico:variable-binding-ast
              :variable-name-ast new-variable-definition-ast
-             :form-ast new-variable-reference-ast))
-         (let-temporary-ast
-           (make-instance 'ico:let-temporary-ast
-             :binding-ast variable-binding-ast
-             :form-asts (ico:form-asts local-function-ast))))
+             :form-ast new-variable-reference-ast)))
     (replace-with-cell-accessors
      old-reference-asts new-reference-asts ast-info)
     (reinitialize-instance new-variable-definition-ast
@@ -101,8 +97,28 @@
     (reinitialize-instance variable-definition-ast
       :reference-asts
       (list new-variable-reference-ast))
-    (reinitialize-instance local-function-ast
-      :form-asts (list let-temporary-ast))))
+    ;; There are now two possibilities concerning the form that
+    ;; introduced VARIABLE-DEFINITION-AST.  It can either be a
+    ;; parameter of LOCAL-FUNCTION-AST, or it can be introduced by a
+    ;; LET-TEMPORARY-AST.  In the second case, the parent ast of
+    ;; VARIABLE-DEFINITION-AST is a VARIABLE-BINDING-AST and the
+    ;; grandparent is a LET-TEMPORARY-AST.
+    (let ((parent-ast (parent-ast variable-definition-ast ast-info)))
+      (if (typep parent-ast 'ico:variable-binding-ast)
+          (let ((grandparent-ast (parent-ast parent-ast ast-info)))
+            (check-type grandparent-ast ico:let-temporary-ast)
+            (let ((let-temporary-ast
+                    (make-instance 'ico:let-temporary-ast
+                      :binding-ast variable-binding-ast
+                      :form-asts (ico:form-asts grandparent-ast))))
+              (reinitialize-instance grandparent-ast
+                :form-asts (list let-temporary-ast))))
+          (let ((let-temporary-ast
+                  (make-instance 'ico:let-temporary-ast
+                    :binding-ast variable-binding-ast
+                    :form-asts (ico:form-asts local-function-ast))))
+            (reinitialize-instance local-function-ast
+              :form-asts (list let-temporary-ast)))))))
 
 (defun assignment-conversion (ast)
   (let* ((ast-info (compute-ast-info ast))
