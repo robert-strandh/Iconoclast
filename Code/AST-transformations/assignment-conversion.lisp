@@ -104,8 +104,6 @@
     (reinitialize-instance local-function-ast
       :form-asts (list let-temporary-ast))))
 
-;;; This function will ultimately contain code for introducing
-;;; cell-related ASTs.
 (defun assignment-conversion (ast)
   (let* ((ast-info (compute-ast-info ast))
          (variable-asts (assigned-to-shared-variables ast ast-info)))
