@@ -86,10 +86,13 @@
                            :name nil
                            :definition-ast
                            new-variable-definition-ast)))
+         (make-cell-ast
+           (make-instance 'ico:make-cell-ast
+             :form-ast new-variable-reference-ast))
          (variable-binding-ast
            (make-instance 'ico:variable-binding-ast
              :variable-name-ast new-variable-definition-ast
-             :form-ast new-variable-reference-ast)))
+             :form-ast make-cell-ast)))
     (replace-with-cell-accessors
      old-reference-asts new-reference-asts ast-info)
     (reinitialize-instance new-variable-definition-ast
