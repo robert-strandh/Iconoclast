@@ -5,5 +5,5 @@
 ;;; contains a VARIABLE-REFERENCE-AST to a variable that was shared
 ;;; before closure conversion.
 
-(define-ast-class make-cell-ast (form-ast-mixin ast)
+(define-ast-class make-cell-ast (required-form-ast-mixin ast)
   ())
