@@ -44,7 +44,7 @@
      (kind (eql :optimization-specification))
      &key source quality value)
   (make-instance
-      (case quality
+      (case (cst:raw quality)
         (speed 'ico:speed-ast)
         (compilation-speed 'ico:compilation-speed-ast)
         (space 'ico:space-ast)
