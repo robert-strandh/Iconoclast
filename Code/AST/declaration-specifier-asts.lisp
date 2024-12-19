@@ -7,6 +7,10 @@
 
 (export 'identifier-ast)
 
+(define-ast-class unknown-declaration-specifier-ast
+    (declaration-specifier-ast)
+  ((* argument-asts)))
+
 ;;; What we call a RESTRICTING-DECLARATION-SPECIFIER-AST is a
 ;;; DECLARATION-SPECIFIER-AST that applies to a variable or a
 ;;; function, so it contains a list of NAME-ASTs 
