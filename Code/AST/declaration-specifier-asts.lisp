@@ -1,5 +1,8 @@
 (cl:in-package #:iconoclast)
 
+(define-ast-class declaration-identifier-ast (name-mixin ast)
+  ())
+
 (define-ast-class declaration-specifier-ast (ast)
   ((%identifier-ast
     :initarg :identifier-ast
