@@ -6,7 +6,7 @@
      &key source expression context)
   (case context
     ((:form :condition-report :restart-report-string
-      :format-control :quote)
+      :format-control :quote :declaration-argument)
      (make-instance 'ico:unparsed-form-ast
        :origin source
        :form expression))
