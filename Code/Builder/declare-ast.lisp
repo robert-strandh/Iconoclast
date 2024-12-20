@@ -1,5 +1,13 @@
 (cl:in-package #:iconoclast-builder)
 
+(defmethod abp:make-node
+    ((builder builder)
+     (kind (eql :declaration-identifier))
+     &key source name)
+  (make-instance 'ico:declaration-identifier-ast
+    :name name
+    :origin source))
+
 (defun make-declaration-specifier-ast (class-name identifier-name origin)
   (make-instance class-name
     :identifier-ast (make-instance 'ico:name-ast :name identifier-name)
