@@ -28,7 +28,8 @@
      (notinline 'ico:notinline-ast)
      (optimize 'ico:optimize-ast)
      (special 'ico:special-ast)
-     #+(or)(declaration 'ico:declaration-declaration-ast))
+     #+(or)(declaration 'ico:declaration-declaration-ast)
+     (otherwise 'ico:unknown-declaration-specifier-ast))
    declaration-kind source))
 
 (defmethod abp:node-kind
@@ -40,6 +41,9 @@
   (list :kind (ico:name (ico:identifier-ast node))))
 
 (define-make-node-method :declaration ico:declaration-ast)
+
+(define-relations ico:unknown-declaration-specifier-ast
+  ((:argument t ico:argument-asts)))
 
 (define-relations ico:declaration-ast
   ((:declaration-specifier t ico:declaration-specifier-asts)))
