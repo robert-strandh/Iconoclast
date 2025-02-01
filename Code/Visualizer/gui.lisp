@@ -34,7 +34,7 @@
 
 (define-visualizer-command (com-inspect-ast :name t)
     ((ast 'iconoclast:ast))
-  (clouseau:inspect ast))
+  (clouseau:inspect ast :new-process t))
 
 (define-visualizer-command (com-inspect-layout :name t)
     ((layout 'layout))
