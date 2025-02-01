@@ -16,6 +16,7 @@
    (:file "literal-ast")
    (:file "variable-binding-ast")
    (:file "block-ast")
+   (:file "block-with-variable-ast")
    (:file "catch-ast")
    (:file "throw-ast")
    (:file "eval-when-ast")

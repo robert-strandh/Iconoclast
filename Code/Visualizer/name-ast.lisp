@@ -4,5 +4,5 @@
   (let* ((name (format nil "~a" (ico:name ast)))
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
-    (draw-ast pane hpos vpos width height name)
+    (draw-ast ast pane hpos vpos width height name)
     (+ vpos height 10)))
