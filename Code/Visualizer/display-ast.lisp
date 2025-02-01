@@ -13,8 +13,8 @@
          (slot-designators (ico:slot-designators ast)))
     (if (member ast (selected-asts clim:*application-frame*))
         (clim:with-drawing-options (pane :ink clim:+red+)
-          (draw-ast pane hpos vpos width height name))
-        (draw-ast pane hpos vpos width height name))
+          (draw-ast ast pane hpos vpos width height name))
+        (draw-ast ast pane hpos vpos width height name))
     (let ((child-vpos (+ vpos height 10)))
       (loop for (delta-hpos slot-reader) in (layout ast)
             for slot-designator
@@ -38,11 +38,12 @@
                                         child-vpos))))))
       child-vpos)))
 
-(defun draw-ast (pane hpos vpos width height text)
-  (clim:draw-rectangle* pane
-                        hpos vpos
-                        (+ hpos width) (+ vpos height)
-                        :filled nil)
-  (clim:draw-text* pane text
-                   (+ hpos (/ width 2)) (+ vpos (/ height 2))
-                   :align-x :center :align-y :center))
+(defun draw-ast (ast pane hpos vpos width height text)
+  (clim:with-output-as-presentation (pane ast 'ico:ast)
+    (clim:draw-rectangle* pane
+                          hpos vpos
+                          (+ hpos width) (+ vpos height)
+                          :filled nil)
+    (clim:draw-text* pane text
+                     (+ hpos (/ width 2)) (+ vpos (/ height 2))
+                     :align-x :center :align-y :center)))
