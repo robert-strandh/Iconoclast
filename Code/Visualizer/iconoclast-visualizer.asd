@@ -40,4 +40,5 @@
    (:file "special-ast")
    (:file "ignore-ast")
    (:file "inline-ast")
+   (:file "set-static-environment-ast")
    (:file "gui")))
