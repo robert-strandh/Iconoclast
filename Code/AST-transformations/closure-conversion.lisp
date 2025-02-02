@@ -33,6 +33,8 @@
 ;;; add the VARIABLE-REFERENCE-AST to the list of
 ;;; VARIABLE-REFERENCE-ASTs of the VARIABLE-DEFINITION-AST.
 (defun link (definition-ast variable-reference-ast)
+  (reinitialize-instance variable-reference-ast
+    :definition-ast definition-ast)
   (reinitialize-instance definition-ast
     :reference-asts
     (cons variable-reference-ast
