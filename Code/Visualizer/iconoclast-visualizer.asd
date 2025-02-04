@@ -35,6 +35,7 @@
    (:file "progv-ast")
    (:file "setq-ast")
    (:file "tagbody-ast")
+   (:file "tagbody-with-variable-ast")
    (:file "the-ast")
    (:file "unwind-protect-ast")
    (:file "special-ast")
