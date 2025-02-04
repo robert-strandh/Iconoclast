@@ -38,6 +38,7 @@
 
 (defmethod iaw:walk-ast-node :around
     ((client convert-block-client) (ast ico:return-from-ast))
+  (call-next-method)
   (let* (;; We are linked to the BLOCK-AST through the NAME-AST of
          ;; this AST, so access the NAME-AST.
          (name-ast (ico:name-ast ast))
