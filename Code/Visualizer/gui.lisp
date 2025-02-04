@@ -21,11 +21,11 @@
                (clim:draw-line* pane 0 y 5 y)))
   (display-ast* (ast frame) pane 10 10))
 
-(defun visualize (ast &key new-process-p)
+(defun visualize (ast &key new-process)
   (let ((frame (clim:make-application-frame 'visualizer :ast ast)))
     (flet ((run ()
              (clim:run-frame-top-level frame)))
-      (if new-process-p
+      (if new-process
           (clim-sys:make-process #'run)
           (run)))))
 
