@@ -37,4 +37,5 @@
    #:convert-tagbody
    #:transform-function-definition-and-reference
    #:eliminate-function
+   #:replace-trivial-locally-by-progn
    #:report))
