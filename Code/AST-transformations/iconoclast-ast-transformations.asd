@@ -41,4 +41,5 @@
    (:file "transform-function-definition-and-reference")
    (:file "eliminate-function")
    (:file "closure-conversion")
-   (:file "replace-trivial-locally-by-progn")))
+   (:file "replace-trivial-locally-by-progn")
+   (:file "eliminate-trivial-progn")))
