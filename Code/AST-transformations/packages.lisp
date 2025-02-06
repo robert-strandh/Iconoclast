@@ -38,4 +38,5 @@
    #:transform-function-definition-and-reference
    #:eliminate-function
    #:replace-trivial-locally-by-progn
+   #:eliminate-trivial-progn
    #:report))
