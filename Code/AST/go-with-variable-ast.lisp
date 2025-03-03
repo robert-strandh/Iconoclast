@@ -9,6 +9,6 @@
 ;;; non-negative integer, corresponding to the position of the GO tag
 ;;; in the TAGBODY.
 
-(define-ast-class go-with-variable-ast (ast)
+(define-ast-class go-with-variable-ast (go-ast)
   ((1 variable-reference-ast)
    (1 index-ast)))
