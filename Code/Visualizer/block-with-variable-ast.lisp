@@ -5,7 +5,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (20 20)
+    (with-child-asts (20 20 width)
       (display-ast (ico:variable-definition-ast ast))
       (display-asts (ico:form-asts ast)))))
 

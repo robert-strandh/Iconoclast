@@ -5,7 +5,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts ((+ height 10) 10)
+    (with-child-asts ((+ height 10) 10 width)
       (display-asts (ico:form-asts ast)))))
 
 (defmethod display-ast* ((ast ico:progn-ast) pane hpos vpos)
