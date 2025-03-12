@@ -34,3 +34,5 @@
                                   (max ,max-hpos-variable h)))))
        (values ,vpos-variable ,max-hpos-variable))))
 
+(defun string-width (string)
+  (clim:stream-string-width *pane* string))
