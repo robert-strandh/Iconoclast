@@ -2,7 +2,7 @@
 
 (defmethod display-ast ((ast ico:progn-ast))
   (let* ((name "progn")
-         (width (+ (clim:stream-string-width *pane* name) 10))
+         (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
     (with-child-asts ((+ height 10) 10)

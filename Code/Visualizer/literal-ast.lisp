@@ -2,7 +2,7 @@
 
 (defmethod display-ast ((ast ico:literal-ast))
   (let* ((name (format nil "~s" (ico:literal ast)))
-         (width (+ (clim:stream-string-width *pane* name) 10))
+         (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
     (values (+ height 10) width)))
