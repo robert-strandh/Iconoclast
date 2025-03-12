@@ -16,3 +16,16 @@
             (display-asts* (ico:name-asts ast)
                            pane (+ hpos width 10) child-vpos))
       child-vpos)))
+
+(defmacro with-child-asts ((delta-vpos delta-hpos) &body body)
+  (let ((delta-hpos-var (gensym)))
+    `(let* ((,delta-hpos-var ,delta-hpos)
+            (vpos ,delta-vpos)
+            (max-hpos ,delta-hpos-var))
+       ,@(loop for form in body
+               collect `(clim:with-translation
+                            (*pane* ,delta-hpos-var vpos )
+                          (multiple-value-bind (v h)
+                              ,form
+                            (incf vpos v)
+                            (setf max-hpos (max max-hpos h))))))))
