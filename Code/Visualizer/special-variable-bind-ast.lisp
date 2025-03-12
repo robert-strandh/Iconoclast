@@ -5,7 +5,7 @@
   (let* ((name "binding")
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
-    (draw-ast ast pane hpos vpos width height name)
+    (draw-ast* ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
       (setf child-vpos
             (display-ast* (ico:variable-name-ast ast) pane
@@ -21,7 +21,7 @@
   (let* ((name "special-variable-bind")
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
-    (draw-ast ast pane hpos vpos width height name)
+    (draw-ast* ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
       (setf child-vpos
             (display-ast* (ico:binding-ast ast)

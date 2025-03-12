@@ -4,7 +4,7 @@
   (let* ((name "segment")
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
-    (draw-ast ast pane hpos vpos width height name)
+    (draw-ast* ast pane hpos vpos width height name)
     (let ((child-vpos (+ vpos 30))
           (tag-ast (ico:tag-ast ast)))
       (unless (null tag-ast)
@@ -19,7 +19,7 @@
   (let* ((name "tagbody-with-variable")
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
-    (draw-ast ast pane hpos vpos width height name)
+    (draw-ast* ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
       (setf child-vpos
             (display-ast* (ico:variable-definition-ast ast) pane

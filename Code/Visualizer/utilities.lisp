@@ -10,7 +10,7 @@
 (defun display-simple-declaration-ast (ast name pane hpos vpos)
   (let* ((width (+ (clim:stream-string-width pane name) 10))
          (height 20))
-    (draw-ast ast pane hpos vpos width height name)
+    (draw-ast* ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
       (setf child-vpos
             (display-asts* (ico:name-asts ast)
@@ -18,14 +18,19 @@
       child-vpos)))
 
 (defmacro with-child-asts ((delta-vpos delta-hpos) &body body)
-  (let ((delta-hpos-var (gensym)))
-    `(let* ((,delta-hpos-var ,delta-hpos)
-            (vpos ,delta-vpos)
-            (max-hpos ,delta-hpos-var))
+  (let ((delta-hpos-variable (gensym))
+        (vpos-variable (gensym))
+        (max-hpos-variable (gensym)))
+    `(let* ((,delta-hpos-variable ,delta-hpos)
+            (,vpos-variable ,delta-vpos)
+            (,max-hpos-variable ,delta-hpos-variable))
        ,@(loop for form in body
                collect `(clim:with-translation
-                            (*pane* ,delta-hpos-var vpos )
+                            (*pane* ,delta-hpos-variable ,vpos-variable)
                           (multiple-value-bind (v h)
                               ,form
-                            (incf vpos v)
-                            (setf max-hpos (max max-hpos h))))))))
+                            (incf ,vpos-variable v)
+                            (setf ,max-hpos-variable
+                                  (max ,max-hpos-variable h)))))
+       (values ,vpos-variable ,max-hpos-variable))))
+

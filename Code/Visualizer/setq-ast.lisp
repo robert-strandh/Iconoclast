@@ -4,7 +4,7 @@
   (let* ((name "setq")
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
-    (draw-ast ast pane hpos vpos width height name)
+    (draw-ast* ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
       (loop for variable-name-ast in (ico:variable-name-asts ast)
             for value-ast in (ico:value-asts ast)

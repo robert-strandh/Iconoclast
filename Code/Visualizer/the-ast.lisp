@@ -4,7 +4,7 @@
   (let* ((name "the")
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
-    (draw-ast ast pane hpos vpos width height name)
+    (draw-ast* ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
       (setq child-vpos
             (display-ast* (ico:value-type-ast ast) pane (+ hpos 20) vpos))

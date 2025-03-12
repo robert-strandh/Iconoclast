@@ -3,7 +3,7 @@
 (defun display-let-or-let* (name ast pane hpos vpos)
   (let* ((width (+ (clim:stream-string-width pane name) 10))
          (height 20))
-    (draw-ast ast pane hpos vpos width height name)
+    (draw-ast* ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
       (setf child-vpos
             (display-asts* (ico:binding-asts ast)

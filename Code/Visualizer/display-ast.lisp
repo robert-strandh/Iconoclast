@@ -27,7 +27,7 @@
          (width (+ (clim:stream-string-width *pane* name) 10))
          (height 20)
          (slot-designators (ico:slot-designators ast)))
-    (draw-ast ast *pane* 0 0 width height name)
+    (draw-ast ast width height name)
     (let ((child-vpos (+ height 10))
           (max-hpos 0))
       (loop for (delta-hpos slot-reader) in (layout ast)
@@ -65,8 +65,8 @@
          (slot-designators (ico:slot-designators ast)))
     (if (member ast (selected-asts clim:*application-frame*))
         (clim:with-drawing-options (pane :ink clim:+red+)
-          (draw-ast ast pane hpos vpos width height name))
-        (draw-ast ast pane hpos vpos width height name))
+          (draw-ast* ast pane hpos vpos width height name))
+        (draw-ast* ast pane hpos vpos width height name))
     (let ((child-vpos (+ vpos height 10)))
       (loop for (delta-hpos slot-reader) in (layout ast)
             for slot-designator
@@ -100,7 +100,7 @@
          pane hpos vpos max-hpos (- child-vpos 2)))
     (values child-vpos max-hpos)))
 
-(defun draw-ast (ast pane hpos vpos width height text)
+(defun draw-ast* (ast pane hpos vpos width height text)
   (clim:with-output-as-presentation (pane ast 'ico:ast)
     (clim:draw-rectangle* pane
                           hpos vpos
@@ -108,4 +108,10 @@
                           :filled nil)
     (clim:draw-text* pane text
                      (+ hpos (/ width 2)) (+ vpos (/ height 2))
+                     :align-x :center :align-y :center)))
+
+(defun draw-ast (ast width height text)
+  (clim:with-output-as-presentation (*pane* ast 'ico:ast)
+    (clim:draw-rectangle* *pane* 0 0 width height :filled nil)
+    (clim:draw-text* *pane* text (/ width 2) (/ height 2)
                      :align-x :center :align-y :center)))
