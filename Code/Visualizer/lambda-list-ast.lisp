@@ -1,0 +1,12 @@
+(cl:in-package #:iconoclast-visualizer)
+
+(defmethod display-ast ((ast ico:ordinary-lambda-list-ast))
+  (let* ((name "ordinary-lambda-list")
+         (width (+ (string-width name) 10))
+         (height 20))
+    (draw-ast ast width height name)
+    (with-child-asts (height 20 width)
+      (display-ast (ico:required-section-ast ast))
+      (display-ast (ico:optional-section-ast ast))
+      (display-ast (ico:key-section-ast ast))
+      (display-ast (ico:aux-section-ast ast)))))

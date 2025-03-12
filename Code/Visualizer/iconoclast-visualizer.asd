@@ -21,6 +21,7 @@
    (:file "throw-ast")
    (:file "eval-when-ast")
    (:file "flet-ast")
+   (:file "lambda-list-ast")
    (:file "local-function-ast")
    (:file "function-ast")
    (:file "go-ast")
