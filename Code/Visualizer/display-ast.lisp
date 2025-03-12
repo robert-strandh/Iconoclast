@@ -4,6 +4,18 @@
 
 (defgeneric display-ast (ast))
 
+;;; Display a list of ASTS to be aligned in a column.
+(defun display-asts (asts)
+  (let ((child-vpos 0)
+        (max-hpos 0))
+    (loop for ast in asts
+          do (clim:with-translation (*pane* 0 child-vpos)
+               (multiple-value-bind (height width)
+                   (display-ast ast)
+                 (incf child-vpos height)
+                 (setf max-hpos (max max-hpos width)))))
+    (values child-vpos max-hpos)))
+
 (defgeneric display-ast* (ast pane hpos vpos))
 
 (defgeneric selected-asts (frame))
