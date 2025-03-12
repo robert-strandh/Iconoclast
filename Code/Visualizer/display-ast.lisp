@@ -29,7 +29,7 @@
          (slot-designators (ico:slot-designators ast)))
     (draw-ast ast width height name)
     (let ((child-vpos (+ height 10))
-          (max-hpos 0))
+          (max-hpos width))
       (loop for (delta-hpos slot-reader) in (layout ast)
             for slot-designator
               = (find slot-reader slot-designators :key #'second)
@@ -54,7 +54,7 @@
                           (display-ast slot-value)
                       (incf child-vpos height)
                       (setf max-hpos (max max-hpos width))))))))
-      child-vpos)))
+      (values child-vpos max-hpos))))
 
 ;;; Default method for ASTs that have not yet been dealt with in
 ;;; specific methods.
@@ -89,6 +89,16 @@
                                         (+ hpos delta-hpos)
                                         child-vpos))))))
       child-vpos)))
+
+(defmethod display-ast :around (ast)
+  (multiple-value-bind (child-vpos max-hpos)
+      (call-next-method)
+    (if (null max-hpos)
+        (clim:draw-line*
+         *pane* 0 0 0 (- child-vpos 2))
+        (clim:draw-rectangle*
+         *pane* 0 0 max-hpos (- child-vpos 2) :filled nil))
+    (values child-vpos max-hpos)))
 
 (defmethod display-ast* :around (ast pane hpos vpos)
   (multiple-value-bind (child-vpos max-hpos)
