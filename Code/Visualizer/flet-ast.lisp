@@ -1,5 +1,23 @@
 (cl:in-package #:iconoclast-visualizer)
 
+(defun display-flet-or-labels-or-macrolet (name ast)
+  (let* ((width (+ (string-width name) 10))
+         (height 20))
+    (draw-ast ast width height name)
+    (with-child-asts (20 20 width)
+      (display-asts (ico:binding-asts ast))
+      (display-asts (ico:declaration-asts ast))
+      (display-asts (ico:form-asts ast)))))
+
+(defmethod display-ast ((ast ico:flet-ast))
+  (display-flet-or-labels-or-macrolet "flet" ast))
+
+(defmethod display-ast ((ast ico:labels-ast))
+  (display-flet-or-labels-or-macrolet "labels" ast))
+
+(defmethod display-ast ((ast ico:macrolet-ast))
+  (display-flet-or-labels-or-macrolet "macrolet" ast))
+
 (defun display-flet-or-labels (name ast pane hpos vpos)
   (let* ((width (+ (clim:stream-string-width pane name) 10))
          (height 20))
