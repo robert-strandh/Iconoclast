@@ -38,6 +38,11 @@
                                         child-vpos))))))
       child-vpos)))
 
+(defmethod display-ast* :around (ast pane hpos vpos)
+  (let ((child-vpos (call-next-method)))
+    (clim:draw-line* pane hpos vpos hpos (- child-vpos 2))
+    child-vpos))
+
 (defun draw-ast (ast pane hpos vpos width height text)
   (clim:with-output-as-presentation (pane ast 'ico:ast)
     (clim:draw-rectangle* pane
