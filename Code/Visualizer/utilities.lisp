@@ -17,13 +17,13 @@
                            pane (+ hpos width 10) child-vpos))
       child-vpos)))
 
-(defmacro with-child-asts ((delta-vpos delta-hpos) &body body)
+(defmacro with-child-asts ((delta-vpos delta-hpos width) &body body)
   (let ((delta-hpos-variable (gensym))
         (vpos-variable (gensym))
         (max-hpos-variable (gensym)))
     `(let* ((,delta-hpos-variable ,delta-hpos)
             (,vpos-variable ,delta-vpos)
-            (,max-hpos-variable ,delta-hpos-variable))
+            (,max-hpos-variable 0))
        ,@(loop for form in body
                collect `(clim:with-translation
                             (*pane* ,delta-hpos-variable ,vpos-variable)
@@ -31,8 +31,9 @@
                               ,form
                             (incf ,vpos-variable v)
                             (setf ,max-hpos-variable
-                                  (max ,max-hpos-variable h)))))
-       (values ,vpos-variable ,max-hpos-variable))))
+                                  (max ,max-hpos-variable
+                                       (+ h ,delta-hpos-variable))))))
+       (values ,vpos-variable (max ,max-hpos-variable ,width)))))
 
 (defun string-width (string)
   (clim:stream-string-width *pane* string))
