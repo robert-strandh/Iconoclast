@@ -6,14 +6,14 @@
     (draw-ast ast pane hpos vpos width height name)
     (let ((child-vpos vpos))
       (setf child-vpos
-            (display-asts (ico:binding-asts ast)
-                          pane (+ hpos width 20) child-vpos))
+            (display-asts* (ico:binding-asts ast)
+                           pane (+ hpos width 20) child-vpos))
       (setf child-vpos
-            (display-asts (ico:declaration-asts ast)
-                          pane (+ hpos width 15) child-vpos))
+            (display-asts* (ico:declaration-asts ast)
+                           pane (+ hpos width 15) child-vpos))
       (setf child-vpos
-            (display-asts (ico:form-asts ast)
-                          pane (+ hpos width 10) child-vpos))
+            (display-asts* (ico:form-asts ast)
+                           pane (+ hpos width 10) child-vpos))
       child-vpos)))
 
 (defmethod display-ast* ((ast ico:flet-ast) pane hpos vpos)

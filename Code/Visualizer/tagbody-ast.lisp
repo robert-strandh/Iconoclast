@@ -11,7 +11,7 @@
         (setf child-vpos
               (display-ast* tag-ast pane (+ hpos 20) child-vpos)))
       (setf child-vpos
-            (display-asts
+            (display-asts*
              (ico:statement-asts ast) pane (+ hpos 30) child-vpos))
       child-vpos)))
 
@@ -20,4 +20,4 @@
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
     (draw-ast ast pane hpos vpos width height name)
-    (display-asts (ico:segment-asts ast) pane (+ hpos 20) (+ vpos 20))))
+    (display-asts* (ico:segment-asts ast) pane (+ hpos 20) (+ vpos 20))))

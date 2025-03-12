@@ -15,6 +15,6 @@
                           (+ hpos width 20)
                           child-vpos))
       (setf child-vpos
-            (display-asts (ico:form-asts ast)
-                          pane (+ hpos width 10) child-vpos))
+            (display-asts* (ico:form-asts ast)
+                           pane (+ hpos width 10) child-vpos))
       child-vpos)))

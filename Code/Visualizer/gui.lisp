@@ -7,18 +7,14 @@
   (:panes (application
            :application
            :scroll-bars nil
-           :display-function 'display-ast
+           :display-function 'display-ast-pane
            :text-style (clim:make-text-style :sans-serif :roman 12))
           (interactor :interactor :scroll-bars nil))
   (:layouts (default (clim:vertically (:width 1200 :height 900)
                        (4/5 (clim:scrolling () application))
                        (1/5 (clim:scrolling () interactor))))))
 
-(defun display-ast (frame pane)
-  (loop for y from 0 to 500 by 10
-        do (if (zerop (mod y 50))
-               (clim:draw-line* pane 0 y 10 y)
-               (clim:draw-line* pane 0 y 5 y)))
+(defun display-ast-pane (frame pane)
   (display-ast* (ast frame) pane 10 10))
 
 (defun visualize (ast &key new-process)

@@ -10,5 +10,5 @@
             (display-ast* (ico:protected-form-ast ast)
                           pane (+ hpos 30) (+ vpos 30)))
       (setq child-vpos
-            (display-asts (ico:form-asts ast) pane (+ hpos 20) child-vpos))
+            (display-asts* (ico:form-asts ast) pane (+ hpos 20) child-vpos))
       child-vpos)))
