@@ -1,8 +1,15 @@
 (cl:in-package #:iconoclast-visualizer)
 
+(defmethod display-ast ((ast ico:literal-ast))
+  (let* ((name (format nil "~s" (ico:literal ast)))
+         (width (+ (clim:stream-string-width *pane* name) 10))
+         (height 20))
+    (draw-ast ast width height name)
+    (values (+ height 10) width)))
+
 (defmethod display-ast* ((ast ico:literal-ast) pane hpos vpos)
   (let* ((name (format nil "~s" (ico:literal ast)))
          (width (+ (clim:stream-string-width pane name) 10))
          (height 20))
-    (draw-ast ast pane hpos vpos width height name)
+    (draw-ast* ast pane hpos vpos width height name)
     (+ vpos height 10)))
