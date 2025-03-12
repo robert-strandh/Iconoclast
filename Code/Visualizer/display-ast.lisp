@@ -1,8 +1,48 @@
 (cl:in-package #:iconoclast-visualizer)
 
+(defvar *pane*)
+
+(defgeneric display-ast (ast))
+
 (defgeneric display-ast* (ast pane hpos vpos))
 
 (defgeneric selected-asts (frame))
+
+;;; Default method for ASTs that have not yet been dealt with in
+;;; specific methods.
+(defmethod display-ast (ast)
+  (let* ((name (format nil "~a" (class-name (class-of ast))))
+         (width (+ (clim:stream-string-width *pane* name) 10))
+         (height 20)
+         (slot-designators (ico:slot-designators ast)))
+    (draw-ast ast pane hpos vpos width height name)
+    (let ((child-vpos (+ height 10))
+          (max-hpos 0))
+      (loop for (delta-hpos slot-reader) in (layout ast)
+            for slot-designator
+              = (find slot-reader slot-designators :key #'second)
+            for slot-value = (funcall slot-reader ast)
+            do (ecase (first slot-designator)
+                 (1
+                  (clim:with-translation (*pane* delta-hpos child-vpos)
+                    (multiple-value-bind (height width)
+                        (display-ast slot-value)
+                      (incf child-vpos height)
+                      (setf max-hpos (max max-hpos width)))))
+                 (*
+                  (clim:with-translation (*pane* delta-hpos child-vpos)
+                    (multiple-value-bind (height width)
+                        (display-asts slot-value)
+                      (incf child-vpos height)
+                      (setf max-hpos (max max-hpos width)))))
+                 (iconoclast:?
+                  (unless (null slot-value)
+                    (clim:with-translation (*pane* delta-hpos child-vpos)
+                      (multiple-value-bind (height width)
+                          (display-ast slot-value)
+                      (incf child-vpos height)
+                      (setf max-hpos (max max-hpos width))))))))
+      child-vpos)))
 
 ;;; Default method for ASTs that have not yet been dealt with in
 ;;; specific methods.
