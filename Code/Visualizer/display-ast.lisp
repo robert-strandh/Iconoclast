@@ -27,7 +27,7 @@
          (width (+ (clim:stream-string-width *pane* name) 10))
          (height 20)
          (slot-designators (ico:slot-designators ast)))
-    (draw-ast ast pane hpos vpos width height name)
+    (draw-ast ast *pane* 0 0 width height name)
     (let ((child-vpos (+ height 10))
           (max-hpos 0))
       (loop for (delta-hpos slot-reader) in (layout ast)
