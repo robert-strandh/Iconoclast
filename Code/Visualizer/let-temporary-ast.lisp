@@ -1,5 +1,15 @@
 (cl:in-package #:iconoclast-visualizer)
 
+(defmethod display-ast ((ast ico:let-temporary-ast))
+  (let* ((name "let-temporary")
+         (width (+ (string-width name) 10))
+         (height 20))
+    (draw-ast ast width height name)
+    (with-child-asts (height 20 width)
+      (display-ast (ico:binding-ast ast))
+      (display-asts (ico:declaration-asts ast))
+      (display-asts (ico:form-asts ast)))))
+
 (defmethod display-ast* ((ast ico:let-temporary-ast) pane hpos vpos)
   (let* ((name "let-temporary")
          (width (+ (clim:stream-string-width pane name) 10))
