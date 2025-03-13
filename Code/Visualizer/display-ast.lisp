@@ -20,9 +20,6 @@
 
 (defgeneric selected-asts (frame))
 
-(defmethod display-ast ((ast null))
-  (values 0 0))
-
 ;;; Default method for ASTs that have not yet been dealt with in
 ;;; specific methods.
 (defmethod display-ast (ast)
