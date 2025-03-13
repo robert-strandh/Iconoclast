@@ -4,7 +4,7 @@
   (let* ((width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (20 20 width)
+    (with-child-asts (20 20)
       (display-asts (ico:binding-asts ast))
       (display-asts (ico:declaration-asts ast))
       (display-asts (ico:form-asts ast)))))

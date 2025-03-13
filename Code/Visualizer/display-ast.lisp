@@ -6,15 +6,12 @@
 
 ;;; Display a list of ASTS to be aligned in a column.
 (defun display-asts (asts)
-  (let ((child-vpos 0)
-        (max-hpos 0))
+  (let ((child-vpos 0))
     (loop for ast in asts
           do (clim:with-translation (*pane* 0 child-vpos)
-               (multiple-value-bind (height width)
-                   (display-ast ast)
-                 (incf child-vpos height)
-                 (setf max-hpos (max max-hpos width)))))
-    (values child-vpos max-hpos)))
+               (let ((height (display-ast ast)))
+                 (incf child-vpos height))))
+    child-vpos))
 
 (defgeneric display-ast* (ast pane hpos vpos))
 
@@ -28,8 +25,7 @@
          (height 20)
          (slot-designators (ico:slot-designators ast)))
     (draw-ast ast width height name)
-    (let ((child-vpos (+ height 10))
-          (max-hpos width))
+    (let ((child-vpos (+ height 10)))
       (loop for (delta-hpos slot-reader) in (layout ast)
             for slot-designator
               = (find slot-reader slot-designators :key #'second)
@@ -37,24 +33,18 @@
             do (ecase (first slot-designator)
                  (1
                   (clim:with-translation (*pane* delta-hpos child-vpos)
-                    (multiple-value-bind (height width)
-                        (display-ast slot-value)
-                      (incf child-vpos height)
-                      (setf max-hpos (max max-hpos width)))))
+                    (let ((height (display-ast slot-value)))
+                      (incf child-vpos height))))
                  (*
                   (clim:with-translation (*pane* delta-hpos child-vpos)
-                    (multiple-value-bind (height width)
-                        (display-asts slot-value)
-                      (incf child-vpos height)
-                      (setf max-hpos (max max-hpos width)))))
+                    (let ((height (display-asts slot-value)))
+                      (incf child-vpos height))))
                  (iconoclast:?
                   (unless (null slot-value)
                     (clim:with-translation (*pane* delta-hpos child-vpos)
-                      (multiple-value-bind (height width)
-                          (display-ast slot-value)
-                      (incf child-vpos height)
-                      (setf max-hpos (max max-hpos width))))))))
-      (values child-vpos max-hpos))))
+                      (let ((height (display-ast slot-value)))
+                        (incf child-vpos height)))))))
+      child-vpos)))
 
 ;;; Default method for ASTs that have not yet been dealt with in
 ;;; specific methods.
@@ -92,17 +82,16 @@
 
 (defmethod display-ast :around (ast)
   (if (null ast)
-      (values 0 0)
-      (let (x y)
+      0
+      (let (result)
         (clim:surrounding-output-with-border (*pane*)
-          (multiple-value-bind (child-vpos max-hpos)
-              (call-next-method)
-            (setf x child-vpos y max-hpos)))
+          (let ((height (call-next-method)))
+            (setf result height)))
         (multiple-value-bind (x y) (clim:stream-cursor-position *pane*)
           (format *trace-output*
                   "Cursor position: ~s ~s ~s~%"
                   (class-name (class-of ast)) (float x) (float y)))
-        (values x y))))
+        result)))
 
 (defmethod display-ast* :around (ast pane hpos vpos)
   (multiple-value-bind (child-vpos max-hpos)

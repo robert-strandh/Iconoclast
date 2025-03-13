@@ -5,7 +5,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (height 20 width)
+    (with-child-asts (height 20)
       (display-ast (ico:name-ast ast)))))
 
 (defmethod display-ast ((ast ico:optional-parameter-ast))
@@ -13,7 +13,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (height 20 width)
+    (with-child-asts (height 20)
       (display-ast (ico:name-ast ast))
       (display-ast (ico:init-form-ast ast))
       (display-ast (ico:supplied-p-parameter-ast ast)))))
@@ -23,7 +23,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (height 20 width)
+    (with-child-asts (height 20)
       (display-ast (ico:name-ast ast)))))
 
 (defmethod display-ast ((ast ico:key-parameter-ast))
@@ -31,7 +31,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (height 20 width)
+    (with-child-asts (height 20)
       (display-ast (ico:keyword-ast ast))
       (display-ast (ico:name-ast ast))
       (display-ast (ico:init-form-ast ast))
@@ -42,7 +42,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (height 20 width)
+    (with-child-asts (height 20)
       (display-ast (ico:name-ast ast))
       (display-ast (ico:form-ast ast)))))
 
@@ -51,7 +51,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (height 20 width)
+    (with-child-asts (height 20)
       (display-asts (ico:parameter-asts ast)))))
 
 (defmethod display-ast ((ast ico:optional-section-ast))
@@ -59,7 +59,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (height 20 width)
+    (with-child-asts (height 20)
       (display-asts (ico:parameter-asts ast)))))
 
 (defmethod display-ast ((ast ico:rest-section-ast))
@@ -67,7 +67,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (height 20 width)
+    (with-child-asts (height 20)
       (display-ast (ico:parameter-ast ast)))))
 
 (defmethod display-ast ((ast ico:key-section-ast))
@@ -75,7 +75,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (height 20 width)
+    (with-child-asts (height 20)
       (display-asts (ico:parameter-asts ast))
       (display-ast (ico:allow-other-keys-ast ast)))))
 
@@ -84,7 +84,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (height 20 width)
+    (with-child-asts (height 20)
       (display-asts (ico:parameter-asts ast)))))
 
 (defmethod display-ast ((ast ico:ordinary-lambda-list-ast))
@@ -92,7 +92,7 @@
          (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast width height name)
-    (with-child-asts (height 20 width)
+    (with-child-asts (height 20)
       (display-ast (ico:required-section-ast ast))
       (display-ast (ico:optional-section-ast ast))
       (display-ast (ico:key-section-ast ast))
