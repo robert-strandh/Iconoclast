@@ -4,8 +4,8 @@
   (let* ((name (format nil "~s" (ico:literal ast)))
          (width (+ (string-width name) 10))
          (height 20))
-    (draw-ast ast width height name)
-    (values (+ height 10) width)))
+    (draw-ast ast name)
+    (+ height 10)))
 
 (defmethod display-ast* ((ast ico:literal-ast) pane hpos vpos)
   (let* ((name (format nil "~s" (ico:literal ast)))

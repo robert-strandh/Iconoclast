@@ -4,6 +4,6 @@
   (let* ((name "make-cell")
          (width (+ (string-width name) 10))
          (height 20))
-    (draw-ast ast width height name)
+    (draw-ast ast name)
     (with-child-asts (height 20)
       (display-ast (ico:form-ast ast)))))
