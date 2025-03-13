@@ -44,4 +44,5 @@
    (:file "ignore-ast")
    (:file "inline-ast")
    (:file "set-static-environment-ast")
+   (:file "make-cell-ast")
    (:file "gui")))
