@@ -24,7 +24,7 @@
          (width (+ (clim:stream-string-width *pane* name) 10))
          (height 20)
          (slot-designators (ico:slot-designators ast)))
-    (draw-ast ast width height name)
+    (draw-ast ast name)
     (let ((child-vpos (+ height 10)))
       (loop for (delta-hpos slot-reader) in (layout ast)
             for slot-designator
@@ -84,13 +84,22 @@
   (if (null ast)
       0
       (let (result)
-        (clim:surrounding-output-with-border (*pane*)
-          (let ((height (call-next-method)))
-            (setf result height)))
+        (let ((ya (nth-value 1 (clim:stream-cursor-position *pane*))))
+          (clim:surrounding-output-with-border (*pane*)
+            (let ((height (call-next-method)))
+              (setf result height)))
+          (let ((yb (nth-value 1 (clim:stream-cursor-position *pane*))))
+            (format *trace-output* "Height: ~s Diff: ~s~%"
+                    (float result) (float (- yb ya)))))
         (multiple-value-bind (x y) (clim:stream-cursor-position *pane*)
-          (format *trace-output*
-                  "Cursor position: ~s ~s ~s~%"
-                  (class-name (class-of ast)) (float x) (float y)))
+          (multiple-value-bind (xx yy)
+              (clim:untransform-position
+               (clim:medium-transformation *pane*) x y)
+            (format *trace-output*
+                    "Cursor position: [~s ~s] [~s ~s] ~s~%"
+                    (float x) (float y)
+                    (float xx) (float yy)
+                    (class-name (class-of ast)))))
         result)))
 
 (defmethod display-ast* :around (ast pane hpos vpos)
@@ -113,8 +122,16 @@
                      (+ hpos (/ width 2)) (+ vpos (/ height 2))
                      :align-x :center :align-y :center)))
 
-(defun draw-ast (ast width height text)
+;;; Things are a bit complicated, because the STREAM-CURSOR-POSITION
+;;; is given in the sheet coordinate system, but we are drawing things
+;;; with a transformed user coordinate system.  We want to preserve
+;;; the vertical component of the STREAM-CURSOR-POSITION, but we want
+;;; to set the horizontal component to 0 in the user coordinate system.
+(defun draw-ast (ast text)
+  (let* ((cursor-y (nth-value 1 (clim:stream-cursor-position  *pane*)))
+         (transformation (clim:medium-transformation  *pane*))
+         (sheet-x (clim:transform-position transformation 0 0)))
+    (setf (clim:stream-cursor-position  *pane*)
+          (values sheet-x cursor-y)))
   (clim:with-output-as-presentation (*pane* ast 'ico:ast)
-    ;; (clim:draw-rectangle* *pane* 0 0 width height :filled nil)
-    (clim:draw-text* *pane* text (/ width 2) (/ height 2)
-                     :align-x :center :align-y :center)))
+    (format *pane* "~a~%" text)))
