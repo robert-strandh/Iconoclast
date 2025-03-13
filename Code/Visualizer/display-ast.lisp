@@ -94,14 +94,18 @@
       child-vpos)))
 
 (defmethod display-ast :around (ast)
-  (multiple-value-bind (child-vpos max-hpos)
-      (call-next-method)
-    (if (null max-hpos)
-        (clim:draw-line*
-         *pane* 0 0 0 (- child-vpos 2))
-        (clim:draw-rectangle*
-         *pane* 0 0 max-hpos (- child-vpos 2) :filled nil))
-    (values child-vpos max-hpos)))
+  (if (null ast)
+      (values 0 0)
+      (let (x y)
+        (clim:surrounding-output-with-border (*pane*)
+          (multiple-value-bind (child-vpos max-hpos)
+              (call-next-method)
+            (setf x child-vpos y max-hpos)))
+        (multiple-value-bind (x y) (clim:stream-cursor-position *pane*)
+          (format *trace-output*
+                  "Cursor position: ~s ~s ~s~%"
+                  (class-name (class-of ast)) (float x) (float y)))
+        (values x y))))
 
 (defmethod display-ast* :around (ast pane hpos vpos)
   (multiple-value-bind (child-vpos max-hpos)
@@ -125,6 +129,6 @@
 
 (defun draw-ast (ast width height text)
   (clim:with-output-as-presentation (*pane* ast 'ico:ast)
-    (clim:draw-rectangle* *pane* 0 0 width height :filled nil)
+    ;; (clim:draw-rectangle* *pane* 0 0 width height :filled nil)
     (clim:draw-text* *pane* text (/ width 2) (/ height 2)
                      :align-x :center :align-y :center)))
