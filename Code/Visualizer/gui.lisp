@@ -15,7 +15,8 @@
                        (1/5 (clim:scrolling () interactor))))))
 
 (defun display-ast-pane (frame pane)
-  (display-ast* (ast frame) pane 10 10))
+  (let ((*pane* pane))
+    (display-ast (ast frame))))
 
 (defun visualize (ast &key new-process)
   (let ((frame (clim:make-application-frame 'visualizer :ast ast)))
