@@ -2,7 +2,6 @@
 
 (defmethod display-ast ((ast ico:make-cell-ast))
   (let* ((name "make-cell")
-         (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast name)
     (with-child-asts (height 20)

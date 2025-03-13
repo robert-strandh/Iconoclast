@@ -2,7 +2,6 @@
 
 (defmethod display-ast ((ast ico:local-function-ast))
   (let* ((name "local-function")
-         (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast name)
     (with-child-asts (height 20)

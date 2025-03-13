@@ -2,9 +2,8 @@
 
 (defmethod display-ast ((ast ico:progn-ast))
   (let* ((name "progn")
-         (width (+ (string-width name) 10))
          (height 20))
-    (draw-ast ast width height name)
+    (draw-ast ast name)
     (with-child-asts ((+ height 10) 10)
       (display-asts (ico:form-asts ast)))))
 

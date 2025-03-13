@@ -2,7 +2,6 @@
 
 (defmethod display-ast ((ast ico:let-temporary-ast))
   (let* ((name "let-temporary")
-         (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast name)
     (with-child-asts (height 20)

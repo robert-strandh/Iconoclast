@@ -2,7 +2,6 @@
 
 (defmethod display-ast ((ast ico:literal-ast))
   (let* ((name (format nil "~s" (ico:literal ast)))
-         (width (+ (string-width name) 10))
          (height 20))
     (draw-ast ast name)
     (+ height 10)))

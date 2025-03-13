@@ -1,9 +1,7 @@
 (cl:in-package #:iconoclast-visualizer)
 
 (defmethod display-ast ((ast ico:variable-binding-ast))
-  (let* ((name "binding")
-         (width (+ (string-width name) 10))
-         (height 20))
+  (let* ((name "binding"))
     (draw-ast ast name)
     (with-child-asts (20 10)
       (display-ast (ico:variable-name-ast ast))
