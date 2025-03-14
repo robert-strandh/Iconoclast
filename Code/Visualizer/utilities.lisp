@@ -7,9 +7,8 @@
             (,vpos-variable ,delta-vpos))
        ,@(loop for form in body
                collect `(clim:with-translation
-                            (*pane* ,delta-hpos-variable ,vpos-variable)
-                          (let ((height ,form))
-                            (incf ,vpos-variable height))))
+                            (*pane* ,delta-hpos-variable 0)
+                          ,form))
        ,vpos-variable)))
 
 (defun string-width (string)
