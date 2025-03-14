@@ -5,5 +5,3 @@
   (with-indentation (20)
     (display-ast (ico:static-environment-ast ast))
     (display-ast (ico:index-ast ast))))
-
-
