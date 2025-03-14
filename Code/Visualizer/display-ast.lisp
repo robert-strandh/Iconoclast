@@ -47,22 +47,9 @@
   (if (null ast)
       0
       (let (result)
-        (let ((ya (nth-value 1 (clim:stream-cursor-position *pane*))))
-          (clim:surrounding-output-with-border (*pane*)
-            (let ((height (call-next-method)))
-              (setf result height)))
-          (let ((yb (nth-value 1 (clim:stream-cursor-position *pane*))))
-            (format *trace-output* "Height: ~s Diff: ~s~%"
-                    (float result) (float (- yb ya)))))
-        (multiple-value-bind (x y) (clim:stream-cursor-position *pane*)
-          (multiple-value-bind (xx yy)
-              (clim:untransform-position
-               (clim:medium-transformation *pane*) x y)
-            (format *trace-output*
-                    "Cursor position: [~s ~s] [~s ~s] ~s~%"
-                    (float x) (float y)
-                    (float xx) (float yy)
-                    (class-name (class-of ast)))))
+        (clim:surrounding-output-with-border (*pane*)
+          (let ((height (call-next-method)))
+            (setf result height)))
         result)))
 
 ;;; Things are a bit complicated, because the STREAM-CURSOR-POSITION
