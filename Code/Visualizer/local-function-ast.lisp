@@ -3,7 +3,7 @@
 (defmethod display-ast ((ast ico:local-function-ast))
   (let* ((name "local-function"))
     (draw-ast ast name)
-    (with-child-asts (20)
+    (with-indentation (20)
       (display-ast (ico:name-ast ast))
       (display-ast (ico:lambda-list-ast ast))
       (display-asts (ico:declaration-asts ast))
