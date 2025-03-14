@@ -46,4 +46,5 @@
    (:file "set-static-environment-ast")
    (:file "make-cell-ast")
    (:file "static-environment-ast")
+   (:file "read-static-environment-ast")
    (:file "gui")))
