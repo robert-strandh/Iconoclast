@@ -2,7 +2,7 @@
 
 (defun display-flet-or-labels-or-macrolet (name ast)
   (draw-ast ast name)
-  (with-child-asts (20 20)
+  (with-child-asts (20)
     (display-asts (ico:binding-asts ast))
     (display-asts (ico:declaration-asts ast))
     (display-asts (ico:form-asts ast))))
