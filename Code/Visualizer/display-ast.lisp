@@ -54,6 +54,6 @@
          (transformation (clim:medium-transformation  *pane*))
          (sheet-x (clim:transform-position transformation 0 0)))
     (setf (clim:stream-cursor-position  *pane*)
-          (values sheet-x cursor-y)))
+          (values sheet-x (+ cursor-y 5))))
   (clim:with-output-as-presentation (*pane* ast 'ico:ast)
     (format *pane* "~a~%" text)))
