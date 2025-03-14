@@ -9,8 +9,7 @@
   (let ((child-vpos 0))
     (loop for ast in asts
           do (clim:with-translation (*pane* 0 child-vpos)
-               (let ((height (display-ast ast)))
-                 (incf child-vpos height))))
+               (display-ast ast)))
     child-vpos))
 
 (defgeneric selected-asts (frame))
@@ -30,27 +29,20 @@
             do (ecase (first slot-designator)
                  (1
                   (clim:with-translation (*pane* delta-hpos child-vpos)
-                    (let ((height (display-ast slot-value)))
-                      (incf child-vpos height))))
+                    (display-ast slot-value)))
                  (*
                   (clim:with-translation (*pane* delta-hpos child-vpos)
-                    (let ((height (display-asts slot-value)))
-                      (incf child-vpos height))))
+                    (display-asts slot-value)))
                  (iconoclast:?
                   (unless (null slot-value)
                     (clim:with-translation (*pane* delta-hpos child-vpos)
-                      (let ((height (display-ast slot-value)))
-                        (incf child-vpos height)))))))
+                      (display-ast slot-value))))))
       child-vpos)))
 
 (defmethod display-ast :around (ast)
-  (if (null ast)
-      0
-      (let (result)
-        (clim:surrounding-output-with-border (*pane*)
-          (let ((height (call-next-method)))
-            (setf result height)))
-        result)))
+  (unless (null ast)
+    (clim:surrounding-output-with-border (*pane*)
+      (call-next-method))))
 
 ;;; Things are a bit complicated, because the STREAM-CURSOR-POSITION
 ;;; is given in the sheet coordinate system, but we are drawing things

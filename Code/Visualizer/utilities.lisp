@@ -9,7 +9,7 @@
                collect `(clim:with-translation
                             (*pane* ,delta-hpos-variable 0)
                           ,form))
-       ,vpos-variable)))
+       0)))
 
 (defun string-width (string)
   (clim:stream-string-width *pane* string))
