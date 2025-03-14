@@ -45,4 +45,5 @@
    (:file "inline-ast")
    (:file "set-static-environment-ast")
    (:file "make-cell-ast")
+   (:file "static-environment-ast")
    (:file "gui")))
