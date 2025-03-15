@@ -43,7 +43,7 @@
   (unless (null ast)
     (clim:surrounding-output-with-border (*pane*)
       (clim:with-output-as-presentation
-          (*pane* ast 'ico:ast :single-box t)
+          (*pane* ast (class-of ast) :single-box t)
         (call-next-method)))))
 
 ;;; Things are a bit complicated, because the STREAM-CURSOR-POSITION
@@ -51,7 +51,9 @@
 ;;; with a transformed user coordinate system.  We want to preserve
 ;;; the vertical component of the STREAM-CURSOR-POSITION, but we want
 ;;; to set the horizontal component to 0 in the user coordinate system.
-(defun draw-ast (ast text)
+(defgeneric draw-ast (ast text))
+
+(defmethod draw-ast (ast text)
   (declare (ignore ast))
   (let* ((cursor-y (nth-value 1 (clim:stream-cursor-position  *pane*)))
          (transformation (clim:medium-transformation  *pane*))
@@ -60,12 +62,9 @@
           (values sheet-x (+ cursor-y 10))))
   (format *pane* "~a~%" text))
 
-(clim:define-presentation-method clim:highlight-presentation :after
-  ((type ico:ast) record stream state)
-  (declare (ignore record stream state))
-  nil)
-
-(clim:define-presentation-to-command-translator inspect-ast
-    (ico:ast com-inspect-ast visualizer)
-    (object)
-  `(,object))
+(defmethod draw-ast :around ((ast ico:variable-name-ast) text)
+  (declare (ignore text))
+  (if (member ast (selected-asts clim:*application-frame*))
+      (clim:with-drawing-options (*pane* :ink clim:+red+)
+        (call-next-method))
+      (call-next-method)))
