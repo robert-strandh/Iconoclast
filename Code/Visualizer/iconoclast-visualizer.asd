@@ -45,6 +45,7 @@
    (:file "inline-ast")
    (:file "set-static-environment-ast")
    (:file "make-cell-ast")
+   (:file "read-cell-ast")
    (:file "static-environment-ast")
    (:file "read-static-environment-ast")
    (:file "application-ast")
