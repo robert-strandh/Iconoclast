@@ -42,7 +42,9 @@
 (defmethod display-ast :around (ast)
   (unless (null ast)
     (clim:surrounding-output-with-border (*pane*)
-      (call-next-method))))
+      (clim:with-output-as-presentation
+          (*pane* ast 'ico:ast :single-box t)
+        (call-next-method)))))
 
 ;;; Things are a bit complicated, because the STREAM-CURSOR-POSITION
 ;;; is given in the sheet coordinate system, but we are drawing things
@@ -54,6 +56,15 @@
          (transformation (clim:medium-transformation  *pane*))
          (sheet-x (clim:transform-position transformation 0 0)))
     (setf (clim:stream-cursor-position  *pane*)
-          (values sheet-x (+ cursor-y 5))))
-  (clim:with-output-as-presentation (*pane* ast 'ico:ast)
-    (format *pane* "~a~%" text)))
+          (values sheet-x (+ cursor-y 10))))
+  (format *pane* "~a~%" text))
+
+(clim:define-presentation-method clim:highlight-presentation :after
+  ((type ico:ast) record stream state)
+  (declare (ignore record stream state))
+  nil)
+
+(clim:define-presentation-to-command-translator inspect-ast
+    (ico:ast com-inspect-ast visualizer)
+    (object)
+  `(,object))
