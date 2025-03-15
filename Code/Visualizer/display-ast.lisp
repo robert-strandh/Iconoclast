@@ -52,6 +52,7 @@
 ;;; the vertical component of the STREAM-CURSOR-POSITION, but we want
 ;;; to set the horizontal component to 0 in the user coordinate system.
 (defun draw-ast (ast text)
+  (declare (ignore ast))
   (let* ((cursor-y (nth-value 1 (clim:stream-cursor-position  *pane*)))
          (transformation (clim:medium-transformation  *pane*))
          (sheet-x (clim:transform-position transformation 0 0)))
