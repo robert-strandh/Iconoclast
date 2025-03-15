@@ -48,4 +48,5 @@
    (:file "static-environment-ast")
    (:file "read-static-environment-ast")
    (:file "application-ast")
-   (:file "gui")))
+   (:file "gui")
+   (:file "commands")))
