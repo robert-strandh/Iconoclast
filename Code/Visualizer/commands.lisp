@@ -4,8 +4,34 @@
   (clim:frame-exit clim:*application-frame*))
 
 (define-visualizer-command (com-inspect-ast :name t)
-    ((ast 'iconoclast:ast))
+    ((ast 'ico:ast))
   (clouseau:inspect ast :new-process t))
+
+(defgeneric show-relations (ast))
+
+(defmethod show-relations (ast)
+  ())
+
+(defmethod show-relations ((ast ico:variable-definition-ast))
+  (setf (selected-asts clim:*application-frame*)
+        (cons ast (ico:reference-asts ast))))
+
+(defmethod show-relations ((ast ico:variable-reference-ast))
+  (show-relations (ico:definition-ast ast)))
+
+(define-visualizer-command (com-show-relations :name t)
+    ((ast 'ico:variable-name-ast))
+  (show-relations ast))
+
+(clim:define-presentation-to-command-translator inspect-ast
+    (ico:ast com-inspect-ast visualizer)
+    (object)
+  `(,object))
+
+(clim:define-presentation-to-command-translator show-relations
+    (ico:variable-name-ast com-show-relations visualizer)
+    (object)
+  `(,object))
 
 (define-visualizer-command (com-inspect-layout :name t)
     ((layout 'layout))
