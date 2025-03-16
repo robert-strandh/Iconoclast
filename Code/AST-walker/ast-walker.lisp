@@ -37,14 +37,6 @@
 (defmethod maybe-walk (client (parent-node ico:block-name-ast) child-node)
   child-node)
 
-;;; A TAGBODY-SEGMENT-AST contains a link to the TAGBODY-AST that
-;;; contains it.  We do not want to follow that link
-(defmethod maybe-walk
-    (client
-     (parent-node ico:tagbody-segment-ast)
-     (child-node ico:tagbody-ast))
-  nil)
-
 ;;; A TAG-AST is considered a leaf, be it a definition or a reference.
 (defmethod maybe-walk (client (parent-node ico:tag-ast) child-node)
   child-node)
@@ -66,15 +58,18 @@
                               collect (maybe-walk client ast child))))
              (iconoclast:?
               (let ((possible-child (funcall slot-reader ast)))
-                (unless (null possible-child)
-                  (let ((result (maybe-walk client ast possible-child)))
-                    (unless (null result)
-                      (set-slot ast slot-reader result))))))
+                (if (null possible-child)
+                    nil
+                    (let ((result (maybe-walk client ast possible-child)))
+                      (if (null result)
+                          possible-child
+                          (set-slot ast slot-reader result))))))
              (1
               (let* ((child (funcall slot-reader ast))
                      (result (maybe-walk client ast child)))
-                (unless (null result)
-                  (set-slot ast slot-reader result))))))
+                (if (null result)
+                    child
+                    (set-slot ast slot-reader result))))))
   ast)
 
 (defvar *visited*)
