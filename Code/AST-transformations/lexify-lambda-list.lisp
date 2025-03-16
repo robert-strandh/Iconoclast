@@ -147,6 +147,20 @@
       :reference-asts (list reference))
     (values definition reference)))
 
+(defun create-lexical-variable-triple ()
+  (let* ((name (gensym))
+         (definition (make-instance 'ico:variable-definition-ast
+                       :name name))
+         (reference-1 (make-instance 'ico:variable-reference-ast
+                        :name name
+                        :definition-ast definition))
+         (reference-2 (make-instance 'ico:variable-reference-ast
+                        :name name
+                        :definition-ast definition)))
+    (reinitialize-instance definition
+      :reference-asts (list reference-1 reference-2))
+    (values definition reference-1 reference-2)))
+
 (defun lexify-required-parameter-ast (required-parameter-ast)
   (let ((existing-name-ast (ico:name-ast required-parameter-ast)))
     (multiple-value-bind (definition-ast reference-ast)
@@ -168,8 +182,9 @@
            (ico:supplied-p-parameter-ast optional-parameter-ast)))
     (multiple-value-bind (definition-1-ast reference-1-ast)
         (create-lexical-variable-pair)
-      (multiple-value-bind (definition-2-ast reference-2-ast)
-          (create-lexical-variable-pair)
+      (multiple-value-bind
+            (definition-2-ast reference-2.1-ast reference-2.2-ast)
+          (create-lexical-variable-triple)
         (reinitialize-instance optional-parameter-ast
           :name-ast definition-1-ast)
         (reinitialize-instance optional-parameter-ast
@@ -179,7 +194,7 @@
         (list* (make-instance 'ico:variable-binding-ast
                  :variable-name-ast existing-name-ast
                  :form-ast (make-instance 'ico:if-ast
-                             :test-ast reference-2-ast
+                             :test-ast reference-2.1-ast
                              :then-ast reference-1-ast
                              :else-ast
                              (if (null init-form-ast)
@@ -190,7 +205,7 @@
                    '()
                    (list (make-instance 'ico:variable-binding-ast
                            :variable-name-ast existing-supplied-p-ast
-                           :form-ast reference-2-ast))))))))
+                           :form-ast reference-2.2-ast))))))))
 
 (defun lexify-optional-section-ast (optional-section-ast)
   (loop for parameter-ast in (ico:parameter-asts optional-section-ast)
@@ -224,8 +239,9 @@
           :literal (intern (string (ico:name existing-name-ast)) "KEYWORD"))))
     (multiple-value-bind (definition-1-ast reference-1-ast)
         (create-lexical-variable-pair)
-      (multiple-value-bind (definition-2-ast reference-2-ast)
-          (create-lexical-variable-pair)
+      (multiple-value-bind
+            (definition-2-ast reference-2.1-ast reference-2.2-ast)
+          (create-lexical-variable-triple)
         (reinitialize-instance key-parameter-ast
           :name-ast definition-1-ast)
         (reinitialize-instance key-parameter-ast
@@ -235,7 +251,7 @@
         (list* (make-instance 'ico:variable-binding-ast
                  :variable-name-ast existing-name-ast
                  :form-ast (make-instance 'ico:if-ast
-                             :test-ast reference-2-ast
+                             :test-ast reference-2.1-ast
                              :then-ast reference-1-ast
                              :else-ast
                              (if (null init-form-ast)
@@ -246,7 +262,7 @@
                    '()
                    (list (make-instance 'ico:variable-binding-ast
                            :variable-name-ast existing-supplied-p-ast
-                           :form-ast reference-2-ast))))))))
+                           :form-ast reference-2.2-ast))))))))
 
 (defun lexify-key-section-ast (key-section-ast)
   (loop for parameter-ast in (ico:parameter-asts key-section-ast)
