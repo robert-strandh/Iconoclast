@@ -182,13 +182,13 @@
            (ico:supplied-p-parameter-ast optional-parameter-ast)))
     (multiple-value-bind (definition-1-ast reference-1-ast)
         (create-lexical-variable-pair)
+      (reinitialize-instance optional-parameter-ast
+        :name-ast definition-1-ast)
+      (reinitialize-instance optional-parameter-ast
+        :init-form-ast (make-instance 'ico:literal-ast :literal 'nil))
       (multiple-value-bind
             (definition-2-ast reference-2.1-ast reference-2.2-ast)
           (create-lexical-variable-triple)
-        (reinitialize-instance optional-parameter-ast
-          :name-ast definition-1-ast)
-        (reinitialize-instance optional-parameter-ast
-          :init-form-ast (make-instance 'ico:literal-ast :literal 'nil))
         (reinitialize-instance optional-parameter-ast
           :supplied-p-parameter-ast definition-2-ast)
         (list* (make-instance 'ico:variable-binding-ast
@@ -239,13 +239,13 @@
           :literal (intern (string (ico:name existing-name-ast)) "KEYWORD"))))
     (multiple-value-bind (definition-1-ast reference-1-ast)
         (create-lexical-variable-pair)
+      (reinitialize-instance key-parameter-ast
+        :name-ast definition-1-ast)
+      (reinitialize-instance key-parameter-ast
+        :init-form-ast (make-instance 'ico:literal-ast :literal 'nil))
       (multiple-value-bind
             (definition-2-ast reference-2.1-ast reference-2.2-ast)
           (create-lexical-variable-triple)
-        (reinitialize-instance key-parameter-ast
-          :name-ast definition-1-ast)
-        (reinitialize-instance key-parameter-ast
-          :init-form-ast (make-instance 'ico:literal-ast :literal 'nil))
         (reinitialize-instance key-parameter-ast
           :supplied-p-parameter-ast definition-2-ast)
         (list* (make-instance 'ico:variable-binding-ast
