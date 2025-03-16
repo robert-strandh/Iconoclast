@@ -59,12 +59,14 @@
              (iconoclast:?
               (let ((possible-child (funcall slot-reader ast)))
                 (unless (null possible-child)
-                  (set-slot ast slot-reader
-                            (maybe-walk client ast possible-child)))))
+                  (let ((result (maybe-walk client ast possible-child)))
+                    (unless (null result)
+                      (set-slot ast slot-reader result))))))
              (1
-              (let ((child (funcall slot-reader ast)))
-                (set-slot ast slot-reader
-                          (maybe-walk client ast child))))))
+              (let* ((child (funcall slot-reader ast))
+                     (result (maybe-walk client ast child)))
+                (unless (null result)
+                  (set-slot ast slot-reader result))))))
   ast)
 
 (defvar *visited*)
