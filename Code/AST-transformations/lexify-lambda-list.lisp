@@ -256,26 +256,39 @@
         :name-ast definition-1-ast)
       (reinitialize-instance key-parameter-ast
         :init-form-ast (make-instance 'ico:literal-ast :literal 'nil))
-      (multiple-value-bind
-            (definition-2-ast reference-2.1-ast reference-2.2-ast)
-          (create-lexical-variable-triple)
-        (reinitialize-instance key-parameter-ast
-          :supplied-p-parameter-ast definition-2-ast)
-        (list* (make-instance 'ico:variable-binding-ast
-                 :variable-name-ast existing-name-ast
-                 :form-ast (make-instance 'ico:if-ast
-                             :test-ast reference-2.1-ast
-                             :then-ast reference-1-ast
-                             :else-ast
-                             (if (null init-form-ast)
-                                 (make-instance 'ico:literal-ast
-                                   :literal 'nil)
-                                 init-form-ast)))
-               (if (null existing-supplied-p-ast)
-                   '()
-                   (list (make-instance 'ico:variable-binding-ast
-                           :variable-name-ast existing-supplied-p-ast
-                           :form-ast reference-2.2-ast))))))))
+      (if (null existing-supplied-p-ast)
+          (multiple-value-bind (definition-2-ast reference-2-ast)
+              (create-lexical-variable-pair)
+            (reinitialize-instance key-parameter-ast
+              :supplied-p-parameter-ast definition-2-ast)
+            (list (make-instance 'ico:variable-binding-ast
+                    :variable-name-ast existing-name-ast
+                    :form-ast (make-instance 'ico:if-ast
+                                :test-ast reference-2-ast
+                                :then-ast reference-1-ast
+                                :else-ast
+                                (if (null init-form-ast)
+                                    (make-instance 'ico:literal-ast
+                                      :literal 'nil)
+                                    init-form-ast)))))
+          (multiple-value-bind
+                (definition-2-ast reference-2.1-ast reference-2.2-ast)
+              (create-lexical-variable-triple)
+            (reinitialize-instance key-parameter-ast
+              :supplied-p-parameter-ast definition-2-ast)
+            (list (make-instance 'ico:variable-binding-ast
+                    :variable-name-ast existing-name-ast
+                    :form-ast (make-instance 'ico:if-ast
+                                :test-ast reference-2.1-ast
+                                :then-ast reference-1-ast
+                                :else-ast
+                                (if (null init-form-ast)
+                                    (make-instance 'ico:literal-ast
+                                      :literal 'nil)
+                                    init-form-ast)))
+                  (make-instance 'ico:variable-binding-ast
+                    :variable-name-ast existing-supplied-p-ast
+                    :form-ast reference-2.2-ast)))))))
 
 (defun lexify-key-section-ast (key-section-ast)
   (loop for parameter-ast in (ico:parameter-asts key-section-ast)
