@@ -37,6 +37,14 @@
 (defmethod maybe-walk (client (parent-node ico:block-name-ast) child-node)
   child-node)
 
+;;; A TAGBODY-SEGMENT-AST contains a link to the TAGBODY-AST that
+;;; contains it.  We do not want to follow that link
+(defmethod maybe-walk
+    (client
+     (parent-node ico:tagbody-segment-ast)
+     (child-node ico:tagbody-ast))
+  nil)
+
 ;;; A TAG-AST is considered a leaf, be it a definition or a reference.
 (defmethod maybe-walk (client (parent-node ico:tag-ast) child-node)
   child-node)
