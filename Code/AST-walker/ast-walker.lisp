@@ -4,7 +4,7 @@
 ;;;; traverse the AST tree without invoking any action.  To implement
 ;;;; some action, client code can define an :AROUND method on
 ;;;; WALK-AST-NODE that specializes to a particular CLIENT class.
-;;;; That around method can then implement actions before or after
+;;;; That :AROUND method can then implement actions before or after
 ;;;; recursive processing takes place, or call WALK-AST-NODE
 ;;;; recursively with some new AST node.  If the client-provided
 ;;;; :AROUND method does not end up calling CALL-NEXT-METHOD it must
@@ -32,9 +32,6 @@
   child-node)
 
 (defmethod maybe-walk (client (parent-node ico:variable-name-ast) child-node)
-  child-node)
-
-(defmethod maybe-walk (client (parent-node ico:function-name-ast) child-node)
   child-node)
 
 (defmethod maybe-walk (client (parent-node ico:block-name-ast) child-node)
