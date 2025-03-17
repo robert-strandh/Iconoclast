@@ -1,0 +1,12 @@
+(cl:in-package #:iconoclast-visualizer)
+
+(defmethod display-ast ((ast ico:multiple-value-bind-ast))
+  (draw-ast ast "multiple-value-bind")
+  (with-indentation (40)
+    (display-asts (ico:variable-name-asts ast)))
+  (with-indentation (30)
+    (display-ast (ico:values-ast ast)))
+  (with-indentation (25)
+    (display-asts (ico:declaration-asts ast)))
+  (with-indentation (20)
+    (display-asts (ico:form-asts ast))))
