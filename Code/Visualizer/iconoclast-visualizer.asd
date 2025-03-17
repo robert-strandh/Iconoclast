@@ -37,6 +37,7 @@
    (:file "multiple-value-prog1-ast")
    (:file "progv-ast")
    (:file "setq-ast")
+   (:file "tagbody-segment-ast")
    (:file "tagbody-ast")
    (:file "tagbody-with-variable-ast")
    (:file "the-ast")
