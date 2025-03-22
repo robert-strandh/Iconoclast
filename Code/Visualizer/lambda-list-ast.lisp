@@ -73,5 +73,6 @@
     (with-indentation (20)
       (display-ast (ico:required-section-ast ast))
       (display-ast (ico:optional-section-ast ast))
+      (display-ast (ico:rest-section-ast ast))
       (display-ast (ico:key-section-ast ast))
       (display-ast (ico:aux-section-ast ast)))))
