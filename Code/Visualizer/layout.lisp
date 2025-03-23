@@ -10,12 +10,6 @@
     (30 ico:declaration-asts)
     (20 ico:form-asts)))
 
-(defmethod layout ((ast ico:and-ast))
-  `((20 ico:form-asts)))
-
-(defmethod layout ((ast ico:or-ast))
-  `((20 ico:form-asts)))
-
 (defmethod layout ((ast ico:cond-clause-ast))
   `((20 ico:test-ast)
     (40 ico:form-asts)))
