@@ -53,5 +53,6 @@
    (:file "read-static-environment-ast")
    (:file "application-ast")
    (:file "when-ast")
+   (:file "unless-ast")
    (:file "gui")
    (:file "commands")))
