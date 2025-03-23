@@ -54,5 +54,6 @@
    (:file "application-ast")
    (:file "when-ast")
    (:file "unless-ast")
+   (:file "and-ast")
    (:file "gui")
    (:file "commands")))
