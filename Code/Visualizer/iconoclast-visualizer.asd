@@ -56,5 +56,6 @@
    (:file "unless-ast")
    (:file "and-ast")
    (:file "or-ast")
+   (:file "cond-ast")
    (:file "gui")
    (:file "commands")))
