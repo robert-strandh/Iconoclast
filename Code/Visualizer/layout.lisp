@@ -10,13 +10,6 @@
     (30 ico:declaration-asts)
     (20 ico:form-asts)))
 
-(defmethod layout ((ast ico:cond-clause-ast))
-  `((20 ico:test-ast)
-    (40 ico:form-asts)))
-
-(defmethod layout ((ast ico:cond-ast))
-  `((20 ico:clause-asts)))
-
 (defmethod layout ((ast ico:case-normal-clause-ast))
   `((20 ico:key-asts)
     (40 ico:form-asts)))
