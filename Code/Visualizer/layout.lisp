@@ -25,14 +25,6 @@
   `((20 ico:keyplace-ast)
     (40 ico:clause-asts)))
 
-(defmethod layout ((ast ico:incf-ast))
-  `((20 ico:place-ast)
-    (30 ico:delta-ast)))
-
-(defmethod layout ((ast ico:decf-ast))
-  `((20 ico:place-ast)
-    (30 ico:delta-ast)))
-
 (defmethod layout ((ast ico:push-ast))
   `((20 ico:item-ast)
     (20 ico:place-ast)))
