@@ -57,5 +57,6 @@
    (:file "and-ast")
    (:file "or-ast")
    (:file "cond-ast")
+   (:file "incf-ast")
    (:file "gui")
    (:file "commands")))
