@@ -25,13 +25,6 @@
   `((20 ico:keyplace-ast)
     (40 ico:clause-asts)))
 
-(defmethod layout ((ast ico:push-ast))
-  `((20 ico:item-ast)
-    (20 ico:place-ast)))
-
-(defmethod layout ((ast ico:pop-ast))
-  `((20 ico:place-ast)))
-
 (defmethod layout ((ast ico:multiple-value-list-ast))
   `((20 ico:form-asts)))
 
