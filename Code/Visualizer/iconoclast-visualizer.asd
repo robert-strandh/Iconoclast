@@ -59,5 +59,6 @@
    (:file "cond-ast")
    (:file "incf-ast")
    (:file "decf-ast")
+   (:file "push-ast")
    (:file "gui")
    (:file "commands")))
