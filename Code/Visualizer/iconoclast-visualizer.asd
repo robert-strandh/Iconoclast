@@ -60,5 +60,6 @@
    (:file "incf-ast")
    (:file "decf-ast")
    (:file "push-ast")
+   (:file "pop-ast")
    (:file "gui")
    (:file "commands")))
