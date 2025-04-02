@@ -57,6 +57,7 @@
    (:file "and-ast")
    (:file "or-ast")
    (:file "cond-ast")
+   (:file "case-ast")
    (:file "incf-ast")
    (:file "decf-ast")
    (:file "push-ast")
