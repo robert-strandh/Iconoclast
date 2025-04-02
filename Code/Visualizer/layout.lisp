@@ -10,21 +10,6 @@
     (30 ico:declaration-asts)
     (20 ico:form-asts)))
 
-(defmethod layout ((ast ico:case-normal-clause-ast))
-  `((20 ico:key-asts)
-    (40 ico:form-asts)))
-
-(defmethod layout ((ast ico:case-otherwise-clause-ast))
-  `((40 ico:form-asts)))
-
-(defmethod layout ((ast ico:case-or-ecase-ast))
-  `((20 ico:keyform-ast)
-    (40 ico:clause-asts)))
-
-(defmethod layout ((ast ico:ccase-ast))
-  `((20 ico:keyplace-ast)
-    (40 ico:clause-asts)))
-
 (defmethod layout ((ast ico:multiple-value-list-ast))
   `((20 ico:form-asts)))
 
