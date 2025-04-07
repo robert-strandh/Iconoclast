@@ -17,17 +17,6 @@
   `((40 ico:name-ast)
     (20 ico:values-ast)))
 
-(defmethod layout ((ast ico:nth-value-ast))
-  `((20 ico:n-ast)
-    (20 ico:form-ast)))
-
-(defmethod layout ((ast ico:shiftf-ast))
-  `((20 ico:value-ast)
-    (40 ico:place-asts)))
-
-(defmethod layout ((ast ico:rotatef-ast))
-  `((20 ico:place-asts)))
-
 (defmethod layout ((ast ico:defmethod-ast))
   `((20 ico:name-ast)
     (50 ico:method-qualifier-asts)
