@@ -64,5 +64,6 @@
    (:file "pop-ast")
    (:file "nth-value-ast")
    (:file "shiftf-ast")
+   (:file "rotatef-ast")
    (:file "gui")
    (:file "commands")))
