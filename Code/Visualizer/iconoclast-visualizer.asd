@@ -62,5 +62,6 @@
    (:file "decf-ast")
    (:file "push-ast")
    (:file "pop-ast")
+   (:file "nth-value-ast")
    (:file "gui")
    (:file "commands")))
