@@ -10,9 +10,6 @@
     (30 ico:declaration-asts)
     (20 ico:form-asts)))
 
-(defmethod layout ((ast ico:multiple-value-list-ast))
-  `((20 ico:form-asts)))
-
 (defmethod layout ((ast ico:multiple-value-setq-ast))
   `((40 ico:name-ast)
     (20 ico:values-ast)))
