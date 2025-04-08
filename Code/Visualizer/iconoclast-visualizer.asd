@@ -65,5 +65,6 @@
    (:file "nth-value-ast")
    (:file "shiftf-ast")
    (:file "rotatef-ast")
+   (:file "multiple-value-list-ast")
    (:file "gui")
    (:file "commands")))
