@@ -6,4 +6,3 @@
     (display-ast (ico:value-ast ast)))
   (with-indentation (20)
     (display-asts (ico:place-asts ast))))
-
