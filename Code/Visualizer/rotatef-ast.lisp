@@ -4,4 +4,3 @@
   (draw-ast ast "rotatef")
   (with-indentation (20)
     (display-asts (ico:place-asts ast))))
-
