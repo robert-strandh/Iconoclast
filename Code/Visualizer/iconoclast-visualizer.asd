@@ -67,5 +67,6 @@
    (:file "rotatef-ast")
    (:file "multiple-value-list-ast")
    (:file "defvar-ast")
+   (:file "defparameter-ast")
    (:file "gui")
    (:file "commands")))
