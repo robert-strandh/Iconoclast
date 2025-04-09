@@ -31,14 +31,6 @@
     (40 ico:shadowing-import-from-asts)
     (40 ico:size-ast)))
 
-(defmethod layout ((ast ico:defvar-ast))
-  `((20 ico:variable-name-ast)
-    (20 ico:form-ast)))
-
-(defmethod layout ((ast ico:defparameter-ast))
-  `((20 ico:variable-name-ast)
-    (20 ico:form-ast)))
-
 (defmethod layout ((ast ico:defun-ast))
   `((20 ico:name-ast)
     (60 ico:lambda-list-ast)
