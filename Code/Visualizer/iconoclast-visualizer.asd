@@ -68,5 +68,6 @@
    (:file "multiple-value-list-ast")
    (:file "defvar-ast")
    (:file "defparameter-ast")
+   (:file "prog1-ast")
    (:file "gui")
    (:file "commands")))
