@@ -69,5 +69,6 @@
    (:file "defvar-ast")
    (:file "defparameter-ast")
    (:file "prog1-ast")
+   (:file "prog2-ast")
    (:file "gui")
    (:file "commands")))
