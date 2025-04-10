@@ -73,15 +73,6 @@
   `((40 ico:binding-asts)
     (20 ico:segment-asts)))
 
-(defmethod layout ((ast ico:prog1-ast))
-  `((40 ico:first-form-ast)
-    (20 ico:form-asts)))
-
-(defmethod layout ((ast ico:prog2-ast))
-  `((60 ico:first-form-ast)
-    (40 ico:second-form-ast)
-    (20 ico:form-asts)))
-
 (defmethod layout ((ast ico:pushnew-ast))
   `((20 ico:item-ast)
     (20 ico:place-ast)
