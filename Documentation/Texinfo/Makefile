@@ -1,5 +1,18 @@
-iconoclast.pdf: iconoclast.texi chap-introduction.texi chap-ast-classes-for-special-forms.texi chap-ast-classes-for-standard-macro-forms.texi chap-builder.texi
-	texi2pdf iconoclast.texi
+NAME = iconoclast
+
+SOURCES = $(wildcard *.texi)
+
+FIGURES = $(wildcard *.svg)
+
+PNGS = $(subst .svg,.png,$(FIGURES))
+
+all: $(NAME).pdf
+
+%.png: %.svg
+	inkscape $< --export-png=$@ --export-area-drawing
+
+$(NAME).pdf: $(SOURCES) $(PNGS)
+	texi2pdf $(NAME).texi
 
 clean:
-	rm -f *.aux *.toc *.log iconoclast.pdf *~
+	rm -f *.png *.pdf *.toc *.log *.aux *.cp *.cps *.fn *.fns *~ 
